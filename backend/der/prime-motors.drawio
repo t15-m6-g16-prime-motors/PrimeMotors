@@ -1,0 +1,645 @@
+<mxfile host="app.diagrams.net" modified="2023-08-04T20:17:41.888Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/116.0" etag="iQDI_H7DXJeLDqGVgxV4" version="21.6.6" type="device">
+  <diagram name="Page-1" id="eZqfjkuuo2thgTcHiKPm">
+    <mxGraphModel dx="1803" dy="1028" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-1" value="cars" style="shape=table;startSize=40;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#0F8B8D;fontColor=#143642;fillColor=#FFB570;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="185" y="552" width="320" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="40" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-3" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-2">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-4" value="ID serial NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-2">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-5" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="80" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-6" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-5">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-7" value="brand VARCHAR(70) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-5">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-8" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="120" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-9" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-8">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-10" value="model VARCHAR(70) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;fontStyle=0" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-8">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-149" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="160" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-150" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;fontStyle=1" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-149">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-151" value="description VARCHAR(255)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-149">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-120" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="200" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-121" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-120">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-122" value="color VARCHAR(70) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-120">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-11" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="240" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-12" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-11">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-13" value="year SMALL INT NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-11">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-117" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="280" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-118" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-117">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-119" value="fuel_type ENUM DEFAULT gasoline" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;whiteSpace=wrap;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-117">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-114" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="320" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-115" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-114">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-116" value="kilometrage INTEGER NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;fontStyle=0" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-114">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-111" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="360" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-112" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-111">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-113" value="price DECIMAL (8,2) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-111">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-108" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="400" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-109" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-108">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-110" value="published BOOLEAN DEFAULT true" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-108">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-105" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="440" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-106" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-105">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-107" value="created_at DATE" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-105">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-102" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-1">
+          <mxGeometry y="480" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-103" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;fontStyle=1" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-102">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-104" value="user_id" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-102">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-14" value="comments" style="shape=table;startSize=40;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#0F8B8D;fontColor=#143642;fillColor=#FFB570;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;fillStyle=auto;gradientColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="665" y="32" width="280" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-15" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-14">
+          <mxGeometry y="40" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-16" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-15">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-17" value="ID serial NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-15">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-18" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-14">
+          <mxGeometry y="80" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-19" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-18">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-20" value="comment TEXT NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-18">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-66" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-14">
+          <mxGeometry y="120" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-67" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontStyle=1;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-66">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-68" value="created_at DATE" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-66">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-21" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-14">
+          <mxGeometry y="160" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-22" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontStyle=1;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-21">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-23" value="user_id INTEGER NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-21">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-24" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-14">
+          <mxGeometry y="200" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-25" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontStyle=1;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-24">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-26" value="car_id INTEGER NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-24">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-27" value="users" style="shape=table;startSize=40;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#0F8B8D;fontColor=#143642;fillColor=#FFB570;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="645" y="352" width="320" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-28" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="40" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-29" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-28">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-30" value="ID serial NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-28">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-31" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="80" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-32" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-31">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-33" value="username VARCHAR(70) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-31">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-34" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="120" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-35" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-34">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-36" value="email VARCHAR(70) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-34">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-37" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="160" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-38" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-37">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-39" value="password VARCHAR(120) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-37">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-128" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="200" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-129" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-128">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-130" value="full_name VARCHAR(70) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-128">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-131" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="240" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-132" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-131">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-133" value="birthdate DATE" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-131">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-134" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="280" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-135" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-134">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-136" value="description VARCHAR(255)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-134">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-137" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="320" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-138" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-137">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-139" value="phone_number VARCHAR(70) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-137">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-140" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="360" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-141" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-140">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-142" value="is_seller BOOLEAN DEFAULT false" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-140">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-143" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="400" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-144" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-143">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-145" value="created_at DATE" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-143">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-146" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-27">
+          <mxGeometry y="440" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-147" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-146">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-148" value="updated_at DATE" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-146">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-40" value="addresses" style="shape=table;startSize=40;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#0F8B8D;fontColor=#143642;fillColor=#FFB570;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="392" width="320" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-41" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="40" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-42" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-41">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-43" value="ID serial NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-41">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-44" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="80" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-45" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-44">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-46" value="street VARCHAR(50) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-44">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-47" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="120" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-48" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-47">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-49" value="number VARCHAR(14) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-47">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-50" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="160" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-51" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-50">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-52" value="complement VARCHAR(70)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-50">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-99" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="200" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-100" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-99">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-101" value="city VARCHAR(50) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;fontStyle=0" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-99">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-96" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="240" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-97" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-96">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-98" value="state VARCHAR(50) NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-96">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-93" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="280" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-94" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-93">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-95" value="country VARCHAR(50) DEFAULT Brasil" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-93">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-90" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="320" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-91" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-90">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-92" value="postal_code VARCHAR(10)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-90">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-87" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-40">
+          <mxGeometry y="360" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-88" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;fontStyle=1" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-87">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-89" value="user_id INTEGER NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-87">
+          <mxGeometry x="40" width="280" height="40" as="geometry">
+            <mxRectangle width="280" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-53" value="pictures" style="shape=table;startSize=40;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;strokeColor=#0F8B8D;fontColor=#143642;fillColor=#FFB570;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="205" y="152" width="280" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-54" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-53">
+          <mxGeometry y="40" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-55" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-54">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-56" value="ID serial NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-54">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-81" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-53">
+          <mxGeometry y="80" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-82" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;fontStyle=1" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-81">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-83" value="car_id INTEGER NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-81">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-57" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-53">
+          <mxGeometry y="120" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-58" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-57">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-59" value="pic_1 TEXT NOT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-57">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-60" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-53">
+          <mxGeometry y="160" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-61" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-60">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-62" value="pic_2 TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-60">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-63" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-53">
+          <mxGeometry y="200" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-64" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-63">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-65" value="pic_3 TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-63">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-75" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-53">
+          <mxGeometry y="240" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-76" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-75">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-77" value="pic_4 TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-75">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-72" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-53">
+          <mxGeometry y="280" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-73" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-72">
+          <mxGeometry width="40" height="40" as="geometry">
+            <mxRectangle width="40" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-74" value="pic_6 TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;strokeColor=#0F8B8D;fontColor=#143642;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;rounded=1;labelBackgroundColor=none;fontSize=13;verticalAlign=middle;labelBorderColor=none;swimlaneFillColor=none;strokeWidth=1;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-72">
+          <mxGeometry x="40" width="240" height="40" as="geometry">
+            <mxRectangle width="240" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-123" value="ENUM fuel_type" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=12;strokeColor=#0F8B8D;fontColor=#143642;fillColor=#FFB570;rounded=1;verticalAlign=middle;fontFamily=Ubuntu;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DUbuntu;" vertex="1" parent="1">
+          <mxGeometry x="55" y="872" width="130" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-124" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Ubuntu&quot; face=&quot;Ubuntu&quot;&gt;gasoline&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;fontColor=#143642;rounded=1;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-123">
+          <mxGeometry y="40" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-125" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Ubuntu&quot; face=&quot;Ubuntu&quot;&gt;ethanol&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;fontColor=#143642;rounded=1;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-123">
+          <mxGeometry y="80" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-126" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Ubuntu&quot; face=&quot;Ubuntu&quot;&gt;flex&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;fontColor=#143642;rounded=1;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-123">
+          <mxGeometry y="120" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-127" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Ubuntu&quot; face=&quot;Ubuntu&quot;&gt;electric&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;fontColor=#143642;rounded=1;verticalAlign=middle;fontStyle=1;align=center;" vertex="1" parent="ZrY43uEeEf2vMAS4NS92-123">
+          <mxGeometry y="160" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-152" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERone;rounded=1;strokeColor=#A8201A;fontColor=#143642;fillColor=#FAE5C7;endFill=0;startFill=0;strokeWidth=2;" edge="1" parent="1" source="ZrY43uEeEf2vMAS4NS92-28" target="ZrY43uEeEf2vMAS4NS92-15">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="635" y="412" as="sourcePoint" />
+            <mxPoint x="655" y="202" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="645" y="262" />
+              <mxPoint x="675" y="332" />
+              <mxPoint x="1055" y="122" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-153" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;rounded=1;strokeColor=#A8201A;fontColor=#143642;fillColor=#FAE5C7;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="ZrY43uEeEf2vMAS4NS92-41" target="ZrY43uEeEf2vMAS4NS92-28">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="1115" y="302" as="sourcePoint" />
+            <mxPoint x="1215" y="202" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-154" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERmandOne;rounded=1;strokeColor=#A8201A;fontColor=#143642;fillColor=#FAE5C7;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;" edge="1" parent="1" source="ZrY43uEeEf2vMAS4NS92-2" target="ZrY43uEeEf2vMAS4NS92-54">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="125" y="592" as="sourcePoint" />
+            <mxPoint x="105" y="192" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="135" y="612" />
+              <mxPoint x="135" y="212" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZrY43uEeEf2vMAS4NS92-156" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERzeroToOne;rounded=1;strokeColor=#A8201A;fontColor=#143642;fillColor=#FAE5C7;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;" edge="1" parent="1" source="ZrY43uEeEf2vMAS4NS92-28" target="ZrY43uEeEf2vMAS4NS92-102">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="585" y="522" as="sourcePoint" />
+            <mxPoint x="685" y="422" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
