@@ -1,13 +1,13 @@
-import { ToastContainer } from "react-toastify";
-import { GlobalStyle } from "./styles/GlobalStyle";
-import { Reset } from "./styles/Reset";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
+import { GlobalStyle } from './styles/GlobalStyle';
+import { Reset } from './styles/Reset';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
     <>
       <ToastContainer
-        position="top-right"
+        position='top-right'
         autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -16,9 +16,10 @@ const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme='light'
       />
       <Reset />
+      <button>Teste de botão</button>
       <GlobalStyle />
     </>
   );
