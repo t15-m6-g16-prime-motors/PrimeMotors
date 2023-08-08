@@ -77,14 +77,14 @@ button {
 
 	--color-colors-fixed-white-fixed: rgba(255,255,255,1);
 
-	--font-size-44: 44px;
-	--font-size-36: 36px;
-	--font-size-32: 32px;
-	--font-size-28: 28px;
-	--font-size-24: 24px;
-	--font-size-20: 20px;
-	--font-size-16: 16px;
-	--font-size-14: 14px;
+	--font-size-44: 2.75rem;
+	--font-size-36: 2.25rem;
+	--font-size-32: 2rem;
+	--font-size-28: 1.75rem;
+	--font-size-24: 1.5rem;
+	--font-size-20: 1.25rem;
+	--font-size-16: 1rem;
+	--font-size-14: 0.875rem;
 
 	--font-weight-700: 700;
 	--font-weight-600: 600;
@@ -208,5 +208,17 @@ button {
 	font-family: var(--font-family-inter);
 	font-weight: var(--font-weight-500);
 	line-height: 24px;
+}
+
+.buttons-style-button-size-big {
+	height: 3rem;
+  width: 9.125rem;
+	padding: 12px, 28px, 12px, 28px;
+}
+
+.buttons-style-button-size-medium {
+	height: 2.375rem;
+  width: 7.5rem;
+	padding: 12px, 20px, 12px, 20px;
 }
 `;
