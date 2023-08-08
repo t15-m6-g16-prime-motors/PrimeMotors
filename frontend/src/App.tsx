@@ -2,6 +2,7 @@ import { ToastContainer } from 'react-toastify';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { Reset } from './styles/Reset';
 import 'react-toastify/dist/ReactToastify.css';
+import { RoutesMain } from './routes';
 
 const App = () => {
   return (
@@ -19,8 +20,8 @@ const App = () => {
         theme='light'
       />
       <Reset />
-      <button>Teste de botão</button>
       <GlobalStyle />
+      <RoutesMain/>
     </>
   );
 };
