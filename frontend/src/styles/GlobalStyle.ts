@@ -212,13 +212,13 @@ button {
 
 .buttons-style-button-size-big {
 	height: 3rem;
-  width: 9.125rem;
+  	width: 9.125rem;
 	padding: 12px, 28px, 12px, 28px;
 }
 
 .buttons-style-button-size-medium {
 	height: 2.375rem;
-  width: 7.5rem;
+  	width: 7.5rem;
 	padding: 12px, 20px, 12px, 20px;
 }
 `;
