@@ -10,7 +10,7 @@ const getByIdCarsController = async (req: Request, res: Response): Promise<Respo
 
     const car:TCarResponse= await getByIdCarsService(carId)
 
-    return res.json(car)
+    return res.status(200).json(car)
 }
 
 const updateCarController = async (req: Request, res: Response): Promise<Response> => {
