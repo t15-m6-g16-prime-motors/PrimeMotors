@@ -26,6 +26,8 @@ const carsSchemaUpdate = carSchema.omit({
     created_at: true 
 }).partial()
 
+const carSchemaResponse = carSchema
+
 const carsSchemaResponse = z.array(carSchema)
 
-export { carSchema, carsSchemaRequest, carsSchemaUpdate, carsSchemaResponse }
+export { carSchema, carsSchemaRequest, carsSchemaUpdate, carsSchemaResponse,carSchemaResponse }
