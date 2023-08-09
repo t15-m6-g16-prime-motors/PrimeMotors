@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 import carSvg from '../../utils/images/bmw.svg';
 
 export const StyledMain = styled.main`
+  /* Welcome Box */
   .welcomeBox {
     display: flex;
     flex-direction: column;
@@ -55,5 +56,131 @@ export const StyledMain = styled.main`
   }
   .welcomeBox p {
     text-align: center;
+  }
+
+  .listAndFilter {
+    padding: 1rem;
+  }
+
+  /* Filter */
+  .filterContainer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+
+    background-color: var(--color-white-fixed);
+
+    position: absolute;
+    top: 8rem;
+    left: 0;
+
+    z-index: 10;
+
+    display: none;
+  }
+
+  .filterHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .filterHeader > .filterTitle {
+    color: var(--color-grey-1);
+  }
+
+  .filterHeader > .closeBtn {
+    background-color: transparent;
+  }
+
+  .filterHeader > .closeBtn > svg {
+    color: var(--color-grey-3);
+    height: 1.1rem;
+    width: 1.1rem;
+  }
+
+  .attribute > .title {
+    font-size: var(--font-size-28);
+    font-family: var(--font-family-lexend);
+    font-weight: var(--font-weight-600);
+
+    margin: 1.5rem 0 0.7rem;
+    color: var(--color-grey-0);
+  }
+  .attribute > .attributeOption {
+    font-size: var(--font-size-16);
+    font-family: var(--font-family-lexend);
+    font-weight: var(--font-weight-500);
+
+    margin: 0.5rem 0;
+    color: var(--color-grey-3);
+  }
+
+  /* Cars List */
+  .carsList {
+    display: flex;
+    gap: 1rem;
+    overflow: scroll;
+    padding-bottom: 1.2rem;
+  }
+
+  /* Pagination */
+  .pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filterBtn {
+    width: 85%;
+    max-width: 30rem;
+    font-size: 1.2rem;
+    margin: 2.5rem 0 1.5rem;
+    border: 2px solid black;
+    background-color: var(--color-brand-1);
+    color: var(--color-white-fixed);
+    border: none;
+  }
+
+  .pagesAndButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.5rem 0 2rem;
+  }
+
+  .pagesAndButton > p,
+  .pagesAndButton span {
+    color: var(--color-grey-2);
+  }
+
+  .pagesAndButton span {
+    opacity: 0.7;
+  }
+
+  .previousNextBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .previousNextBtnContainer > button {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    background-color: transparent;
+    border: none;
+    color: var(--color-brand-1);
+  }
+
+  .previousNextBtnContainer > button:hover {
+    color: var(--color-brand-3);
   }
 `;
