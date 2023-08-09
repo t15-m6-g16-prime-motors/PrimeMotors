@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const StyledFooter = styled.footer`
   padding: 1rem;
   height: 15rem;
-  background-color: var(--grey-0);
+  background-color: var(--color-grey-0);
   color: white;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const StyledFooter = styled.footer`
   }
 
   button {
-    background-color: var(--grey-1);
+    background-color: var(--color-grey-1);
     color: white;
     height: 2.8rem;
     width: 2.8rem;

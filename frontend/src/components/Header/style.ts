@@ -3,6 +3,10 @@ import { styled } from 'styled-components';
 export const StyledHeader = styled.header`
   padding: 1rem;
   box-shadow: 0px 1px 3px var(--grey-5);
+  position: fixed;
+  z-index: 9;
+  background-color: var(--color-grey-10);
+  width: 100%;
 
   .menuContainer {
     box-sizing: border-box;
@@ -13,7 +17,7 @@ export const StyledHeader = styled.header`
   }
 
   .menuBtn {
-    background-color: white;
+    background-color: var(--color-grey-10);
     height: 100%;
   }
 
@@ -30,7 +34,7 @@ export const StyledHeader = styled.header`
   }
 
   .loginResgiterContainer > p:hover {
-    color: var(--brand-1);
+    color: var(--color-brand-1);
     cursor: pointer;
   }
 
