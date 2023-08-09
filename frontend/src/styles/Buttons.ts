@@ -12,68 +12,92 @@ const Buttons = styled.button`
 `;
 
 const Grey0Button = styled(Buttons)`
-  background-color: var(--color-grey-scale-grey-0);
-  color: var(--color-colors-fixed-white-fixed);
+  background-color: var(--color-grey-0);
+  color: var(--color-white-fixed);
   &:hover {
-    background-color: var(--color-grey-scale-grey-1);
+    background-color: var(--color-grey-1);
   }
 `;
 
 const ButtonBrand = styled(Buttons)`
-  background-color: var(--color-brand-brand-1);
-  color: var(--color-colors-fixed-white-fixed);
+  background-color: var(--color-brand-1);
+  color: var(--color-white-fixed);
   &:hover {
-    background-color: var(--color-brand-brand-2);
+    background-color: var(--color-brand-2);
   }
 `;
 
 const ButtonOutline2 = styled(Buttons)`
-  border: 1.5px solid var(--color-grey-scale-grey-4);
-  background-color: var(--color-colors-fixed-white-fixed);
-  color: var(--color-grey-scale-grey-0);
+  border: 1.5px solid var(--color-grey-4);
+  background-color: var(--color-white-fixed);
+  color: var(--color-grey-0);
   &:hover {
-    border: none;
-    background-color: var(--color-grey-scale-grey-0);
-    color: var(--color-colors-fixed-white-fixed);
+    border: 1.5px solid var(--color-grey-0);
+    background-color: var(--color-grey-0);
+    color: var(--color-white-fixed);
   }
 `;
 
 const ButtonOutlineBrand2 = styled(Buttons)`
-  border: 1.5px solid var(--color-brand-brand-1);
-  background-color: var(--color-colors-fixed-white-fixed);
-  color: var(--color-brand-brand-1);
+  border: 1.5px solid var(--color-brand-1);
+  background-color: var(--color-white-fixed);
+  color: var(--color-brand-1);
   &:hover {
-    background-color: var(--color-brand-brand-4);
+    background-color: var(--color-brand-4);
   }
 `;
 
-const ButtonLink = styled(Link)`
-  ${Buttons};
-  background-color: var(--color-colors-fixed-white-fixed);
+const LinkStyled = styled(Link)`
+  width: 100%;
+  background-color: var(--color-white-fixed);
+  color: var(--color-grey-0);
+  font-family: var(--font-family-inter);
+  border-radius: 4px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 300ms;
+`;
+
+const LinkStyledToLogin = styled(LinkStyled)`
+  justify-content: start;
   &:hover {
-    background-color: var(--color-grey-scale-grey-8);
+    background-color: var(--color-grey-8);
+  }
+`;
+
+const LinkStyledToRegister = styled(LinkStyled)`
+  border: 1.5px solid var(--color-grey-4);
+  background-color: var(--color-white-fixed);
+  color: var(--color-grey-0);
+  &:hover {
+    border: 1.5px solid var(--color-grey-0);
+    background-color: var(--color-grey-0);
+    color: var(--color-white-fixed);
   }
 `;
 
 const ButtonAlert = styled(Buttons)`
-  background-color: var(--color-feedback-alert-3);
-  color: var(--color-feedback-alert-1);
+  background-color: var(--color-alert-3);
+  color: var(--color-alert-1);
   &:hover {
-    background-color: var(--color-feedback-alert-2);
+    background-color: var(--color-alert-2);
   }
 `;
 
 const ButtonSuccess = styled(Buttons)`
-  background-color: var(--color-feedback-sucess-3);
-  color: var(--color-feedback-sucess-1);
+  background-color: var(--color-sucess-3);
+  color: var(--color-sucess-1);
   &:hover {
-    background-color: var(--color-feedback-sucess-2);
+    background-color: var(--color-sucess-2);
   }
 `;
 
 const ButtonDisabled = styled(Buttons)`
-  background-color: var(--color-brand-brand-3);
-  color: var(--color-brand-brand-4);
+  background-color: var(--color-brand-3);
+  color: var(--color-brand-4);
 `;
 
 export {
@@ -81,7 +105,8 @@ export {
   ButtonBrand,
   ButtonOutline2,
   ButtonOutlineBrand2,
-  ButtonLink,
+  LinkStyledToLogin,
+  LinkStyledToRegister,
   ButtonAlert,
   ButtonSuccess,
   ButtonDisabled
