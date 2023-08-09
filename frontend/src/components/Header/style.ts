@@ -12,36 +12,29 @@ export const StyledHeader = styled.header`
     box-sizing: border-box;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      width: 46px;
+      height: 46px;
+      font-size: 16px;
+    }
   }
 
-  .menuBtn {
-    background-color: var(--color-grey-10);
-    height: 100%;
-  }
-
-  .loginResgiterContainer {
+  nav {
+    width: 100%;
+    padding: 24px 0 24px 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 0.8rem 0 0;
+    gap: 32px;
   }
 
-  .loginResgiterContainer > p {
-    margin-bottom: 0.5rem;
-  }
-
-  .loginResgiterContainer > p:hover {
-    color: var(--color-brand-1);
-    cursor: pointer;
-  }
-
-  .loginResgiterContainer > button {
-    width: 100%;
-    box-sizing: border-box;
-  }
+  
 
   .hidden {
     display: none;
