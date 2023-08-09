@@ -10,13 +10,6 @@ import User from "./users.entity";
 import Comment from "./comments.entity";
 import Picture from "./pictures.entity";
 
-enum Status {
-  GASOLINE = "GASOLINE",
-  ETHANOL = "ETHANOL",
-  FLEX = "FLEX",
-  ELECTRIC = "ELECTRIC",
-}
-
 @Entity("cars")
 class Car {
   [x: string]: any;
@@ -38,8 +31,8 @@ class Car {
   @Column({ type: "int", nullable: false })
   year: number;
 
-  @Column({ type: "enum", enum: Status, default: Status.GASOLINE })
-  fuel_type: Status;
+  @Column()
+  fuel_type: string;
 
   @Column({ type: "int", nullable: false })
   kilometrage: number;
