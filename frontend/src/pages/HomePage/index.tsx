@@ -7,7 +7,12 @@ export const HomePage = () => {
     <>
       <Header />
       <StyledMain>
-        <h1>Home Page</h1>
+        <section className='welcomeBox'>
+          <h1 className='heading-5-600'>Motors Shop</h1>
+          <p className='heading-6-600'>
+            A melhor plataforma de anúncios de carros do país
+          </p>
+        </section>
       </StyledMain>
       <Footer />
     </>
