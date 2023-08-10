@@ -1,8 +1,17 @@
-import { TCarUpdate } from "../interfaces/car.interfaces"
+import { TCarResponse, TCarUpdate } from "../interfaces/car.interfaces"
 import { deleteContactsService } from "../services/cars/deleteCars.service";
+import { getByIdCarsService } from "../services/cars/getByIdCars.service";
 import { updateCarsService } from "../services/cars/updateCars.service"
 import { Response, Request } from "express";
 
+const getByIdCarsController = async (req: Request, res: Response): Promise<Response> => {
+
+    const carId: number = Number(req.params.id)
+
+    const car:TCarResponse= await getByIdCarsService(carId)
+
+    return res.status(200).json(car)
+}
 
 const updateCarController = async (req: Request, res: Response): Promise<Response> => {
 
@@ -23,4 +32,4 @@ const deleteCarController = async (req: Request, res: Response) => {
 }
 
 
-export { updateCarController, deleteCarController }
+export { getByIdCarsController, updateCarController, deleteCarController }
