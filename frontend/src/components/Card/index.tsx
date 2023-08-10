@@ -19,11 +19,11 @@ export const Card = () => {
       </div>
       <div className='carInfo'>
         <div className='tagsContainer text-style-text-body-2-500'>
-          <p className='tag'>0 km</p>
+          <p className='tag'>500 km</p>
           <p className='tag'>2019</p>
         </div>
 
-        <p className='price heading-7-500'>R$ 00.000,00</p>
+        <p className='price heading-7-500'>R$ 100.000,00</p>
       </div>
     </StyledCardContainer>
   );
