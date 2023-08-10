@@ -5,8 +5,10 @@ import { Header } from '../../components/Header';
 import { StyledMain } from './style';
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useLayout } from '../../hooks';
 
 export const HomePage = () => {
+  const { windowWidth } = useLayout();
   return (
     <>
       <Header />
@@ -19,12 +21,15 @@ export const HomePage = () => {
         </section>
         <section className='listAndFilter'>
           <div className='filterContainer'>
-            <div className='filterHeader'>
-              <p className='filterTitle heading-7-500'>Filtro</p>
-              <button className='closeBtn'>
-                <AiOutlineClose />
-              </button>
-            </div>
+            {windowWidth <= 768 && (
+              <div className='filterHeader'>
+                <p className='filterTitle heading-7-500'>Filtro</p>
+                <button className='closeBtn'>
+                  <AiOutlineClose />
+                </button>
+              </div>
+            )}
+
             <div className='attributesContainer'>
               <div className='attribute'>
                 <p className='title'>Marca</p>
@@ -85,11 +90,21 @@ export const HomePage = () => {
               <Card />
               <Card />
               <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
             </ul>
             <div className='pagination'>
-              <button className='filterBtn buttons-style-button-size-big'>
-                Filtros
-              </button>
+              {windowWidth <= 1024 && (
+                <button className='filterBtn buttons-style-button-size-big'>
+                  Filtros
+                </button>
+              )}
+
               <div className='pagesAndButton heading-6-500'>
                 <p>
                   1 <span>de 2</span>
