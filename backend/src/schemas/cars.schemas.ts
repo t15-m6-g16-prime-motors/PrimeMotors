@@ -10,13 +10,15 @@ const carSchema = z.object({
     fuel_type: z.string(),
     kilometrage: z.number().int(),
     price: z.union([z.number(), z.string()]),
-    published_in: z.union([z.date(), z.string()]),
+    published: z.boolean(),
+    good_deal: z.boolean(),
     created_at: z.union([z.date(), z.string()]),
 })
 
 const carsSchemaRequest = carSchema.omit({
     id: true,
-    created_at: true
+    created_at: true,
+    good_deal: true,
 })
 
 const carsSchemaUpdate = carSchema.omit({
