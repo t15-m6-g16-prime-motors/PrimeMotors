@@ -21,7 +21,7 @@ export const StyledHeader = styled.header`
       justify-content: center;
       background-color: transparent;
       width: 46px;
-      height: 46px;
+      height: 100%;
       font-size: 16px;
     }
   }
@@ -34,9 +34,27 @@ export const StyledHeader = styled.header`
     gap: 32px;
   }
 
-  
+  .active {
+    display: block;
+  }
 
   .hidden {
     display: none;
+  }
+
+  @media (min-width: 640px) {
+    .menuContainer {
+      width: 100%;
+      nav {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        justify-content: end;
+      }
+      button {
+        display: none;
+      }
+    }
   }
 `;

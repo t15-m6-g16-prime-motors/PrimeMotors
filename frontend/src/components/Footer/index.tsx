@@ -10,7 +10,14 @@ export const Footer = () => {
         © 2022 - Todos os direitos reservados.
       </p>
       <button>
-        <BiChevronUp />
+        <BiChevronUp
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }}
+        />
       </button>
     </StyledFooter>
   );
