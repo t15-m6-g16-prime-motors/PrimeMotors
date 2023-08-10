@@ -10,7 +10,7 @@ import User from "./users.entity";
 import Comment from "./comments.entity";
 import Picture from "./pictures.entity";
 
-enum Status {
+export enum Status {
   GASOLINE = "GASOLINE",
   ETHANOL = "ETHANOL",
   FLEX = "FLEX",
