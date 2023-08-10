@@ -10,7 +10,14 @@ export const Footer = () => {
         <p className='text-style-text-body-2-400'>
           © 2022 - Todos os direitos reservados.
         </p>
-        <button>
+        <button
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }}
+        >
           <BiChevronUp />
         </button>
       </div>
