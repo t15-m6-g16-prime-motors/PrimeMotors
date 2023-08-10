@@ -1,8 +1,10 @@
 import { Repository } from "typeorm";
-import { TCarRequest, TCarResponse } from "../../interfaces/cars.interfaces";
+
 import { Car } from "../../entities";
 import { AppDataSource } from "../../data-source";
-import { carSchemaResponse } from "../../schemas/cars.schema";
+
+import { TCarRequest, TCarResponse } from "../../interfaces/car.interfaces";
+import { carSchemaResponse } from "../../schemas/cars.schemas";
 
 const createCarsServices = async (
   carData: TCarRequest

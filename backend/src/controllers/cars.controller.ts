@@ -1,9 +1,8 @@
-import { TCarResponse, TCarUpdate } from "../interfaces/car.interfaces";
+import { TCarRequest, TCarResponse, TCarUpdate } from "../interfaces/car.interfaces";
 import { deleteContactsService } from "../services/cars/deleteCars.service";
 import { getByIdCarsService } from "../services/cars/getByIdCars.service";
 import { updateCarsService } from "../services/cars/updateCars.service";
 import { Response, Request } from "express";
-import { TCarRequest } from "../interfaces/cars.interfaces";
 import createCarsServices from "../services/cars/createCars.service";
 import listCarsServices from "../services/cars/listCars.service";
 
