@@ -35,10 +35,10 @@ class Car {
   fuel_type: string;
 
   @Column({ type: "int", nullable: false })
-  kilometrage: number;
+  kilometrage: number | string;
 
   @Column({ type: "decimal", precision: 8, scale: 2, nullable: false })
-  price: number;
+  price: number | string;
 
   @Column({ type: "date" })
   published_in: string | Date;
