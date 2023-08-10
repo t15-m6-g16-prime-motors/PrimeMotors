@@ -5,10 +5,19 @@ export const StyledFooter = styled.footer`
   height: 15rem;
   background-color: var(--color-grey-0);
   color: white;
+
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
 
   img {
     height: 1.5rem;
@@ -28,5 +37,15 @@ export const StyledFooter = styled.footer`
   button > svg {
     height: 70%;
     width: 70%;
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 3rem;
+    height: 8rem;
+
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 `;
