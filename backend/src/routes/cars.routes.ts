@@ -1,17 +1,18 @@
 import { Router } from "express";
 import {
   createCarController,
+  deleteCarController,
+  getByIdCarsController,
   listCarsController,
-} from "../controllers/cars.controllers";
+  updateCarController,
+} from "../controllers/cars.controller";
 
-const carsRoutes: Router = Router();
+const carRoutes = Router();
 
-carsRoutes.post(
-  "",
+carRoutes.post("", createCarController);
+carRoutes.get("", listCarsController);
+carRoutes.get("/:id", getByIdCarsController);
+carRoutes.patch("/:id", updateCarController);
+carRoutes.delete("/:id", deleteCarController);
 
-  createCarController
-);
-
-carsRoutes.get("", listCarsController);
-
-export { carsRoutes };
+export { carRoutes };
