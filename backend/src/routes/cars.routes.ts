@@ -1,4 +1,6 @@
 import { Router } from "express";
+
+
 import { deleteCarController, getByIdCarsController, updateCarController } from "../controllers/cars.controller";
 
 const carRoutes = Router()
@@ -10,3 +12,4 @@ carRoutes.patch("/:id", updateCarController)
 carRoutes.delete("/:id", deleteCarController)
 
 export { carRoutes }
+
