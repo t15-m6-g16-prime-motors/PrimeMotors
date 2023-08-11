@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from 'react';
 import { ICar, IDefaultProviderProps } from '../interfaces';
+import { api } from '../services/api';
 
 const carsMock: ICar[] = [
   {
@@ -83,7 +85,7 @@ const carsMock: ICar[] = [
     model: 'Gla',
     description:
       'O Mercedes-Benz GLA é um SUV compacto de luxo que irradia elegância e sofisticação. Seu design exterior apresenta linhas modernas e aerodinâmicas, enquanto o interior oferece um ambiente refinado, repleto de materiais de alta qualidade e tecnologia de última geração. Equipado com uma variedade de recursos avançados, desde sistemas de segurança inteligentes até um sistema de infotainment de ponta, o GLA proporciona uma experiência de condução conectada e segura. Com opções de motorização eficientes e desempenho excepcional, o GLA é uma escolha que une luxo, versatilidade e inovação para aqueles que buscam o equilíbrio perfeito entre estilo e funcionalidade no mundo dos SUVs de luxo.',
-    color: 'Branca',
+    color: 'Branco',
     year: 2020,
     fuel_type: 'Flex',
     kilometrage: 12000,
@@ -113,7 +115,7 @@ const carsMock: ICar[] = [
     model: 'Frontier',
     description:
       'A Nissan Frontier é uma picape robusta e versátil, projetada para lidar tanto com as demandas do trabalho quanto com as aventuras off-road. Com um design imponente, a Frontier apresenta linhas marcantes e uma presença dominante nas estradas. Seu interior oferece espaço confortável para os ocupantes e uma variedade de recursos tecnológicos, incluindo um sistema de infotainment moderno e opções de conectividade avançadas. O destaque da Frontier está em suas capacidades de carga e reboque, tornando-a uma escolha popular para aqueles que precisam de um veículo robusto para lidar com tarefas pesadas. Além disso, sua capacidade de tração nas quatro rodas e recursos off-road a tornam apta para enfrentar terrenos acidentados. Com uma seleção de opções de motorização e níveis de acabamento, a Nissan Frontier oferece uma combinação de força, desempenho e funcionalidade, tornando-se uma escolha atraente para os amantes de picapes e aventureiros.',
-    color: 'Preta',
+    color: 'Preto',
     year: 2016,
     fuel_type: 'Flex',
     kilometrage: 63000,
@@ -138,20 +140,89 @@ const carsMock: ICar[] = [
     created_at: '2023-08-10'
   }
 ];
+
 interface ICarContextValues {
   allCars: ICar[];
+  carBrands: string[];
+  carModels: string[];
+  carColors: string[];
+  carYears: string[];
+  carFuelTypes: string[];
+  CarMinKm: number;
+  CarMaxKm: number;
+  CarMinPrice: number;
+  CarMaxPrice: number;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
 
 export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [allCars, setAllCars] = useState([] as ICar[]);
+  const [carBrands, setCarBrands] = useState([] as string[]);
+  const [carModels, setCarModels] = useState([] as string[]);
+  const [carColors, setCarColors] = useState([] as string[]);
+  const [carYears, setCarYears] = useState([] as string[]);
+  const [carFuelTypes, setCarFuelTypes] = useState([] as string[]);
+  const [CarMinKm, setCarMinKm] = useState(0);
+  const [CarMaxKm, setCarMaxKm] = useState(0);
+  const [CarMinPrice, setCarMinPrice] = useState(0);
+  const [CarMaxPrice, setCarMaxPrice] = useState(0);
+
+  const findValues = (attrName: string): string[] => {
+    const values: string[] = allCars.map((car) => String(car[attrName]));
+    const uniqueValues = [...new Set(values)];
+    uniqueValues.sort();
+
+    console.log(uniqueValues);
+
+    return uniqueValues;
+  };
 
   useEffect(() => {
-    setAllCars(carsMock);
+    const getCars = async () => {
+      try {
+        const cars = await api.get<ICar[]>('/cars');
+        setAllCars(cars.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    // setAllCars(carsMock);
+    getCars();
   }, []);
 
+  useEffect(() => {
+    setCarBrands(findValues('brand'));
+    setCarModels(findValues('model'));
+    setCarColors(findValues('color'));
+    setCarYears(findValues('year'));
+    setCarFuelTypes(findValues('fuel_type'));
+    setCarMinKm(parseInt(findValues('kilometrage')[0]));
+    setCarMaxKm(
+      parseInt(findValues('kilometrage')[findValues('kilometrage').length - 1])
+    );
+    setCarMinPrice(parseInt(findValues('price')[0]));
+    setCarMaxPrice(
+      parseInt(findValues('price')[findValues('price').length - 1])
+    );
+  }, [allCars]);
+
   return (
-    <CarContext.Provider value={{ allCars }}>{children}</CarContext.Provider>
+    <CarContext.Provider
+      value={{
+        allCars,
+        carBrands,
+        carModels,
+        carColors,
+        carYears,
+        carFuelTypes,
+        CarMinKm,
+        CarMaxKm,
+        CarMinPrice,
+        CarMaxPrice
+      }}
+    >
+      {children}
+    </CarContext.Provider>
   );
 };
