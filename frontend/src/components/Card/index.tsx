@@ -20,7 +20,7 @@ export const Card = ({ car }: ICardProps) => {
       </div>
       <div className='carInfo'>
         <div className='tagsContainer text-style-text-body-2-500'>
-          <p className='tag'>{car.kilometrage} km</p>
+          <p className='tag'>{car.kilometrage.toLocaleString('pt-BR')} km</p>
           <p className='tag'>{car.year}</p>
         </div>
 

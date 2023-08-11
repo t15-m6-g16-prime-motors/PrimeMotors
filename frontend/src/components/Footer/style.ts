@@ -12,6 +12,7 @@ export const StyledFooter = styled.footer`
 
   .container {
     width: 100%;
+    max-width: var(--content-container-limit);
     height: 100%;
     display: flex;
     flex-direction: column;

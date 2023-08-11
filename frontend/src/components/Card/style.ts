@@ -81,7 +81,7 @@ export const StyledCardContainer = styled.li`
     color: var(--color-grey-1);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1100px) {
     .carInfo {
       flex-direction: row;
       justify-content: space-between;
