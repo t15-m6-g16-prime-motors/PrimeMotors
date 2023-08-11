@@ -20,7 +20,7 @@ export const LayoutProvider = ({ children }: IDefaultProviderProps) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  });
+  }, []);
   return (
     <LayoutContext.Provider value={{ windowWidth }}>
       {children}
