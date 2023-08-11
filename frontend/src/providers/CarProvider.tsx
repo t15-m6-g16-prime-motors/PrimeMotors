@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from 'react';
+import { Dispatch, createContext, useEffect, useState } from 'react';
 import { ICar, IDefaultProviderProps } from '../interfaces';
 import { api } from '../services/api';
 
@@ -14,6 +14,7 @@ interface ICarContextValues {
   CarMaxKm: number;
   CarMinPrice: number;
   CarMaxPrice: number;
+  setfilterCar: Dispatch<React.SetStateAction<string>>
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -29,6 +30,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [CarMaxKm, setCarMaxKm] = useState(0);
   const [CarMinPrice, setCarMinPrice] = useState(0);
   const [CarMaxPrice, setCarMaxPrice] = useState(0);
+  const [filterCar, setfilterCar] = useState('');
 
   const findValues = (attrName: string): string[] => {
     const values: string[] = allCars.map((car) => String(car[attrName]));
@@ -60,6 +62,15 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   }, []);
 
   useEffect(() => {
+    if (filterCar === '') {
+      setAllCars(allCars);
+    } else {
+      const filtered = allCars.filter(car => car.brand.includes(filterCar) || car.model.includes(filterCar) || car.color.includes(filterCar) || car.fuel_type.includes(filterCar));
+      setAllCars(filtered);
+    }
+  }, [filterCar, allCars]);
+
+  useEffect(() => {
     setCarBrands(findValues('brand'));
     setCarModels(findValues('model'));
     setCarColors(findValues('color'));
@@ -89,7 +100,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         CarMinKm,
         CarMaxKm,
         CarMinPrice,
-        CarMaxPrice
+        CarMaxPrice,
+        setfilterCar
       }}
     >
       {children}

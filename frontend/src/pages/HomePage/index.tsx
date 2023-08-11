@@ -7,7 +7,7 @@ import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import { useCar, useLayout } from '../../hooks';
-import { FilterAttribute } from '../../components/FilterAttribute';
+// import { FilterAttribute } from '../../components/FilterAttribute';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
@@ -21,10 +21,15 @@ export const HomePage = () => {
     CarMinKm,
     CarMaxKm,
     CarMinPrice,
-    CarMaxPrice
+    CarMaxPrice,
+    setfilterCar,
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
+
+  const handleBrandClick = (filter: string) => {
+    setfilterCar(filter);
+  };
 
   return (
     <>
@@ -59,14 +64,54 @@ export const HomePage = () => {
             )}
 
             <div className='attributesContainer'>
-              <FilterAttribute attributeState={carBrands} title='Marca' />
+              <div className='attribute'>
+                <p className='title'>Marca</p>
+                {carBrands.map((brand) =>(
+                  <p className='attributeOption' key={brand} onClick={() => handleBrandClick(brand)}>
+                    {brand}
+                  </p>
+                ))}
+              </div>
+              <div className='attribute'>
+                <p className='title'>Modelo</p>
+                {carModels.map((model) => (
+                  <p className='attributeOption' key={model} onClick={() => handleBrandClick(model)}>
+                    {model}
+                  </p>
+                ))}
+              </div>
+              <div className='attribute'>
+                <p className='title'>Cor</p>
+                {carColors.map((color) => (
+                  <p className='attributeOption' key={color} onClick={() => handleBrandClick(color)}>
+                    {color}
+                  </p>
+                ))}
+              </div>
+              <div className='attribute'>
+                <p className='title'>Ano</p>
+                {carYears.map((year) => (
+                  <p className='attributeOption' key={year} onClick={() => handleBrandClick(year)}>
+                    {year}
+                  </p>
+                ))}
+              </div>
+              <div className='attribute'>
+                <p className='title'>Combustível</p>
+                {carFuelTypes.map((fuelType) => (
+                  <p className='attributeOption' key={fuelType} onClick={() => handleBrandClick(fuelType)}>
+                    {fuelType}
+                  </p>
+                ))}
+              </div>
+              {/* <FilterAttribute attributeState={carBrands} title='Marca' />
               <FilterAttribute attributeState={carModels} title='Modelo' />
               <FilterAttribute attributeState={carColors} title='Cor' />
               <FilterAttribute attributeState={carYears} title='Ano' />
               <FilterAttribute
                 attributeState={carFuelTypes}
                 title='Combustível'
-              />
+              /> */}
 
               <div className='attribute'>
                 <p className='title'>Km</p>

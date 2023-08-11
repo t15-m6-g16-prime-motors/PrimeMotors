@@ -106,6 +106,7 @@ export const StyledMain = styled.main`
 
     margin: 0.5rem 0;
     color: var(--color-grey-3);
+    cursor: pointer;
   }
 
   /* Cars List */
