@@ -91,6 +91,9 @@ button {
 	--font-weight-500: 500;
 	--font-weight-400: 400;
 
+
+	--content-container-limit: 81rem; 
+
 }
 
 .heading-1-700 {

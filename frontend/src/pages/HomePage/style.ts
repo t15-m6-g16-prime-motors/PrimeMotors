@@ -46,6 +46,8 @@ export const StyledMain = styled.main`
 
   .listAndFilter {
     padding: 1rem;
+    max-width: var(--content-container-limit);
+    margin: 0 auto;
   }
 
   /* Filter */
