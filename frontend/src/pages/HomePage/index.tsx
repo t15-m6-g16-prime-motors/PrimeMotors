@@ -5,11 +5,13 @@ import { Header } from '../../components/Header';
 import { StyledMain } from './style';
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useState } from 'react';
 import { useCar, useLayout } from '../../hooks';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
   const { allCars } = useCar();
+  const [showFilters, setShowFilters] = useState(false);
   return (
     <>
       <Header />
@@ -21,11 +23,22 @@ export const HomePage = () => {
           </p>
         </section>
         <section className='listAndFilter'>
-          <div className='filterContainer'>
+          <div
+            className={
+              showFilters
+                ? 'filterContainer showFilters'
+                : ' filterContainer hideFilters'
+            }
+          >
             {windowWidth <= 768 && (
               <div className='filterHeader'>
                 <p className='filterTitle heading-7-500'>Filtro</p>
-                <button className='closeBtn'>
+                <button
+                  onClick={() => {
+                    setShowFilters(!showFilters);
+                  }}
+                  className='closeBtn'
+                >
                   <AiOutlineClose />
                 </button>
               </div>
@@ -97,7 +110,12 @@ export const HomePage = () => {
             </ul>
             <div className='pagination'>
               {windowWidth <= 1024 && (
-                <button className='filterBtn buttons-style-button-size-big'>
+                <button
+                  onClick={() => {
+                    setShowFilters(!showFilters);
+                  }}
+                  className='filterBtn buttons-style-button-size-big'
+                >
                   Filtros
                 </button>
               )}

@@ -51,6 +51,7 @@ export const StyledMain = styled.main`
   /* Filter */
   .filterContainer {
     width: 100%;
+    max-width: 400px;
     margin: 0 auto;
     padding: 1rem;
 
@@ -61,8 +62,6 @@ export const StyledMain = styled.main`
     left: 0;
 
     z-index: 10;
-
-    display: none;
   }
 
   .filterHeader {
@@ -174,6 +173,14 @@ export const StyledMain = styled.main`
 
   .previousNextBtnContainer > button:hover {
     color: var(--color-brand-3);
+  }
+
+  .showFilters {
+    display: block;
+  }
+
+  .hideFilters {
+    display: none;
   }
 
   @media (min-width: 768px) {
