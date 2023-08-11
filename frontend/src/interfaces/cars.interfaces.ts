@@ -11,4 +11,6 @@ export interface ICar {
   published: boolean;
   good_deal: boolean;
   created_at: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 }

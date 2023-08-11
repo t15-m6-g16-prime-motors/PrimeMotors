@@ -10,8 +10,21 @@ import { useCar, useLayout } from '../../hooks';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
-  const { allCars } = useCar();
+  const {
+    allCars,
+    carBrands,
+    carModels,
+    carColors,
+    carYears,
+    carFuelTypes,
+    CarMinKm,
+    CarMaxKm,
+    CarMinPrice,
+    CarMaxPrice
+  } = useCar();
+
   const [showFilters, setShowFilters] = useState(false);
+
   return (
     <>
       <Header />
@@ -47,51 +60,53 @@ export const HomePage = () => {
             <div className='attributesContainer'>
               <div className='attribute'>
                 <p className='title'>Marca</p>
-                <p className='attributeOption'>Fiat</p>
-                <p className='attributeOption'>Ford</p>
-                <p className='attributeOption'>Honda</p>
-                <p className='attributeOption'>Toyota</p>
-                <p className='attributeOption'>Volkswagen</p>
+                {carBrands.map((brand) => (
+                  <p className='attributeOption' key={brand}>
+                    {brand}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Modelo</p>
-                <p className='attributeOption'>Civic</p>
-                <p className='attributeOption'>Corolla</p>
-                <p className='attributeOption'>Cruze</p>
-                <p className='attributeOption'>Fit</p>
-                <p className='attributeOption'>Gol</p>
-                <p className='attributeOption'>Ka</p>
-                <p className='attributeOption'>Onix</p>
+                {carModels.map((model) => (
+                  <p className='attributeOption' key={model}>
+                    {model}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Cor</p>
-                <p className='attributeOption'>Azul</p>
-                <p className='attributeOption'>Vermelho</p>
-                <p className='attributeOption'>Branco</p>
-                <p className='attributeOption'>Cinza</p>
-                <p className='attributeOption'>Prata</p>
-                <p className='attributeOption'>Preto</p>
-                <p className='attributeOption'>Verde</p>
+                {carColors.map((color) => (
+                  <p className='attributeOption' key={color}>
+                    {color}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Ano</p>
-                <p className='attributeOption'>2022</p>
-                <p className='attributeOption'>2021</p>
-                <p className='attributeOption'>2018</p>
+                {carYears.map((year) => (
+                  <p className='attributeOption' key={year}>
+                    {year}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Combustível</p>
-                <p className='attributeOption'>Elétrico</p>
-                <p className='attributeOption'>Híbrido</p>
-                <p className='attributeOption'>Flex</p>
-                <p className='attributeOption'>Gasolina</p>
-                <p className='attributeOption'>Álcool</p>
+                {carFuelTypes.map((fuelType) => (
+                  <p className='attributeOption' key={fuelType}>
+                    {fuelType}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Km</p>
+                <p>Min Km: {CarMinKm}</p>
+                <p>Max Km: {CarMaxKm}</p>
               </div>
               <div className='attribute'>
                 <p className='title'>Preço</p>
+                <p>Min Price: {CarMinPrice}</p>
+                <p>Max Price: {CarMaxPrice}</p>
               </div>
               <button className='filterBtn buttons-style-button-size-big'>
                 Ver anúncios
