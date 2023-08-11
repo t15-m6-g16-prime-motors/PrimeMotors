@@ -20,7 +20,7 @@ export const HomePage = () => {
     CarMinKm,
     CarMaxKm,
     CarMinPrice,
-    CarMaxPrice
+    CarMaxPrice,
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -60,7 +60,7 @@ export const HomePage = () => {
             <div className='attributesContainer'>
               <div className='attribute'>
                 <p className='title'>Marca</p>
-                {carBrands.map((brand) => (
+                {carBrands.map((brand) =>(
                   <p className='attributeOption' key={brand}>
                     {brand}
                   </p>
