@@ -31,7 +31,7 @@ class Car {
   @Column({ type: "int", nullable: false })
   year: number;
 
-  @Column()
+  @Column({ type: "varchar", nullable: false, default: "Gasoline" })
   fuel_type: string;
 
   @Column({ type: "int", nullable: false })
