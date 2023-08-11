@@ -86,7 +86,7 @@ export const StyledMain = styled.main`
     height: 1.1rem;
     width: 1.1rem;
   }
-
+  /* apagar pra baixo */
   .attribute {
     margin-bottom: 1.5rem;
   }
