@@ -7,7 +7,7 @@ import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import { useCar, useLayout } from '../../hooks';
-// import { FilterAttribute } from '../../components/FilterAttribute';
+import { FilterAttribute } from '../../components/FilterAttribute';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
@@ -104,6 +104,15 @@ export const HomePage = () => {
                   </p>
                 ))}
               </div>
+              <FilterAttribute attributeState={carBrands} title='Marca' />
+              <FilterAttribute attributeState={carModels} title='Modelo' />
+              <FilterAttribute attributeState={carColors} title='Cor' />
+              <FilterAttribute attributeState={carYears} title='Ano' />
+              <FilterAttribute
+                attributeState={carFuelTypes}
+                title='Combustível'
+              />
+
               <div className='attribute'>
                 <p className='title'>Km</p>
                 <p>Min Km: {CarMinKm}</p>
