@@ -1,3 +1,4 @@
 import useLayout from './useLayout';
+import useCar from './useCar';
 
-export { useLayout };
+export { useLayout, useCar };

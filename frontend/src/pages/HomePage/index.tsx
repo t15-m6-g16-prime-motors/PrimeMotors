@@ -5,10 +5,11 @@ import { Header } from '../../components/Header';
 import { StyledMain } from './style';
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
-import { useLayout } from '../../hooks';
+import { useCar, useLayout } from '../../hooks';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
+  const { allCars } = useCar();
   return (
     <>
       <Header />
@@ -86,17 +87,13 @@ export const HomePage = () => {
           </div>
           <div className='ListPaginationContainer'>
             <ul className='carsList'>
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+              {allCars.length < 1 ? (
+                <div className='emptyBox'>
+                  <p>Nenhum anúncio foi postado ainda.</p>
+                </div>
+              ) : (
+                allCars.map((car) => <Card key={car.id} car={car} />)
+              )}
             </ul>
             <div className='pagination'>
               {windowWidth <= 1024 && (
