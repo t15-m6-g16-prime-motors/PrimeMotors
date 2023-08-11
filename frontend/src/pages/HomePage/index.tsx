@@ -7,6 +7,7 @@ import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import { useCar, useLayout } from '../../hooks';
+// import { FilterAttribute } from '../../components/FilterAttribute';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
@@ -21,9 +22,14 @@ export const HomePage = () => {
     CarMaxKm,
     CarMinPrice,
     CarMaxPrice,
+    setSelectedBrand
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
+
+  const handleBrandClick = (brand: string) => {
+    setSelectedBrand(brand);
+  };
 
   return (
     <>
@@ -61,7 +67,7 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Marca</p>
                 {carBrands.map((brand) =>(
-                  <p className='attributeOption' key={brand}>
+                  <p className='attributeOption' key={brand} onClick={() => handleBrandClick(brand)}>
                     {brand}
                   </p>
                 ))}

@@ -46,6 +46,8 @@ export const StyledMain = styled.main`
 
   .listAndFilter {
     padding: 1rem;
+    max-width: var(--content-container-limit);
+    margin: 0 auto;
   }
 
   /* Filter */
@@ -84,7 +86,7 @@ export const StyledMain = styled.main`
     height: 1.1rem;
     width: 1.1rem;
   }
-
+  /* apagar pra baixo */
   .attribute {
     margin-bottom: 1.5rem;
   }
