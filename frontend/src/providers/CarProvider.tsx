@@ -14,6 +14,10 @@ interface ICarContextValues {
   carMaxKm: number;
   carMinPrice: number;
   carMaxPrice: number;
+  setCarMinPrice: Dispatch<React.SetStateAction<number>>;
+  setCarMaxPrice: Dispatch<React.SetStateAction<number>>;
+  setCarMinKm: Dispatch<React.SetStateAction<number>>;
+  setCarMaxKm: Dispatch<React.SetStateAction<number>>;
   setfilterCar: Dispatch<React.SetStateAction<string>>;
 }
 
@@ -106,7 +110,11 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         carMaxKm,
         carMinPrice,
         carMaxPrice,
-        setfilterCar
+        setfilterCar,
+        setCarMaxKm,
+        setCarMaxPrice,
+        setCarMinKm,
+        setCarMinPrice,
       }}
     >
       {children}

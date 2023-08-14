@@ -7,6 +7,7 @@ import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import { useCar, useLayout } from '../../hooks';
+import InputRange from '../../components/InputRange';
 // import { FilterAttribute } from '../../components/FilterAttribute';
 
 export const HomePage = () => {
@@ -22,7 +23,11 @@ export const HomePage = () => {
     carMaxKm,
     carMinPrice,
     carMaxPrice,
-    setfilterCar
+    setfilterCar,
+    setCarMaxKm,
+    setCarMaxPrice,
+    setCarMinKm,
+    setCarMinPrice
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -132,17 +137,21 @@ export const HomePage = () => {
                 attributeState={carFuelTypes}
                 title='Combustível'
               /> */}
-
-              <div className='attribute'>
-                <p className='title'>Km</p>
-                <p>Min Km: {carMinKm}</p>
-                <p>Max Km: {carMaxKm}</p>
-              </div>
-              <div className='attribute'>
-                <p className='title'>Preço</p>
-                <p>Min Price: {carMinPrice}</p>
-                <p>Max Price: {carMaxPrice}</p>
-              </div>
+              <InputRange
+                title={'Km'}
+                minValue={carMinKm}
+                maxValue={carMaxKm}
+                setMinValue={setCarMinKm}
+                setMaxValue={setCarMaxKm}
+              />
+              <InputRange
+                price={true}
+                title={'Preco'}
+                minValue={carMinPrice}
+                maxValue={carMaxPrice}
+                setMinValue={setCarMinPrice}
+                setMaxValue={setCarMaxPrice}
+              />
               <button className='filterBtn buttons-style-button-size-big'>
                 Ver anúncios
               </button>
