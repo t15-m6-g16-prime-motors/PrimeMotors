@@ -18,11 +18,11 @@ export const HomePage = () => {
     carColors,
     carYears,
     carFuelTypes,
-    CarMinKm,
-    CarMaxKm,
-    CarMinPrice,
-    CarMaxPrice,
-    setfilterCar,
+    carMinKm,
+    carMaxKm,
+    carMinPrice,
+    carMaxPrice,
+    setfilterCar
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -66,8 +66,12 @@ export const HomePage = () => {
             <div className='attributesContainer'>
               <div className='attribute'>
                 <p className='title'>Marca</p>
-                {carBrands.map((brand) =>(
-                  <p className='attributeOption' key={brand} onClick={() => handleBrandClick(brand)}>
+                {carBrands.map((brand) => (
+                  <p
+                    className='attributeOption'
+                    key={brand}
+                    onClick={() => handleBrandClick(brand)}
+                  >
                     {brand}
                   </p>
                 ))}
@@ -75,7 +79,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Modelo</p>
                 {carModels.map((model) => (
-                  <p className='attributeOption' key={model} onClick={() => handleBrandClick(model)}>
+                  <p
+                    className='attributeOption'
+                    key={model}
+                    onClick={() => handleBrandClick(model)}
+                  >
                     {model}
                   </p>
                 ))}
@@ -83,7 +91,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Cor</p>
                 {carColors.map((color) => (
-                  <p className='attributeOption' key={color} onClick={() => handleBrandClick(color)}>
+                  <p
+                    className='attributeOption'
+                    key={color}
+                    onClick={() => handleBrandClick(color)}
+                  >
                     {color}
                   </p>
                 ))}
@@ -91,7 +103,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Ano</p>
                 {carYears.map((year) => (
-                  <p className='attributeOption' key={year} onClick={() => handleBrandClick(year)}>
+                  <p
+                    className='attributeOption'
+                    key={year}
+                    onClick={() => handleBrandClick(year)}
+                  >
                     {year}
                   </p>
                 ))}
@@ -99,7 +115,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Combustível</p>
                 {carFuelTypes.map((fuelType) => (
-                  <p className='attributeOption' key={fuelType} onClick={() => handleBrandClick(fuelType)}>
+                  <p
+                    className='attributeOption'
+                    key={fuelType}
+                    onClick={() => handleBrandClick(fuelType)}
+                  >
                     {fuelType}
                   </p>
                 ))}
@@ -115,13 +135,13 @@ export const HomePage = () => {
 
               <div className='attribute'>
                 <p className='title'>Km</p>
-                <p>Min Km: {CarMinKm}</p>
-                <p>Max Km: {CarMaxKm}</p>
+                <p>Min Km: {carMinKm}</p>
+                <p>Max Km: {carMaxKm}</p>
               </div>
               <div className='attribute'>
                 <p className='title'>Preço</p>
-                <p>Min Price: {CarMinPrice}</p>
-                <p>Max Price: {CarMaxPrice}</p>
+                <p>Min Price: {carMinPrice}</p>
+                <p>Max Price: {carMaxPrice}</p>
               </div>
               <button className='filterBtn buttons-style-button-size-big'>
                 Ver anúncios
