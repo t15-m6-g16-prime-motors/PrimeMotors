@@ -18,17 +18,23 @@ export const HomePage = () => {
     carColors,
     carYears,
     carFuelTypes,
-    CarMinKm,
-    CarMaxKm,
-    CarMinPrice,
-    CarMaxPrice,
+    carMinKm,
+    carMaxKm,
+    carMinPrice,
+    carMaxPrice,
     setfilterCar,
+    filterCar
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
 
-  const handleFilterClick = (filter: string) => {
+  const handleBrandClick = (filter: string) => {
     setfilterCar(filter);
+  };
+
+  const handleClearBrand = () => {
+    setfilterCar('')
+    allCars
   };
 
   return (
@@ -66,8 +72,12 @@ export const HomePage = () => {
             <div className='attributesContainer'>
               <div className='attribute'>
                 <p className='title'>Marca</p>
-                {carBrands.map((brand) =>(
-                  <p className='attributeOption' key={brand} onClick={() => handleFilterClick(brand)}>
+                {carBrands.map((brand) => (
+                  <p
+                    className='attributeOption'
+                    key={brand}
+                    onClick={() => handleBrandClick(brand)}
+                  >
                     {brand}
                   </p>
                 ))}
@@ -75,7 +85,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Modelo</p>
                 {carModels.map((model) => (
-                  <p className='attributeOption' key={model} onClick={() => handleFilterClick(model)}>
+                  <p
+                    className='attributeOption'
+                    key={model}
+                    onClick={() => handleBrandClick(model)}
+                  >
                     {model}
                   </p>
                 ))}
@@ -83,7 +97,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Cor</p>
                 {carColors.map((color) => (
-                  <p className='attributeOption' key={color} onClick={() => handleFilterClick(color)}>
+                  <p
+                    className='attributeOption'
+                    key={color}
+                    onClick={() => handleBrandClick(color)}
+                  >
                     {color}
                   </p>
                 ))}
@@ -91,7 +109,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Ano</p>
                 {carYears.map((year) => (
-                  <p className='attributeOption' key={year} onClick={() => handleFilterClick(year)}>
+                  <p
+                    className='attributeOption'
+                    key={year}
+                    onClick={() => handleBrandClick(year)}
+                  >
                     {year}
                   </p>
                 ))}
@@ -99,7 +121,11 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Combustível</p>
                 {carFuelTypes.map((fuelType) => (
-                  <p className='attributeOption' key={fuelType} onClick={() => handleFilterClick(fuelType)}>
+                  <p
+                    className='attributeOption'
+                    key={fuelType}
+                    onClick={() => handleBrandClick(fuelType)}
+                  >
                     {fuelType}
                   </p>
                 ))}
@@ -115,17 +141,20 @@ export const HomePage = () => {
 
               <div className='attribute'>
                 <p className='title'>Km</p>
-                <p>Min Km: {CarMinKm}</p>
-                <p>Max Km: {CarMaxKm}</p>
+                <p>Min Km: {carMinKm}</p>
+                <p>Max Km: {carMaxKm}</p>
               </div>
               <div className='attribute'>
                 <p className='title'>Preço</p>
-                <p>Min Price: {CarMinPrice}</p>
-                <p>Max Price: {CarMaxPrice}</p>
+                <p>Min Price: {carMinPrice}</p>
+                <p>Max Price: {carMaxPrice}</p>
               </div>
-              <button className='filterBtn buttons-style-button-size-big'>
-                Ver anúncios
+              {filterCar && (
+              <button className='filterBtn buttons-style-button-size-big'
+              onClick={handleClearBrand}>
+                Limpar filtros
               </button>
+              )}
             </div>
           </div>
           <div className='ListPaginationContainer'>
