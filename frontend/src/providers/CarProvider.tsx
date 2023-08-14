@@ -15,7 +15,11 @@ interface ICarContextValues {
   carMinPrice: number;
   carMaxPrice: number;
   setfilterCar: Dispatch<React.SetStateAction<string>>;
-  filterCar: string[]
+  filterCar: string;
+  filteredCars: ICar[];
+  setFilteredCars: Dispatch<React.SetStateAction<ICar[]>>;
+  isFilterActive: boolean;
+  setIsFilterActive: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -31,10 +35,18 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [carMaxKm, setCarMaxKm] = useState(0);
   const [carMinPrice, setCarMinPrice] = useState(0);
   const [carMaxPrice, setCarMaxPrice] = useState(0);
+  const [filteredCars, setFilteredCars] = useState([] as ICar[]);
   const [filterCar, setfilterCar] = useState('');
+  const [isFilterActive, setIsFilterActive] = useState(false);
 
   const findValues = (attrName: string): string[] => {
-    const values: string[] = allCars.map((car) => String(car[attrName]));
+    let values: string[] = [];
+    if (isFilterActive) {
+      values = filteredCars.map((car) => String(car[attrName]));
+    } else {
+      values = allCars.map((car) => String(car[attrName]));
+    }
+
     const uniqueValues = [...new Set(values)];
     uniqueValues.sort();
 
@@ -61,19 +73,20 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (filterCar === '') {
-        allCars
-        } else {
-      const filtered = allCars.filter(car => 
-        car.brand.includes(filterCar) || 
-        car.model.includes(filterCar) || 
-        car.color.includes(filterCar) || 
-        car.fuel_type.includes(filterCar) ||
-        car.year.toString().includes(filterCar)
-        );
-      setAllCars(filtered);
-    }
-  }, [filterCar]);
+    const filtered = allCars.filter(
+      (car) =>
+        Number(car.price) >= carMinPrice &&
+        Number(car.price) <= carMaxPrice &&
+        car.kilometrage >= carMinKm &&
+        car.kilometrage <= carMaxKm &&
+        (car.brand.includes(filterCar) ||
+          car.model.includes(filterCar) ||
+          car.color.includes(filterCar) ||
+          car.fuel_type.includes(filterCar) ||
+          car.year.toString().includes(filterCar))
+    );
+    setFilteredCars(filtered);
+  }, [filterCar, carMinKm, carMaxKm, carMinPrice, carMaxPrice]);
 
   useEffect(() => {
     setCarBrands(findValues('brand'));
@@ -91,7 +104,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     setCarMaxPrice(
       getSortedNumArray('price')[getSortedNumArray('price').length - 1]
     );
-  }, [allCars]);
+  }, [allCars, filteredCars]);
 
   return (
     <CarContext.Provider
@@ -106,8 +119,12 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         carMaxKm,
         carMinPrice,
         carMaxPrice,
+        filterCar,
         setfilterCar,
-        filterCar
+        filteredCars,
+        setFilteredCars,
+        isFilterActive,
+        setIsFilterActive
       }}
     >
       {children}

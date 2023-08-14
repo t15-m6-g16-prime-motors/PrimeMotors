@@ -23,18 +23,24 @@ export const HomePage = () => {
     carMinPrice,
     carMaxPrice,
     setfilterCar,
-    filterCar
+    filteredCars,
+    setFilteredCars,
+    isFilterActive,
+    setIsFilterActive
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
 
   const handleBrandClick = (filter: string) => {
     setfilterCar(filter);
+    setIsFilterActive(true);
   };
 
   const handleClearBrand = () => {
-    setfilterCar('')
-    allCars
+    setfilterCar('');
+    setFilteredCars([]);
+
+    setIsFilterActive(false);
   };
 
   return (
@@ -149,19 +155,31 @@ export const HomePage = () => {
                 <p>Min Price: {carMinPrice}</p>
                 <p>Max Price: {carMaxPrice}</p>
               </div>
-              {filterCar && (
-              <button className='filterBtn buttons-style-button-size-big'
-              onClick={handleClearBrand}>
-                Limpar filtros
-              </button>
+              {isFilterActive && (
+                <button
+                  className='filterBtn buttons-style-button-size-big'
+                  onClick={handleClearBrand}
+                >
+                  Limpar filtros
+                </button>
               )}
             </div>
           </div>
           <div className='ListPaginationContainer'>
             <ul className='carsList'>
-              {allCars.length < 1 ? (
+              {isFilterActive ? (
+                filteredCars.length < 1 ? (
+                  <div className='emptyBox'>
+                    <p>
+                      Nenhum anúncio foi encontrado seguindo esses critérios.
+                    </p>
+                  </div>
+                ) : (
+                  filteredCars.map((car) => <Card key={car.id} car={car} />)
+                )
+              ) : allCars.length < 1 ? (
                 <div className='emptyBox'>
-                  <p>Nenhum anúncio foi postado ainda.</p>
+                  <p>Nenhum anúncio foi postado até o momento.</p>
                 </div>
               ) : (
                 allCars.map((car) => <Card key={car.id} car={car} />)
