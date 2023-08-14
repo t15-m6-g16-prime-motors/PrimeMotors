@@ -15,6 +15,7 @@ interface ICarContextValues {
   carMinPrice: number;
   carMaxPrice: number;
   setfilterCar: Dispatch<React.SetStateAction<string>>;
+  filterCar: string[]
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -61,19 +62,18 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
 
   useEffect(() => {
     if (filterCar === '') {
-      setAllCars(allCars);
-    } else {
-      const filtered = allCars.filter(
-        (car) =>
-          car.brand.includes(filterCar) ||
-          car.model.includes(filterCar) ||
-          car.color.includes(filterCar) ||
-          car.fuel_type.includes(filterCar) ||
-          car.year.toString().includes(filterCar)
-      );
+        allCars
+        } else {
+      const filtered = allCars.filter(car => 
+        car.brand.includes(filterCar) || 
+        car.model.includes(filterCar) || 
+        car.color.includes(filterCar) || 
+        car.fuel_type.includes(filterCar) ||
+        car.year.toString().includes(filterCar)
+        );
       setAllCars(filtered);
     }
-  }, [filterCar, carMinKm]);
+  }, [filterCar]);
 
   useEffect(() => {
     setCarBrands(findValues('brand'));
@@ -106,7 +106,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         carMaxKm,
         carMinPrice,
         carMaxPrice,
-        setfilterCar
+        setfilterCar,
+        filterCar
       }}
     >
       {children}
