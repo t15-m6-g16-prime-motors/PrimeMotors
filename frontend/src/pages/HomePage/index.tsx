@@ -22,7 +22,8 @@ export const HomePage = () => {
     carMaxKm,
     carMinPrice,
     carMaxPrice,
-    setfilterCar
+    setfilterCar,
+    filteredCars
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
