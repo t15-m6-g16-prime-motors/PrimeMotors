@@ -14,6 +14,10 @@ interface ICarContextValues {
   carMaxKm: number;
   carMinPrice: number;
   carMaxPrice: number;
+  setCarMinPrice: Dispatch<React.SetStateAction<number>>;
+  setCarMaxPrice: Dispatch<React.SetStateAction<number>>;
+  setCarMinKm: Dispatch<React.SetStateAction<number>>;
+  setCarMaxKm: Dispatch<React.SetStateAction<number>>;
   setfilterCar: Dispatch<React.SetStateAction<string>>;
   filterCar: string;
   filteredCars: ICar[];
@@ -73,6 +77,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   }, []);
 
   useEffect(() => {
+    // console.log(carMinPrice)
+    // console.log(carMaxPrice)
     const filtered = allCars.filter(
       (car) =>
         Number(car.price) >= carMinPrice &&
@@ -86,6 +92,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
           car.year.toString().includes(filterCar))
     );
     setFilteredCars(filtered);
+    console.log(filtered);
   }, [filterCar, carMinKm, carMaxKm, carMinPrice, carMaxPrice]);
 
   useEffect(() => {
@@ -104,7 +111,10 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     setCarMaxPrice(
       getSortedNumArray('price')[getSortedNumArray('price').length - 1]
     );
+    console.log(carMinPrice);
+    console.log(carMaxPrice);
   }, [allCars, filteredCars]);
+  useEffect(() => {}, [allCars]);
 
   return (
     <CarContext.Provider
@@ -124,7 +134,11 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         filteredCars,
         setFilteredCars,
         isFilterActive,
-        setIsFilterActive
+        setIsFilterActive,
+        setCarMaxKm,
+        setCarMaxPrice,
+        setCarMinKm,
+        setCarMinPrice
       }}
     >
       {children}
