@@ -9,6 +9,8 @@ interface IInputRange {
   title: string;
   setMinValue: Dispatch<React.SetStateAction<number>>;
   setMaxValue: Dispatch<React.SetStateAction<number>>;
+  setIsFilterActive: Dispatch<React.SetStateAction<boolean>>;
+  isFilterActive: boolean;
 }
 
 const InputRange = ({
@@ -17,11 +19,14 @@ const InputRange = ({
   title,
   price,
   setMinValue,
-  setMaxValue
+  setMaxValue,
+  setIsFilterActive,
+  isFilterActive
 }: IInputRange) => {
   const [sliderOneValue, setSliderOneValue] = useState(minValue);
   const [sliderTwoValue, setSliderTwoValue] = useState(maxValue);
-
+  const [fixedMinValue, setFixedMinValue] = useState(0);
+  const [fixedMaxValue, setFixedMaxValue] = useState(0);
   const minGap = 0;
   const sliderOneRef = useRef<HTMLInputElement | null>(null);
   const sliderTwoRef = useRef<HTMLInputElement | null>(null);
@@ -33,11 +38,15 @@ const InputRange = ({
     slideOne(sliderOneValue);
     slideTwo(sliderTwoValue);
   }, [sliderOneValue, sliderTwoValue]);
-  
+
   useEffect(() => {
     if (minValue != undefined && maxValue != undefined) {
-      setSliderOneValue(minValue);
-      setSliderTwoValue(maxValue);
+      if (sliderOneValue == 0 && sliderTwoValue == 0) {
+        setSliderOneValue(minValue);
+        setSliderTwoValue(maxValue);
+        setFixedMinValue(minValue);
+        setFixedMaxValue(maxValue);
+      }
     }
   }, [minValue, maxValue]);
   const slideOne = (newValue: number) => {
@@ -56,6 +65,14 @@ const InputRange = ({
     setSliderTwoValue(newValue);
     fillColor();
   };
+  useEffect(() => {
+    if (!isFilterActive) {
+      setSliderOneValue(fixedMinValue);
+      setSliderTwoValue(fixedMaxValue);
+      setMinValue(fixedMinValue)
+      setMaxValue(fixedMaxValue)
+    }
+  }, [isFilterActive]);
 
   const fillColor = () => {
     if (
@@ -89,8 +106,8 @@ const InputRange = ({
         <div className='slider-track' ref={sliderTrackRef}></div>
         <input
           type='range'
-          min={minValue}
-          max={maxValue}
+          min={fixedMinValue}
+          max={fixedMaxValue}
           value={sliderOneValue}
           onChange={(e) => slideOne(parseInt(e.target.value))}
           onMouseUp={() => setMinValue(sliderOneValue)}
@@ -98,11 +115,13 @@ const InputRange = ({
         />
         <input
           type='range'
-          min={minValue}
-          max={maxValue}
+          min={fixedMinValue}
+          max={fixedMaxValue}
           value={sliderTwoValue}
           onChange={(e) => slideTwo(parseInt(e.target.value))}
-          onMouseUp={() => setMaxValue(sliderTwoValue)}
+          onMouseUp={() => {
+            setIsFilterActive(true), setMaxValue(sliderTwoValue);
+          }}
           ref={sliderTwoRef}
         />
       </div>

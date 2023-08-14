@@ -24,6 +24,10 @@ export const HomePage = () => {
     carMinPrice,
     carMaxPrice,
     setfilterCar,
+    filteredCars,
+    setFilteredCars,
+    isFilterActive,
+    setIsFilterActive,
     setCarMaxKm,
     setCarMaxPrice,
     setCarMinKm,
@@ -34,6 +38,14 @@ export const HomePage = () => {
 
   const handleBrandClick = (filter: string) => {
     setfilterCar(filter);
+    setIsFilterActive(true);
+  };
+
+  const handleClearBrand = () => {
+    setfilterCar('');
+    setFilteredCars([]);
+
+    setIsFilterActive(false);
   };
 
   return (
@@ -143,25 +155,44 @@ export const HomePage = () => {
                 maxValue={carMaxKm}
                 setMinValue={setCarMinKm}
                 setMaxValue={setCarMaxKm}
+                setIsFilterActive={setIsFilterActive}
+                isFilterActive={isFilterActive}
               />
               <InputRange
+                isFilterActive={isFilterActive}
                 price={true}
                 title={'Preco'}
                 minValue={carMinPrice}
                 maxValue={carMaxPrice}
                 setMinValue={setCarMinPrice}
                 setMaxValue={setCarMaxPrice}
+                setIsFilterActive={setIsFilterActive}
               />
-              <button className='filterBtn buttons-style-button-size-big'>
-                Ver anúncios
-              </button>
+              {isFilterActive && (
+                <button
+                  className='filterBtn buttons-style-button-size-big'
+                  onClick={handleClearBrand}
+                >
+                  Limpar filtros
+                </button>
+              )}
             </div>
           </div>
           <div className='ListPaginationContainer'>
             <ul className='carsList'>
-              {allCars.length < 1 ? (
+              {isFilterActive ? (
+                filteredCars.length < 1 ? (
+                  <div className='emptyBox'>
+                    <p>
+                      Nenhum anúncio foi encontrado seguindo esses critérios.
+                    </p>
+                  </div>
+                ) : (
+                  filteredCars.map((car) => <Card key={car.id} car={car} />)
+                )
+              ) : allCars.length < 1 ? (
                 <div className='emptyBox'>
-                  <p>Nenhum anúncio foi postado ainda.</p>
+                  <p>Nenhum anúncio foi postado até o momento.</p>
                 </div>
               ) : (
                 allCars.map((car) => <Card key={car.id} car={car} />)
