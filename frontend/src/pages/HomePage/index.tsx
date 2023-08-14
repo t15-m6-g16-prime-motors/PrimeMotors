@@ -27,7 +27,7 @@ export const HomePage = () => {
 
   const [showFilters, setShowFilters] = useState(false);
 
-  const handleBrandClick = (filter: string) => {
+  const handleFilterClick = (filter: string) => {
     setfilterCar(filter);
   };
 
@@ -67,7 +67,7 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Marca</p>
                 {carBrands.map((brand) =>(
-                  <p className='attributeOption' key={brand} onClick={() => handleBrandClick(brand)}>
+                  <p className='attributeOption' key={brand} onClick={() => handleFilterClick(brand)}>
                     {brand}
                   </p>
                 ))}
@@ -75,7 +75,7 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Modelo</p>
                 {carModels.map((model) => (
-                  <p className='attributeOption' key={model} onClick={() => handleBrandClick(model)}>
+                  <p className='attributeOption' key={model} onClick={() => handleFilterClick(model)}>
                     {model}
                   </p>
                 ))}
@@ -83,7 +83,7 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Cor</p>
                 {carColors.map((color) => (
-                  <p className='attributeOption' key={color} onClick={() => handleBrandClick(color)}>
+                  <p className='attributeOption' key={color} onClick={() => handleFilterClick(color)}>
                     {color}
                   </p>
                 ))}
@@ -91,7 +91,7 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Ano</p>
                 {carYears.map((year) => (
-                  <p className='attributeOption' key={year} onClick={() => handleBrandClick(year)}>
+                  <p className='attributeOption' key={year} onClick={() => handleFilterClick(year)}>
                     {year}
                   </p>
                 ))}
@@ -99,7 +99,7 @@ export const HomePage = () => {
               <div className='attribute'>
                 <p className='title'>Combustível</p>
                 {carFuelTypes.map((fuelType) => (
-                  <p className='attributeOption' key={fuelType} onClick={() => handleBrandClick(fuelType)}>
+                  <p className='attributeOption' key={fuelType} onClick={() => handleFilterClick(fuelType)}>
                     {fuelType}
                   </p>
                 ))}

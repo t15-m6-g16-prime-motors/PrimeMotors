@@ -37,8 +37,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     const uniqueValues = [...new Set(values)];
     uniqueValues.sort();
 
-    console.log(uniqueValues);
-
     return uniqueValues;
   };
 
@@ -65,10 +63,16 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     if (filterCar === '') {
       setAllCars(allCars);
     } else {
-      const filtered = allCars.filter(car => car.brand.includes(filterCar) || car.model.includes(filterCar) || car.color.includes(filterCar) || car.fuel_type.includes(filterCar));
+      const filtered = allCars.filter(car => 
+        car.brand.includes(filterCar) || 
+        car.model.includes(filterCar) || 
+        car.color.includes(filterCar) || 
+        car.fuel_type.includes(filterCar) ||
+        car.year.toString().includes(filterCar)
+        );
       setAllCars(filtered);
     }
-  }, [filterCar, allCars]);
+  }, [filterCar]);
 
   useEffect(() => {
     setCarBrands(findValues('brand'));
