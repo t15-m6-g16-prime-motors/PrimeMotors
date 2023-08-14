@@ -23,6 +23,7 @@ export const HomePage = () => {
     carMinPrice,
     carMaxPrice,
     setfilterCar,
+    filterCar,
     filteredCars
   } = useCar();
 
@@ -30,6 +31,11 @@ export const HomePage = () => {
 
   const handleBrandClick = (filter: string) => {
     setfilterCar(filter);
+  };
+
+  const handleClearBrand = () => {
+    setfilterCar('');
+    allCars;
   };
 
   return (
@@ -144,9 +150,14 @@ export const HomePage = () => {
                 <p>Min Price: {carMinPrice}</p>
                 <p>Max Price: {carMaxPrice}</p>
               </div>
-              <button className='filterBtn buttons-style-button-size-big'>
-                Ver anúncios
-              </button>
+              {filterCar && (
+                <button
+                  className='filterBtn buttons-style-button-size-big'
+                  onClick={handleClearBrand}
+                >
+                  Limpar filtros
+                </button>
+              )}
             </div>
           </div>
           <div className='ListPaginationContainer'>
