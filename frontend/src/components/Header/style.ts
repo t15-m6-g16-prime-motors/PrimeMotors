@@ -31,12 +31,16 @@ export const StyledHeader = styled.header`
     }
   }
 
+  .brandContainer {
+    cursor: pointer;
+  }
+
   nav {
     width: 100%;
     padding: 24px 0 24px 0;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    /* gap: 32px; */
   }
 
   .active {
@@ -58,6 +62,9 @@ export const StyledHeader = styled.header`
         flex-direction: row;
         gap: 32px;
         justify-content: flex-end;
+        .loginBtn {
+          justify-content: center;
+        }
       }
       button {
         display: none;
