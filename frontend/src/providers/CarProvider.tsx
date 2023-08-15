@@ -77,8 +77,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   }, []);
 
   useEffect(() => {
-    // console.log(carMinPrice)
-    // console.log(carMaxPrice)
     const filtered = allCars.filter(
       (car) =>
         Number(car.price) >= carMinPrice &&
@@ -92,7 +90,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
           car.year.toString().includes(filterCar))
     );
     setFilteredCars(filtered);
-    console.log(filtered);
   }, [filterCar, carMinKm, carMaxKm, carMinPrice, carMaxPrice]);
 
   useEffect(() => {
@@ -111,8 +108,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     setCarMaxPrice(
       getSortedNumArray('price')[getSortedNumArray('price').length - 1]
     );
-    console.log(carMinPrice);
-    console.log(carMaxPrice);
   }, [allCars, filteredCars]);
   useEffect(() => {}, [allCars]);
 
