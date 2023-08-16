@@ -13,7 +13,7 @@ export const DefaultFormInput = forwardRef(
     ref: ForwardedRef<HTMLInputElement>
   ) => (
     <StyledInputContainer error={error}>
-      {label ? <label>{label}</label> : null}
+      {label ? <label className='text-style-inputs-buttons-input-label'>{label}</label> : null}
       <input ref={ref} {...rest} />
       {error ? <p className='inputErrorMessage'>{error.message}</p> : <p></p>}
     </StyledInputContainer>
