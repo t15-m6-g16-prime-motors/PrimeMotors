@@ -33,6 +33,13 @@ button {
   border-radius: 4px;
 }
 
+#root{
+	min-height: 100vh;
+	min-width: 100vw;
+	display: flex;
+	flex-direction: column;
+}
+
 :root {
 	--font-family-inter: 'Inter', sans-serif;
 	--font-family-lexend: 'Lexend', sans-serif;

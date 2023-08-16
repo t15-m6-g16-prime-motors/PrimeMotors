@@ -33,6 +33,7 @@ export const StyledInputContainer = styled.div<StyledInputContainerProps>`
   p {
     display: flex;
     justify-content: flex-start;
+    height: 1rem;
   }
 
   .inputErrorMessage {

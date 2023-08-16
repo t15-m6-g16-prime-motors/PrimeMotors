@@ -54,3 +54,8 @@ export const registerUserSchema = z
     message: 'Senha e confirmação não compatíveis.',
     path: ['confirm_password']
   });
+
+export const loginUserSchema = z.object({
+  email: z.string().nonempty('Email obrigatório').email('Email inválido'),
+  password: z.string().nonempty('Senha obrigatória')
+});

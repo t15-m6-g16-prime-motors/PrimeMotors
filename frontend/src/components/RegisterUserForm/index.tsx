@@ -32,7 +32,7 @@ export const RegisterUserForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submit)}>
-      <h2 className='title heading-5-500'>Cadastro</h2>
+      <h2 className='title heading-4-500'>Cadastro</h2>
       <h4 className='subtitle text-style-text-body-2-500'>
         Informações pessoais
       </h4>
@@ -179,7 +179,7 @@ export const RegisterUserForm = () => {
         className='submitBtn text-style-text-body-2-500'
         disabled={loading}
       >
-        {loading ? 'Registrando...' : 'Registrar'}
+        {loading ? 'Finalizando...' : 'Finalizar cadastro'}
       </button>
     </form>
   );

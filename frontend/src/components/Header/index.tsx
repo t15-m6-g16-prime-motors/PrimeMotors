@@ -27,7 +27,7 @@ export const Header = () => {
         <nav className={showNavMenu ? 'active' : 'hidden'}>
           <LinkStyledToLogin
             className='loginBtn buttons-style-button-size-big'
-            to={'/'}
+            to={'/login'}
           >
             Fazer Login
           </LinkStyledToLogin>
