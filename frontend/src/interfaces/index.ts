@@ -1,4 +1,9 @@
-import { TRegisterUser, TLoginUser } from './users.interfaces';
+import {
+  TRegisterUser,
+  TLoginUser,
+  IAddress,
+  IRegisterUserRequest
+} from './users.interfaces';
 import { IFilterAttributeProps } from './filterAttributeProps.interfaces';
 import { ICardProps } from './cardProps.interfaces';
 import { IDefaultProviderProps } from './default.interfaces';
@@ -10,5 +15,7 @@ export type {
   ICardProps,
   IFilterAttributeProps,
   TRegisterUser,
-  TLoginUser
+  TLoginUser,
+  IAddress,
+  IRegisterUserRequest
 };
