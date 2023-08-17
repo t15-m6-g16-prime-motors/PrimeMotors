@@ -18,14 +18,10 @@ const userSchemaResponse = userSchema.omit({
   password: true,
 });
 
-const userSchemaRequest = z.object({
-  full_name: z.string(),
-  email: z.string().email().max(70),
-  password: z.string().max(120),
-  birthdate: z.union([z.date(), z.string()]),
-  is_seller: z.boolean(),
-  description: z.string(),
-  phone_number: z.string(),
+const userSchemaRequest = userSchema.omit({
+  id: true,
+  created_at: true,
+  updated_at: true,
 });
 
 const usersSchemaResponse = z.array(userSchema.omit({ password: true }));
