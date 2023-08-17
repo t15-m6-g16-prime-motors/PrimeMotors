@@ -2,17 +2,26 @@ import Logo from '../../utils/images/logo1.svg';
 import { FaBars } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
 import { StyledHeader } from './style';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { LinkStyledToLogin, LinkStyledToRegister } from '../../styles/Buttons';
 import { useNavigate } from 'react-router-dom';
+import { ModalContext } from '../../providers/ModalProvider';
 
 export const Header = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
+  const { handleShowModal } = useContext(ModalContext);
 
   const navigate = useNavigate();
 
   return (
     <StyledHeader>
+      <button
+        onClick={() => {
+          handleShowModal('createNewCar');
+        }}
+      >
+        Modal
+      </button>
       <div className='menuContainer'>
         <div className='brandContainer' onClick={() => navigate('/')}>
           <img src={Logo} alt='brand logo' />
@@ -27,7 +36,7 @@ export const Header = () => {
         <nav className={showNavMenu ? 'active' : 'hidden'}>
           <LinkStyledToLogin
             className='loginBtn buttons-style-button-size-big'
-            to={'/'}
+            to={'/login'}
           >
             Fazer Login
           </LinkStyledToLogin>

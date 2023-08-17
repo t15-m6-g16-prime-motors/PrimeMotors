@@ -1,11 +1,11 @@
 import { FieldError } from 'react-hook-form';
 import { styled } from 'styled-components';
 
-interface StyledInputContainerProps {
+interface ITextAreaProps {
   error?: FieldError;
 }
 
-export const StyledInputContainer = styled.div<StyledInputContainerProps>`
+const StyledTextAreaContainer = styled.div<ITextAreaProps>`
   margin-top: 0.8rem;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@ export const StyledInputContainer = styled.div<StyledInputContainerProps>`
   gap: 0.2rem;
   width: 100%;
 
-  input {
+  textarea {
     width: 100%;
     padding: 0.5rem;
     border: 0.18rem solid
@@ -23,6 +23,7 @@ export const StyledInputContainer = styled.div<StyledInputContainerProps>`
     font-family: var(--font-family-inter);
     box-sizing: border-box;
     outline: none;
+    resize: vertical;
 
     &:focus {
       border-color: ${(props) =>
@@ -42,3 +43,5 @@ export const StyledInputContainer = styled.div<StyledInputContainerProps>`
     color: var(--color-alert-1);
   }
 `;
+
+export default StyledTextAreaContainer;

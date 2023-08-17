@@ -10,15 +10,17 @@ import {
 import { carsSchemaRequest, carsSchemaUpdate } from "../schemas/cars.schemas";
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middleware";
 import ensureCarIdMiddleware from "../middlewares/ensureCarIdExists.middleware";
+import { ensureAuthMiddleware } from "../middlewares/ensureAuthMiddleware";
+import { ensureIsOwnerMiddleware } from "../middlewares/ensureIsOwner.middleware";
 
 const carRoutes = Router();
 const carRoutesFilter = Router();
 
-carRoutes.post("", ensureDataIsValid(carsSchemaRequest), createCarController);
+carRoutes.post("", ensureAuthMiddleware, ensureDataIsValid(carsSchemaRequest), createCarController);
 carRoutes.get("", listCarsController);
 carRoutes.get("/:id", ensureCarIdMiddleware, getByIdCarsController);
-carRoutes.patch("/:id", ensureCarIdMiddleware, ensureDataIsValid(carsSchemaUpdate), updateCarController);
-carRoutes.delete("/:id", ensureCarIdMiddleware, deleteCarController);
+carRoutes.patch("/:id", ensureAuthMiddleware, ensureIsOwnerMiddleware, ensureCarIdMiddleware, ensureDataIsValid(carsSchemaUpdate), updateCarController);
+carRoutes.delete("/:id", ensureAuthMiddleware, ensureIsOwnerMiddleware, ensureCarIdMiddleware, deleteCarController);
 
 carRoutesFilter.get("", listCarsWithFiltersController);
 

@@ -1,9 +1,9 @@
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
-import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { useCar } from '../../hooks';
 import { StyledMain } from './style';
+import { ProfileCard } from '../../components/ProfileCard';
 
 export const UserProfilePage = () => {
   const { allCars } = useCar();
@@ -40,7 +40,7 @@ export const UserProfilePage = () => {
               <p>Nenhum anúncio foi postado até o momento.</p>
             </div>
           ) : (
-            allCars.map((car) => <Card key={car.id} car={car} />)
+            allCars.map((car) => <ProfileCard key={car.id} car={car} />)
           )}
         </ul>
         <div className='pagination'>

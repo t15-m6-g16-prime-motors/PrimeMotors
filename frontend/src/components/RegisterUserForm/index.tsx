@@ -4,10 +4,13 @@ import { TRegisterUser } from '../../interfaces';
 import { registerUserSchema } from '../../schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DefaultFormInput } from '../DefaultFormInput';
+import { useModal } from '../../hooks';
 
 export const RegisterUserForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [isSeller, setIsSeller] = useState<boolean>(false);
+
+  const { handleShowModal } = useModal();
 
   const handleBuyerClick = () => {
     setIsSeller(false);
@@ -28,11 +31,12 @@ export const RegisterUserForm = () => {
     formData.is_seller = isSeller;
     console.log(formData);
     setLoading(false);
+    handleShowModal('registerUserResponse');
   };
 
   return (
     <form onSubmit={handleSubmit(submit)}>
-      <h2 className='title heading-5-500'>Cadastro</h2>
+      <h2 className='title heading-4-500'>Cadastro</h2>
       <h4 className='subtitle text-style-text-body-2-500'>
         Informações pessoais
       </h4>
@@ -179,7 +183,7 @@ export const RegisterUserForm = () => {
         className='submitBtn text-style-text-body-2-500'
         disabled={loading}
       >
-        {loading ? 'Registrando...' : 'Registrar'}
+        {loading ? 'Finalizando...' : 'Finalizar cadastro'}
       </button>
     </form>
   );

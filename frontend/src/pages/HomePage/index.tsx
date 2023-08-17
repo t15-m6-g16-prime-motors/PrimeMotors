@@ -1,14 +1,13 @@
 import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-// import { ButtonBrand } from '../../styles/Buttons';
 import { StyledMain } from './style';
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
-import { useCar, useLayout } from '../../hooks';
+import { useCar, useLayout, useModal } from '../../hooks';
 import InputRange from '../../components/InputRange';
-// import { FilterAttribute } from '../../components/FilterAttribute';
+import GenericModal from '../../components/Modal/ModalGeneric';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
@@ -48,8 +47,12 @@ export const HomePage = () => {
     setIsFilterActive(false);
   };
 
+  const { showModal } = useModal();
+
   return (
     <>
+      {showModal && <GenericModal type={showModal} />}
+
       <Header />
       <StyledMain>
         <section className='welcomeBox'>
@@ -141,14 +144,7 @@ export const HomePage = () => {
                   </p>
                 ))}
               </div>
-              {/* <FilterAttribute attributeState={carBrands} title='Marca' />
-              <FilterAttribute attributeState={carModels} title='Modelo' />
-              <FilterAttribute attributeState={carColors} title='Cor' />
-              <FilterAttribute attributeState={carYears} title='Ano' />
-              <FilterAttribute
-                attributeState={carFuelTypes}
-                title='Combustível'
-              /> */}
+
               <InputRange
                 title={'Km'}
                 minValue={carMinKm}

@@ -1,28 +1,28 @@
 import { FieldError } from 'react-hook-form';
 import { styled } from 'styled-components';
 
-interface StyledInputContainerProps {
+interface ISelectFieldSetProps {
   error?: FieldError;
 }
 
-export const StyledInputContainer = styled.div<StyledInputContainerProps>`
+const SelectFieldset = styled.fieldset<ISelectFieldSetProps>`
   margin-top: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.2rem;
   width: 100%;
-
-  input {
+  
+  select {
     width: 100%;
     padding: 0.5rem;
-    border: 0.18rem solid
+    border: 2px solid
       ${(props) =>
         props.error ? 'var(--color-alert-2)' : 'var(--color-grey-6)'};
     border-radius: 0.2rem;
-    font-family: var(--font-family-inter);
     box-sizing: border-box;
-    outline: none;
+    background-color: var(--color-white-fixed);
+    color: var(--color-grey-3);
 
     &:focus {
       border-color: ${(props) =>
@@ -42,3 +42,5 @@ export const StyledInputContainer = styled.div<StyledInputContainerProps>`
     color: var(--color-alert-1);
   }
 `;
+
+export default SelectFieldset;
