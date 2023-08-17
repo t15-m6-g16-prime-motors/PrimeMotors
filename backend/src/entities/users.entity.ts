@@ -24,8 +24,8 @@ class User {
   @Column({ type: "varchar", length: 70, nullable: false })
   full_name: string;
 
-  @Column({ type: "varchar", length: 70, nullable: false, unique: true })
-  username: string;
+  @Column({ type: "varchar", length: 14, nullable: false, unique: true })
+  cpf: string;
 
   @Column({ type: "varchar", length: 70, nullable: false, unique: true })
   email: string;
