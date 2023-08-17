@@ -7,7 +7,7 @@ export const registerUserSchema = z
       .nonempty('Nome obrigatório')
       .regex(/^[A-Za-z ]+$/, 'Apenas letras são permitidas'),
     email: z.string().nonempty('Email obrigatório').email('Email inválido'),
-    personal_id: z
+    cpf: z
       .string()
       .nonempty('CPF obrigatório')
       .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, 'CPF inválido (000.000.000-00)'),
