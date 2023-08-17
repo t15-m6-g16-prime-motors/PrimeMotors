@@ -19,12 +19,25 @@ const Grey0Button = styled(Buttons)`
   }
 `;
 
+const NegativeButton = styled(Buttons)`
+  background-color: var(--color-grey-6);
+  color: var(--color-grey-2);
+  &:hover {
+    background-color: var(--color-grey-5);
+  }
+`;
+
 const ButtonBrand = styled(Buttons)`
   background-color: var(--color-brand-1);
   color: var(--color-white-fixed);
   &:hover {
     background-color: var(--color-brand-2);
   }
+`;
+
+const ButtonOpacity = styled(Buttons)`
+  background-color: var(--color-brand-4);
+  color: var(--color-brand-1);
 `;
 
 const ButtonOutline2 = styled(Buttons)`
@@ -102,7 +115,9 @@ const ButtonDisabled = styled(Buttons)`
 
 export {
   Grey0Button,
+  NegativeButton,
   ButtonBrand,
+  ButtonOpacity,
   ButtonOutline2,
   ButtonOutlineBrand2,
   LinkStyledToLogin,

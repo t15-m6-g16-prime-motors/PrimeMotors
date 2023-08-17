@@ -1,17 +1,58 @@
 import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-// import { ButtonBrand } from '../../styles/Buttons';
 import { StyledMain } from './style';
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
-import { useCar, useLayout } from '../../hooks';
+import { useState } from 'react';
+import { useCar, useLayout, useModal } from '../../hooks';
+import InputRange from '../../components/InputRange';
+import GenericModal from '../../components/Modal/ModalGeneric';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
-  const { allCars } = useCar();
+  const {
+    allCars,
+    carBrands,
+    carModels,
+    carColors,
+    carYears,
+    carFuelTypes,
+    carMinKm,
+    carMaxKm,
+    carMinPrice,
+    carMaxPrice,
+    setfilterCar,
+    filteredCars,
+    setFilteredCars,
+    isFilterActive,
+    setIsFilterActive,
+    setCarMaxKm,
+    setCarMaxPrice,
+    setCarMinKm,
+    setCarMinPrice
+  } = useCar();
+
+  const [showFilters, setShowFilters] = useState(false);
+
+  const handleBrandClick = (filter: string) => {
+    setfilterCar(filter);
+    setIsFilterActive(true);
+  };
+
+  const handleClearBrand = () => {
+    setfilterCar('');
+    setFilteredCars([]);
+
+    setIsFilterActive(false);
+  };
+
+  const { showModal } = useModal();
+
   return (
     <>
+      {showModal && <GenericModal type={showModal} />}
+
       <Header />
       <StyledMain>
         <section className='welcomeBox'>
@@ -21,11 +62,22 @@ export const HomePage = () => {
           </p>
         </section>
         <section className='listAndFilter'>
-          <div className='filterContainer'>
+          <div
+            className={
+              showFilters
+                ? 'filterContainer showFilters'
+                : ' filterContainer hideFilters'
+            }
+          >
             {windowWidth <= 768 && (
               <div className='filterHeader'>
                 <p className='filterTitle heading-7-500'>Filtro</p>
-                <button className='closeBtn'>
+                <button
+                  onClick={() => {
+                    setShowFilters(!showFilters);
+                  }}
+                  className='closeBtn'
+                >
                   <AiOutlineClose />
                 </button>
               </div>
@@ -34,62 +86,109 @@ export const HomePage = () => {
             <div className='attributesContainer'>
               <div className='attribute'>
                 <p className='title'>Marca</p>
-                <p className='attributeOption'>Fiat</p>
-                <p className='attributeOption'>Ford</p>
-                <p className='attributeOption'>Honda</p>
-                <p className='attributeOption'>Toyota</p>
-                <p className='attributeOption'>Volkswagen</p>
+                {carBrands.map((brand) => (
+                  <p
+                    className='attributeOption'
+                    key={brand}
+                    onClick={() => handleBrandClick(brand)}
+                  >
+                    {brand}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Modelo</p>
-                <p className='attributeOption'>Civic</p>
-                <p className='attributeOption'>Corolla</p>
-                <p className='attributeOption'>Cruze</p>
-                <p className='attributeOption'>Fit</p>
-                <p className='attributeOption'>Gol</p>
-                <p className='attributeOption'>Ka</p>
-                <p className='attributeOption'>Onix</p>
+                {carModels.map((model) => (
+                  <p
+                    className='attributeOption'
+                    key={model}
+                    onClick={() => handleBrandClick(model)}
+                  >
+                    {model}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Cor</p>
-                <p className='attributeOption'>Azul</p>
-                <p className='attributeOption'>Vermelho</p>
-                <p className='attributeOption'>Branco</p>
-                <p className='attributeOption'>Cinza</p>
-                <p className='attributeOption'>Prata</p>
-                <p className='attributeOption'>Preto</p>
-                <p className='attributeOption'>Verde</p>
+                {carColors.map((color) => (
+                  <p
+                    className='attributeOption'
+                    key={color}
+                    onClick={() => handleBrandClick(color)}
+                  >
+                    {color}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Ano</p>
-                <p className='attributeOption'>2022</p>
-                <p className='attributeOption'>2021</p>
-                <p className='attributeOption'>2018</p>
+                {carYears.map((year) => (
+                  <p
+                    className='attributeOption'
+                    key={year}
+                    onClick={() => handleBrandClick(year)}
+                  >
+                    {year}
+                  </p>
+                ))}
               </div>
               <div className='attribute'>
                 <p className='title'>Combustível</p>
-                <p className='attributeOption'>Elétrico</p>
-                <p className='attributeOption'>Híbrido</p>
-                <p className='attributeOption'>Flex</p>
-                <p className='attributeOption'>Gasolina</p>
-                <p className='attributeOption'>Álcool</p>
+                {carFuelTypes.map((fuelType) => (
+                  <p
+                    className='attributeOption'
+                    key={fuelType}
+                    onClick={() => handleBrandClick(fuelType)}
+                  >
+                    {fuelType}
+                  </p>
+                ))}
               </div>
-              <div className='attribute'>
-                <p className='title'>Km</p>
-              </div>
-              <div className='attribute'>
-                <p className='title'>Preço</p>
-              </div>
-              <button className='filterBtn buttons-style-button-size-big'>
-                Ver anúncios
-              </button>
+
+              <InputRange
+                title={'Km'}
+                minValue={carMinKm}
+                maxValue={carMaxKm}
+                setMinValue={setCarMinKm}
+                setMaxValue={setCarMaxKm}
+                setIsFilterActive={setIsFilterActive}
+                isFilterActive={isFilterActive}
+              />
+              <InputRange
+                isFilterActive={isFilterActive}
+                price={true}
+                title={'Preco'}
+                minValue={carMinPrice}
+                maxValue={carMaxPrice}
+                setMinValue={setCarMinPrice}
+                setMaxValue={setCarMaxPrice}
+                setIsFilterActive={setIsFilterActive}
+              />
+              {isFilterActive && (
+                <button
+                  className='filterBtn buttons-style-button-size-big'
+                  onClick={handleClearBrand}
+                >
+                  Limpar filtros
+                </button>
+              )}
             </div>
           </div>
           <div className='ListPaginationContainer'>
             <ul className='carsList'>
-              {allCars.length < 1 ? (
+              {isFilterActive ? (
+                filteredCars.length < 1 ? (
+                  <div className='emptyBox'>
+                    <p>
+                      Nenhum anúncio foi encontrado seguindo esses critérios.
+                    </p>
+                  </div>
+                ) : (
+                  filteredCars.map((car) => <Card key={car.id} car={car} />)
+                )
+              ) : allCars.length < 1 ? (
                 <div className='emptyBox'>
-                  <p>Nenhum anúncio foi postado ainda.</p>
+                  <p>Nenhum anúncio foi postado até o momento.</p>
                 </div>
               ) : (
                 allCars.map((car) => <Card key={car.id} car={car} />)
@@ -97,7 +196,12 @@ export const HomePage = () => {
             </ul>
             <div className='pagination'>
               {windowWidth <= 1024 && (
-                <button className='filterBtn buttons-style-button-size-big'>
+                <button
+                  onClick={() => {
+                    setShowFilters(!showFilters);
+                  }}
+                  className='filterBtn buttons-style-button-size-big'
+                >
                   Filtros
                 </button>
               )}

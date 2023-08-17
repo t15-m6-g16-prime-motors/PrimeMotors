@@ -5,13 +5,15 @@ import { updateCarsService } from "../services/cars/updateCars.service";
 import { Response, Request } from "express";
 import createCarsServices from "../services/cars/createCars.service";
 import listCarsServices from "../services/cars/listCars.service";
+import { listCarsWithFiltersService } from "../services/cars/listCarsQuery.service";
 
 const createCarController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
   const carData: TCarRequest = req.body;
-  const newCar = await createCarsServices(carData);
+  const  userId: number = res.locals.id;
+  const newCar = await createCarsServices(carData, userId);
   return res.status(201).json(newCar);
 };
 
@@ -54,10 +56,24 @@ const deleteCarController = async (req: Request, res: Response) => {
   return res.status(204).send();
 };
 
+const listCarsWithFiltersController = async (req: Request, res: Response) => {
+  try {
+      const queryParams = req.query; 
+      const cars = await listCarsWithFiltersService(queryParams);
+
+      return res.status(200).json(cars);
+      
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'An error occurred' });
+  }
+};
+
 export {
   createCarController,
   listCarsController,
   getByIdCarsController,
   updateCarController,
   deleteCarController,
+  listCarsWithFiltersController
 };

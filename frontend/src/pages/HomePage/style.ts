@@ -46,11 +46,14 @@ export const StyledMain = styled.main`
 
   .listAndFilter {
     padding: 1rem;
+    max-width: var(--content-container-limit);
+    margin: 0 auto;
   }
 
   /* Filter */
   .filterContainer {
     width: 100%;
+    max-width: 400px;
     margin: 0 auto;
     padding: 1rem;
 
@@ -61,8 +64,6 @@ export const StyledMain = styled.main`
     left: 0;
 
     z-index: 10;
-
-    display: none;
   }
 
   .filterHeader {
@@ -85,7 +86,7 @@ export const StyledMain = styled.main`
     height: 1.1rem;
     width: 1.1rem;
   }
-
+  /* apagar pra baixo */
   .attribute {
     margin-bottom: 1.5rem;
   }
@@ -105,6 +106,7 @@ export const StyledMain = styled.main`
 
     margin: 0.5rem 0;
     color: var(--color-grey-3);
+    cursor: pointer;
   }
 
   /* Cars List */
@@ -174,6 +176,14 @@ export const StyledMain = styled.main`
 
   .previousNextBtnContainer > button:hover {
     color: var(--color-brand-3);
+  }
+
+  .showFilters {
+    display: block;
+  }
+
+  .hideFilters {
+    display: none;
   }
 
   @media (min-width: 768px) {
