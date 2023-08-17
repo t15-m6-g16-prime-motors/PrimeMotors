@@ -1,10 +1,11 @@
 import { SelectHTMLAttributes } from 'react';
-import { FieldError } from 'react-hook-form';
+import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import SelectFieldset from './style';
 
 interface IDefaultFormSelect extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
-  error?: FieldError;
+  error: FieldError | undefined;
+  register: UseFormRegisterReturn<string>;
   name: string;
   array: Array<string>;
 }
@@ -12,22 +13,31 @@ interface IDefaultFormSelect extends SelectHTMLAttributes<HTMLSelectElement> {
 const DefaultSelectInput = ({
   array,
   label,
-  name,
+  about,
   error,
+  register,
   ...rest
 }: IDefaultFormSelect) => {
   const brandOptions = array.map((element: string) => {
-    return <option value={element}>{element}</option>;
+    return (
+      <option key={element} value={element}>
+        {element}
+      </option>
+    );
   });
 
   return (
     <SelectFieldset>
       <label className='text-style-inputs-buttons-input-label'>{label}</label>
-      <select className='text-style-inputs-buttons-input-placeholder' {...rest}>
-        <option value={''}>{name}</option>
+      <select
+        className='text-style-inputs-buttons-input-placeholder'
+        {...register}
+        {...rest}
+      >
+        <option value={''}>{about}</option>
         {brandOptions}
       </select>
-      {error && <p>{error.message}</p>}
+      {error ? <p className='inputErrorMessage'>{error.message}</p> : <p></p>}
     </SelectFieldset>
   );
 };
