@@ -5,7 +5,7 @@ import { registerUserSchema } from '../../schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DefaultFormInput } from '../DefaultFormInput';
 import { useModal } from '../../hooks';
-import { useAuth } from '../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 
 export const RegisterUserForm = () => {
   const [loading, setLoading] = useState<boolean>(false);

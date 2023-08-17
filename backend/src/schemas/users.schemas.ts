@@ -18,7 +18,11 @@ const userSchemaResponse = userSchema.omit({
   password: true,
 });
 
-const userSchemaRequest = userSchema.omit({id: true, created_at: true, updated_at: true})
+const userSchemaRequest = userSchema.omit({
+  id: true,
+  created_at: true,
+  updated_at: true,
+});
 
 const usersSchemaResponse = z.array(userSchema.omit({ password: true }));
 
