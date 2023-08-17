@@ -77,6 +77,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   }, []);
 
   useEffect(() => {
+    console.log('entrou')
     const filtered = allCars.filter(
       (car) =>
         Number(car.price) >= carMinPrice &&
@@ -90,8 +91,10 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
           car.year.toString().includes(filterCar))
     );
     setFilteredCars(filtered);
+    console.log(filtered)
   }, [filterCar, carMinKm, carMaxKm, carMinPrice, carMaxPrice]);
-
+  
+  
   useEffect(() => {
     setCarBrands(findValues('brand'));
     setCarModels(findValues('model'));
@@ -109,6 +112,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
       getSortedNumArray('price')[getSortedNumArray('price').length - 1]
     );
   }, [allCars, filteredCars]);
+
   useEffect(() => {}, [allCars]);
 
   return (
