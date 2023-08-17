@@ -2,6 +2,8 @@
 import { Dispatch, createContext, useEffect, useState } from 'react';
 import { ICar, IDefaultProviderProps } from '../interfaces';
 import { api } from '../services/api';
+import { ICreateCar } from '../components/Modal/CreateNewCar/createCar.schema';
+import { AxiosResponse } from 'axios';
 
 interface ICarContextValues {
   allCars: ICar[];
@@ -24,6 +26,7 @@ interface ICarContextValues {
   setFilteredCars: Dispatch<React.SetStateAction<ICar[]>>;
   isFilterActive: boolean;
   setIsFilterActive: Dispatch<React.SetStateAction<boolean>>;
+  handleCreateCar: (newCarData: ICreateCar) => Promise<void>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -115,6 +118,37 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
 
   useEffect(() => {}, [allCars]);
 
+  const token = localStorage.getItem('@token') || null; // se necessário mudar o nome do tokan. Está sendo usado na função 'handleCreateCar' abaixo.
+
+  const headersAuth = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+
+  const handleCreateCar = async (newCarData: ICreateCar) => {
+    console.log(newCarData);
+
+    if (token !== null) {
+      try {
+        const newCarResponse: AxiosResponse = await api.post<ICreateCar>(
+          '/cars',
+          newCarData,
+          headersAuth
+        );
+
+        if (newCarResponse.status === 201) {
+          // atualizar a lista de carros renderizados
+          // mostrar modal de carro criado com sucesso
+        }
+      } catch (error) {
+        // const requestError = error as AxiosError<IAxiosErrorMessage>;
+        // toast.error(requestError.response?.data.message);
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <CarContext.Provider
       value={{
@@ -137,7 +171,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         setCarMaxKm,
         setCarMaxPrice,
         setCarMinKm,
-        setCarMinPrice
+        setCarMinPrice,
+        handleCreateCar
       }}
     >
       {children}

@@ -6,6 +6,13 @@ interface ISelectFieldSetProps {
 }
 
 const SelectFieldset = styled.fieldset<ISelectFieldSetProps>`
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  width: 100%;
+  
   select {
     width: 100%;
     padding: 0.5rem;
@@ -13,17 +20,26 @@ const SelectFieldset = styled.fieldset<ISelectFieldSetProps>`
       ${(props) =>
         props.error ? 'var(--color-alert-2)' : 'var(--color-grey-6)'};
     border-radius: 0.2rem;
-    font-family: var(--font-family-inter);
     box-sizing: border-box;
-    outline: none;
     background-color: var(--color-white-fixed);
-    margin-bottom: 24px;
-    margin-top: 8px;
+    color: var(--color-grey-3);
 
     &:focus {
       border-color: ${(props) =>
         props.error ? 'var(--color-alert-1)' : 'var(--color-brand-2)'};
     }
+  }
+
+  p {
+    display: flex;
+    justify-content: flex-start;
+    height: 1rem;
+  }
+
+  .inputErrorMessage {
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--color-alert-1);
   }
 `;
 
