@@ -1,31 +1,31 @@
-import { AppDataSource } from "../../data-source"
-import { Car } from "../../entities"
-import { AppError } from "../../errors/AppError"
-import { TCarResponse, TCarUpdate } from "../../interfaces/car.interfaces"
+import { AppDataSource } from "../../data-source";
+import { Car } from "../../entities";
+import { AppError } from "../../errors/AppError";
+import { TCarResponse, TCarUpdate } from "../../interfaces/car.interfaces";
+import { carSchema } from "../../schemas/cars.schemas";
 
-import { carSchema } from "../../schemas/cars.schemas"
+const updateCarsService = async (
+  carData: TCarUpdate,
+  carId: number
+): Promise<TCarResponse> => {
+  const carRepository = AppDataSource.getRepository(Car);
 
+  const oldcarData = await carRepository.findOneBy({ id: carId });
 
-const updateCarsService = async (carData: TCarUpdate, carId: number): Promise<TCarResponse> => {
+  if (!oldcarData) {
+    throw new AppError("car not found", 404);
+  }
 
-    const carRepository = AppDataSource.getRepository(Car)
+  const newcarData = {
+    ...oldcarData,
+    ...carData,
+  };
 
-    const oldcarData = await carRepository.findOneBy({id: carId})
+  await carRepository.save(newcarData);
 
-    if(!oldcarData){
-        throw new AppError("car not found", 404)
-    }
+  const returnCar = carSchema.parse(newcarData);
 
-    const newcarData = {
-        ...oldcarData,
-        ...carData,
-    };
+  return returnCar;
+};
 
-    await carRepository.save(newcarData);
-
-    const returnCar = carSchema.parse(newcarData)
-
-    return returnCar
-}
-
-export { updateCarsService }
+export { updateCarsService };

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const StyledHeader = styled.header`
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   box-shadow: 0px 1px 3px var(--grey-5);
   position: fixed;
   z-index: 9;
@@ -21,7 +21,7 @@ export const StyledHeader = styled.header`
       justify-content: center;
       background-color: transparent;
       width: 46px;
-      height: 46px;
+      height: 100%;
       font-size: 16px;
     }
   }
@@ -34,9 +34,29 @@ export const StyledHeader = styled.header`
     gap: 32px;
   }
 
-  
+  .active {
+    display: block;
+  }
 
   .hidden {
     display: none;
+  }
+
+  @media (min-width: 640px) {
+    padding: 1.5rem 2rem;
+    .menuContainer {
+      width: 100%;
+      nav {
+        padding: 0;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        justify-content: flex-end;
+      }
+      button {
+        display: none;
+      }
+    }
   }
 `;

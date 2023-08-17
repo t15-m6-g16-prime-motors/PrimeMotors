@@ -31,17 +31,20 @@ class Car {
   @Column({ type: "int", nullable: false })
   year: number;
 
-  @Column({ type: "varchar", nullable: false, default: "Gasoline" })
+  @Column({type: "varchar", length: 15, nullable: false })
   fuel_type: string;
 
   @Column({ type: "int", nullable: false })
-  kilometrage: number;
+  kilometrage: number | string;
 
   @Column({ type: "decimal", precision: 8, scale: 2, nullable: false })
-  price: number;
+  price: number | string;
 
-  @Column({ type: "date" })
-  published_in: string | Date;
+  @Column({ type: "boolean", default: true })
+  published: boolean;
+
+  @Column({type: "boolean", default: false })
+  good_deal: boolean;
 
   @CreateDateColumn({ type: "date" })
   created_at: string | Date;

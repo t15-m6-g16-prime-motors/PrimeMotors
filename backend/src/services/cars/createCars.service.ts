@@ -1,8 +1,6 @@
 import { Repository } from "typeorm";
-
 import { Car } from "../../entities";
 import { AppDataSource } from "../../data-source";
-
 import { TCarRequest, TCarResponse } from "../../interfaces/car.interfaces";
 import { carSchemaResponse } from "../../schemas/cars.schemas";
 

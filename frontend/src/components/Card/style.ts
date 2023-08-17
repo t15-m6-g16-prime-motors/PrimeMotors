@@ -1,18 +1,20 @@
 import { styled } from 'styled-components';
 
 export const StyledCardContainer = styled.li`
+  min-width: 14rem;
   .imageContainer {
     background-color: var(--color-grey-7);
-    width: 100%;
-    max-height: 10rem;
+    max-width: 100%;
+    max-height: 15rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .imageContainer * {
-    max-height: 100%;
+  .imageContainer img {
+    height: 100%;
+    max-width: 100%;
   }
 
   .title {
@@ -55,8 +57,10 @@ export const StyledCardContainer = styled.li`
 
   .carInfo {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 1rem;
   }
 
   .tagsContainer {
@@ -75,5 +79,14 @@ export const StyledCardContainer = styled.li`
 
   .price {
     color: var(--color-grey-1);
+  }
+
+  @media (min-width: 768px) {
+    .carInfo {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+    }
   }
 `;

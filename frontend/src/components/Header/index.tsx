@@ -20,21 +20,18 @@ export const Header = () => {
         >
           {showNavMenu ? <GrClose /> : <FaBars />}
         </button>
-        {showNavMenu ? <NavMenu /> : null}
+        <nav className={showNavMenu ? 'active' : 'hidden'}>
+          <LinkStyledToLogin className='buttons-style-button-size-big' to={'/'}>
+            Fazer Login
+          </LinkStyledToLogin>
+          <LinkStyledToRegister
+            className='buttons-style-button-size-big'
+            to={'/'}
+          >
+            Cadastro
+          </LinkStyledToRegister>
+        </nav>
       </div>
     </StyledHeader>
-  );
-};
-
-const NavMenu = () => {
-  return (
-    <>
-      <nav>
-        <LinkStyledToLogin className='buttons-style-button-size-big' to={'/'}>
-          Fazer Login
-        </LinkStyledToLogin>
-        <LinkStyledToRegister className='buttons-style-button-size-big' to={'/'}>Cadastro</LinkStyledToRegister>
-      </nav>
-    </>
   );
 };
