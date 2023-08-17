@@ -5,6 +5,7 @@ import { registerUserSchema } from '../../schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DefaultFormInput } from '../DefaultFormInput';
 import { useModal } from '../../hooks';
+import { useAuth } from '../../hooks/useAuth';
 
 export const RegisterUserForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -27,12 +28,16 @@ export const RegisterUserForm = () => {
     resolver: zodResolver(registerUserSchema)
   });
 
+  const {signUp} = useAuth()
+
   const submit: SubmitHandler<TRegisterUser> = (formData) => {
     formData.is_seller = isSeller;
     console.log(formData);
     setLoading(false);
+    signUp
     handleShowModal('registerUserResponse');
   };
+  
 
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -60,9 +65,9 @@ export const RegisterUserForm = () => {
         label='CPF'
         type='text'
         placeholder='000.000.000-00'
-        {...register('personal_id')}
+        {...register('cpf')}
         disabled={loading}
-        error={errors.personal_id}
+        error={errors.cpf}
       />
       <DefaultFormInput
         label='Telefone'
