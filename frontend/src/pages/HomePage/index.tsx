@@ -6,8 +6,9 @@ import { StyledMain } from './style';
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
-import { useCar, useLayout } from '../../hooks';
+import { useCar, useLayout, useModal } from '../../hooks';
 import InputRange from '../../components/InputRange';
+import GenericModal from '../../components/Modal/ModalGeneric';
 // import { FilterAttribute } from '../../components/FilterAttribute';
 
 export const HomePage = () => {
@@ -48,8 +49,12 @@ export const HomePage = () => {
     setIsFilterActive(false);
   };
 
+  const { showModal } = useModal();
+
   return (
     <>
+      {showModal && <GenericModal type={showModal} />}
+
       <Header />
       <StyledMain>
         <section className='welcomeBox'>
