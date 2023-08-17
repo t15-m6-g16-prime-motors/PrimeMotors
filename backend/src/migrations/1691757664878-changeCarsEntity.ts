@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class FirstMigration1691688682378 implements MigrationInterface {
-    name = 'FirstMigration1691688682378'
+export class ChangeCarsEntity1691757664878 implements MigrationInterface {
+    name = 'ChangeCarsEntity1691757664878'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "comments" ("id" SERIAL NOT NULL, "comment" text NOT NULL, "created_at" date NOT NULL DEFAULT now(), "userId" integer, "carId" integer, CONSTRAINT "PK_8bf68bc960f2b69e818bdb90dcb" PRIMARY KEY ("id"))`);
