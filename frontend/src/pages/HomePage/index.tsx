@@ -5,10 +5,9 @@ import { Header } from '../../components/Header';
 import { StyledMain } from './style';
 import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
-import { useContext, useState } from 'react';
-import { useCar, useLayout } from '../../hooks';
+import { useState } from 'react';
+import { useCar, useLayout, useModal } from '../../hooks';
 import InputRange from '../../components/InputRange';
-import { ModalContext } from '../../providers/ModalProvider';
 import GenericModal from '../../components/Modal/ModalGeneric';
 // import { FilterAttribute } from '../../components/FilterAttribute';
 
@@ -50,7 +49,7 @@ export const HomePage = () => {
     setIsFilterActive(false);
   };
 
-  const {showModal} = useContext(ModalContext)
+  const { showModal } = useModal();
 
   return (
     <>

@@ -4,10 +4,13 @@ import { TRegisterUser } from '../../interfaces';
 import { registerUserSchema } from '../../schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DefaultFormInput } from '../DefaultFormInput';
+import { useModal } from '../../hooks';
 
 export const RegisterUserForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [isSeller, setIsSeller] = useState<boolean>(false);
+
+  const { handleShowModal } = useModal();
 
   const handleBuyerClick = () => {
     setIsSeller(false);
@@ -28,6 +31,7 @@ export const RegisterUserForm = () => {
     formData.is_seller = isSeller;
     console.log(formData);
     setLoading(false);
+    handleShowModal('registerUserResponse');
   };
 
   return (

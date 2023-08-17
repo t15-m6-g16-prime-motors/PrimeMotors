@@ -4,6 +4,7 @@ import ModalContainer from './style';
 import { ModalContext } from '../../../providers/ModalProvider';
 import { ModalHeader } from '../ModalHeader';
 import CreateNewCar from '../CreateNewCar';
+import { RegisterUserSuccess } from '../RegisterUserSuccess';
 
 const GenericModal = ({ type }: IGenericModalProps) => {
   const { ref } = useContext(ModalContext);
@@ -17,6 +18,13 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                 <>
                   <ModalHeader title={'Criar Anúncio'} />
                   <CreateNewCar />
+                </>
+              );
+            case 'registerUserResponse':
+              return (
+                <>
+                  <ModalHeader title={'Sucesso!'} />
+                  <RegisterUserSuccess />
                 </>
               );
 
