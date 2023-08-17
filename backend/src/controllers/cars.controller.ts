@@ -12,7 +12,8 @@ const createCarController = async (
   res: Response
 ): Promise<Response> => {
   const carData: TCarRequest = req.body;
-  const newCar = await createCarsServices(carData);
+  const  userId: number = res.locals.id;
+  const newCar = await createCarsServices(carData, userId);
   return res.status(201).json(newCar);
 };
 
