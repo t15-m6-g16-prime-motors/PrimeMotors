@@ -34,7 +34,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     }, [])
 
     const signIn = async (data: TLoginUser) => {
-
+        console.log('usuario logado')
         try {
 
             const response = await api.post('/login', data)
@@ -45,7 +45,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
             setLoading(false)
 
             navigate('/')
-            console.log('usuario logado')
+            
         } 
         
         catch (error) {

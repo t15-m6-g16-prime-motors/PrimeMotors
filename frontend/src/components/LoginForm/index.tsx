@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { loginUserSchema } from '../../schemas';
 import { useState } from 'react';
 import { LinkStyledToRegister } from '../../styles/Buttons';
-import { useAuth } from '../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 
 export const LoginForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -20,9 +20,9 @@ export const LoginForm = () => {
   const {signIn} = useAuth()
 
   const submit: SubmitHandler<TLoginUser> = (formData) => {
-    console.log(formData);
     setLoading(false);
     signIn
+    console.log(signIn);
   };
 
   return (
