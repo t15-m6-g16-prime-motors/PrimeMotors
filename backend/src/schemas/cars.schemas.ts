@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { userSchema } from "./users.schemas"
 
 const carSchema = z.object({
     id: z.number(),
@@ -10,7 +11,7 @@ const carSchema = z.object({
     fuel_type: z.string(),
     kilometrage: z.number().int(),
     price: z.union([z.number(), z.string()]),
-    published: z.boolean(),
+    published: z.boolean().nullish(),
     good_deal: z.boolean(),
     created_at: z.union([z.date(), z.string()]),
 })
@@ -18,7 +19,6 @@ const carSchema = z.object({
 const carsSchemaRequest = carSchema.omit({
     id: true,
     created_at: true,
-    good_deal: true,
 })
 
 const carsSchemaUpdate = carSchema.omit({
@@ -29,6 +29,6 @@ const carsSchemaUpdate = carSchema.omit({
 
 const carSchemaResponse = carSchema
 
-const carsSchemaResponse = z.array(carSchema)
+const carsSchemaResponse = z.array(carSchema.extend({user: userSchema.omit({password:true, address: true})}))
 
 export { carSchema, carsSchemaRequest, carsSchemaUpdate, carsSchemaResponse,carSchemaResponse }
