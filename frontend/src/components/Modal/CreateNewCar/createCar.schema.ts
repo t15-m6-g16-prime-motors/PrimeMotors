@@ -7,7 +7,13 @@ const createCarSchema = z.object({
   color: z.string().nonempty('Campo obrigatório'),
   kilometrage: z.string().nonempty('Campo obrigatório'),
   price: z.string().nonempty('Campo obrigatório'),
-  image: z.string(),
+  coverImage: z.string(),
+  image01: z.string(),
+  image02: z.string(),
+  image03: z.string().nullish(),
+  image04: z.string().nullish(),
+  image05: z.string().nullish(),
+  image06: z.string().nullish(),
   good_deal: z.boolean().nullish()
 });
 

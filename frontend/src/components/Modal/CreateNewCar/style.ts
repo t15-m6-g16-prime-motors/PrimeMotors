@@ -6,7 +6,7 @@ const NewCarContainer = styled.section`
   gap: 8px;
   padding: 0 8px 16px 8px;
   max-height: 45rem;
-  overflow: scroll;
+  overflow-y: scroll;
 
   .carInfos__otherInfos {
     display: grid;

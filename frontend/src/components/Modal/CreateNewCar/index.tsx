@@ -19,7 +19,6 @@ const CreateNewCar = () => {
   const [selectedCar, setSelectedCar] = useState(
     {} as ICarByBrandFromKenzieAPI | undefined
   );
-
   const [newCarFipValue, setNewCarFipValue] = useState<string | number>('');
 
   const {
@@ -35,7 +34,6 @@ const CreateNewCar = () => {
 
   const objectSelectedCar = (model: string) => {
     const car = carsByBrandFromApi.find((car) => car.name === model);
-
     setNewCarFipValue(car!.value);
 
     if (car?.fuel === 1) {
@@ -156,16 +154,24 @@ const CreateNewCar = () => {
           register={register('description')}
           error={errors.description}
         />
-        <DefaultFormInput
-          label='Imagem de capa'
-          placeholder='Imagem de capa'
-          {...register('image')}
-        />
-        <DefaultFormInput
-          label='Imagem 01'
-          placeholder='Imagem 01'
-          {...register('image')}
-        />
+        <div className='imagesLinkInputs'>
+          <DefaultFormInput
+            label='Imagem de Capa'
+            placeholder='https://...'
+            {...register('coverImage')}
+          />
+          <DefaultFormInput
+            label='Imagem da Galeria'
+            placeholder='https://...'
+            {...register('image01')}
+          />
+          <DefaultFormInput
+            label='Imagem da Galeria'
+            placeholder='https://...'
+            {...register('image02')}
+          />
+        </div>
+
         <div className='carButtons'>
           <div className='carButtons__addImg'>
             <ButtonOpacity className='text-style-text-body-2-500' type='button'>
