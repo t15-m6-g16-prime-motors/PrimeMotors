@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
-import { IRegisterUserRequest, TLoginUser, TRegisterUser } from "../interfaces";
+import { IRegisterUserRequest, TLoginUser } from "../interfaces";
 
 interface AuthProviderProps {
     children: ReactNode
@@ -34,7 +34,6 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     }, [])
 
     const signIn = async (data: TLoginUser) => {
-        console.log('usuario logado')
         try {
 
             const response = await api.post('/login', data)

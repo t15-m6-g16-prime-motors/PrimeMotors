@@ -21,8 +21,7 @@ export const LoginForm = () => {
 
   const submit: SubmitHandler<TLoginUser> = (formData) => {
     setLoading(false);
-    signIn
-    console.log(signIn);
+    signIn(formData)
   };
 
   return (
