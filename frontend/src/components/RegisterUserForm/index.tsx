@@ -65,7 +65,7 @@ export const RegisterUserForm = () => {
     const organizedData = organizeData(formData);
     console.log(organizedData);
     setLoading(false);
-    signUp;
+    signUp(organizedData);
     handleShowModal('registerUserResponse');
   };
 

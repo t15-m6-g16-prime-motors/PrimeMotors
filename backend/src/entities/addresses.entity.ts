@@ -17,8 +17,8 @@ class Address {
   @Column({ type: "varchar", length: 50, nullable: false })
   street: string;
 
-  @Column({ type: "int", nullable: false })
-  number: number;
+  @Column({ type: "varchar", nullable: false })
+  number: string;
 
   @Column({ type: "varchar", length: 70 })
   complement: string;
@@ -28,9 +28,6 @@ class Address {
 
   @Column({ type: "varchar", length: 50, nullable: false })
   state: string;
-
-  @Column({ type: "varchar", length: 50, default: "Brasil" })
-  country: string;
 
   @Column({ type: "varchar", length: 10 })
   postal_code: string;
