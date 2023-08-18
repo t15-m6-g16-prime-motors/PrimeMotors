@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { addressSchema } from "./addresses.schema";
 
 const userSchema = z.object({
   id: z.number(),
@@ -12,6 +13,7 @@ const userSchema = z.object({
   phone_number: z.string(),
   created_at: z.union([z.date(), z.string()]),
   updated_at: z.union([z.date(), z.string()]),
+  address: addressSchema,
 });
 
 const userSchemaResponse = userSchema.omit({
