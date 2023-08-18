@@ -7,7 +7,7 @@ const deleteUsersService = async (userId: number): Promise<void> => {
   const user = await userRepository.findOneBy({ id: userId });
 
   if (!user) {
-    throw new AppError("car not found", 404);
+    throw new AppError("user not found", 404);
   }
 
   await userRepository.remove(user);
