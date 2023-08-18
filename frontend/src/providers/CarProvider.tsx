@@ -135,7 +135,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
 
   useEffect(() => {}, [allCars]);
 
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkRhdmkgRmVycmVpcmEiLCJ1c2VySWQiOjUsImlhdCI6MTY5MjM3ODg0NiwiZXhwIjoxNjkyMzgyNDQ2LCJzdWIiOiI1In0.qqqSuRkqdQ_uonwwj16_rHNS38vi-P9mDa_xgOEh44U"
+  const token = localStorage.getItem('@TOKEN') || null
 
   const headersAuth = {
     headers: {
