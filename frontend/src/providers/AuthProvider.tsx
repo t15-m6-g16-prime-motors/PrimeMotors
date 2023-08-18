@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
-import { TLoginUser, TRegisterUser } from "../interfaces";
+import { IRegisterUserRequest, TLoginUser, TRegisterUser } from "../interfaces";
 
 interface AuthProviderProps {
     children: ReactNode
@@ -9,7 +9,7 @@ interface AuthProviderProps {
 
 interface AuthContextValues {
     signIn: (data: TLoginUser) => Promise<void>
-    signUp: (data: TRegisterUser) => Promise<void>
+    signUp: (data: IRegisterUserRequest) => Promise<void>
     loading: boolean
 }
 
@@ -53,7 +53,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         }
     }
 
-    const signUp = async (data: TRegisterUser) => {
+    const signUp = async (data: IRegisterUserRequest) => {
         try {
           const response = await api.post('/users', data);
           const { token } = response.data
