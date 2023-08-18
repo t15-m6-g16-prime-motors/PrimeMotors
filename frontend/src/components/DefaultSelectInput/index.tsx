@@ -20,8 +20,11 @@ const DefaultSelectInput = ({
 }: IDefaultFormSelect) => {
   const brandOptions = array.map((element: string) => {
     return (
-      <option key={element} value={element}>
-        {element}
+      <option
+        key={element.charAt(0).toUpperCase() + element.slice(1)}
+        value={element.charAt(0).toUpperCase() + element.slice(1)}
+      >
+        {element.charAt(0).toUpperCase() + element.slice(1)}
       </option>
     );
   });
