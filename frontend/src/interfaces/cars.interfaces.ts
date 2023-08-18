@@ -14,3 +14,12 @@ export interface ICar {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
+
+export interface ICarByBrandFromKenzieAPI {
+  id: string;
+  name: string;
+  brand: string;
+  year: string;
+  fuel: number | string;
+  value: number | string;
+}

@@ -10,14 +10,43 @@ import DefaultTextArea from '../../DefaultTextArea';
 import NewCarContainer from './style';
 import { useForm } from 'react-hook-form';
 import { ICreateCar, createCarSchema } from './createCar.schema';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CarContext } from '../../../providers/CarProvider';
 import { ModalContext } from '../../../providers/ModalProvider';
+import { ICarByBrandFromKenzieAPI } from '../../../interfaces/cars.interfaces';
 
 const CreateNewCar = () => {
-  const brands = ['Chevrolet', 'Nissan'];
-  const { handleCreateCar } = useContext(CarContext);
+  const [selectedCar, setSelectedCar] = useState(
+    {} as ICarByBrandFromKenzieAPI | undefined
+  );
+
+  const {
+    handleCreateCar,
+    modelsByBrandsFromApi,
+    allBrandsFromApi,
+    getAllCarsBrandsFromKenzieCars,
+    getModelsCarsByBrandFromKenzieCars,
+    carsByBrandFromApi
+  } = useContext(CarContext);
+
   const { handleCloseModal } = useContext(ModalContext);
+
+  const objectSelectedCar = (model: string) => {
+    const car = carsByBrandFromApi.find((car) => car.name === model);
+    if (car?.fuel === 1) {
+      car.fuel = 'flex';
+    }
+
+    if (car?.fuel === 2) {
+      car.fuel = 'híbrido';
+    }
+
+    if (car?.fuel === 3) {
+      car.fuel = 'elétrico';
+    }
+
+    setSelectedCar(car);
+  };
 
   const {
     register,
@@ -25,21 +54,33 @@ const CreateNewCar = () => {
     formState: { errors }
   } = useForm<ICreateCar>({ resolver: zodResolver(createCarSchema) });
 
+  useEffect(() => {
+    getAllCarsBrandsFromKenzieCars();
+  }, []);
+
   return (
     <NewCarContainer>
       <p className='text-style-text-body-2-500'>Informações do veículo</p>
       <form onSubmit={handleSubmit(handleCreateCar)}>
         <DefaultSelectInput
+          onChange={async (event) => {
+            await getModelsCarsByBrandFromKenzieCars(
+              event.target.value.toLowerCase()
+            );
+          }}
           name={'brand'}
-          array={brands}
+          array={allBrandsFromApi}
           about='Marca'
           label='Marca'
           register={register('brand')}
           error={errors.brand}
         />
         <DefaultSelectInput
+          onChange={(event) => {
+            objectSelectedCar(event.target.value.toLocaleLowerCase());
+          }}
           name={'model'}
-          array={brands}
+          array={modelsByBrandsFromApi}
           about='Modelo'
           label='Modelo'
           register={register('model')}
@@ -51,12 +92,16 @@ const CreateNewCar = () => {
             placeholder='Ano'
             {...register('year')}
             error={errors.year}
+            value={selectedCar?.year}
+            readOnly={true}
           />
           <DefaultFormInput
             label='Combustível'
             placeholder='Combustível'
             {...register('fuel_type')}
             error={errors.fuel_type}
+            value={selectedCar?.fuel}
+            readOnly={true}
           />
           <DefaultFormInput
             label='Quilometragem'
@@ -75,6 +120,8 @@ const CreateNewCar = () => {
             placeholder='Tabela FIP'
             {...register('fip_price')}
             error={errors.fip_price}
+            value={selectedCar?.value}
+            readOnly={true}
           />
           <DefaultFormInput
             label='Preço'
