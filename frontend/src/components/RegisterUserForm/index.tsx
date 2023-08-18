@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { TRegisterUser } from '../../interfaces';
+import { IRegisterUserRequest, TRegisterUser } from '../../interfaces';
 import { registerUserSchema } from '../../schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DefaultFormInput } from '../DefaultFormInput';
@@ -20,6 +20,35 @@ export const RegisterUserForm = () => {
     setIsSeller(true);
   };
 
+  const organizeData = (data: TRegisterUser): IRegisterUserRequest => {
+    const user = {
+      full_name: data.full_name,
+      email: data.email,
+      cpf: data.cpf,
+      phone_number: data.phone_number,
+      birthdate: data.birthdate,
+      description: data.description,
+      is_seller: data.is_seller,
+      password: data.password
+    };
+
+    const address = {
+      postal_code: data.postal_code,
+      state: data.state,
+      city: data.city,
+      street: data.street,
+      number: data.number,
+      complement: data.complement
+    };
+
+    const organizedData = {
+      ...user,
+      address
+    };
+
+    return organizedData;
+  };
+
   const {
     register,
     handleSubmit,
@@ -28,16 +57,17 @@ export const RegisterUserForm = () => {
     resolver: zodResolver(registerUserSchema)
   });
 
-  const {signUp} = useAuth()
+  const { signUp } = useAuth();
 
   const submit: SubmitHandler<TRegisterUser> = (formData) => {
     formData.is_seller = isSeller;
-    console.log(formData);
+
+    const organizedData = organizeData(formData);
+    console.log(organizedData);
     setLoading(false);
-    signUp
+    signUp;
     handleShowModal('registerUserResponse');
   };
-  
 
   return (
     <form onSubmit={handleSubmit(submit)}>
