@@ -5,7 +5,7 @@ const createCarSchema = z.object({
   model: z.string().min(2, 'Selecione um modelo'),
   description: z.string().nonempty('Campo obrigatório'),
   color: z.string().nonempty('Campo obrigatório'),
-  kilometrage: z.string().nonempty('Campo obrigatório'),
+  kilometrage: z.string().nonempty('Campo obrigatório').or(z.number()),
   price: z.string().nonempty('Campo obrigatório'),
   image: z.string(),
   good_deal: z.boolean().nullish()

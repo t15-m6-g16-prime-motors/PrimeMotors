@@ -59,13 +59,12 @@ export const RegisterUserForm = () => {
 
   const { signUp } = useAuth();
 
-  const submit: SubmitHandler<TRegisterUser> = (formData) => {
+  const submit: SubmitHandler<TRegisterUser> = async (formData) => {
     formData.is_seller = isSeller;
 
     const organizedData = organizeData(formData);
-    console.log(organizedData);
+    await signUp(organizedData);
     setLoading(false);
-    signUp(organizedData);
     handleShowModal('registerUserResponse');
   };
 

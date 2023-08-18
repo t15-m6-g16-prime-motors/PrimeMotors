@@ -78,10 +78,9 @@ const CreateNewCar = () => {
       ...newCarFormData,
       good_deal: good_deal,
       fuel_type: selectedCar!.fuel,
-      year: Number(selectedCar?.year)
+      year: Number(selectedCar?.year),
+      kilometrage: Number(newCarFormData?.kilometrage)
     };
-    console.log(newCarData);
-
     handleCreateCar(newCarData);
   };
 
