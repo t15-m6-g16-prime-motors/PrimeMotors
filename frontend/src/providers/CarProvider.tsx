@@ -146,7 +146,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const handleCreateCar = async (newCarData: ICreateCar) => {
     console.log(newCarData);
 
-    if (token !== null) {
+
       try {
         const newCarResponse: AxiosResponse = await api.post<ICreateCar>(
           '/cars',
@@ -160,10 +160,9 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         }
       } catch (error) {
         // const requestError = error as AxiosError<IAxiosErrorMessage>;
-        // toast.error(requestError.response?.data.message);
         console.log(error);
       }
-    }
+    
   };
 
   const getAllCarsBrandsFromKenzieCars = async () => {

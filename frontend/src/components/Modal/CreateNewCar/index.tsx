@@ -20,6 +20,8 @@ const CreateNewCar = () => {
     {} as ICarByBrandFromKenzieAPI | undefined
   );
 
+  const [newCarFipValue, setNewCarFipValue] = useState<string | number>('');
+
   const {
     handleCreateCar,
     modelsByBrandsFromApi,
@@ -33,17 +35,25 @@ const CreateNewCar = () => {
 
   const objectSelectedCar = (model: string) => {
     const car = carsByBrandFromApi.find((car) => car.name === model);
+
+    setNewCarFipValue(car!.value);
+
     if (car?.fuel === 1) {
-      car.fuel = 'flex';
+      car.fuel = 'Flex';
     }
 
     if (car?.fuel === 2) {
-      car.fuel = 'híbrido';
+      car.fuel = 'Híbrido';
     }
 
     if (car?.fuel === 3) {
-      car.fuel = 'elétrico';
+      car.fuel = 'Elétrico';
     }
+
+    car!.value = car!.value.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
 
     setSelectedCar(car);
   };
@@ -58,10 +68,27 @@ const CreateNewCar = () => {
     getAllCarsBrandsFromKenzieCars();
   }, []);
 
+  const handlesubmitNewCar = (newCarFormData: ICreateCar) => {
+    let good_deal = false;
+    if (Number(newCarFipValue) / Number(newCarFormData.price) >= 1.05) {
+      good_deal = true;
+    }
+
+    const newCarData = {
+      ...newCarFormData,
+      good_deal: good_deal,
+      fuel_type: selectedCar!.fuel,
+      year: Number(selectedCar?.year)
+    };
+    console.log(newCarData);
+
+    handleCreateCar(newCarData);
+  };
+
   return (
     <NewCarContainer>
       <p className='text-style-text-body-2-500'>Informações do veículo</p>
-      <form onSubmit={handleSubmit(handleCreateCar)}>
+      <form onSubmit={handleSubmit(handlesubmitNewCar)}>
         <DefaultSelectInput
           onChange={async (event) => {
             await getModelsCarsByBrandFromKenzieCars(
@@ -90,18 +117,14 @@ const CreateNewCar = () => {
           <DefaultFormInput
             label='Ano'
             placeholder='Ano'
-            {...register('year')}
-            error={errors.year}
-            value={selectedCar?.year}
-            readOnly={true}
+            value={selectedCar?.year || ''}
+            disabled={true}
           />
           <DefaultFormInput
             label='Combustível'
             placeholder='Combustível'
-            {...register('fuel_type')}
-            error={errors.fuel_type}
-            value={selectedCar?.fuel}
-            readOnly={true}
+            value={selectedCar?.fuel || ''}
+            disabled={true}
           />
           <DefaultFormInput
             label='Quilometragem'
@@ -118,10 +141,8 @@ const CreateNewCar = () => {
           <DefaultFormInput
             label='Tabela FIP'
             placeholder='Tabela FIP'
-            {...register('fip_price')}
-            error={errors.fip_price}
-            value={selectedCar?.value}
-            readOnly={true}
+            value={selectedCar?.value || ''}
+            disabled={true}
           />
           <DefaultFormInput
             label='Preço'
@@ -135,16 +156,16 @@ const CreateNewCar = () => {
           register={register('description')}
           error={errors.description}
         />
-        {/* <DefaultFormInput
+        <DefaultFormInput
           label='Imagem de capa'
           placeholder='Imagem de capa'
-          {...register('image01')}
+          {...register('image')}
         />
         <DefaultFormInput
           label='Imagem 01'
           placeholder='Imagem 01'
-          {...register('image02')}
-        /> */}
+          {...register('image')}
+        />
         <div className='carButtons'>
           <div className='carButtons__addImg'>
             <ButtonOpacity className='text-style-text-body-2-500' type='button'>
