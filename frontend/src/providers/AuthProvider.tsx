@@ -35,11 +35,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    // Decodifica o token para obter o ID do usuário
+  
     const decodedToken: any = jwt_decode(token);
     const id = decodedToken.userId;
 
-    // Chama a função para carregar os dados do usuário
+    
     userLogged(id);
   }, []);
 
@@ -51,12 +51,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('@TOKEN', token);
 
-      // Decodifica o token para obter o ID do usuário
+     
       const decodedToken: any = jwt_decode(token);
       const id = decodedToken.userId;
       console.log(decodedToken);
 
-      setLoading(true); // Altera para true enquanto carrega os dados do usuário
+      setLoading(true); 
       await userLogged(id);
 
       navigate('/');
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false); // Certifique-se de alterar o estado mesmo em caso de erro
+      setLoading(false); 
     }
   };
 
