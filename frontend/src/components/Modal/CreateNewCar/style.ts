@@ -46,6 +46,26 @@ const NewCarContainer = styled.section`
       }
     }
   }
+
+  .imagesLinkInputs {
+    .imagesLinkInputs__extraInput {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .button__deleteInput {
+      background-color: transparent;
+      position: relative;
+      top: 6px;
+      cursor: pointer;
+      transition: 200ms;
+
+      &:hover {
+        scale: 130%;
+      }
+    }
+  }
 `;
 
 export default NewCarContainer;
