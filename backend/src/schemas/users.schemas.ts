@@ -18,6 +18,7 @@ const userSchema = z.object({
 
 const userSchemaResponse = userSchema.omit({
   password: true,
+  address: true,
 });
 
 const userSchemaRequest = userSchema.omit({
@@ -26,7 +27,9 @@ const userSchemaRequest = userSchema.omit({
   updated_at: true,
 });
 
-const usersSchemaResponse = z.array(userSchema.omit({ password: true }));
+const usersSchemaResponse = z.array(
+  userSchema.omit({ password: true, })
+);
 
 const userSchemaUpdateRequest = userSchemaRequest.partial();
 
