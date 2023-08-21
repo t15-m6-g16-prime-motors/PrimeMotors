@@ -3,7 +3,16 @@ import { loginUserSchema, registerUserSchema } from '../schemas';
 
 export type TRegisterUser = z.infer<typeof registerUserSchema>;
 export type TLoginUser = z.infer<typeof loginUserSchema>;
-
+export interface IUserLogged {
+  full_name: string;
+  cpf: string;
+  email: string;
+  birthdate: string;
+  is_seller: boolean;
+  description: string;
+  phone_number: string;
+  password: string;
+}
 export interface IAddress {
   postal_code: string;
   state: string;

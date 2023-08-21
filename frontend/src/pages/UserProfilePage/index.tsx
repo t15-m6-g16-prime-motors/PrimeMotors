@@ -1,33 +1,45 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-import { useCar } from '../../hooks';
+import { useAuth, useCar } from '../../hooks';
 import { StyledMain } from './style';
 import { ProfileCard } from '../../components/ProfileCard';
 
 export const UserProfilePage = () => {
   const { allCars } = useCar();
+  const { user } = useAuth();
+  const getInitials = (fullName: string) => {
+    if (!fullName) return '';
+
+    const names = fullName.split(' ');
+    if (names.length === 1) {
+      return names[0].charAt(0).toUpperCase();
+    } else {
+      const firstNameInitial = names[0].charAt(0).toUpperCase();
+      const lastNameInitial = names[names.length - 1].charAt(0).toUpperCase();
+
+      return `${firstNameInitial}${lastNameInitial}`;
+    }
+  };
   return (
     <>
-      {/* falta a estilizacao certa do background da main e do section profile fazer o desktop style */}
       <Header />
       <StyledMain>
         <section className='container-profile'>
           <div className='blue-color-box'>
             <div className='info-profile'>
               <div className='initials-letter'>
-                <h2>SL</h2>
+                <h2>{getInitials(user?.full_name!)}</h2>
               </div>
 
               <div className='container-name-type-user'>
-                <h3 className='heading-6-600'>Samuel Leao</h3>
-                <span className='text-style-text-body-2-500'>Anunciante</span>
+                <h3 className='heading-6-600'>{user?.full_name}</h3>
+                {user?.is_seller ? (
+                  <span className='text-style-text-body-2-500'>Anunciante</span>
+                ) : null}
               </div>
-              <p className='text-style-text-body-1-400'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s
-              </p>
+              <p className='text-style-text-body-1-400'>{user?.description}</p>
               <button className='create-announce-btn text-style-inputs-buttons-button-big-text'>
                 Criar anuncio
               </button>
