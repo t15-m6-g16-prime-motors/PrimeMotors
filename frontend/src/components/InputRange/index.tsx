@@ -87,7 +87,7 @@ const InputRange = ({
       sliderTrackRef.current.style.background = `linear-gradient(to right, #DADAE5 ${percent1}% , var(--color-brand-2) ${percent1}% , var(--color-brand-2) ${percent2}%, #DADAE5 ${percent2}%)`;
     }
   };
-  console.log(sliderOneValue)
+
   return (
     <StyledDivInputRange>
       <h2 className='title'>{title}</h2>
