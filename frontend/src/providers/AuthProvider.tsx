@@ -16,6 +16,7 @@ interface AuthContextValues {
   loading: boolean;
   user: IUserLogged | null;
   setUser: React.Dispatch<React.SetStateAction<IUserLogged | null>>;
+  getTwoInitials: (name: string) => string;
 }
 
 export const AuthContext = createContext({} as AuthContextValues);
@@ -35,11 +36,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-  
     const decodedToken: any = jwt_decode(token);
     const id = decodedToken.userId;
 
-    
     userLogged(id);
   }, []);
 
@@ -51,12 +50,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('@TOKEN', token);
 
-     
       const decodedToken: any = jwt_decode(token);
       const id = decodedToken.userId;
 
-
-      setLoading(true); 
+      setLoading(true);
       await userLogged(id);
 
       navigate('/');
@@ -73,7 +70,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -92,8 +89,18 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  const getTwoInitials = (name: string) => {
+    const namesArray = name.split(' ');
+    const firstName = namesArray[0];
+    const lastName = namesArray[namesArray.length - 1];
+
+    return `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`;
+  };
+
   return (
-    <AuthContext.Provider value={{ signIn, signUp, loading, user, setUser }}>
+    <AuthContext.Provider
+      value={{ signIn, signUp, loading, user, setUser, getTwoInitials }}
+    >
       {children}
     </AuthContext.Provider>
   );
