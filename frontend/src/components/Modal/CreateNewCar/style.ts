@@ -6,7 +6,7 @@ const NewCarContainer = styled.section`
   gap: 8px;
   padding: 0 8px 16px 8px;
   max-height: 45rem;
-  overflow: scroll;
+  overflow-y: scroll;
 
   .carInfos__otherInfos {
     display: grid;
@@ -43,6 +43,26 @@ const NewCarContainer = styled.section`
 
       button:nth-child(2) {
         width: 40%;
+      }
+    }
+  }
+
+  .imagesLinkInputs {
+    .imagesLinkInputs__extraInput {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .button__deleteInput {
+      background-color: transparent;
+      position: relative;
+      top: 6px;
+      cursor: pointer;
+      transition: 200ms;
+
+      &:hover {
+        scale: 130%;
       }
     }
   }
