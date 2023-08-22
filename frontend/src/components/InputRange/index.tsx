@@ -23,8 +23,8 @@ const InputRange = ({
   setIsFilterActive,
   isFilterActive
 }: IInputRange) => {
-  const [sliderOneValue, setSliderOneValue] = useState(minValue);
-  const [sliderTwoValue, setSliderTwoValue] = useState(maxValue);
+  const [sliderOneValue, setSliderOneValue] = useState(minValue || 0);
+  const [sliderTwoValue, setSliderTwoValue] = useState(maxValue || 0);
   const [fixedMinValue, setFixedMinValue] = useState(0);
   const [fixedMaxValue, setFixedMaxValue] = useState(0);
   const minGap = 0;
@@ -69,8 +69,8 @@ const InputRange = ({
     if (!isFilterActive) {
       setSliderOneValue(fixedMinValue);
       setSliderTwoValue(fixedMaxValue);
-      setMinValue(fixedMinValue)
-      setMaxValue(fixedMaxValue)
+      setMinValue(fixedMinValue);
+      setMaxValue(fixedMaxValue);
     }
   }, [isFilterActive]);
 
@@ -101,7 +101,6 @@ const InputRange = ({
           {sliderTwoValue.toLocaleString()}
         </span>
       </div>
-          
 
       <div className='container'>
         <div className='slider-track' ref={sliderTrackRef}></div>
