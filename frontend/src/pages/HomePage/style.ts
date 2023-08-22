@@ -54,16 +54,21 @@ export const StyledMain = styled.main`
   .filterContainer {
     width: 100%;
     max-width: 400px;
+    height: 100%;
     margin: 0 auto;
     padding: 1rem;
 
     background-color: var(--color-white-fixed);
 
+    border-radius: 8px;
+
     position: absolute;
-    top: 8rem;
+    top: 128px;
     left: 0;
 
     z-index: 10;
+
+    box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.6);
   }
 
   .filterHeader {
@@ -223,9 +228,25 @@ export const StyledMain = styled.main`
       position: static;
 
       display: block;
+      box-shadow: none;
     }
 
     .attribute > .title {
     }
   }
+
+  @keyframes modalAppear {
+      0% {
+        transform: translateX(-200%);
+      }
+
+      100% {
+        transform: translate(0);
+      }
+    }
+
+    .slideRigth {
+      animation: modalAppear;
+      animation-duration: 0.5s;
+    }
 `;

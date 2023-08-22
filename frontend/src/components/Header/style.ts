@@ -9,9 +9,6 @@ export const StyledHeader = styled.header`
   width: 100%;
   box-shadow: 0 -0.2rem 0.4rem var(--color-grey-1);
 
-  display: flex;
-  justify-content: center;
-
   .menuContainer {
     box-sizing: border-box;
     width: 100%;
@@ -38,9 +35,13 @@ export const StyledHeader = styled.header`
   nav {
     width: 100%;
     padding: 24px 0 24px 0;
-    display: flex;
-    flex-direction: column;
-    /* gap: 32px; */
+    a {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+    .loginBtn {
+      padding-left: 10px;
+    }
   }
 
   .active {
@@ -52,6 +53,8 @@ export const StyledHeader = styled.header`
   }
 
   @media (min-width: 640px) {
+    display: flex;
+    justify-content: center;
     padding: 1.5rem 2rem;
     .menuContainer {
       width: 100%;
@@ -64,6 +67,7 @@ export const StyledHeader = styled.header`
         justify-content: flex-end;
         .loginBtn {
           justify-content: center;
+          padding-left: 0;
         }
       }
       button {
