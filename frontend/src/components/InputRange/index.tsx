@@ -23,8 +23,8 @@ const InputRange = ({
   setIsFilterActive,
   isFilterActive
 }: IInputRange) => {
-  const [sliderOneValue, setSliderOneValue] = useState(minValue);
-  const [sliderTwoValue, setSliderTwoValue] = useState(maxValue);
+  const [sliderOneValue, setSliderOneValue] = useState(minValue || 0);
+  const [sliderTwoValue, setSliderTwoValue] = useState(maxValue || 0);
   const [fixedMinValue, setFixedMinValue] = useState(0);
   const [fixedMaxValue, setFixedMaxValue] = useState(0);
   const minGap = 0;
@@ -69,8 +69,8 @@ const InputRange = ({
     if (!isFilterActive) {
       setSliderOneValue(fixedMinValue);
       setSliderTwoValue(fixedMaxValue);
-      setMinValue(fixedMinValue)
-      setMaxValue(fixedMaxValue)
+      setMinValue(fixedMinValue);
+      setMaxValue(fixedMaxValue);
     }
   }, [isFilterActive]);
 
@@ -87,7 +87,7 @@ const InputRange = ({
       sliderTrackRef.current.style.background = `linear-gradient(to right, #DADAE5 ${percent1}% , var(--color-brand-2) ${percent1}% , var(--color-brand-2) ${percent2}%, #DADAE5 ${percent2}%)`;
     }
   };
-  console.log(sliderOneValue)
+
   return (
     <StyledDivInputRange>
       <h2 className='title'>{title}</h2>
@@ -101,7 +101,6 @@ const InputRange = ({
           {sliderTwoValue.toLocaleString()}
         </span>
       </div>
-          
 
       <div className='container'>
         <div className='slider-track' ref={sliderTrackRef}></div>
