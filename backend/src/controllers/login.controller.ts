@@ -8,6 +8,6 @@ export const loginController = async (
 ): Promise<Response> => {
   const payload: TLoginRequest = request.body;
   const token: string = await createTokenService(payload);
-  console.log(token)
+
   return response.status(200).json({ token });
 };

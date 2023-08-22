@@ -98,7 +98,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   }, []);
 
   useEffect(() => {
-    console.log('entrou');
     const filtered = allCars.filter(
       (car) =>
         Number(car.price) >= carMinPrice &&
@@ -135,7 +134,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
 
   useEffect(() => {}, [allCars]);
 
-  const token = localStorage.getItem('@TOKEN') || null
+  const token = localStorage.getItem('@TOKEN') || null;
 
   const headersAuth = {
     headers: {
@@ -146,32 +145,28 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const handleCreateCar = async (newCarData: ICreateCar) => {
     console.log(newCarData);
 
+    try {
+      const newCarResponse: AxiosResponse = await api.post<ICreateCar>(
+        '/cars',
+        newCarData,
+        headersAuth
+      );
 
-      try {
-        const newCarResponse: AxiosResponse = await api.post<ICreateCar>(
-          '/cars',
-          newCarData,
-          headersAuth
-        );
-
-        if (newCarResponse.status === 201) {
-          // atualizar a lista de carros renderizados
-          // mostrar modal de carro criado com sucesso
-        }
-      } catch (error) {
-        // const requestError = error as AxiosError<IAxiosErrorMessage>;
-        console.log(error);
+      if (newCarResponse.status === 201) {
+        // atualizar a lista de carros renderizados
+        // mostrar modal de carro criado com sucesso
       }
-    
+    } catch (error) {
+      // const requestError = error as AxiosError<IAxiosErrorMessage>;
+      console.log(error);
+    }
   };
 
   const getAllCarsBrandsFromKenzieCars = async () => {
     const allCars = await apiKenzieCars.get<AxiosResponse<string[]>>(`/cars`);
     const allBrands: Array<string> = Object.keys(allCars.data);
-    console.log(allCars.data);
 
     setAllBrandsFromApi(allBrands);
-    console.log(allBrands);
   };
 
   const getModelsCarsByBrandFromKenzieCars = async (brand: string) => {
