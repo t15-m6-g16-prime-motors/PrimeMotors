@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
      
       const decodedToken: any = jwt_decode(token);
       const id = decodedToken.userId;
-      console.log(decodedToken);
+
 
       setLoading(true); 
       await userLogged(id);
