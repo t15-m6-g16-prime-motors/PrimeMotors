@@ -65,11 +65,11 @@ export const HomePage = () => {
           <div
             className={
               showFilters
-                ? 'filterContainer showFilters'
+                ? 'filterContainer showFilters slideRigth'
                 : ' filterContainer hideFilters'
             }
           >
-            {windowWidth <= 768 && (
+            {windowWidth <= 1024 && (
               <div className='filterHeader'>
                 <p className='filterTitle heading-7-500'>Filtro</p>
                 <button
@@ -165,12 +165,14 @@ export const HomePage = () => {
                 setIsFilterActive={setIsFilterActive}
               />
               {isFilterActive && (
-                <button
-                  className='filterBtn buttons-style-button-size-big'
-                  onClick={handleClearBrand}
-                >
-                  Limpar filtros
-                </button>
+                <div className='filterButton__container'>
+                  <button
+                    className='filterBtn buttons-style-button-size-big'
+                    onClick={handleClearBrand}
+                  >
+                    Limpar filtros
+                  </button>
+                </div>
               )}
             </div>
           </div>

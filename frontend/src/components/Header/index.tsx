@@ -12,7 +12,6 @@ import { BiChevronUp, BiChevronDown } from 'react-icons/bi';
 export const Header = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  // const { handleShowModal } = useModal();
   const { user, getTwoInitials } = useAuth();
   const { windowWidth } = useLayout();
 
@@ -20,13 +19,6 @@ export const Header = () => {
 
   return (
     <StyledHeader showProfileMenu={showProfileMenu}>
-      {/* <button
-        onClick={() => {
-          handleShowModal('createNewCar');
-        }}
-      >
-        Modal
-      </button> */}
       <div className='menuContainer'>
         <div className='brandAndButton'>
           <div className='brandContainer' onClick={() => navigate('/')}>
