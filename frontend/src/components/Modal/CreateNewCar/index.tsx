@@ -9,7 +9,11 @@ import DefaultSelectInput from '../../DefaultSelectInput';
 import DefaultTextArea from '../../DefaultTextArea';
 import NewCarContainer from './style';
 import { useFieldArray, useForm } from 'react-hook-form';
-import { ICreateCar, createCarSchema } from './createCar.schema';
+import {
+  ICreateCar,
+  ICreateCarComplete,
+  createCarSchema
+} from './createCar.schema';
 import { useContext, useEffect, useState } from 'react';
 import { CarContext } from '../../../providers/CarProvider';
 import { ModalContext } from '../../../providers/ModalProvider';
@@ -64,7 +68,7 @@ const CreateNewCar = () => {
     setExtraImages(extraImages.sort());
     const firstImage = extraImages.shift()!;
     setExistingExtraImages([...existingExtraImages, firstImage]);
-    append({ image: '' }); // includes value to form schema
+    append({ [firstImage]: ''}); // includes value to form schema
   };
 
   const removeAddedImages = (id: string) => {
@@ -90,8 +94,8 @@ const CreateNewCar = () => {
             id={`${image}`}
             label={`Imagem ${image.slice(5, 7)} da Galeria`}
             placeholder='https://...'
-            {...register(`extraImages.${index}.image`)}
-            error={errors.extraImages?.[index]?.image}
+            {...register(`extraImages.${index}.${image}`)}
+            error={errors.extraImages?.[index]?.[image]}
           />
           <button
             className='button__deleteInput'
@@ -138,13 +142,13 @@ const CreateNewCar = () => {
 
     console.log(newCarFormData);
 
-    const newCarData = {
+    const newCarData: ICreateCarComplete = {
       ...newCarFormData,
       good_deal: good_deal,
       fuel_type: selectedCar!.fuel,
       year: Number(selectedCar?.year),
       kilometrage: Number(newCarFormData?.kilometrage),
-      carImages: [...newCarFormData.extraImages]
+      extraImages: [...newCarFormData.extraImages]
     };
     console.log(newCarData);
     handleCreateCar(newCarData);
