@@ -5,6 +5,7 @@ import { ModalContext } from '../../../providers/ModalProvider';
 import { ModalHeader } from '../ModalHeader';
 import CreateNewCar from '../CreateNewCar';
 import { RegisterUserSuccess } from '../RegisterUserSuccess';
+import EditDeleteUser from '../EditDeleteUser';
 
 const GenericModal = ({ type }: IGenericModalProps) => {
   const { ref } = useContext(ModalContext);
@@ -25,6 +26,14 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                 <>
                   <ModalHeader title={'Sucesso!'} />
                   <RegisterUserSuccess />
+                </>
+              );
+
+              case 'editUser':
+              return (
+                <>
+                  <ModalHeader title={'Editar Usuário'} />
+                  <EditDeleteUser />
                 </>
               );
 
