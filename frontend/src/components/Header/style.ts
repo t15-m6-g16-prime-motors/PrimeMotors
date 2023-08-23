@@ -1,10 +1,6 @@
 import { styled } from 'styled-components';
 
-interface IStyledHeaderProps {
-  showProfileMenu: boolean;
-}
-
-export const StyledHeader = styled.header<IStyledHeaderProps>`
+export const StyledHeader = styled.header`
   padding: 1.5rem 1rem;
   box-shadow: 0px 1px 3px var(--grey-5);
   position: fixed;
@@ -63,7 +59,8 @@ export const StyledHeader = styled.header<IStyledHeaderProps>`
     display: block;
   }
 
-  .hidden {
+  .hidden,
+  #hidden {
     display: none;
   }
 
@@ -154,6 +151,7 @@ export const StyledHeader = styled.header<IStyledHeaderProps>`
 
     .profile {
       padding: 0 0.4rem 0 0.2rem;
+      cursor: pointer;
 
       & > p {
         font-size: var(--font-size-14);
@@ -161,20 +159,22 @@ export const StyledHeader = styled.header<IStyledHeaderProps>`
     }
 
     .openProfileButton {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .profileFeatures {
       padding: 1rem 1.5rem 0.8rem;
       gap: 0.2rem;
-      background-color: var(--color-white-fixed);
-
+      background-color: var(--color-grey-10);
       position: absolute;
-      bottom: -1;
+      bottom: -9rem;
       right: 0;
       left: 0;
 
-      display: ${(props) => (props.showProfileMenu ? 'flex' : 'none')};
+      border-radius: 0.15rem;
+      box-shadow: 0 0.3rem 0.5rem var(--color-grey-3);
     }
   }
 `;

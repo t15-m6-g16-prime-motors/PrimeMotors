@@ -18,7 +18,7 @@ export const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <StyledHeader showProfileMenu={showProfileMenu}>
+    <StyledHeader>
       <div className='menuContainer'>
         <div className='brandAndButton'>
           <div className='brandContainer' onClick={() => navigate('/')}>
@@ -53,10 +53,17 @@ export const Header = () => {
                   {showProfileMenu ? <BiChevronUp /> : <BiChevronDown />}
                 </div>
               </div>
-              <div className='profileFeatures'>
+              <div
+                className='profileFeatures'
+                id={
+                  windowWidth > 640 && !showProfileMenu
+                    ? 'hidden'
+                    : 'profileFeatures'
+                }
+              >
                 <p>Editar perfil</p>
                 <p>Editar endereço</p>
-                {user.is_seller ? <p>Meus Anúncios</p> : null}
+                {user.is_seller && <p>Meus Anúncios</p>}
                 <p className='logout'>Sair</p>
               </div>
             </div>
