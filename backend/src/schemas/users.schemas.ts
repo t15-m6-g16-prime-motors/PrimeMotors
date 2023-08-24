@@ -1,6 +1,6 @@
-import { z } from "zod";
-import { addressSchema } from "./addresses.schema";
-import { carSchemaResponse } from "./cars.schemas";
+import { z } from 'zod';
+import { addressSchema } from './addresses.schema';
+import { carSchemaResponse } from './cars.schemas';
 
 const userSchema = z.object({
   id: z.number(),
@@ -19,8 +19,8 @@ const userSchema = z.object({
 const ownerCarSchema = userSchema.omit({
   cpf: true,
   updated: true,
-  created_at:true,
-  updated_at:true,
+  created_at: true,
+  updated_at: true,
 });
 const userSchemaResponse = userSchema
   .extend({
@@ -40,11 +40,25 @@ const usersSchemaResponse = z.array(userSchema.omit({ password: true }));
 
 const userSchemaUpdateRequest = userSchemaRequest.partial();
 
+const updateUserRequestSchema = userSchema
+  .omit({
+    id: true,
+    created_at: true,
+    updated_at: true,
+    is_seller: true,
+    password: true,
+  })
+  .partial();
+
+const updateUserResponseSchema = userSchema.omit({ password: true });
+
 export {
   userSchema,
   userSchemaResponse,
   userSchemaRequest,
   usersSchemaResponse,
   userSchemaUpdateRequest,
-  createUserSchemaResponse
+  createUserSchemaResponse,
+  updateUserRequestSchema,
+  updateUserResponseSchema,
 };
