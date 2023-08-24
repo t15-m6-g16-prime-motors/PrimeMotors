@@ -13,7 +13,7 @@ import { ModalContext } from '../../providers/ModalProvider';
 export const Header = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const { user, getTwoInitials } = useAuth();
+  const { user, getTwoInitials, handleLogout } = useAuth();
   const { windowWidth } = useLayout();
   const { handleShowModal } = useContext(ModalContext);
 
@@ -78,7 +78,14 @@ export const Header = () => {
                   Editar endereço
                 </p>
                 {user.is_seller && <p>Meus Anúncios</p>}
-                <p className='logout'>Sair</p>
+                <p
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                  className='logout'
+                >
+                  Sair
+                </p>
               </div>
             </div>
           ) : (
