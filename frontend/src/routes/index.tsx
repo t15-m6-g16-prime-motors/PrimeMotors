@@ -16,7 +16,7 @@ export const RoutesMain = () => {
       <Route path='/register' element={<RegisterUserPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/resetPassword' element={<SendEmailPage />} />
-      <Route path='/resetPassword/2' element={<ResetPasswordPage />} />
+      <Route path='/resetPassword/:token' element={<ResetPasswordPage />} />
     </Routes>
   );
 };

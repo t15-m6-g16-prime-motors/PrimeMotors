@@ -6,8 +6,11 @@ import { StyledMain } from './style';
 import { Header } from '../../components/Header';
 import { DefaultFormInput } from '../../components/DefaultFormInput';
 import { Footer } from '../../components/Footer';
+import { useParams } from 'react-router-dom';
 
 export const ResetPasswordPage = () => {
+  const { token } = useParams();
+
   const {
     register,
     handleSubmit,
@@ -18,6 +21,7 @@ export const ResetPasswordPage = () => {
 
   const submit: SubmitHandler<TResetPassword> = (data) => {
     console.log(data);
+    console.log('token: ' + token);
   };
 
   return (

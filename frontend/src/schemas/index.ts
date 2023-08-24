@@ -1,3 +1,4 @@
+import { commentSchema } from './comment.schema';
 import {
   registerUserSchema,
   loginUserSchema,
@@ -8,6 +9,7 @@ import {
 export {
   registerUserSchema,
   loginUserSchema,
+  commentSchema,
   sendEmailSchema,
   resetPasswordSchema
 };

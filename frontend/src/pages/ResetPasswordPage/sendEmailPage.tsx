@@ -6,8 +6,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { StyledMain } from './style';
 import { sendEmailSchema } from '../../schemas';
 import { TSendEmail } from '../../interfaces';
+import { useAuth } from '../../hooks';
 
 export const SendEmailPage = () => {
+  const { sendResetPasswordEmail } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -17,14 +20,15 @@ export const SendEmailPage = () => {
   });
 
   const sendEmail: SubmitHandler<TSendEmail> = (data) => {
-    console.log(data.email);
+    console.log(data);
+    sendResetPasswordEmail(data);
   };
 
   return (
     <>
       <Header />
       <StyledMain>
-        <form onSubmit={handleSubmit(() => sendEmail)}>
+        <form onSubmit={handleSubmit(sendEmail)}>
           <h2 className='heading-6-600'>Recuperação de senha</h2>
           <DefaultFormInput
             label='Envie seu email'

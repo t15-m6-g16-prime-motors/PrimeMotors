@@ -4,7 +4,7 @@ import { api } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import { IRegisterUserRequest, TLoginUser } from '../interfaces';
-import { IUserLogged } from '../interfaces/users.interfaces';
+import { IUserLogged, TSendEmail } from '../interfaces/users.interfaces';
 import { IEditUser } from '../components/Modal/EditDeleteUser';
 import { AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
@@ -22,6 +22,7 @@ interface AuthContextValues {
   getTwoInitials: (name: string) => string;
   editUser: (patchedUserData: IEditUser) => Promise<void>;
   deleteUser: () => Promise<void>;
+  sendResetPasswordEmail: (data: TSendEmail) => Promise<void>;
 }
 
 export const AuthContext = createContext({} as AuthContextValues);
@@ -152,6 +153,17 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  const sendResetPasswordEmail = async (data: TSendEmail) => {
+    try {
+      const response = await api.post('/resetPassword', data);
+      console.log(response.data);
+      toast.success('Email enviado! Consulte sua caixa de entrada.');
+    } catch (error) {
+      console.log(error);
+      toast.warning('Algo deu errado! Reveja seu email e tente novamente.');
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -162,7 +174,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser,
         getTwoInitials,
         editUser,
-        deleteUser
+        deleteUser,
+        sendResetPasswordEmail
       }}
     >
       {children}
