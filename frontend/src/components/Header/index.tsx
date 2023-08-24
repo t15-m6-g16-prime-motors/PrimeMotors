@@ -70,7 +70,13 @@ export const Header = () => {
                 >
                   Editar perfil
                 </p>
-                <p>Editar endereço</p>
+                <p
+                  onClick={() => {
+                    handleShowModal('editAddress');
+                  }}
+                >
+                  Editar endereço
+                </p>
                 {user.is_seller && <p>Meus Anúncios</p>}
                 <p className='logout'>Sair</p>
               </div>
