@@ -1,4 +1,4 @@
-import { TCarRequest, TCarResponse, TCarUpdate } from "../interfaces/car.interfaces";
+import { TCarPictureRequest, TCarRequest, TCarResponse, TCarUpdate } from "../interfaces/car.interfaces";
 import { deleteContactsService } from "../services/cars/deleteCars.service";
 import { getByIdCarsService } from "../services/cars/getByIdCars.service";
 import { updateCarsService } from "../services/cars/updateCars.service";
@@ -11,7 +11,7 @@ const createCarController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const carData: TCarRequest = req.body;
+  const carData: TCarPictureRequest= req.body;
   const  userId: number = res.locals.id;
   const newCar = await createCarsServices(carData, userId);
   return res.status(201).json(newCar);
