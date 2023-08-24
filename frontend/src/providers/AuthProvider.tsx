@@ -157,6 +157,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('@TOKEN');
+
+    navigate('/login');
+    toast.success('Logout realizado com sucesso!');
+    setUser(null);
+  };
+
   const deleteUser = async () => {
     try {
       const token = localStorage.getItem('@TOKEN') || '{}';
