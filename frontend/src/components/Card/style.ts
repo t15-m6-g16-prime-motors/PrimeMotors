@@ -2,6 +2,13 @@ import { styled } from 'styled-components';
 
 export const StyledCardContainer = styled.li`
   min-width: 14rem;
+  cursor: pointer;
+
+  &:hover {
+    border-left: 0.1rem inset transparent;
+    border-right: 0.1rem inset transparent;
+  }
+
   .imageContainer {
     background-color: var(--color-grey-7);
     max-width: 100%;
