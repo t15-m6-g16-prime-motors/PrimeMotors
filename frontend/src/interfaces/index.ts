@@ -2,7 +2,8 @@ import {
   TRegisterUser,
   TLoginUser,
   IAddress,
-  IRegisterUserRequest
+  IRegisterUserRequest,
+  TSendEmail
 } from './users.interfaces';
 import { IFilterAttributeProps } from './filterAttributeProps.interfaces';
 import { ICardProps } from './cardProps.interfaces';
@@ -17,5 +18,6 @@ export type {
   TRegisterUser,
   TLoginUser,
   IAddress,
-  IRegisterUserRequest
+  IRegisterUserRequest,
+  TSendEmail
 };

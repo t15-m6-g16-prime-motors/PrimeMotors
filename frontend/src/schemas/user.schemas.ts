@@ -86,3 +86,27 @@ export const editUserSchema = z.object({
     ),
   description: z.string().nonempty('Descrição obrigatória')
 });
+
+export const sendEmailSchema = z.object({
+  email: z.string().nonempty('Email obrigatório').email('Email inválido')
+});
+
+export const resetPasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .nonempty('Senha obrigatória')
+      .min(8, 'É necessário ao menos 8 caracteres')
+      .regex(/(?=.*?[A-Z])/, 'É necessário ao menos uma letra maiúscula')
+      .regex(/(?=.*?[a-z])/, 'É necessário ao menos uma letra minúscula')
+      .regex(/(?=.*?[0-9])/, 'É necessário ao menos um número')
+      .regex(
+        /(?=.*?[#?!@$%^&*-_])/,
+        'É necessário ao menos um caracter especial'
+      ),
+    confirm_password: z.string().nonempty('Confirmação de senha obrigatória')
+  })
+  .refine((data) => data.password === data.confirm_password, {
+    message: 'Senha e confirmação não compatíveis.',
+    path: ['confirm_password']
+  });

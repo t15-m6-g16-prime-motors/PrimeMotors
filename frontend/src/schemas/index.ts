@@ -1,3 +1,13 @@
-import { registerUserSchema, loginUserSchema } from './user.schemas';
+import {
+  registerUserSchema,
+  loginUserSchema,
+  sendEmailSchema,
+  resetPasswordSchema
+} from './user.schemas';
 
-export { registerUserSchema, loginUserSchema };
+export {
+  registerUserSchema,
+  loginUserSchema,
+  sendEmailSchema,
+  resetPasswordSchema
+};

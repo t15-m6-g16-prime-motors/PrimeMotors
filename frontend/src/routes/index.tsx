@@ -3,6 +3,8 @@ import { HomePage } from '../pages/HomePage';
 import { RegisterUserPage } from '../pages/RegisterUserPage';
 import { UserProfilePage } from '../pages/UserProfilePage';
 import { LoginPage } from '../pages/LoginPage';
+import { SendEmailPage } from '../pages/ResetPasswordPage/sendEmailPage';
+import { ResetPasswordPage } from '../pages/ResetPasswordPage/resetPasswordPage';
 
 export const RoutesMain = () => {
   return (
@@ -11,6 +13,8 @@ export const RoutesMain = () => {
       <Route path='/profile' element={<UserProfilePage />} />
       <Route path='/register' element={<RegisterUserPage />} />
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/resetPassword' element={<SendEmailPage />} />
+      <Route path='/resetPassword/2' element={<ResetPasswordPage />} />
     </Routes>
   );
 };
