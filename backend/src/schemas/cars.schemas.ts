@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { userSchema } from "./users.schemas";
 
 const carSchema = z.object({
   id: z.number(),
@@ -16,10 +15,23 @@ const carSchema = z.object({
   created_at: z.union([z.date(), z.string()]),
 });
 
+const ownerCarSchema = z.object({
+  id: z.number(),
+  full_name: z.string(),
+  cpf: z.string().min(11).max(14),
+  email: z.string().email().max(70),
+  password: z.string().max(120),
+  birthdate: z.union([z.date(), z.string()]),
+  is_seller: z.boolean(),
+  description: z.string(),
+  phone_number: z.string(),
+  created_at: z.union([z.date(), z.string()]),
+  updated_at: z.union([z.date(), z.string()]),
+});
+
 const carsSchemaRequest = carSchema.omit({
   id: true,
   created_at: true,
-
 });
 
 const carsSchemaUpdate = carSchema
@@ -30,25 +42,20 @@ const carsSchemaUpdate = carSchema
   })
   .partial();
 
-  const pictureSchema = z.object({
-    id: z.number(),
-    coverImage: z.string(),
-    image01: z.string(),
-    image02: z.string(),
-    image03: z.string(),
-    image04: z.string(),
-    image05: z.string(),
-    image06: z.string(),
-  });
-
-const carsPictureSchema = carSchema
-  .extend({pictures:pictureSchema})
-  .omit({ id: true });
-
-const carSchemaResponse = carsPictureSchema
+const carSchemaResponse = carSchema;
 
 const carsSchemaResponse = z.array(
-  carSchema.extend({ user: userSchema.omit({ password: true, address: true }) })
+  carSchema.extend({
+    user: ownerCarSchema.omit({
+      password: true,
+      address: true,
+      cpf: true,
+      updated: true,
+      created_at: true,
+      updated_at: true,
+      birthdate: true,
+    }),
+  })
 );
 
 export {
@@ -57,5 +64,4 @@ export {
   carsSchemaUpdate,
   carsSchemaResponse,
   carSchemaResponse,
-  carsPictureSchema,
 };

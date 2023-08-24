@@ -2,11 +2,12 @@ import Logo from '../../utils/images/logo1.svg';
 import { FaBars } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
 import { StyledHeader } from './style';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { LinkStyledToLogin, LinkStyledToRegister } from '../../styles/Buttons';
 import { useNavigate } from 'react-router-dom';
 import { useAuth, useLayout } from '../../hooks';
 import { BiChevronUp, BiChevronDown } from 'react-icons/bi';
+import { ModalContext } from '../../providers/ModalProvider';
 // import { useAuth, useModal } from '../../hooks';
 
 export const Header = () => {
@@ -14,6 +15,7 @@ export const Header = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const { user, getTwoInitials } = useAuth();
   const { windowWidth } = useLayout();
+  const { handleShowModal } = useContext(ModalContext);
 
   const navigate = useNavigate();
 
@@ -61,7 +63,13 @@ export const Header = () => {
                     : 'profileFeatures'
                 }
               >
-                <p>Editar perfil</p>
+                <p
+                  onClick={() => {
+                    handleShowModal('editUser');
+                  }}
+                >
+                  Editar perfil
+                </p>
                 <p>Editar endereço</p>
                 {user.is_seller && <p>Meus Anúncios</p>}
                 <p className='logout'>Sair</p>

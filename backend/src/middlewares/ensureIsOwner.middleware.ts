@@ -19,7 +19,7 @@ const ensureIsOwnerMiddleware = async (req: Request, res: Response, next: NextFu
 
     if (!car) {
         return res.status(404).json({
-            message: "contact not found"
+            message: "car not found"
         })
     }
 
