@@ -45,6 +45,9 @@ class User {
   @Column({ type: "varchar", length: 70, nullable: false })
   phone_number: string;
 
+  @Column({ type: "varchar", nullable: true })
+  reset_token?: string;
+
   @CreateDateColumn({ type: "date" })
   created_at: string | Date;
 

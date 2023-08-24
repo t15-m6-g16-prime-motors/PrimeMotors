@@ -18,6 +18,7 @@ export interface IUserLogged {
   phone_number: string;
   password: string;
 }
+
 export interface IAddress {
   postal_code: string;
   state: string;

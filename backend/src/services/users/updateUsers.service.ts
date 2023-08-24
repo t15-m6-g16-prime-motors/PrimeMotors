@@ -1,20 +1,29 @@
-import { Repository } from "typeorm";
-import { AppDataSource } from "../../data-source";
+import { Repository } from 'typeorm';
+import { AppDataSource } from '../../data-source';
 import {
   TUserResponse,
   TUserUpdateRequest,
-} from "../../interfaces/user.interfaces";
-import { User } from "../../entities";
-import { userSchemaResponse } from "../../schemas/users.schemas";
+  TUserUpdateResponse,
+} from '../../interfaces/user.interfaces';
+import { User } from '../../entities';
+import {
+  updateUserResponseSchema,
+  userSchemaResponse,
+} from '../../schemas/users.schemas';
 
 const updateUsersService = async (
   userId: number,
   userData: TUserUpdateRequest
-): Promise<TUserResponse> => {
+): Promise<TUserUpdateResponse> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const oldUserData: User | null = await userRepository.findOneBy({
-    id: userId,
+  const oldUserData: User | null = await userRepository.findOne({
+    where: {
+      id: userId,
+    },
+    relations: {
+      address: true,
+    },
   });
 
   const newUserData: User = userRepository.create({
@@ -23,8 +32,10 @@ const updateUsersService = async (
   });
 
   await userRepository.save(newUserData);
+  console.log(newUserData);
 
-  const returnUser: TUserResponse = userSchemaResponse.parse(newUserData);
+  const returnUser: TUserUpdateResponse =
+    updateUserResponseSchema.parse(newUserData);
 
   return returnUser;
 };

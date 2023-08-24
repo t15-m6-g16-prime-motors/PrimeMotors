@@ -1,10 +1,20 @@
 import { StyledCardContainer } from './style';
 import carSvg from '../../utils/images/mustang.svg';
 import { ICardProps } from '../../interfaces';
+import { useCar } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
 
 export const Card = ({ car }: ICardProps) => {
+  const { setSelectedCar } = useCar();
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setSelectedCar(car);
+    navigate('/listing');
+  };
   return (
-    <StyledCardContainer>
+    <StyledCardContainer onClick={handleClick}>
       <div className='imageContainer'>
         <img src={carSvg} alt='Car image' />
       </div>

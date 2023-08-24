@@ -4,11 +4,13 @@ import {
   deleteUsersController,
   getByIdUsersController,
   listUsersController,
+  resetPasswordController,
+  sendResetEmailPasswordController,
   updateUsersController,
 } from "../controllers/users.controller";
 import {
+  updateUserRequestSchema,
   userSchemaRequest,
-  userSchemaUpdateRequest,
 } from "../schemas/users.schemas";
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middleware";
 import ensureEmailNotExistsMiddleware from "../middlewares/ensureEmailNotExistsMiddleware";
@@ -40,9 +42,9 @@ userRoutes.get(
 userRoutes.patch(
   "/:id",
   ensureAuthMiddleware,
-  ensureIsOwnerMiddleware,
+  // ensureIsOwnerMiddleware, commented because it's a car patch, not user patch.
   ensureUserIdExistsMiddleware,
-  ensureDataIsValid(userSchemaUpdateRequest),
+  ensureDataIsValid(updateUserRequestSchema),
   ensureEmailNotExistsMiddleware,
   updateUsersController
 );
@@ -50,9 +52,12 @@ userRoutes.patch(
 userRoutes.delete(
   "/:id",
   ensureAuthMiddleware,
-  ensureIsOwnerMiddleware,
+  // ensureIsOwnerMiddleware, commented because it's a user delete, do not need car verification.
   ensureUserIdExistsMiddleware,
   deleteUsersController
 );
+
+userRoutes.post("/resetPassword", sendResetEmailPasswordController)
+userRoutes.patch("/resetPassword/:token", resetPasswordController)
 
 export default userRoutes;
