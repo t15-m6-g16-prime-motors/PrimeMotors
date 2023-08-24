@@ -22,6 +22,7 @@ interface AuthContextValues {
   getTwoInitials: (name: string) => string;
   editUser: (patchedUserData: IEditUser) => Promise<void>;
   deleteUser: () => Promise<void>;
+  handleLogout: () => void;
 }
 
 export const AuthContext = createContext({} as AuthContextValues);
@@ -92,8 +93,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('@TOKEN', token);
       setLoading(false);
-
-      // navigate('/login');
     } catch (error) {
       console.log(error);
     }
@@ -123,12 +122,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       );
 
       if (editUserResponse.status === 200) {
+        userLogged(id);
         toast.success('Alteração efetuada!');
       }
     } catch (error) {
       // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('@TOKEN');
+
+    navigate('/login');
+    toast.success('Logout realizado com sucesso!');
+    setUser(null)
   };
 
   const deleteUser = async () => {
@@ -145,6 +153,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       if (deleteUserResponse.status === 204) {
         toast.success('Usuário Deletado');
+        navigate('/login');
+        handleLogout();
       }
     } catch (error) {
       // const requestError = error as AxiosError<IAxiosErrorMessage>;
@@ -162,7 +172,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser,
         getTwoInitials,
         editUser,
-        deleteUser
+        deleteUser,
+        handleLogout
       }}
     >
       {children}

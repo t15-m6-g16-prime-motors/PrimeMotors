@@ -39,7 +39,7 @@ const EditDeleteUser = () => {
   const [newDescription, setNewDescription] = useState<string | undefined>(
     user?.description
   );
-  console.log(newfull_name);
+  console.log(newDescription);
 
   const {
     handleSubmit,
@@ -113,11 +113,10 @@ const EditDeleteUser = () => {
         <DefaultTextArea
           register={register('description')}
           error={errors.description}
-          value={newDescription}
-          descriptionValue={newDescription}
           onChange={(event) => {
-            setNewDescription(event.target.value);
+            setNewDescription(event.target.defaultValue);
           }}
+          contentValue={newDescription}
         />
         <div className='buttons__container'>
           <NegativeButton
