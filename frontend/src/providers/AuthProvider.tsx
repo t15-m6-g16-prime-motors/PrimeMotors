@@ -8,6 +8,7 @@ import { IUserLogged, TSendEmail } from '../interfaces/users.interfaces';
 import { IEditUser } from '../components/Modal/EditDeleteUser';
 import { AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
+import { IEditUserAddress } from '../components/Modal/EditUserAddress';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -21,7 +22,9 @@ interface AuthContextValues {
   setUser: React.Dispatch<React.SetStateAction<IUserLogged | null>>;
   getTwoInitials: (name: string) => string;
   editUser: (patchedUserData: IEditUser) => Promise<void>;
+  editAddress: (patchedUserData: IEditUserAddress) => Promise<void>;
   deleteUser: () => Promise<void>;
+  handleLogout: () => void;
   sendResetPasswordEmail: (data: TSendEmail) => Promise<void>;
 }
 
@@ -93,8 +96,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('@TOKEN', token);
       setLoading(false);
-
-      // navigate('/login');
     } catch (error) {
       console.log(error);
     }
@@ -124,12 +125,45 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       );
 
       if (editUserResponse.status === 200) {
+        userLogged(id);
         toast.success('Alteração efetuada!');
       }
     } catch (error) {
       // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
     }
+  };
+
+  const editAddress = async (patchedUserData: IEditUserAddress) => {
+    console.log(patchedUserData);
+
+    try {
+      const token = localStorage.getItem('@TOKEN') || '{}';
+
+      const decodedToken: any = jwt_decode(token);
+      const id = decodedToken.userId;
+
+      const editUserResponse: AxiosResponse = await api.patch(
+        `/users/${id}`,
+        patchedUserData,
+        headersAuth
+      );
+
+      if (editUserResponse.status === 200) {
+        toast.success('Alteração de endereço efetuada!');
+      }
+    } catch (error) {
+      // const requestError = error as AxiosError<IAxiosErrorMessage>;
+      console.log(error);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('@TOKEN');
+
+    navigate('/login');
+    toast.success('Logout realizado com sucesso!');
+    setUser(null);
   };
 
   const deleteUser = async () => {
@@ -146,6 +180,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       if (deleteUserResponse.status === 204) {
         toast.success('Usuário Deletado');
+        navigate('/login');
+        handleLogout();
       }
     } catch (error) {
       // const requestError = error as AxiosError<IAxiosErrorMessage>;
@@ -174,7 +210,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser,
         getTwoInitials,
         editUser,
+        editAddress,
         deleteUser,
+        handleLogout,
         sendResetPasswordEmail
       }}
     >

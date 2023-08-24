@@ -89,6 +89,20 @@ export const editUserSchema = z
   })
   .partial();
 
+export const editUserAddressSchema = z
+  .object({
+    postal_code: z
+      .string()
+      .nonempty('CEP obrigatório')
+      .regex(/^\d{5}-\d{3}$|^\d{5}$/, 'CEP inválido (00000 ou 00000-000)'),
+    state: z.string().nonempty('Estado obrigatório'),
+    city: z.string().nonempty('Cidade obrigatória'),
+    street: z.string().nonempty('Rua obrigatória'),
+    number: z.string().nonempty('Número obrigatório'),
+    complement: z.string().nonempty('Complemento obrigatório')
+  })
+  .partial();
+
 export const sendEmailSchema = z.object({
   email: z.string().nonempty('Email obrigatório').email('Email inválido')
 });

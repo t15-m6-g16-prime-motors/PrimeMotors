@@ -30,6 +30,7 @@ const DeleteUserConfirmation = () => {
           className='buttons-style-button-size-big'
           onClick={() => {
             deleteUser();
+            handleCloseModal();
           }}
         >
           Excluir

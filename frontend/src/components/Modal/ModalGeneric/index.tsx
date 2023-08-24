@@ -8,6 +8,7 @@ import { RegisterUserSuccess } from '../RegisterUserSuccess';
 import EditDeleteUser from '../EditDeleteUser';
 import CreateCarModalResponse from '../CreateNewCar/createCarModalResponse';
 import DeleteUserConfirmation from '../DeleteUserConfirmation';
+import EditUserAddress from '../EditUserAddress';
 
 const GenericModal = ({ type }: IGenericModalProps) => {
   const { ref } = useContext(ModalContext);
@@ -44,6 +45,14 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                 <>
                   <ModalHeader title={'Editar Usuário'} />
                   <EditDeleteUser />
+                </>
+              );
+
+            case 'editAddress':
+              return (
+                <>
+                  <ModalHeader title={'Editar Endereço'} />
+                  <EditUserAddress />
                 </>
               );
 
