@@ -9,7 +9,7 @@ const ModalContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999; // don´t change
+  z-index: 100; // don´t change
 
   .modalBody {
     max-width: 33rem;
