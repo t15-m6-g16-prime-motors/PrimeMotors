@@ -15,11 +15,12 @@ const createCarsServices = async (
 ): Promise<TCarResponse> => {
   const carRepository: Repository<Car> = AppDataSource.getRepository(Car);
 
-  const userRepository: Repository<User> = AppDataSource.getRepository(User);
-
   const pictureRepository: Repository<Picture> =
     AppDataSource.getRepository(Picture);
-  const { pictures, ...carFields } = carData;
+  const { coverImage, image01, image02, extraImages, ...carFields } = carData;
+  console.log(carFields)
+
+  const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user: User | null = await userRepository.findOne({
     where: {
@@ -31,14 +32,21 @@ const createCarsServices = async (
     throw new AppError("User not found", 409);
   }
 
-  const car = carRepository.create({ ...carFields, user });
+  const car = carRepository.create({ carFields,user:user });
   await carRepository.save(car);
 
-  const picture = pictureRepository.create({ ...pictures });
+  console.log(car)
+
+  const picture = pictureRepository.create({
+    coverImage,
+    image01,
+    image02,
+  });
   await pictureRepository.save(picture);
 
-  const returnCar: TCarResponse = carSchemaResponse.parse(car);
-  return returnCar;
+
+   const returnCar: TCarResponse = carSchemaResponse.parse(car); 
+   return returnCar; 
 };
 
 export default createCarsServices;

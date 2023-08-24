@@ -34,6 +34,29 @@ const carsSchemaRequest = carSchema.omit({
   created_at: true,
 });
 
+
+const imagesSchema = z.object({
+  image: z.string().nonempty('Insira link da imagem'),
+  refImg: z.string()
+});
+
+const carPicturesSchemaRequest = z.object({
+  brand: z.string(),
+  model: z.string(),
+  description: z.string(),
+  color: z.string(),
+  kilometrage: z.number(),
+  price: z.string().or(z.number()),
+  year: z.number(),
+  fuel_type: z.string().or(z.number()),
+  good_deal: z.boolean(),
+  coverImage: z.string(),
+  image01: z.string(),
+  image02: z.string(),
+  extraImages: z.array(imagesSchema)
+});
+
+
 const carsSchemaUpdate = carSchema
   .omit({
     id: true,
@@ -42,7 +65,9 @@ const carsSchemaUpdate = carSchema
   })
   .partial();
 
-const carSchemaResponse = carSchema;
+const carSchemaResponse = carPicturesSchemaRequest.extend({id:z.number()});
+
+
 
 const carsSchemaResponse = z.array(
   carSchema.extend({
@@ -64,4 +89,5 @@ export {
   carsSchemaUpdate,
   carsSchemaResponse,
   carSchemaResponse,
+  carPicturesSchemaRequest
 };
