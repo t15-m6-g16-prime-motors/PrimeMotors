@@ -7,6 +7,7 @@ import CreateNewCar from '../CreateNewCar';
 import { RegisterUserSuccess } from '../RegisterUserSuccess';
 import EditDeleteUser from '../EditDeleteUser';
 import CreateCarModalResponse from '../CreateNewCar/createCarModalResponse';
+import DeleteUserConfirmation from '../DeleteUserConfirmation';
 
 const GenericModal = ({ type }: IGenericModalProps) => {
   const { ref } = useContext(ModalContext);
@@ -30,7 +31,7 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                 </>
               );
 
-              case 'createNewCarResponse':
+            case 'createNewCarResponse':
               return (
                 <>
                   <ModalHeader title={'Sucesso!'} />
@@ -38,11 +39,19 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                 </>
               );
 
-              case 'editUser':
+            case 'editUser':
               return (
                 <>
                   <ModalHeader title={'Editar Usuário'} />
                   <EditDeleteUser />
+                </>
+              );
+
+            case 'deleteUser':
+              return (
+                <>
+                  <ModalHeader title={'Deletar Usuário'} />
+                  <DeleteUserConfirmation />
                 </>
               );
 

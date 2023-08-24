@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import { IRegisterUserRequest, TLoginUser } from '../interfaces';
 import { IUserLogged } from '../interfaces/users.interfaces';
+import { IEditUser } from '../components/Modal/EditDeleteUser';
+import { AxiosResponse } from 'axios';
+import { toast } from 'react-toastify';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -17,6 +20,8 @@ interface AuthContextValues {
   user: IUserLogged | null;
   setUser: React.Dispatch<React.SetStateAction<IUserLogged | null>>;
   getTwoInitials: (name: string) => string;
+  editUser: (patchedUserData: IEditUser) => Promise<void>;
+  deleteUser: () => Promise<void>;
 }
 
 export const AuthContext = createContext({} as AuthContextValues);
@@ -25,6 +30,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<IUserLogged | null>(null);
   const navigate = useNavigate();
+  const headersAuth = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('@TOKEN')}`
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem('@TOKEN');
@@ -83,7 +93,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       localStorage.setItem('@TOKEN', token);
       setLoading(false);
 
-      navigate('/login');
+      // navigate('/login');
     } catch (error) {
       console.log(error);
     }
@@ -97,9 +107,63 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     return `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`;
   };
 
+  const editUser = async (patchedUserData: IEditUser) => {
+    console.log(patchedUserData);
+
+    try {
+      const token = localStorage.getItem('@TOKEN') || '{}';
+
+      const decodedToken: any = jwt_decode(token);
+      const id = decodedToken.userId;
+
+      const editUserResponse: AxiosResponse = await api.patch(
+        `/users/${id}`,
+        patchedUserData,
+        headersAuth
+      );
+
+      if (editUserResponse.status === 200) {
+        toast.success('Alteração efetuada!');
+      }
+    } catch (error) {
+      // const requestError = error as AxiosError<IAxiosErrorMessage>;
+      console.log(error);
+    }
+  };
+
+  const deleteUser = async () => {
+    try {
+      const token = localStorage.getItem('@TOKEN') || '{}';
+
+      const decodedToken: any = jwt_decode(token);
+      const id = decodedToken.userId;
+
+      const deleteUserResponse: AxiosResponse = await api.delete(
+        `/users/${id}`,
+        headersAuth
+      );
+
+      if (deleteUserResponse.status === 204) {
+        toast.success('Usuário Deletado');
+      }
+    } catch (error) {
+      // const requestError = error as AxiosError<IAxiosErrorMessage>;
+      console.log(error);
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ signIn, signUp, loading, user, setUser, getTwoInitials }}
+      value={{
+        signIn,
+        signUp,
+        loading,
+        user,
+        setUser,
+        getTwoInitials,
+        editUser,
+        deleteUser
+      }}
     >
       {children}
     </AuthContext.Provider>
