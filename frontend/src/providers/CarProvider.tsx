@@ -5,6 +5,7 @@ import { api, apiKenzieCars } from '../services/api';
 import { ICreateCar } from '../components/Modal/CreateNewCar/createCar.schema';
 import { AxiosResponse } from 'axios';
 import { ICarByBrandFromKenzieAPI } from '../interfaces/cars.interfaces';
+import { useModal } from '../hooks';
 
 interface ICarContextValues {
   allCars: ICar[];
@@ -57,6 +58,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [filterCar, setfilterCar] = useState('');
   const [isFilterActive, setIsFilterActive] = useState(false);
 
+  const { handleShowModal } = useModal();
+
   const [allBrandsFromApi, setAllBrandsFromApi] = useState([] as Array<string>);
   const [modelsByBrandsFromApi, setModelsByBrandsFromApi] = useState(
     [] as Array<string>
@@ -85,15 +88,15 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     return sortedValues;
   };
 
+  const getCars = async () => {
+    try {
+      const cars = await api.get<ICar[]>('/cars');
+      setAllCars(cars.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    const getCars = async () => {
-      try {
-        const cars = await api.get<ICar[]>('/cars');
-        setAllCars(cars.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     getCars();
   }, []);
 
@@ -153,8 +156,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
       );
 
       if (newCarResponse.status === 201) {
-        // atualizar a lista de carros renderizados
-        // mostrar modal de carro criado com sucesso
+        getCars();
+        handleShowModal('createNewCarResponse');
       }
     } catch (error) {
       // const requestError = error as AxiosError<IAxiosErrorMessage>;
