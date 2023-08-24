@@ -27,6 +27,9 @@ const userSchemaResponse = userSchema
     cars: z.array(carSchemaResponse),
   })
   .omit({ password: true });
+
+const createUserSchemaResponse = userSchema.omit({ password: true });
+
 const userSchemaRequest = userSchema.omit({
   id: true,
   created_at: true,
@@ -43,4 +46,5 @@ export {
   userSchemaRequest,
   usersSchemaResponse,
   userSchemaUpdateRequest,
+  createUserSchemaResponse
 };
