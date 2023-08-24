@@ -68,4 +68,12 @@ const NewCarContainer = styled.section`
   }
 `;
 
-export default NewCarContainer;
+const NewCarResponseContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  height: 10rem;
+`;
+
+export { NewCarContainer, NewCarResponseContainer };

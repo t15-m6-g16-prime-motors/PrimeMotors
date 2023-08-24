@@ -7,7 +7,7 @@ import {
 import { DefaultFormInput } from '../../DefaultFormInput';
 import DefaultSelectInput from '../../DefaultSelectInput';
 import DefaultTextArea from '../../DefaultTextArea';
-import NewCarContainer from './style';
+import { NewCarContainer } from './style';
 import { useFieldArray, useForm } from 'react-hook-form';
 import {
   ICreateCar,
