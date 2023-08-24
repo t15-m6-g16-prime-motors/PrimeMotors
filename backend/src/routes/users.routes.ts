@@ -4,6 +4,8 @@ import {
   deleteUsersController,
   getByIdUsersController,
   listUsersController,
+  resetPasswordController,
+  sendResetEmailPasswordController,
   updateUsersController,
 } from "../controllers/users.controller";
 import {
@@ -54,5 +56,8 @@ userRoutes.delete(
   ensureUserIdExistsMiddleware,
   deleteUsersController
 );
+
+userRoutes.post("/resetPassword", sendResetEmailPasswordController)
+userRoutes.patch("/resetPassword/:token", resetPasswordController)
 
 export default userRoutes;
