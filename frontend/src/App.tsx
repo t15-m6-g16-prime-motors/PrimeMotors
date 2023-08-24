@@ -1,9 +1,9 @@
-import { ToastContainer } from 'react-toastify';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { Reset } from './styles/Reset';
-import 'react-toastify/dist/ReactToastify.css';
 import { RoutesMain } from './routes';
 import MainProvider from './providers/MainProvider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -19,6 +19,7 @@ const App = () => {
         draggable
         pauseOnHover
         theme='light'
+        // className='toastContainer'
       />
       <Reset />
       <GlobalStyle />

@@ -38,6 +38,8 @@ interface ICarContextValues {
     React.SetStateAction<ICarByBrandFromKenzieAPI[]>
   >;
   carsByBrandFromApi: ICarByBrandFromKenzieAPI[];
+  selectedCar: ICar;
+  setSelectedCar: Dispatch<React.SetStateAction<ICar>>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -56,6 +58,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [filteredCars, setFilteredCars] = useState([] as ICar[]);
   const [filterCar, setfilterCar] = useState('');
   const [isFilterActive, setIsFilterActive] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(selectedCarMock);
 
   const [allBrandsFromApi, setAllBrandsFromApi] = useState([] as Array<string>);
   const [modelsByBrandsFromApi, setModelsByBrandsFromApi] = useState(
@@ -211,10 +214,27 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         allBrandsFromApi,
         setAllBrandsFromApi,
         carsByBrandFromApi,
-        setCarsByBrandFromApi
+        setCarsByBrandFromApi,
+        selectedCar,
+        setSelectedCar
       }}
     >
       {children}
     </CarContext.Provider>
   );
+};
+
+const selectedCarMock: ICar = {
+  id: 0,
+  brand: '',
+  model: '',
+  description: '',
+  color: '',
+  year: 0,
+  fuel_type: '',
+  kilometrage: 0,
+  price: '',
+  published: false,
+  good_deal: false,
+  created_at: ''
 };
