@@ -32,7 +32,7 @@ userRoutes.get("", ensureAuthMiddleware, listUsersController);
 userRoutes.get(
   "/:id",
   ensureAuthMiddleware,
-  ensureIsOwnerMiddleware,
+  // ensureIsOwnerMiddleware,
   ensureUserIdExistsMiddleware,
   getByIdUsersController
 );
