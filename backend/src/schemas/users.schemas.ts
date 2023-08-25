@@ -48,7 +48,7 @@ const updateUserRequestSchema = userSchema
     is_seller: true,
     password: true,
   })
-  .partial();
+  .deepPartial();
 
 const updateUserResponseSchema = userSchema.omit({ password: true });
 
