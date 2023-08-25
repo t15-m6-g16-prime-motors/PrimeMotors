@@ -42,7 +42,6 @@ userRoutes.get(
 userRoutes.patch(
   "/:id",
   ensureAuthMiddleware,
-  ensureIsOwnerMiddleware,
   ensureUserIdExistsMiddleware,
   ensureDataIsValid(userSchemaUpdateRequest),
   ensureEmailNotExistsMiddleware,
