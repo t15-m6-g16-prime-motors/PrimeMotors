@@ -1,3 +1,4 @@
+import { TComment } from './comments.interfaces';
 import {
   TRegisterUser,
   TLoginUser,
@@ -17,5 +18,6 @@ export type {
   TRegisterUser,
   TLoginUser,
   IAddress,
-  IRegisterUserRequest
+  IRegisterUserRequest,
+  TComment
 };

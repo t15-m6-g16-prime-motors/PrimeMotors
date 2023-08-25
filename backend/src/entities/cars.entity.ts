@@ -4,6 +4,7 @@ import {
   Entity,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import User from "./users.entity";
@@ -55,7 +56,8 @@ class Car {
   @OneToMany(() => Comment, (comment) => comment.car)
   comment: Comment[];
 
-  @OneToMany(() => Picture, (picture) => picture.car)
-  picture: Picture[];
+  @OneToOne(() => Picture, (picture) => picture.car)
+  picture: Picture;
+  
 }
 export default Car;

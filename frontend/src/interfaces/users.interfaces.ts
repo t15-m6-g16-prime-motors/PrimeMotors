@@ -12,7 +12,9 @@ export interface IUserLogged {
   description: string;
   phone_number: string;
   password: string;
+  address: IAddress;
 }
+
 export interface IAddress {
   postal_code: string;
   state: string;

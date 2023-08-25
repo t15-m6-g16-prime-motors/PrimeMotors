@@ -32,7 +32,7 @@ class Address {
   @Column({ type: "varchar", length: 10 })
   postal_code: string;
 
-  @OneToOne(() => User, (user) => user.address)
+  @OneToOne(() => User, (user) => user.address, {onDelete: 'CASCADE'})
   @JoinColumn()
   user: User;
 }

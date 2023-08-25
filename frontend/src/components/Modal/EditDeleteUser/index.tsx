@@ -10,61 +10,134 @@ import {
   ButtonBrand,
   NegativeButton
 } from '../../../styles/Buttons';
-import { useAuth } from '../../../hooks';
+import { useAuth, useModal } from '../../../hooks';
+import { useState } from 'react';
 
 type IEditUser = z.infer<typeof editUserSchema>;
+export type { IEditUser };
 
 const EditDeleteUser = () => {
+  const { handleCloseModal, handleShowModal } = useModal();
+  const { user, editUser } = useAuth();
+
+  const formatDate = (date: string) => {
+    const dateArray = date.split(`-`);
+    return dateArray.reverse().join('/');
+  };
+
+  const [newfull_name, setNewFull_name] = useState<string | undefined>(
+    user?.full_name
+  );
+  const [newEmail, setNewEmail] = useState<string | undefined>(user?.email);
+  const [newCPF, setNewCPF] = useState<string | undefined>(user?.cpf);
+  const [newPhoneNumber, setNewPhoneNumber] = useState<string | undefined>(
+    user?.phone_number
+  );
+  const [newBirthdate, setNewBirthdate] = useState<string | undefined>(
+    formatDate(user!.birthdate)
+  );
+  const [newDescription, setNewDescription] = useState<string | undefined>(
+    user?.description
+  );
+  console.log(newDescription);
+
   const {
+    handleSubmit,
     register,
     formState: { errors }
   } = useForm<IEditUser>({ resolver: zodResolver(editUserSchema) });
 
-  const { user } = useAuth();
-  console.log(user);
+  const organizedForm = (updatedUserFormData: IEditUser) => {
+    if (user?.email === newEmail) {
+      delete updatedUserFormData.email;
+    }
+
+    if (user?.cpf === newCPF) {
+      delete updatedUserFormData.cpf;
+    }
+
+    console.log(updatedUserFormData);
+
+    editUser(updatedUserFormData);
+  };
+
   return (
     <EditUserContainer>
       <p className='text-style-text-body-2-500'>Informações pessoais</p>
-      <form>
+      <form onSubmit={handleSubmit(organizedForm)}>
         <DefaultFormInput
           label='Nome'
+          defaultValue={newfull_name}
+          {...register('full_name')}
           error={errors.full_name}
-          defaultValue={user?.full_name}
+          onChange={(event) => {
+            setNewFull_name(event.target.value);
+          }}
         />
         <DefaultFormInput
           label='Email'
+          defaultValue={newEmail}
+          {...register('email')}
           error={errors.email}
-          defaultValue={user?.email}
+          onChange={(event) => {
+            setNewEmail(event.target.value);
+          }}
         />
         <DefaultFormInput
           label='CPF'
+          {...register('cpf')}
           error={errors.cpf}
-          defaultValue={user?.cpf}
+          defaultValue={newCPF}
+          onChange={(event) => {
+            setNewCPF(event.target.value);
+          }}
         />
         <DefaultFormInput
           label='Celular'
+          {...register('phone_number')}
           error={errors.phone_number}
-          defaultValue={user?.phone_number}
+          defaultValue={newPhoneNumber}
+          onChange={(event) => {
+            setNewPhoneNumber(event.target.value);
+          }}
         />
         <DefaultFormInput
           label='Data de Nascimento'
+          {...register('birthdate')}
           error={errors.birthdate}
-          defaultValue={user?.birthdate}
+          defaultValue={newBirthdate}
+          onChange={(event) => {
+            setNewBirthdate(event.target.value);
+          }}
         />
         <DefaultTextArea
           register={register('description')}
-          name='description'
           error={errors.description}
-          descriptionValue={user?.description}
+          onChange={(event) => {
+            setNewDescription(event.target.defaultValue);
+          }}
+          contentValue={newDescription}
         />
-        <div>
-          <NegativeButton className='buttons-style-button-size-big'>
+        <div className='buttons__container'>
+          <NegativeButton
+            type='button'
+            className='buttons-style-button-size-big'
+            onClick={() => {
+              handleCloseModal();
+            }}
+          >
             Cancelar
           </NegativeButton>
-          <ButtonAlert className='buttons-style-button-size-big'>
+          <ButtonAlert
+            type='button'
+            className='buttons-style-button-size-big'
+            onClick={() => {
+              handleShowModal('deleteUser');
+            }}
+          >
             Excluir Perfil
           </ButtonAlert>
-          <ButtonBrand className='buttons-style-button-size-big'>
+          <ButtonBrand type='submit' className='buttons-style-button-size-big'>
             Salvar Alterações
           </ButtonBrand>
         </div>
