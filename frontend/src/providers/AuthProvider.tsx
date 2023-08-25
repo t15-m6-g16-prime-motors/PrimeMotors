@@ -134,8 +134,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  const editAddress = async (patchedUserData: IEditUserAddress) => {
-    console.log(patchedUserData);
+  const editAddress = async (patchedAddressData: IEditUserAddress) => {
+    console.log(patchedAddressData);
+
+    const addressData = {
+      address: patchedAddressData
+    };
 
     try {
       const token = localStorage.getItem('@TOKEN') || '{}';
@@ -143,13 +147,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const decodedToken: any = jwt_decode(token);
       const id = decodedToken.userId;
 
-      const editUserResponse: AxiosResponse = await api.patch(
+      const editAddressResponse: AxiosResponse = await api.patch(
         `/users/${id}`,
-        patchedUserData,
+        addressData,
         headersAuth
       );
 
-      if (editUserResponse.status === 200) {
+      if (editAddressResponse.status === 200) {
+        userLogged(id);
         toast.success('Alteração de endereço efetuada!');
       }
     } catch (error) {

@@ -17,7 +17,7 @@ type TUsersResponse = z.infer<typeof usersSchemaResponse>;
 
 type TCreateUserResponse = z.infer<typeof createUserSchemaResponse>;
 
-type TUserUpdateRequest = DeepPartial<typeof updateUserRequestSchema>;
+type TUserUpdateRequest = z.infer<typeof updateUserRequestSchema>;
 type TUserUpdateResponse = z.infer<typeof updateUserResponseSchema>;
 
 export {
