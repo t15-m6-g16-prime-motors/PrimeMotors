@@ -2,10 +2,8 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from "typeorm";
 import User from "./users.entity";
 
@@ -14,25 +12,25 @@ class Address {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
-  @Column({ type: "varchar", length: 50, nullable: false })
+  @Column({ type: "varchar", length: 50 })
   street: string;
 
-  @Column({ type: "varchar", nullable: false })
+  @Column({ type: "varchar" })
   number: string;
 
   @Column({ type: "varchar", length: 70 })
   complement: string;
 
-  @Column({ type: "varchar", length: 50, nullable: false })
+  @Column({ type: "varchar", length: 50})
   city: string;
 
-  @Column({ type: "varchar", length: 50, nullable: false })
+  @Column({ type: "varchar", length: 50})
   state: string;
 
   @Column({ type: "varchar", length: 10 })
   postal_code: string;
 
-  @OneToOne(() => User, (user) => user.address, {onDelete: 'CASCADE'})
+  @OneToOne(() => User, {onDelete: 'CASCADE'})
   @JoinColumn()
   user: User;
 }

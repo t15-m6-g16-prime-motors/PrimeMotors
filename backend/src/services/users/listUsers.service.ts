@@ -1,10 +1,10 @@
-import { Repository } from "typeorm";
-import { AppDataSource } from "../../data-source";
-import { TUsersResponse } from "../../interfaces/user.interfaces";
-import { Address, User } from "../../entities";
-import { usersSchemaResponse } from "../../schemas/users.schemas";
+import { Repository } from 'typeorm';
+import { AppDataSource } from '../../data-source';
+import { TUsersListResponse } from '../../interfaces/user.interfaces';
+import { User } from '../../entities';
+import { userListResponseSchema } from '../../schemas/users.schemas';
 
-const listUsersService = async (): Promise<TUsersResponse> => {
+const listUsersService = async (): Promise<TUsersListResponse> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
   const users: User[] = await userRepository.find({
     relations: {
@@ -12,7 +12,7 @@ const listUsersService = async (): Promise<TUsersResponse> => {
     }
   });
 
-  const returnUsers: TUsersResponse = usersSchemaResponse.parse(users);
+  const returnUsers: TUsersListResponse = userListResponseSchema.parse(users);
 
   return returnUsers;
 };

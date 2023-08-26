@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const carSchema = z.object({
   id: z.number(),
@@ -8,11 +8,11 @@ const carSchema = z.object({
   color: z.string(),
   year: z.number().int(),
   fuel_type: z.string(),
-  kilometrage: z.number().int(),
+  kilometrage: z.number().int().or(z.string()),
   price: z.union([z.number(), z.string()]),
-  published: z.boolean().nullish(),
+  published: z.boolean().default(true),
   good_deal: z.boolean(),
-  created_at: z.union([z.date(), z.string()]),
+  created_at: z.union([z.date(), z.string()])
 });
 
 const ownerCarSchema = z.object({
@@ -26,51 +26,55 @@ const ownerCarSchema = z.object({
   description: z.string(),
   phone_number: z.string(),
   created_at: z.union([z.date(), z.string()]),
-  updated_at: z.union([z.date(), z.string()]),
+  updated_at: z.union([z.date(), z.string()])
 });
 
 const carsSchemaRequest = carSchema.omit({
   id: true,
-  created_at: true,
+  created_at: true
 });
 
+const carPicturesRequestSchema = z
+  .object({
+    image03: z.string(),
+    image04: z.string(),
+    image05: z.string(),
+    image06: z.string()
+  })
+  .partial();
 
-const imagesSchema = z.object({
-  image: z.string().nonempty('Insira link da imagem'),
-  refImg: z.string()
+const createCarRequestSchema = carSchema
+  .extend({
+    coverImage: z.string(),
+    image01: z.string(),
+    image02: z.string(),
+    extraImages: z.array(carPicturesRequestSchema)
+  })
+  .omit({ id: true, created_at: true });
+
+const carResponseSchema = carSchema.extend({
+  picture: z.object({
+    id: z.number(),
+    coverImage: z.string(),
+    image01: z.string(),
+    image02: z.string(),
+    image03: z.string().nullish(),
+    image04: z.string().nullish(),
+    image05: z.string().nullish(),
+    image06: z.string().nullish()
+  })
 });
-
-const carPicturesSchemaRequest = z.object({
-  brand: z.string(),
-  model: z.string(),
-  description: z.string(),
-  color: z.string(),
-  kilometrage: z.number(),
-  price: z.string().or(z.number()),
-  year: z.number(),
-  fuel_type: z.string().or(z.number()),
-  good_deal: z.boolean(),
-  coverImage: z.string(),
-  image01: z.string(),
-  image02: z.string(),
-  extraImages: z.array(imagesSchema)
-});
-
 
 const carsSchemaUpdate = carSchema
   .omit({
     id: true,
     published_in: true,
-    created_at: true,
+    created_at: true
   })
   .partial();
 
-const carSchemaResponse = carPicturesSchemaRequest.extend({id:z.number()});
-
-
-
-const carsSchemaResponse = z.array(
-  carSchema.extend({
+const carsListSchemaResponse = z.array(
+  carResponseSchema.extend({
     user: ownerCarSchema.omit({
       password: true,
       address: true,
@@ -78,8 +82,8 @@ const carsSchemaResponse = z.array(
       updated: true,
       created_at: true,
       updated_at: true,
-      birthdate: true,
-    }),
+      birthdate: true
+    })
   })
 );
 
@@ -87,7 +91,7 @@ export {
   carSchema,
   carsSchemaRequest,
   carsSchemaUpdate,
-  carsSchemaResponse,
-  carSchemaResponse,
-  carPicturesSchemaRequest
+  carsListSchemaResponse,
+  createCarRequestSchema,
+  carResponseSchema
 };

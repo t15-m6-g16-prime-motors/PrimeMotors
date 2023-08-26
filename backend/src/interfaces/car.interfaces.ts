@@ -1,11 +1,18 @@
-import { z } from "zod"
-import { DeepPartial } from "typeorm"
-import { carPicturesSchemaRequest, carSchemaResponse, carsSchemaRequest, carsSchemaResponse } from "../schemas/cars.schemas"
+import { z } from 'zod';
+import { DeepPartial } from 'typeorm';
+import {
+  createCarRequestSchema,
+  carResponseSchema,
+  carsSchemaRequest,
+  carsListSchemaResponse
+} from '../schemas/cars.schemas';
 
-type TCarResponse = z.infer<typeof carSchemaResponse>
-type TCarRequest = z.infer<typeof carsSchemaRequest>
-type TCarPictureRequest = z.infer<typeof carPicturesSchemaRequest>
-type TCarArray = z.infer<typeof carsSchemaResponse>
-type TCarUpdate = DeepPartial<TCarRequest>
+type TCarRequest = z.infer<typeof carsSchemaRequest>;
+type TCarResponse = z.infer<typeof carResponseSchema>;
 
-export { TCarRequest, TCarArray, TCarUpdate, TCarResponse, TCarPictureRequest }
+type TCreateCarRequest = z.infer<typeof createCarRequestSchema>;
+
+type TCarArray = z.infer<typeof carsListSchemaResponse>;
+type TCarUpdate = DeepPartial<TCarRequest>;
+
+export { TCarRequest, TCarArray, TCarUpdate, TCarResponse, TCreateCarRequest };

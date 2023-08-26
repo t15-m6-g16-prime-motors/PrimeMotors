@@ -5,52 +5,51 @@ import {
   ManyToOne,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn,
-} from "typeorm";
-import User from "./users.entity";
-import Comment from "./comments.entity";
-import Picture from "./pictures.entity";
+  PrimaryGeneratedColumn
+} from 'typeorm';
+import User from './users.entity';
+import Comment from './comments.entity';
+import Picture from './pictures.entity';
 
-@Entity("cars")
+@Entity('cars')
 class Car {
-  [x: string]: any;
-  @PrimaryGeneratedColumn("increment")
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: "varchar", length: 70, nullable: false })
+  @Column({ type: 'varchar', length: 70 })
   brand: string;
 
-  @Column({ type: "varchar", length: 70, nullable: false })
+  @Column({ type: 'varchar', length: 70 })
   model: string;
 
-  @Column({ type: "text" })
+  @Column({ type: 'text' })
   description: string;
 
-  @Column({ type: "varchar", length: 70, nullable: false })
+  @Column({ type: 'varchar', length: 70 })
   color: string;
 
-  @Column({ type: "int", nullable: false })
+  @Column({ type: 'int' })
   year: number;
 
-  @Column({type: "varchar", length: 15, nullable: false })
+  @Column({ type: 'varchar', length: 15 })
   fuel_type: string;
 
-  @Column({ type: "int", nullable: false })
+  @Column({ type: 'int' })
   kilometrage: number | string;
 
-  @Column({ type: "decimal", precision: 8, scale: 2, nullable: false })
+  @Column({ type: 'decimal', precision: 8, scale: 2 })
   price: number | string;
 
-  @Column({ type: "boolean", default: true })
-  published: boolean;
+  @Column({ type: 'boolean', default: true })
+  published: boolean
 
-  @Column({type: "boolean", default: false })
-  good_deal: boolean;
+  @Column({ type: 'boolean', default: false })
+  good_deal: boolean
 
-  @CreateDateColumn({ type: "date" })
+  @CreateDateColumn({ type: 'date' })
   created_at: string | Date;
 
-  @ManyToOne(() => User, (user) => user.car)
+  @ManyToOne(() => User, (user) => user.cars)
   user: User;
 
   @OneToMany(() => Comment, (comment) => comment.car)
@@ -58,6 +57,5 @@ class Car {
 
   @OneToOne(() => Picture, (picture) => picture.car)
   picture: Picture;
-  
 }
 export default Car;

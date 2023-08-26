@@ -19,7 +19,7 @@ const resetPasswordService = async (
     const hashedPassword = hashSync(password, 10);
 
       user.password = hashedPassword;
-      user.resetToken = null;
+      user.reset_token = null;
 
       await userRepository.save(user);
 

@@ -1,21 +1,19 @@
-import { Repository } from "typeorm";
-import { Car } from "../../entities";
-import { AppDataSource } from "../../data-source";
-import { TCarArray } from "../../interfaces/car.interfaces";
-import { carsSchemaResponse } from "../../schemas/cars.schemas";
+import { Repository } from 'typeorm';
+import { Car } from '../../entities';
+import { AppDataSource } from '../../data-source';
+import { TCarArray } from '../../interfaces/car.interfaces';
+import { carsListSchemaResponse } from '../../schemas/cars.schemas';
 
-const listCarsServices = async (): Promise<any> => {
-
+const listCarsServices = async (): Promise<TCarArray> => {
   const carRepository: Repository<Car> = AppDataSource.getRepository(Car);
-    
-  const cars: Car[] = await carRepository.find({
-    relations: {
-      user: true
-    }
-});
-  const returnCars: TCarArray = carsSchemaResponse.parse(cars);
-  return returnCars;
 
-}
+  const cars: Car[] = await carRepository.find({
+    relations: { user: true, picture: true }
+  });
+
+  const returnCars: TCarArray = carsListSchemaResponse.parse(cars);
+
+  return returnCars;
+};
 
 export default listCarsServices;

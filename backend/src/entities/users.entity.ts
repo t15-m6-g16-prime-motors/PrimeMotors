@@ -7,51 +7,50 @@ import {
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from "typeorm";
+  UpdateDateColumn
+} from 'typeorm';
 
-import { getRounds, hashSync } from "bcryptjs";
-import Car from "./cars.entity";
-import Address from "./addresses.entity";
-import Comment from "./comments.entity";
+import { getRounds, hashSync } from 'bcryptjs';
+import Car from './cars.entity';
+import Address from './addresses.entity';
+import Comment from './comments.entity';
 
-@Entity("users")
+@Entity('users')
 class User {
-  [x: string]: any;
-  @PrimaryGeneratedColumn("increment")
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: "varchar", length: 70, nullable: false })
+  @Column({ type: 'varchar', length: 70})
   full_name: string;
 
-  @Column({ type: "varchar", length: 14, nullable: false, unique: true })
+  @Column({ type: 'varchar', length: 14, unique: true })
   cpf: string;
 
-  @Column({ type: "varchar", length: 70, nullable: false, unique: true })
+  @Column({ type: 'varchar', length: 70, unique: true })
   email: string;
 
-  @Column({ type: "varchar", length: 120, nullable: false })
+  @Column({ type: 'varchar', length: 120})
   password: string;
 
-  @Column({ type: "date" })
-  birthdate: Date;
+  @Column({ type: 'date' })
+  birthdate: Date | string;
 
-  @Column({ type: "boolean", default: false })
+  @Column({ type: 'boolean', default: false })
   is_seller: boolean;
 
-  @Column({ type: "varchar", length: 255 })
+  @Column({ type: 'text' })
   description: string;
 
-  @Column({ type: "varchar", length: 70, nullable: false })
+  @Column({ type: 'varchar', length: 70})
   phone_number: string;
 
-  @Column({ type: "varchar", nullable: true })
-  reset_token?: string;
+  @Column({ type: 'varchar', default: null })
+  reset_token: null | string;
 
-  @CreateDateColumn({ type: "date" })
+  @CreateDateColumn({ type: 'date' })
   created_at: string | Date;
 
-  @UpdateDateColumn({ type: "date" })
+  @UpdateDateColumn({ type: 'date' })
   updated_at: string | Date;
 
   @OneToMany(() => Car, (car) => car.user)

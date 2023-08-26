@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import { addressSchema } from './addresses.schema';
-import { carSchemaResponse } from './cars.schemas';
 
 const userSchema = z.object({
   id: z.number(),
@@ -8,57 +7,43 @@ const userSchema = z.object({
   cpf: z.string().min(11).max(14),
   email: z.string().email().max(70),
   password: z.string().max(120),
-  birthdate: z.union([z.date(), z.string()]),
+  birthdate: z.string(),
   is_seller: z.boolean(),
   description: z.string(),
   phone_number: z.string(),
-  created_at: z.union([z.date(), z.string()]),
-  updated_at: z.union([z.date(), z.string()]),
-  address: addressSchema,
+  created_at: z.string(),
+  updated_at: z.string(),
+  address: addressSchema
 });
-const ownerCarSchema = userSchema.omit({
-  cpf: true,
-  updated: true,
-  created_at: true,
-  updated_at: true,
-});
-const userSchemaResponse = userSchema
-  .extend({
-    cars: z.array(carSchemaResponse),
-  })
-  .omit({ password: true });
 
-const createUserSchemaResponse = userSchema.omit({ password: true });
-
-const userSchemaRequest = userSchema.omit({
+const createUserRequestSchema = userSchema.omit({
   id: true,
   created_at: true,
-  updated_at: true,
+  updated_at: true
 });
 
-const usersSchemaResponse = z.array(userSchema.omit({ password: true }));
+const createUserResponseSchema = userSchema.omit({ password: true });
 
-const userSchemaUpdateRequest = userSchemaRequest.partial();
+const userListResponseSchema = z.array(userSchema.omit({ password: true }));
 
-const updateUserRequestSchema = userSchema
-  .omit({
-    id: true,
-    created_at: true,
-    updated_at: true,
-    is_seller: true,
-    password: true,
-  })
-  .deepPartial();
+const userUpdateSchema = userSchema.pick({
+  birthdate: true,
+  cpf: true,
+  email: true,
+  full_name: true,
+  phone_number: true,
+  address: true
+});
 
+const updateUserRequestSchema = userUpdateSchema.deepPartial();
 const updateUserResponseSchema = userSchema.omit({ password: true });
 
 export {
   userSchema,
-  userSchemaResponse,
-  userSchemaRequest,
-  usersSchemaResponse,
-  userSchemaUpdateRequest,
-  createUserSchemaResponse,
+  createUserRequestSchema,
+  userListResponseSchema,
+  userUpdateSchema,
+  createUserResponseSchema,
   updateUserRequestSchema,
-  updateUserResponseSchema,
+  updateUserResponseSchema
 };
