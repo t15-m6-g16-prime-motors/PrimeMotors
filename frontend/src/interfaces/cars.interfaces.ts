@@ -13,6 +13,16 @@ export interface ICar {
   created_at: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
+  picture: {
+    id: number;
+    coverImage: string;
+    image01: string;
+    image02: string;
+    image03: string;
+    image04: string;
+    image05: string;
+    image06: string;
+  };
 }
 
 export interface ICarByBrandFromKenzieAPI {

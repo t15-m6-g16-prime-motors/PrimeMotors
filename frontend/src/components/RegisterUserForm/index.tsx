@@ -62,7 +62,15 @@ export const RegisterUserForm = () => {
   const submit: SubmitHandler<TRegisterUser> = async (formData) => {
     formData.is_seller = isSeller;
 
+    const formatDate = (date: string) => {
+      const dateArray = date.split(`/`);
+      return dateArray.reverse().join('-');
+    };
+    
+    formData.birthdate = formatDate(formData.birthdate);
+
     const organizedData = organizeData(formData);
+
     await signUp(organizedData);
     setLoading(false);
     handleShowModal('registerUserResponse');
