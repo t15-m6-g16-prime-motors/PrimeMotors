@@ -19,8 +19,7 @@ export const SendEmailPage = () => {
     resolver: zodResolver(sendEmailSchema)
   });
 
-  const sendEmail: SubmitHandler<TSendEmail> = (data) => {
-    console.log(data);
+  const submit: SubmitHandler<TSendEmail> = (data) => {
     sendResetPasswordEmail(data);
   };
 
@@ -28,7 +27,7 @@ export const SendEmailPage = () => {
     <>
       <Header />
       <StyledMain>
-        <form onSubmit={handleSubmit(sendEmail)}>
+        <form onSubmit={handleSubmit(submit)}>
           <h2 className='heading-6-600'>Recuperação de senha</h2>
           <DefaultFormInput
             label='Envie seu email'
