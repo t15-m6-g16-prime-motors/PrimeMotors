@@ -1,10 +1,11 @@
 import { Response, Request } from 'express';
 import { listCarsWithFiltersService } from '../services/cars/listCarsQuery.service';
-import { TCarResponse, TCreateCarRequest } from '../interfaces/car.interfaces';
-import createCarsServices from '../services/cars/createCars.service';
+import { TCarResponse, TCarUpdateRequest, TCreateCarRequest } from '../interfaces/car.interfaces';
 import listCarsServices from '../services/cars/listCars.service';
 import { getByIdCarsService } from '../services/cars/getByIdCars.service';
 import { deleteContactsService } from '../services/cars/deleteCars.service';
+import createCarsService from '../services/cars/createCars.service';
+import updateCarService from '../services/cars/updateCars.service';
 
 const createCarController = async (
   req: Request,
@@ -12,7 +13,7 @@ const createCarController = async (
 ): Promise<Response> => {
   const carData: TCreateCarRequest = req.body;
   const userId: number = res.locals.id;
-  const newCar = await createCarsServices(carData, userId);
+  const newCar = await createCarsService(carData, userId);
   return res.status(201).json(newCar);
 };
 
@@ -35,17 +36,17 @@ const getByIdCarsController = async (
   return res.status(200).json(car);
 };
 
-// const updateCarController = async (
-//   req: Request,
-//   res: Response
-// ): Promise<Response> => {
-//   const carData: TCarUpdate = req.body;
-//   const carId = Number(req.params.id);
+const updateCarController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const carData: TCarUpdateRequest = req.body;
+  const carId = Number(req.params.id);
 
-//   const newCarData = await updateCarsService(carData, carId);
+  const newCarData = await updateCarService(carData, carId);
 
-//   return res.json(newCarData);
-// };
+  return res.json(newCarData);
+};
 
 const deleteCarController = async (req: Request, res: Response) => {
   const carId = Number(req.params.id);
@@ -69,7 +70,7 @@ export {
   createCarController,
   listCarsController,
   getByIdCarsController,
-  // updateCarController,
+  updateCarController,
   deleteCarController,
   listCarsWithFiltersController
 };
