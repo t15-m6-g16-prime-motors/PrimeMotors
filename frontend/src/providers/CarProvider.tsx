@@ -239,5 +239,15 @@ const selectedCarMock: ICar = {
   price: '',
   published: false,
   good_deal: false,
-  created_at: ''
+  created_at: '',
+  picture: {
+    id: 0,
+    coverImage: '',
+    image01: '',
+    image02: '',
+    image03: '',
+    image04: '',
+    image05: '',
+    image06: ''
+  }
 };

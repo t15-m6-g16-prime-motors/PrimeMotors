@@ -2,49 +2,59 @@ import { Repository } from 'typeorm';
 import { AppDataSource } from '../../data-source';
 import {
   TUserUpdateRequest,
-  TUserUpdateResponse,
+  TUserUpdateResponse
 } from '../../interfaces/user.interfaces';
 import { Address, User } from '../../entities';
 import { updateUserResponseSchema } from '../../schemas/users.schemas';
 
 const updateUsersService = async (
-  userId: number,
-  userData: TUserUpdateRequest
+  userData: TUserUpdateRequest,
+  userId: number
 ): Promise<TUserUpdateResponse> => {
-  const { address, ...restUserInfo } = userData;
+  const { address, ...userInfo } = userData;
+
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
-
-  if (restUserInfo) {
-  }
-
-  const oldUserData: User | null = await userRepository.findOne({
-    where: {
-      id: userId,
-    },
-    relations: {
-      address: true,
-    },
-  });
-
-  const newUserData: User = userRepository.create({
-    ...oldUserData,
-    ...restUserInfo,
-  });
-
-  await userRepository.save(newUserData);
 
   const addressRepository: Repository<Address> =
     AppDataSource.getRepository(Address);
 
-  const newAddressData: Address | null = addressRepository.create({
-    ...oldUserData.address,
-    ...address,
+  if (address) {
+    const oldAddress: Address | null = await addressRepository.findOne({
+      where: {
+        user: {
+          id: userId
+        }
+      }
+    });
+
+    console.log(oldAddress, address);
+
+    const newAddress: Address = addressRepository.create({
+      ...oldAddress,
+      ...address
+    });
+
+    await addressRepository.save(newAddress);
+  }
+
+  const oldUserData: User | null = await userRepository.findOne({
+    where: {
+      id: userId
+    },
+    relations: {
+      address: true
+    }
   });
 
-  await addressRepository.save(newAddressData);
+  const userNewInfos: User = userRepository.create({
+    ...oldUserData,
+    ...userInfo
+  });
+
+  const updatedUser: User = await userRepository.save(userNewInfos);
 
   const returnUser: TUserUpdateResponse =
-    updateUserResponseSchema.parse(newUserData);
+    updateUserResponseSchema.parse(updatedUser);
 
   return returnUser;
 };

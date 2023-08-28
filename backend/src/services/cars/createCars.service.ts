@@ -1,52 +1,62 @@
-import { Repository } from "typeorm";
-import { Car, Picture, User } from "../../entities";
-import { AppDataSource } from "../../data-source";
+import { Repository } from 'typeorm';
+import { Car, Picture, User } from '../../entities';
+import { AppDataSource } from '../../data-source';
 import {
-  TCarPictureRequest,
-  TCarRequest,
   TCarResponse,
-} from "../../interfaces/car.interfaces";
-import { carSchemaResponse } from "../../schemas/cars.schemas";
-import { AppError } from "../../errors/AppError";
+  TCreateCarRequest
+} from '../../interfaces/car.interfaces';
+import { carResponseSchema } from '../../schemas/cars.schemas';
+
+interface TCarPictures {
+  image03: string;
+  image04: string;
+  image05: string;
+  image06: string;
+}
 
 const createCarsServices = async (
-  carData: TCarPictureRequest,
+  carData: TCreateCarRequest,
   userId: number
-): Promise<TCarResponse> => {
+) => {
+  const { coverImage, image01, image02, extraImages, ...carFields } = carData;
+
+  const allImages: TCarPictures = Object.assign({}, ...extraImages);
+  console.log(allImages);
+
+  const userRepository: Repository<User> = AppDataSource.getRepository(User);
+
   const carRepository: Repository<Car> = AppDataSource.getRepository(Car);
 
   const pictureRepository: Repository<Picture> =
     AppDataSource.getRepository(Picture);
-  const { coverImage, image01, image02, extraImages, ...carFields } = carData;
-  console.log(carFields)
 
-  const userRepository: Repository<User> = AppDataSource.getRepository(User);
-
-  const user: User | null = await userRepository.findOne({
-    where: {
-      id: userId,
-    },
+  const user: User | null = await userRepository.findOneBy({
+    id: userId
   });
 
-  if (!user) {
-    throw new AppError("User not found", 409);
-  }
-
-  const car = carRepository.create({ carFields,user:user });
+  const car: Car = carRepository.create({ ...carFields, user: user! });
   await carRepository.save(car);
 
-  console.log(car)
-
-  const picture = pictureRepository.create({
+  const picture: Picture = pictureRepository.create({
     coverImage,
     image01,
     image02,
+    ...allImages,
+    car
   });
+
   await pictureRepository.save(picture);
+  
+  const createCarResponseParse: TCarResponse = {
+    ...car,
+    picture: {
+      ...picture
+    }
+  };
 
+  const returnCar = carResponseSchema.parse(createCarResponseParse);
 
-   const returnCar: TCarResponse = carSchemaResponse.parse(car); 
-   return returnCar; 
+  return returnCar;
 };
 
 export default createCarsServices;

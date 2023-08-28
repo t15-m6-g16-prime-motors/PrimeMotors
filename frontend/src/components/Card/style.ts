@@ -4,10 +4,12 @@ export const StyledCardContainer = styled.li`
   min-width: 14rem;
   cursor: pointer;
 
-  &:hover {
+  /* &:hover {
     border-left: 0.1rem inset transparent;
     border-right: 0.1rem inset transparent;
-  }
+  } */ 
+
+  // **** Comentei essa linha, o hover estava quebrando um pouco os cards. Se for para dar um efeito, acho que o scale: 105% resolve o problema. (Juliano) ****
 
   .imageContainer {
     background-color: var(--color-grey-7);

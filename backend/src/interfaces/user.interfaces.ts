@@ -1,30 +1,29 @@
 import { z } from 'zod';
 import {
-  createUserSchemaResponse,
-  updateUserRequestSchema,
+  createUserResponseSchema,
   updateUserResponseSchema,
-  userSchemaRequest,
-  userSchemaResponse,
-  usersSchemaResponse,
+  userListResponseSchema,
+  createUserRequestSchema,
+  userUpdateSchema
 } from '../schemas/users.schemas';
 import { DeepPartial } from 'typeorm';
 
-type TUserRequest = z.infer<typeof userSchemaRequest>;
+type TUserResponse = z.infer<typeof createUserResponseSchema>;
 
-type TUserResponse = z.infer<typeof userSchemaResponse>;
+type TCreateUserRequest = z.infer<typeof createUserRequestSchema>;
+type TCreateUserResponse = z.infer<typeof createUserResponseSchema>;
 
-type TUsersResponse = z.infer<typeof usersSchemaResponse>;
+type TUsersListResponse = z.infer<typeof userListResponseSchema>;
 
-type TCreateUserResponse = z.infer<typeof createUserSchemaResponse>;
-
-type TUserUpdateRequest = z.infer<typeof updateUserRequestSchema>;
+type TUserUpdate = z.infer<typeof userUpdateSchema>;
+type TUserUpdateRequest = DeepPartial<TUserUpdate>;
 type TUserUpdateResponse = z.infer<typeof updateUserResponseSchema>;
 
 export {
-  TUserRequest,
   TUserResponse,
-  TUsersResponse,
+  TCreateUserRequest,
+  TUsersListResponse,
   TCreateUserResponse,
   TUserUpdateRequest,
-  TUserUpdateResponse,
+  TUserUpdateResponse
 };

@@ -3,20 +3,20 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
-  PrimaryGeneratedColumn,
-} from "typeorm";
-import User from "./users.entity";
-import Car from "./cars.entity";
+  PrimaryGeneratedColumn
+} from 'typeorm';
+import User from './users.entity';
+import Car from './cars.entity';
 
-@Entity("comments")
+@Entity('comments')
 class Comment {
-  @PrimaryGeneratedColumn("increment")
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: "text", nullable: false })
+  @Column({ type: 'text' })
   comment: string;
 
-  @CreateDateColumn({ type: "date" })
+  @CreateDateColumn({ type: 'date' })
   created_at: string | Date;
 
   @ManyToOne(() => User, (user) => user.comment)
