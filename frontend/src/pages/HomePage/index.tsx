@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useCar, useLayout, useModal } from '../../hooks';
 import InputRange from '../../components/InputRange';
 import GenericModal from '../../components/Modal/ModalGeneric';
+import { EmptyBox } from '../../components/EmptyBox';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
@@ -180,11 +181,7 @@ export const HomePage = () => {
             <ul className='carsList'>
               {isFilterActive ? (
                 filteredCars.length < 1 ? (
-                  <div className='emptyBox'>
-                    <p>
-                      Nenhum anúncio foi encontrado seguindo esses critérios.
-                    </p>
-                  </div>
+                  <EmptyBox text='Nenhum anúncio foi postado até o momento' />
                 ) : (
                   filteredCars.map((car) => <Card key={car.id} car={car} />)
                 )

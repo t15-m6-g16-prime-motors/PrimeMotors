@@ -1,10 +1,11 @@
 import { StyledCardContainer } from './style';
 import { ICardProps } from '../../interfaces';
-import { useCar } from '../../hooks';
+import { useAuth, useCar } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 
 export const Card = ({ car }: ICardProps) => {
-  const { setSelectedCar } = useCar();
+  const { setSelectedCar, setSelectedSeller } = useCar();
+  const { getTwoInitials } = useAuth();
 
   const navigate = useNavigate();
 
@@ -12,20 +13,26 @@ export const Card = ({ car }: ICardProps) => {
     setSelectedCar(car);
     navigate('/listing');
   };
+
+  const handleProfileClick = () => {
+    setSelectedSeller(car.user);
+    navigate('/seller');
+  };
+
   return (
-    <StyledCardContainer onClick={handleClick}>
-      <div className='imageContainer'>
+    <StyledCardContainer>
+      <div className='imageContainer' onClick={handleClick}>
         <img src={car.picture.coverImage} alt='Car image' />
       </div>
-      <h3 className='title heading-7-600'>
+      <h3 className='title heading-7-600' onClick={handleClick}>
         {car.brand} - {car.model}
       </h3>
       <p className='description text-style-text-body-2-400'>
         {car.description}
       </p>
-      <div className='profile'>
-        <div>SL</div>
-        <p className='name text-style-text-body-2-500'>Samuel Leão</p>
+      <div className='profile' onClick={handleProfileClick}>
+        <div>{getTwoInitials(car.user.full_name)}</div>
+        <p className='name text-style-text-body-2-500'>{car.user.full_name}</p>
       </div>
       <div className='carInfo'>
         <div className='tagsContainer text-style-text-body-2-500'>

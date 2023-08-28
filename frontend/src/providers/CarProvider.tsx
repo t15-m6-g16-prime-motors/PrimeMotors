@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Dispatch, createContext, useEffect, useState } from 'react';
-import { ICar, IDefaultProviderProps } from '../interfaces';
+import { ICar, ICarUser, IDefaultProviderProps } from '../interfaces';
 import { api, apiKenzieCars } from '../services/api';
 import { ICreateCar } from '../components/Modal/CreateNewCar/createCar.schema';
 import { AxiosResponse } from 'axios';
@@ -41,6 +41,8 @@ interface ICarContextValues {
   carsByBrandFromApi: ICarByBrandFromKenzieAPI[];
   selectedCar: ICar;
   setSelectedCar: Dispatch<React.SetStateAction<ICar>>;
+  selectedSeller: ICarUser;
+  setSelectedSeller: Dispatch<React.SetStateAction<ICarUser>>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -60,6 +62,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [filterCar, setfilterCar] = useState('');
   const [isFilterActive, setIsFilterActive] = useState(false);
   const [selectedCar, setSelectedCar] = useState(selectedCarMock);
+  const [selectedSeller, setSelectedSeller] = useState(selectedSellerMock);
 
   const { handleShowModal } = useModal();
 
@@ -219,7 +222,9 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         carsByBrandFromApi,
         setCarsByBrandFromApi,
         selectedCar,
-        setSelectedCar
+        setSelectedCar,
+        selectedSeller,
+        setSelectedSeller
       }}
     >
       {children}
@@ -227,6 +232,14 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   );
 };
 
+const selectedSellerMock: ICarUser = {
+  id: 0,
+  description: '',
+  email: '',
+  full_name: '',
+  phone_number: '',
+  is_seller: true
+};
 const selectedCarMock: ICar = {
   id: 0,
   brand: '',
@@ -249,5 +262,6 @@ const selectedCarMock: ICar = {
     image04: '',
     image05: '',
     image06: ''
-  }
+  },
+  user: selectedSellerMock
 };
