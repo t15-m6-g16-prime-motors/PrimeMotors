@@ -6,6 +6,7 @@ import { loginUserSchema } from '../../schemas';
 import { useState } from 'react';
 import { LinkStyledToRegister } from '../../styles/Buttons';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -17,11 +18,13 @@ export const LoginForm = () => {
     resolver: zodResolver(loginUserSchema)
   });
 
-  const {signIn} = useAuth()
+  const { signIn } = useAuth();
+
+  const navigate = useNavigate();
 
   const submit: SubmitHandler<TLoginUser> = (formData) => {
     setLoading(false);
-    signIn(formData)
+    signIn(formData);
   };
 
   return (
@@ -43,7 +46,10 @@ export const LoginForm = () => {
         disabled={loading}
         error={errors.password}
       />
-      <span className='forgotPassword text-style-text-body-2-500'>
+      <span
+        className='forgotPassword text-style-text-body-2-500'
+        onClick={() => navigate('/resetPassword')}
+      >
         Esqueci minha senha
       </span>
 

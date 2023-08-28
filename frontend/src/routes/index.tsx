@@ -3,6 +3,8 @@ import { HomePage } from '../pages/HomePage';
 import { RegisterUserPage } from '../pages/RegisterUserPage';
 import { UserProfilePage } from '../pages/UserProfilePage';
 import { LoginPage } from '../pages/LoginPage';
+import { SendEmailPage } from '../pages/ResetPasswordPage/sendEmailPage';
+import { ResetPasswordPage } from '../pages/ResetPasswordPage/resetPasswordPage';
 import { ListingPage } from '../pages/ListingPage';
 
 export const RoutesMain = () => {
@@ -13,6 +15,8 @@ export const RoutesMain = () => {
       <Route path='/listing' element={<ListingPage />} />
       <Route path='/register' element={<RegisterUserPage />} />
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/resetPassword' element={<SendEmailPage />} />
+      <Route path='/resetPassword/:token' element={<ResetPasswordPage />} />
     </Routes>
   );
 };

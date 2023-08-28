@@ -10,7 +10,7 @@ const App = () => {
     <MainProvider>
       <ToastContainer
         position='top-right'
-        autoClose={1000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -19,7 +19,6 @@ const App = () => {
         draggable
         pauseOnHover
         theme='light'
-        // className='toastContainer'
       />
       <Reset />
       <GlobalStyle />
