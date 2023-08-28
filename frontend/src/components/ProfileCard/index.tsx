@@ -1,12 +1,21 @@
+import { useNavigate } from 'react-router-dom';
+import { useCar } from '../../hooks';
 import { ICardProps } from '../../interfaces';
-import carSvg from '../../utils/images/mustang.svg';
 import { StyledProfileCardContainer } from './style';
 
 export const ProfileCard = ({ car }: ICardProps) => {
+  const { setSelectedCar } = useCar();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setSelectedCar(car);
+    navigate('/listing');
+  };
+
   return (
     <StyledProfileCardContainer>
       <div className='imageContainer'>
-        <img src={carSvg} alt='Car image' />
+        <img src={car.picture.coverImage} alt='Car image' />
         {car.published ? (
           <div className='activeTag text-style-text-body-2-500'>Ativo</div>
         ) : (
@@ -34,7 +43,9 @@ export const ProfileCard = ({ car }: ICardProps) => {
       </div>
       <div className='buttonsContainer'>
         <button className='editButton'>Editar</button>
-        <button className='detailButton'>Ver detalhes</button>
+        <button className='detailButton' onClick={handleClick}>
+          Ver detalhes
+        </button>
       </div>
     </StyledProfileCardContainer>
   );
