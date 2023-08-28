@@ -13,17 +13,19 @@ export const StyledCardContainer = styled.li`
 
   .imageContainer {
     background-color: var(--color-grey-7);
-    max-width: 100%;
-    max-height: 15rem;
+    width: 100%;
+    height: 50%;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
 
   .imageContainer img {
     height: 100%;
     max-width: 100%;
+    object-fit: cover;
   }
 
   .title {
