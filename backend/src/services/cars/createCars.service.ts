@@ -14,7 +14,7 @@ interface TCarPictures {
   image06: string;
 }
 
-const createCarsServices = async (
+const createCarsService = async (
   carData: TCreateCarRequest,
   userId: number
 ) => {
@@ -59,4 +59,4 @@ const createCarsServices = async (
   return returnCar;
 };
 
-export default createCarsServices;
+export default createCarsService;

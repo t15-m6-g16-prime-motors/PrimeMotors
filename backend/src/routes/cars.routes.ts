@@ -4,11 +4,12 @@ import {
   deleteCarController,
   getByIdCarsController,
   listCarsController,
-  listCarsWithFiltersController
+  listCarsWithFiltersController,
+  updateCarController
 } from '../controllers/cars.controller';
 import { ensureAuthMiddleware } from '../middlewares/ensureAuthMiddleware';
 import { ensureDataIsValid } from '../middlewares/ensureDataIsValid.middleware';
-import { createCarRequestSchema } from '../schemas/cars.schemas';
+import { carUpdateRequestSchema, createCarRequestSchema } from '../schemas/cars.schemas';
 import ensureCarIdMiddleware from '../middlewares/ensureCarIdExists.middleware';
 import { ensureIsOwnerMiddleware } from '../middlewares/ensureIsOwner.middleware';
 
@@ -23,14 +24,16 @@ carRoutes.post(
 );
 carRoutes.get('', listCarsController);
 carRoutes.get('/:id', ensureCarIdMiddleware, getByIdCarsController);
-// carRoutes.patch(
-//   '/:id',
-//   ensureAuthMiddleware,
-//   ensureIsOwnerMiddleware,
-//   ensureCarIdMiddleware,
-//   ensureDataIsValid(carsSchemaUpdate),
-//   updateCarController
-// );
+
+carRoutes.patch(
+  '/:id',
+  ensureAuthMiddleware,
+  ensureIsOwnerMiddleware,
+  ensureCarIdMiddleware,
+  ensureDataIsValid(carUpdateRequestSchema),
+  updateCarController
+);
+
 carRoutes.delete(
   '/:id',
   ensureAuthMiddleware,

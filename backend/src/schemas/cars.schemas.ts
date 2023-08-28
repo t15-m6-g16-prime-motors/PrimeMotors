@@ -65,13 +65,7 @@ const carResponseSchema = carSchema.extend({
   })
 });
 
-const carsSchemaUpdate = carSchema
-  .omit({
-    id: true,
-    published_in: true,
-    created_at: true
-  })
-  .partial();
+const carUpdateRequestSchema = createCarRequestSchema.partial();
 
 const carsListSchemaResponse = z.array(
   carResponseSchema.extend({
@@ -90,8 +84,8 @@ const carsListSchemaResponse = z.array(
 export {
   carSchema,
   carsSchemaRequest,
-  carsSchemaUpdate,
   carsListSchemaResponse,
   createCarRequestSchema,
-  carResponseSchema
+  carResponseSchema,
+  carUpdateRequestSchema,
 };
