@@ -39,7 +39,6 @@ const EditDeleteUser = () => {
   const [newDescription, setNewDescription] = useState<string | undefined>(
     user?.description
   );
-  console.log(newDescription);
 
   const {
     handleSubmit,
@@ -55,14 +54,14 @@ const EditDeleteUser = () => {
     if (user?.cpf === newCPF) {
       delete updatedUserFormData.cpf;
     }
-    
+
     const formatDate = (date: string) => {
       const dateArray = date.split(`/`);
       return dateArray.reverse().join('-');
     };
-    
+
     updatedUserFormData.birthdate = formatDate(newBirthdate!);
-    
+
     editUser(updatedUserFormData);
   };
 

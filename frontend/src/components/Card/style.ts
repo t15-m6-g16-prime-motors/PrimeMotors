@@ -2,9 +2,9 @@ import { styled } from 'styled-components';
 
 export const StyledCardContainer = styled.li`
   min-width: 14rem;
-  transition: 0.2s;
+  transition: 0.5s;
   &:hover {
-    scale: 0.995;
+    scale: 0.98;
   }
 
   .imageContainer {
