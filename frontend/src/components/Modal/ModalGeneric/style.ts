@@ -19,8 +19,13 @@ const ModalContainer = styled.section`
     background-color: var(--color-white-fixed);
     border-radius: 8px;
     padding: 0 16px 0 16px;
+
+    section {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
   }
-  
+
   .modalHeader {
     background-color: var(--color-white-fixed);
     display: flex;

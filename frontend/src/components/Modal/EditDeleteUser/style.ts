@@ -5,7 +5,7 @@ const EditUserContainer = styled.section`
   flex-direction: column;
   gap: 8px;
   padding: 0 8px 16px 8px;
-  max-height: 45rem;
+  max-height: 80vh;
   overflow-y: auto;
 
   .buttons__container {
