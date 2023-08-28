@@ -68,6 +68,11 @@ export const StyledMain = styled.main`
       }
     }
   }
+
+  .listSection {
+    padding: 1rem 1rem;
+  }
+
   div.pagination {
     width: 100%;
     display: flex;
@@ -149,9 +154,11 @@ export const StyledMain = styled.main`
       grid-template-columns: repeat(3, 1fr);
       overflow-x: visible;
       box-sizing: border-box;
+
+      position: relative;
+      min-height: 15rem;
     }
-  }
-  @media (min-width: 768px) {
+
     section.container-profile {
       div.info-profile {
         width: 80%;
@@ -160,6 +167,11 @@ export const StyledMain = styled.main`
         padding-top: 4rem;
         padding-bottom: 18rem;
       }
+    }
+
+    .listSection {
+      width: 90%;
+      margin: 0 auto;
     }
   }
   @media (min-width: 1024px) {

@@ -145,8 +145,7 @@ export const StyledMain = styled.main`
       overflow-x: visible;
       box-sizing: border-box;
     }
-  }
-  @media (min-width: 768px) {
+
     section.container-profile {
       div.info-profile {
         width: 80%;

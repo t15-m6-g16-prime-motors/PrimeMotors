@@ -121,6 +121,9 @@ export const StyledMain = styled.main`
     overflow-x: scroll;
     padding-bottom: 1.2rem;
     height: max-content;
+
+    position: relative;
+    min-height: 15rem;
   }
 
   /* Pagination */
@@ -236,17 +239,17 @@ export const StyledMain = styled.main`
   }
 
   @keyframes modalAppear {
-      0% {
-        transform: translateX(-200%);
-      }
-
-      100% {
-        transform: translate(0);
-      }
+    0% {
+      transform: translateX(-200%);
     }
 
-    .slideRigth {
-      animation: modalAppear;
-      animation-duration: 0.5s;
+    100% {
+      transform: translate(0);
     }
+  }
+
+  .slideRigth {
+    animation: modalAppear;
+    animation-duration: 0.5s;
+  }
 `;

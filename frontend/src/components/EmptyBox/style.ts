@@ -6,10 +6,12 @@ export const StyledBox = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 15rem;
+  height: 100%;
 
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   font-weight: 500;
-  color: var(--color-grey-0);
+  color: var(--color-grey-2);
   text-align: center;
+
+  position: absolute;
 `;
