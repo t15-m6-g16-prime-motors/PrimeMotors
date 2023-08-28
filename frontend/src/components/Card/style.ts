@@ -2,14 +2,10 @@ import { styled } from 'styled-components';
 
 export const StyledCardContainer = styled.li`
   min-width: 14rem;
-  cursor: pointer;
-
-  /* &:hover {
-    border-left: 0.1rem inset transparent;
-    border-right: 0.1rem inset transparent;
-  } */ 
-
-  // **** Comentei essa linha, o hover estava quebrando um pouco os cards. Se for para dar um efeito, acho que o scale: 105% resolve o problema. (Juliano) ****
+  transition: 0.2s;
+  &:hover {
+    scale: 0.995;
+  }
 
   .imageContainer {
     background-color: var(--color-grey-7);
@@ -20,6 +16,12 @@ export const StyledCardContainer = styled.li`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
+    cursor: pointer;
+    transition: 0.1s;
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   .imageContainer img {
@@ -31,6 +33,12 @@ export const StyledCardContainer = styled.li`
   .title {
     margin: 1rem 0;
     color: var(--color-grey-1);
+
+    cursor: pointer;
+    transition: 0.1s;
+    &:hover {
+      color: var(--color-brand-1);
+    }
   }
 
   .description {
@@ -52,6 +60,12 @@ export const StyledCardContainer = styled.li`
     justify-content: flex-start;
     align-items: center;
     gap: 0.5rem;
+
+    cursor: pointer;
+    transition: 0.1s;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   .profile > div {

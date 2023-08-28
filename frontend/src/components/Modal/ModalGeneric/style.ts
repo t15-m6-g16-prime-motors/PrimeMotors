@@ -20,7 +20,7 @@ const ModalContainer = styled.section`
     border-radius: 8px;
     padding: 0 16px 0 16px;
   }
-  
+
   .modalHeader {
     background-color: var(--color-white-fixed);
     display: flex;

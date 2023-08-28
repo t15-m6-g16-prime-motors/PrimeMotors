@@ -1,3 +1,5 @@
+import { ICarUser } from '.';
+
 export interface ICar {
   id: number;
   brand: string;
@@ -13,6 +15,7 @@ export interface ICar {
   created_at: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
+  user: ICarUser;
   picture: {
     id: number;
     coverImage: string;

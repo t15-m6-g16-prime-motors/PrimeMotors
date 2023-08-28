@@ -4,7 +4,8 @@ import {
   TLoginUser,
   IAddress,
   IRegisterUserRequest,
-  TSendEmail
+  TSendEmail,
+  ICarUser
 } from './users.interfaces';
 import { IFilterAttributeProps } from './filterAttributeProps.interfaces';
 import { ICardProps } from './cardProps.interfaces';
@@ -21,5 +22,6 @@ export type {
   IAddress,
   IRegisterUserRequest,
   TComment,
-  TSendEmail
+  TSendEmail,
+  ICarUser
 };
