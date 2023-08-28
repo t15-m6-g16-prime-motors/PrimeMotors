@@ -46,14 +46,15 @@ const createCarsServices = async (
   });
 
   await pictureRepository.save(picture);
-  const teste1: TCarResponse = {
+  
+  const createCarResponseParse: TCarResponse = {
     ...car,
     picture: {
       ...picture
     }
   };
 
-  const returnCar = carResponseSchema.parse(teste1);
+  const returnCar = carResponseSchema.parse(createCarResponseParse);
 
   return returnCar;
 };
