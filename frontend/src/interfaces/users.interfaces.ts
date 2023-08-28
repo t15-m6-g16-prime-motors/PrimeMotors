@@ -41,5 +41,14 @@ export interface IRegisterUserRequest {
   address: IAddress;
 }
 
+export interface ICarUser {
+  id: number;
+  description: string;
+  email: string;
+  full_name: string;
+  is_seller: boolean;
+  phone_number: string;
+}
+
 export type TSendEmail = z.infer<typeof sendEmailSchema>;
 export type TResetPassword = z.infer<typeof resetPasswordSchema>;
