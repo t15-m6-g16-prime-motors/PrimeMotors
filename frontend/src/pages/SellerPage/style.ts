@@ -68,6 +68,11 @@ export const StyledMain = styled.main`
       }
     }
   }
+
+  .listSection {
+    padding: 1rem 1rem;
+  }
+
   div.pagination {
     width: 100%;
     display: flex;
@@ -115,6 +120,11 @@ export const StyledMain = styled.main`
   div.previousNextBtnContainer > button:hover {
     color: var(--color-brand-3);
   }
+
+  .listingsTitle {
+    margin: 1rem 0 2rem;
+  }
+
   ul.carsList {
     display: flex;
     gap: 1rem;
@@ -144,6 +154,9 @@ export const StyledMain = styled.main`
       grid-template-columns: repeat(3, 1fr);
       overflow-x: visible;
       box-sizing: border-box;
+
+      position: relative;
+      min-height: 15rem;
     }
 
     section.container-profile {
@@ -154,6 +167,11 @@ export const StyledMain = styled.main`
         padding-top: 4rem;
         padding-bottom: 18rem;
       }
+    }
+
+    .listSection {
+      width: 90%;
+      margin: 0 auto;
     }
   }
   @media (min-width: 1024px) {

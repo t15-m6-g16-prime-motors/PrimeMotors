@@ -6,13 +6,13 @@ import { ModalProvider } from './ModalProvider';
 
 const MainProvider = ({ children }: IDefaultProviderProps) => {
   return (
-    <ModalProvider>
-      <LayoutProvider>
+    <LayoutProvider>
+      <ModalProvider>
         <AuthProvider>
           <CarProvider>{children}</CarProvider>
         </AuthProvider>
-      </LayoutProvider>
-    </ModalProvider>
+      </ModalProvider>
+    </LayoutProvider>
   );
 };
 
