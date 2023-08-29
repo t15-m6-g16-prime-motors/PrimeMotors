@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import EditDeleteCarContainer from './style';
 import { useCar } from '../../../hooks';
 import DefaultSelectInput from '../../DefaultSelectInput';
@@ -34,7 +35,7 @@ const EditDeleteCar = () => {
   useEffect(() => {
     objectSelectedInputCar(carToEdit!.model.toLowerCase());
     setAllBrandsFromApi([carToEdit!.brand]);
-    setNewCarFipValue('')
+    setNewCarFipValue('');
   }, []);
 
   const [newKilometrage, setNewKilometrage] = useState(carToEdit.kilometrage);

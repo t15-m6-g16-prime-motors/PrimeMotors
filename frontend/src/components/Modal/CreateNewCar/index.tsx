@@ -28,7 +28,8 @@ const CreateNewCar = () => {
     getModelsCarsByBrandFromKenzieCars,
     selectedInputCar,
     objectSelectedInputCar,
-    newCarFipValue
+    newCarFipValue,
+    setSelectedInputCar
   } = useCar();
 
   const [extraImages, setExtraImages] = useState<Array<string>>([
@@ -58,6 +59,7 @@ const CreateNewCar = () => {
 
   useEffect(() => {
     getAllCarsBrandsFromKenzieCars();
+    setSelectedInputCar(undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
