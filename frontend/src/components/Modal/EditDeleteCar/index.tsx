@@ -1,35 +1,54 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  ButtonBrand,
-  ButtonOpacity,
-  NegativeButton
-} from '../../../styles/Buttons';
-import { DefaultFormInput } from '../../DefaultFormInput';
+import EditDeleteCarContainer from './style';
+import { useCar } from '../../../hooks';
 import DefaultSelectInput from '../../DefaultSelectInput';
-import DefaultTextArea from '../../DefaultTextArea';
-import { NewCarContainer } from './style';
 import { useFieldArray, useForm } from 'react-hook-form';
 import {
   ICreateCar,
   ICreateCarComplete,
   createCarSchema
-} from './createCar.schema';
-import { useContext, useEffect, useState } from 'react';
-import { ModalContext } from '../../../providers/ModalProvider';
+} from '../CreateNewCar/createCar.schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { DefaultFormInput } from '../../DefaultFormInput';
+import DefaultTextArea from '../../DefaultTextArea';
+import { useEffect, useState } from 'react';
+import {
+  ButtonBrand,
+  ButtonOpacity,
+  NegativeButton
+} from '../../../styles/Buttons';
 import { FiTrash2 } from 'react-icons/fi';
-import { useCar } from '../../../hooks';
 
-const CreateNewCar = () => {
+const EditDeleteCar = () => {
   const {
-    handleCreateCar,
+    carToEdit,
     modelsByBrandsFromApi,
-    allBrandsFromApi,
-    getAllCarsBrandsFromKenzieCars,
-    getModelsCarsByBrandFromKenzieCars,
-    selectedInputCar,
     objectSelectedInputCar,
-    newCarFipValue
+    selectedInputCar,
+    setAllBrandsFromApi,
+    handleUpdateCar,
+    handleDeleteCar,
+    newCarFipValue,
+    setNewCarFipValue
   } = useCar();
+
+  useEffect(() => {
+    objectSelectedInputCar(carToEdit!.model.toLowerCase());
+    setAllBrandsFromApi([carToEdit!.brand]);
+    setNewCarFipValue('')
+  }, []);
+
+  const [newKilometrage, setNewKilometrage] = useState(carToEdit.kilometrage);
+  const [newPrice, setNewPrice] = useState(carToEdit.price);
+  const [newColor, setNewColor] = useState(carToEdit.color);
+  const [newDescription, setNewDescription] = useState(carToEdit.description);
+  const [published_in, setPublished_in] = useState<boolean>(
+    carToEdit.published
+  );
+  const [newCoverImage, setNewCoverImage] = useState(
+    carToEdit.picture.coverImage
+  );
+  const [newImage01, setNewImage01] = useState(carToEdit.picture.image01);
+  const [newImage02, setNewImage02] = useState(carToEdit.picture.image02);
 
   const [extraImages, setExtraImages] = useState<Array<string>>([
     'image03',
@@ -42,24 +61,25 @@ const CreateNewCar = () => {
     []
   );
 
-  const { handleCloseModal } = useContext(ModalContext);
+  const handlePublishedClick = () => {
+    setPublished_in(true);
+  };
+
+  const handleNotPublishedClick = () => {
+    setPublished_in(false);
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     control
-  } = useForm<ICreateCar>({ resolver: zodResolver(createCarSchema) });
+  } = useForm<ICreateCar>({ resolver: zodResolver(createCarSchema.partial()) });
 
   const { append, remove } = useFieldArray({
     name: 'extraImages',
     control
   });
-
-  useEffect(() => {
-    getAllCarsBrandsFromKenzieCars();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const addMoreImages = () => {
     setExtraImages(extraImages.sort());
@@ -93,6 +113,7 @@ const CreateNewCar = () => {
             placeholder='https://...'
             {...register(`extraImages.${index}.${image}`)}
             error={errors.extraImages?.[index]?.[image]}
+            value={carToEdit.picture.image03}
           />
           <button
             className='button__deleteInput'
@@ -115,33 +136,24 @@ const CreateNewCar = () => {
 
     const newCarData: ICreateCarComplete = {
       ...newCarFormData,
+      brand: carToEdit.brand,
       good_deal: good_deal,
       fuel_type: selectedInputCar!.fuel,
       year: Number(selectedInputCar?.year),
       kilometrage: Number(newCarFormData?.kilometrage),
-      extraImages: [...newCarFormData.extraImages]
+      extraImages: [...newCarFormData.extraImages],
+      published: published_in
     };
 
-    handleCreateCar(newCarData);
+    console.log(newCarData);
+
+    handleUpdateCar(newCarData);
   };
 
   return (
-    <NewCarContainer>
-      <p className='text-style-text-body-2-500'>Informações do veículo</p>
+    <EditDeleteCarContainer>
       <form onSubmit={handleSubmit(handlesubmitNewCar)}>
-        <DefaultSelectInput
-          onChange={async (event) => {
-            await getModelsCarsByBrandFromKenzieCars(
-              event.target.value.toLowerCase()
-            );
-          }}
-          name={'brand'}
-          array={allBrandsFromApi}
-          about='Selecione a marca'
-          label='Marca'
-          register={register('brand')}
-          error={errors.brand}
-        />
+        <p className='text-style-text-body-2-500'>Informações do veículo</p>
         <DefaultSelectInput
           onChange={(event) => {
             objectSelectedInputCar(event.target.value.toLocaleLowerCase());
@@ -149,76 +161,118 @@ const CreateNewCar = () => {
           name={'model'}
           array={modelsByBrandsFromApi}
           about='Selecione o modelo'
+          defaultValue={carToEdit.model}
           label='Modelo'
           register={register('model')}
           error={errors.model}
         />
+
         <div className='carInfos__otherInfos'>
           <DefaultFormInput
             label='Ano'
             placeholder='Ano'
-            value={selectedInputCar?.year || ''}
+            defaultValue={selectedInputCar?.year || ''}
             disabled={true}
           />
+
           <DefaultFormInput
             label='Combustível'
             placeholder='Combustível'
-            value={selectedInputCar?.fuel || ''}
+            defaultValue={selectedInputCar?.fuel || ''}
             disabled={true}
           />
+
           <DefaultFormInput
             label='Quilometragem'
             placeholder='Quilometragem'
             {...register('kilometrage')}
             error={errors.kilometrage}
+            defaultValue={newKilometrage}
           />
+
           <DefaultFormInput
             label='Cor'
             placeholder='Cor'
             {...register('color')}
             error={errors.color}
+            defaultValue={newColor}
           />
+
           <DefaultFormInput
             label='Tabela FIP'
             placeholder='Tabela FIP'
             value={selectedInputCar?.value || ''}
             disabled={true}
           />
+
           <DefaultFormInput
             label='Preço'
             placeholder='Preço'
             {...register('price')}
             error={errors.price}
+            defaultValue={newPrice}
           />
         </div>
+
         <DefaultTextArea
           name={'description'}
           register={register('description')}
           error={errors.description}
+          contentValue={newDescription}
         />
+
+        <p className='text-style-text-body-2-500'>Publicado</p>
+        <div className='rowContainer'>
+          <div
+            className={
+              published_in
+                ? 'yes active text-style-text-body-1-600'
+                : 'yes text-style-text-body-1-600'
+            }
+            onClick={handlePublishedClick}
+          >
+            Sim
+          </div>
+          <div
+            className={
+              published_in
+                ? 'no text-style-text-body-1-600'
+                : 'no active text-style-text-body-1-600'
+            }
+            onClick={handleNotPublishedClick}
+          >
+            Não
+          </div>
+        </div>
+
         <div className='imagesLinkInputs'>
           <DefaultFormInput
             label='Imagem de Capa'
             placeholder='https://...'
             {...register('coverImage')}
             error={errors.coverImage}
+            defaultValue={newCoverImage}
           />
           <DefaultFormInput
             label='Imagem 01 da Galeria'
             placeholder='https://...'
             {...register('image01')}
             error={errors.image01}
+            defaultValue={newImage01}
           />
           <DefaultFormInput
             label='Imagem 02 da Galeria'
             placeholder='https://...'
             {...register('image02')}
             error={errors.image02}
+            defaultValue={newImage02}
           />
 
+          {carToEdit.picture.image03 ? (
+            
+          ) : ()}
           <NewInputImg />
         </div>
-
         <div className='carButtons'>
           <div className='carButtons__addImg'>
             <ButtonOpacity
@@ -234,20 +288,25 @@ const CreateNewCar = () => {
           </div>
           <div className='carButtons__deleteSave'>
             <NegativeButton
-              onClick={handleCloseModal}
+              type='button'
+              onClick={() => {
+                handleDeleteCar();
+              }}
               className='buttons-style-button-size-big'
             >
-              Cancelar
+              Excluir Anúncio
             </NegativeButton>
-
-            <ButtonBrand className='buttons-style-button-size-big'>
+            <ButtonBrand
+              type='submit'
+              className='buttons-style-button-size-big'
+            >
               Salvar
             </ButtonBrand>
           </div>
         </div>
       </form>
-    </NewCarContainer>
+    </EditDeleteCarContainer>
   );
 };
 
-export default CreateNewCar;
+export default EditDeleteCar;

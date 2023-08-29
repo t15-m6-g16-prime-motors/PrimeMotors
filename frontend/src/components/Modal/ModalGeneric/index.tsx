@@ -9,6 +9,7 @@ import EditDeleteUser from '../EditDeleteUser';
 import CreateCarModalResponse from '../CreateNewCar/createCarModalResponse';
 import DeleteUserConfirmation from '../DeleteUserConfirmation';
 import EditUserAddress from '../EditUserAddress';
+import EditDeleteCar from '../EditDeleteCar';
 
 const GenericModal = ({ type }: IGenericModalProps) => {
   const { ref } = useContext(ModalContext);
@@ -61,6 +62,14 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                 <>
                   <ModalHeader title={'Deletar Usuário'} />
                   <DeleteUserConfirmation />
+                </>
+              );
+
+              case 'editCar':
+              return (
+                <>
+                  <ModalHeader title={'Editar Usuário'} />
+                  <EditDeleteCar />
                 </>
               );
 

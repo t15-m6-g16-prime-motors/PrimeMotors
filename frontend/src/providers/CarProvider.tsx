@@ -6,6 +6,7 @@ import { ICreateCar } from '../components/Modal/CreateNewCar/createCar.schema';
 import { AxiosResponse } from 'axios';
 import { ICarByBrandFromKenzieAPI } from '../interfaces/cars.interfaces';
 import { useModal } from '../hooks';
+import { toast } from 'react-toastify';
 
 interface ICarContextValues {
   allCars: ICar[];
@@ -39,10 +40,21 @@ interface ICarContextValues {
     React.SetStateAction<ICarByBrandFromKenzieAPI[]>
   >;
   carsByBrandFromApi: ICarByBrandFromKenzieAPI[];
+  newCarFipValue: string | number;
+  setNewCarFipValue: Dispatch<React.SetStateAction<string | number>>;
   selectedCar: ICar;
   setSelectedCar: Dispatch<React.SetStateAction<ICar>>;
   selectedSeller: ICarUser;
   setSelectedSeller: Dispatch<React.SetStateAction<ICarUser>>;
+  findCarToEdit: (id: number) => void;
+  carToEdit: ICar;
+  selectedInputCar: ICarByBrandFromKenzieAPI | undefined;
+  setSelectedInputCar: Dispatch<
+    React.SetStateAction<ICarByBrandFromKenzieAPI | undefined>
+  >;
+  objectSelectedInputCar: (model: string) => void;
+  handleUpdateCar: (newCarData: ICreateCar) => Promise<void>;
+  handleDeleteCar: () => Promise<void>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -63,6 +75,11 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [isFilterActive, setIsFilterActive] = useState(false);
   const [selectedCar, setSelectedCar] = useState(selectedCarMock);
   const [selectedSeller, setSelectedSeller] = useState(selectedSellerMock);
+  const [carToEdit, setCarToEdit] = useState(({} as ICar) || undefined);
+  const [newCarFipValue, setNewCarFipValue] = useState<string | number>('');
+  const [selectedInputCar, setSelectedInputCar] = useState(
+    {} as ICarByBrandFromKenzieAPI | undefined
+  );
 
   const { handleShowModal } = useModal();
 
@@ -179,14 +196,90 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const getModelsCarsByBrandFromKenzieCars = async (brand: string) => {
-    const carsByBrand: AxiosResponse<Array<ICarByBrandFromKenzieAPI>> =
-      await apiKenzieCars.get<Array<ICarByBrandFromKenzieAPI>>(
-        `/cars?brand=${brand}`
+    try {
+      const carsByBrand: AxiosResponse<Array<ICarByBrandFromKenzieAPI>> =
+        await apiKenzieCars.get<Array<ICarByBrandFromKenzieAPI>>(
+          `/cars?brand=${brand}`
+        );
+
+      const carsModels = carsByBrand.data.map((car) => car.name);
+      setCarsByBrandFromApi(carsByBrand.data);
+      setModelsByBrandsFromApi(carsModels);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const objectSelectedInputCar = (model: string) => {
+    const car = carsByBrandFromApi.find((car) => car.name === model);
+    setNewCarFipValue(car!.value);
+
+    if (car?.fuel === 1) {
+      car.fuel = 'Flex';
+    }
+
+    if (car?.fuel === 2) {
+      car.fuel = 'Híbrido';
+    }
+
+    if (car?.fuel === 3) {
+      car.fuel = 'Elétrico';
+    }
+
+    car!.value = car!.value.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+
+    setSelectedInputCar(car);
+  };
+
+  const findCarToEdit = async (id: number) => {
+    try {
+      const carFound: ICar | undefined = allCars.find((car) => car.id === id);
+      await getModelsCarsByBrandFromKenzieCars(carFound!.brand.toLowerCase());
+      setCarToEdit(carFound!);
+      handleShowModal('editCar');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdateCar = async (newCarData: ICreateCar) => {
+    console.log(newCarData);
+
+    try {
+      const newCarResponse: AxiosResponse = await api.patch<ICreateCar>(
+        `/cars/${carToEdit.id}`,
+        newCarData,
+        headersAuth
       );
 
-    const carsModels = carsByBrand.data.map((car) => car.name);
-    setCarsByBrandFromApi(carsByBrand.data);
-    setModelsByBrandsFromApi(carsModels);
+      if (newCarResponse.status === 200) {
+        getCars();
+        // handleShowModal('createNewCarResponse');
+      }
+    } catch (error) {
+      // const requestError = error as AxiosError<IAxiosErrorMessage>;
+      console.log(error);
+    }
+  };
+
+  const handleDeleteCar = async () => {
+    try {
+      const deleteCarResponse: AxiosResponse = await api.delete(
+        `/cars/${carToEdit.id}`,
+        headersAuth
+      );
+
+      if (deleteCarResponse.status === 204) {
+        toast.success('Anúncio Deletado');
+        getCars();
+      }
+    } catch (error) {
+      // const requestError = error as AxiosError<IAxiosErrorMessage>;
+      console.log(error);
+    }
   };
 
   return (
@@ -224,7 +317,16 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         selectedCar,
         setSelectedCar,
         selectedSeller,
-        setSelectedSeller
+        setSelectedSeller,
+        findCarToEdit,
+        carToEdit,
+        newCarFipValue,
+        setNewCarFipValue,
+        selectedInputCar,
+        setSelectedInputCar,
+        objectSelectedInputCar,
+        handleUpdateCar,
+        handleDeleteCar
       }}
     >
       {children}
