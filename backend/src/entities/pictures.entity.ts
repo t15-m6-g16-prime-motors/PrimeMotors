@@ -33,7 +33,7 @@ class Picture {
   @Column({ type: 'text', nullable: true })
   image06: string;
 
-  @OneToOne(() => Car, (car) => car.picture)
+  @OneToOne(() => Car, (car) => car.picture, { onDelete: 'CASCADE' })
   @JoinColumn()
   car: Car;
 }
