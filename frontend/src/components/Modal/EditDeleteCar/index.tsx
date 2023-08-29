@@ -267,10 +267,6 @@ const EditDeleteCar = () => {
             error={errors.image02}
             defaultValue={newImage02}
           />
-
-          {carToEdit.picture.image03 ? (
-            
-          ) : ()}
           <NewInputImg />
         </div>
         <div className='carButtons'>
