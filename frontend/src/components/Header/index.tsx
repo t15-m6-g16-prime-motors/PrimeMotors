@@ -5,7 +5,7 @@ import { StyledHeader } from './style';
 import { useContext, useState } from 'react';
 import { LinkStyledToLogin, LinkStyledToRegister } from '../../styles/Buttons';
 import { useNavigate } from 'react-router-dom';
-import { useAuth, useCar, useLayout } from '../../hooks';
+import { useAuth, useLayout } from '../../hooks';
 import { BiChevronUp, BiChevronDown } from 'react-icons/bi';
 import { ModalContext } from '../../providers/ModalProvider';
 // import { useAuth, useModal } from '../../hooks';
@@ -16,19 +16,11 @@ export const Header = () => {
   const { user, getTwoInitials, handleLogout } = useAuth();
   const { windowWidth } = useLayout();
   const { handleShowModal } = useContext(ModalContext);
-  const { findCarToEdit } = useCar();
 
   const navigate = useNavigate();
 
   return (
     <StyledHeader>
-      <button
-        onClick={async () => {
-          findCarToEdit(7);
-        }}
-      >
-        Editar Anúncio
-      </button>
       <button
         onClick={() => {
           handleShowModal('createNewCar');

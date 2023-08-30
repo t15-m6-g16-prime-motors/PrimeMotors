@@ -68,7 +68,7 @@ const GenericModal = ({ type }: IGenericModalProps) => {
               case 'editCar':
               return (
                 <>
-                  <ModalHeader title={'Editar Usuário'} />
+                  <ModalHeader title={'Editar Anúncio'} />
                   <EditDeleteCar />
                 </>
               );

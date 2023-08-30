@@ -36,9 +36,13 @@ const EditDeleteCar = () => {
     objectSelectedInputCar(carToEdit!.model.toLowerCase());
     setAllBrandsFromApi([carToEdit!.brand]);
     setNewCarFipValue('');
+    verifyExistingExtraImagesCar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [newKilometrage, setNewKilometrage] = useState(carToEdit.kilometrage);
+  const [newKilometrage, setNewKilometrage] = useState<string | number>(
+    carToEdit.kilometrage
+  );
   const [newPrice, setNewPrice] = useState(carToEdit.price);
   const [newColor, setNewColor] = useState(carToEdit.color);
   const [newDescription, setNewDescription] = useState(carToEdit.description);
@@ -51,16 +55,22 @@ const EditDeleteCar = () => {
   const [newImage01, setNewImage01] = useState(carToEdit.picture.image01);
   const [newImage02, setNewImage02] = useState(carToEdit.picture.image02);
 
-  const [extraImages, setExtraImages] = useState<Array<string>>([
-    'image03',
-    'image04',
-    'image05',
-    'image06'
+  const arrayOfAllPicures = Object.entries(carToEdit.picture);
+
+  const arrayOfExtraPictures = [
+    arrayOfAllPicures[4],
+    arrayOfAllPicures[5],
+    arrayOfAllPicures[6],
+    arrayOfAllPicures[7]
+  ];
+
+  const [extraImages, setExtraImages] = useState<[string, string | number][]>([
+    ...arrayOfExtraPictures
   ]);
 
-  const [existingExtraImages, setExistingExtraImages] = useState<Array<string>>(
-    []
-  );
+  const [existingExtraImages, setExistingExtraImages] = useState<
+    [string, string | number][]
+  >([]);
 
   const handlePublishedClick = () => {
     setPublished_in(true);
@@ -86,13 +96,13 @@ const EditDeleteCar = () => {
     setExtraImages(extraImages.sort());
     const firstImage = extraImages.shift()!;
     setExistingExtraImages([...existingExtraImages, firstImage]);
-    append({ [firstImage]: '' }); // includes value to form schema
+    append({ [firstImage[0]]: '' }); // includes value to form schema
   };
 
   const removeAddedImages = (id: string) => {
-    const imageToRemove = existingExtraImages.find((image) => image === id);
+    const imageToRemove = existingExtraImages.find((image) => image[0] === id);
     const indexImageToRemove = existingExtraImages.findIndex(
-      (image) => image === id
+      (image) => image[0] === id
     );
 
     existingExtraImages.splice(indexImageToRemove, 1);
@@ -101,25 +111,51 @@ const EditDeleteCar = () => {
     setExtraImages([...extraImages, imageToRemove!]);
     setExtraImages(extraImages.sort());
     remove(indexImageToRemove); // remove value from form schema
+
   };
+
+  const verifyExistingExtraImagesCar = () => {
+    const newExtraImages = [...extraImages];
+    const newExistingExtraImages = [...existingExtraImages];
+
+    arrayOfExtraPictures.forEach((element) => {
+      if (element[1] !== null) {
+        const findImageIndex = newExtraImages.findIndex(
+          (picture) => picture[0] === element[0]
+        );
+
+        const imageToExisting = newExtraImages[findImageIndex];
+
+        newExistingExtraImages.push(imageToExisting);
+        newExtraImages.splice(findImageIndex, 1);
+      }
+    });
+
+    setExtraImages([...newExtraImages]);
+    setExistingExtraImages([...newExistingExtraImages]);
+    console.log(newExtraImages);
+    console.log(newExistingExtraImages);
+  };
+
+  console.log(existingExtraImages);
 
   const NewInputImg = () => {
     const newInput = existingExtraImages.map((image, index) => {
       return (
-        <li key={image} className='imagesLinkInputs__extraInput'>
+        <li key={image[0]} className='imagesLinkInputs__extraInput'>
           <DefaultFormInput
-            key={image}
-            id={`${image}`}
-            label={`Imagem ${image.slice(5, 7)} da Galeria`}
+            key={image[0]}
+            id={`${image[0]}`}
+            label={`Imagem ${image[0].slice(5, 7)} da Galeria`}
             placeholder='https://...'
-            {...register(`extraImages.${index}.${image}`)}
-            error={errors.extraImages?.[index]?.[image]}
-            value={carToEdit.picture.image03}
+            {...register(`extraImages.${index}.${image[0]}`)}
+            error={errors.extraImages?.[index]?.[image[0]]}
+            defaultValue={image[1]}
           />
           <button
             className='button__deleteInput'
             type='button'
-            onClick={() => removeAddedImages(image)}
+            onClick={() => {removeAddedImages(image[0])}}
           >
             <FiTrash2 />
           </button>
@@ -128,6 +164,8 @@ const EditDeleteCar = () => {
     });
     return <ul>{newInput}</ul>;
   };
+
+  console.log(extraImages);
 
   const handlesubmitNewCar = (newCarFormData: ICreateCar) => {
     let good_deal = false;
@@ -189,6 +227,9 @@ const EditDeleteCar = () => {
             {...register('kilometrage')}
             error={errors.kilometrage}
             defaultValue={newKilometrage}
+            onChange={(event) => {
+              setNewKilometrage(event.target.value);
+            }}
           />
 
           <DefaultFormInput
@@ -197,6 +238,9 @@ const EditDeleteCar = () => {
             {...register('color')}
             error={errors.color}
             defaultValue={newColor}
+            onChange={(event) => {
+              setNewColor(event.target.value);
+            }}
           />
 
           <DefaultFormInput
@@ -212,6 +256,9 @@ const EditDeleteCar = () => {
             {...register('price')}
             error={errors.price}
             defaultValue={newPrice}
+            onChange={(event) => {
+              setNewPrice(event.target.value);
+            }}
           />
         </div>
 
@@ -220,6 +267,9 @@ const EditDeleteCar = () => {
           register={register('description')}
           error={errors.description}
           contentValue={newDescription}
+          onChange={(event) => {
+            setNewDescription(event.target.value);
+          }}
         />
 
         <p className='text-style-text-body-2-500'>Publicado</p>
@@ -253,6 +303,9 @@ const EditDeleteCar = () => {
             {...register('coverImage')}
             error={errors.coverImage}
             defaultValue={newCoverImage}
+            onChange={(event) => {
+              setNewCoverImage(event.target.value);
+            }}
           />
           <DefaultFormInput
             label='Imagem 01 da Galeria'
@@ -260,6 +313,9 @@ const EditDeleteCar = () => {
             {...register('image01')}
             error={errors.image01}
             defaultValue={newImage01}
+            onChange={(event) => {
+              setNewImage01(event.target.value);
+            }}
           />
           <DefaultFormInput
             label='Imagem 02 da Galeria'
@@ -267,6 +323,9 @@ const EditDeleteCar = () => {
             {...register('image02')}
             error={errors.image02}
             defaultValue={newImage02}
+            onChange={(event) => {
+              setNewImage02(event.target.value);
+            }}
           />
           <NewInputImg />
         </div>
