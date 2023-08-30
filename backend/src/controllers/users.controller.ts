@@ -94,7 +94,7 @@ const redirectUserWhatsappController = async (
 
   const whatsappLink = await redirectUserWhatsappService(userId);
 
-  return response.json(whatsappLink);
+  return response.redirect(whatsappLink);
   
 };
 
