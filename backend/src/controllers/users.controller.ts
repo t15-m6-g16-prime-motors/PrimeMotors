@@ -12,6 +12,7 @@ import listUsersService from '../services/users/listUsers.service';
 import updateUsersService from '../services/users/updateUsers.service';
 import { deleteUsersService } from '../services/users/deleteUsers.service';
 import getByIdUsersService from '../services/users/getByIdUsers.service';
+import redirectUserWhatsappService from '../services/users/redirectUserWhatsapp.service';
 
 const createUsersController = async (
   request: Request,
@@ -85,6 +86,19 @@ const resetPasswordController = async (
   response.json({ message: 'password chenge with sucess' });
 };
 
+const redirectUserWhatsappController = async (
+  request: Request,
+  response: Response
+) => {
+  const userId: number = Number(request.params.id);
+
+  const whatsappLink = await redirectUserWhatsappService(userId);
+
+  return response.json(whatsappLink);
+  
+};
+
+
 export {
   createUsersController,
   listUsersController,
@@ -92,5 +106,6 @@ export {
   deleteUsersController,
   getByIdUsersController,
   sendResetEmailPasswordController,
-  resetPasswordController
+  resetPasswordController,
+  redirectUserWhatsappController
 };
