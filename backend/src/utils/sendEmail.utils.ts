@@ -45,7 +45,7 @@ class EmailService {
                     button: {
                         color: '#DC4D2F',
                         text: 'Reset your password',
-                        link: `http://localhost:3000/resetPassword?${resetToken}` // link para redefinir senha "Prime Motors"
+                        link: `http://localhost:5173/resetPassword/${resetToken}` // link para redefinir senha "Prime Motors"
                     }
                 },
                 outro: 'If you did not request a password reset, no further action is required on your part.'
