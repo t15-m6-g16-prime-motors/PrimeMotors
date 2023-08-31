@@ -8,7 +8,6 @@ export const StyledCardContainer = styled.li`
     scale: 0.98;
   }
 
-
   .imageContainer {
     background-color: var(--color-grey-7);
     width: 100%;
@@ -19,7 +18,6 @@ export const StyledCardContainer = styled.li`
     align-items: center;
     overflow: hidden;
     border-radius: 4px;
-
 
     cursor: pointer;
     transition: 0.1s;
@@ -38,6 +36,10 @@ export const StyledCardContainer = styled.li`
   .title {
     margin: 1rem 0;
     color: var(--color-grey-1);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     cursor: pointer;
     transition: 0.1s;
