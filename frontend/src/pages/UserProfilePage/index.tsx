@@ -75,13 +75,14 @@ export const UserProfilePage = () => {
                 <EmptyBox text='Nenhum anúncio foi postado até o momento.' />
               </div>
             ) : (
-              sellersCars.map((car) =>
-                isProfileOwner ? (
-                  <ProfileCard key={car.id} car={car} />
-                ) : (
-                  <Card key={car.id} car={car} />
-                )
-              )
+              sellersCars.map((car) => {
+                if (isProfileOwner) {
+                  return <ProfileCard key={car.id} car={car} />;
+                }
+                if (car.published) {
+                  return <Card key={car.id} car={car} />;
+                }
+              })
             )}
           </ul>
           <div className='pagination'>
