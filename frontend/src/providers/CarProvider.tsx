@@ -120,7 +120,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
           car.year.toString().includes(filterCar))
     );
     setFilteredCars(filtered);
-    console.log(filtered);
   }, [filterCar, carMinKm, carMaxKm, carMinPrice, carMaxPrice]);
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { StyledMain } from './style';
-import carSvg from '../../utils/images/mustang.svg';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { useEffect } from 'react';
@@ -15,8 +14,8 @@ import { useCar } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 
 export const ListingPage = () => {
-  const { user } = useAuth();
-  const { selectedCar } = useCar();
+  const { user, getTwoInitials } = useAuth();
+  const { selectedCar, setSelectedSeller } = useCar();
 
   const navigate = useNavigate();
 
@@ -39,6 +38,11 @@ export const ListingPage = () => {
       behavior: 'smooth'
     });
   }, []);
+
+  const goToSellerProfile = () => {
+    setSelectedSeller(selectedCar.user);
+    navigate('/profile');
+  };
 
   const assignCommentInputValue = (newValue: string) => {
     const oldValue = getValues('comment');
@@ -66,7 +70,10 @@ export const ListingPage = () => {
           <section className='carSection'>
             <div className='carInfo'>
               <div className='imageContainer'>
-                <img src={carSvg} alt='Car cover photo' />
+                <img
+                  src={selectedCar.picture.coverImage}
+                  alt='Car cover photo'
+                />
               </div>
               <div className='carData'>
                 <h1 className='heading-6-600'>
@@ -101,31 +108,67 @@ export const ListingPage = () => {
             <div className='photosContainer'>
               <p className='heading-6-600'>Fotos</p>
               <ul className='grid'>
-                <li>
-                  <img src={carSvg} alt='foto secundária do carro' />
-                </li>
-                <li>
-                  <img src={carSvg} alt='foto secundária do carro' />
-                </li>
-                <li>
-                  <img src={carSvg} alt='foto secundária do carro' />
-                </li>
-                <li>
-                  <img src={carSvg} alt='foto secundária do carro' />
-                </li>
-                <li>
-                  <img src={carSvg} alt='foto secundária do carro' />
-                </li>
+                {selectedCar.picture.image01 && (
+                  <li>
+                    <img
+                      src={selectedCar.picture.image01}
+                      alt='foto secundária do carro'
+                    />
+                  </li>
+                )}
+                {selectedCar.picture.image02 && (
+                  <li>
+                    <img
+                      src={selectedCar.picture.image02}
+                      alt='foto secundária do carro'
+                    />
+                  </li>
+                )}
+                {selectedCar.picture.image03 && (
+                  <li>
+                    <img
+                      src={selectedCar.picture.image03}
+                      alt='foto secundária do carro'
+                    />
+                  </li>
+                )}
+                {selectedCar.picture.image04 && (
+                  <li>
+                    <img
+                      src={selectedCar.picture.image04}
+                      alt='foto secundária do carro'
+                    />
+                  </li>
+                )}
+                {selectedCar.picture.image05 && (
+                  <li>
+                    <img
+                      src={selectedCar.picture.image05}
+                      alt='foto secundária do carro'
+                    />
+                  </li>
+                )}
+                {selectedCar.picture.image06 && (
+                  <li>
+                    <img
+                      src={selectedCar.picture.image06}
+                      alt='foto secundária do carro'
+                    />
+                  </li>
+                )}
               </ul>
             </div>
             <div className='profileContainer'>
-              <div className='initials'>SL</div>
-              <div className='name heading-6-600'>Samuel Leão</div>
+              <div className='initials'>
+                {getTwoInitials(selectedCar.user.full_name)}
+              </div>
+              <div className='name heading-6-600'>
+                {selectedCar.user.full_name}
+              </div>
               <p className='profileDescription text-style-text-body-2-400'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's
+                {selectedCar.user.description}
               </p>
-              <button>Ver todos os anúncios</button>
+              <button onClick={goToSellerProfile}>Ver todos os anúncios</button>
             </div>
           </section>
           <section className='commentsSection'>

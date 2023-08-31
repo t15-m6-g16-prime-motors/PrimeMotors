@@ -49,7 +49,7 @@ export const UserProfilePage = () => {
         <ul className='carsList'>
           {allCars.length < 1 ? (
             <div className='emptyBox'>
-              <p>Nenhum anúncio foi postado até o momento.</p>
+              <p></p>
             </div>
           ) : (
             allCars.map((car) => <ProfileCard key={car.id} car={car} />)
