@@ -1,11 +1,17 @@
 import { Response, Request } from 'express';
 import { listCarsWithFiltersService } from '../services/cars/listCarsQuery.service';
-import { TCarResponse, TCarUpdateRequest, TCreateCarRequest } from '../interfaces/car.interfaces';
+import {
+  TCarResponse,
+  TCarUpdateRequest,
+  TCreateCarRequest,
+  TSetToNullCarPictureRequest
+} from '../interfaces/car.interfaces';
 import listCarsServices from '../services/cars/listCars.service';
 import { getByIdCarsService } from '../services/cars/getByIdCars.service';
-import { deleteContactsService } from '../services/cars/deleteCars.service';
+import deleteCarService from '../services/cars/deleteCars.service';
 import createCarsService from '../services/cars/createCars.service';
 import updateCarService from '../services/cars/updateCars.service';
+import setPictureToNullService from '../services/pictures/deletePicture.service';
 
 const createCarController = async (
   req: Request,
@@ -50,7 +56,7 @@ const updateCarController = async (
 
 const deleteCarController = async (req: Request, res: Response) => {
   const carId = Number(req.params.id);
-  await deleteContactsService(carId);
+  await deleteCarService(carId);
   return res.status(204).send();
 };
 
@@ -66,11 +72,19 @@ const listCarsWithFiltersController = async (req: Request, res: Response) => {
   }
 };
 
+const deletePictureController = async (req: Request, res: Response) => {
+  const picsId = Number(req.params.picId);
+  const picData: TSetToNullCarPictureRequest = req.body;
+  const patchDeletePictures = await setPictureToNullService(picData, picsId);
+  return res.status(200).json(patchDeletePictures);
+};
+
 export {
   createCarController,
   listCarsController,
   getByIdCarsController,
   updateCarController,
   deleteCarController,
-  listCarsWithFiltersController
+  listCarsWithFiltersController,
+  deletePictureController
 };

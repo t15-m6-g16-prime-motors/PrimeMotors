@@ -22,16 +22,16 @@ class Picture {
   image02: string;
 
   @Column({ type: 'text', nullable: true })
-  image03: string;
+  image03: string | null;
 
   @Column({ type: 'text', nullable: true })
-  image04: string;
+  image04: string | null;
 
   @Column({ type: 'text', nullable: true })
-  image05: string;
+  image05: string | null;
 
   @Column({ type: 'text', nullable: true })
-  image06: string;
+  image06: string | null;
 
   @OneToOne(() => Car, (car) => car.picture, { onDelete: 'CASCADE' })
   @JoinColumn()
