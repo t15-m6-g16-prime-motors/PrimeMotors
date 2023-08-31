@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 
 import { AppDataSource } from '../../data-source';
-import { commentSchemaResponse } from '../../schemas/comments.schemas';
+import { commentSchemaUpdateResponse } from '../../schemas/comments.schemas';
 import { Comment } from '../../entities';
 import {
   TCommentUpdateRequest,
@@ -19,9 +19,10 @@ export const updateCommentService = async (
     ...comment,
     ...payload
   });
+
   await repository.save(newComment);
   const returnNewComment: TCommentUpdateResponse =
-    commentSchemaResponse.parse(newComment);
+    commentSchemaUpdateResponse.parse(newComment);
 
   return returnNewComment;
 };

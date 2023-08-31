@@ -6,7 +6,6 @@ import {
 import { AppDataSource } from '../../data-source';
 import { commentSchemaResponse } from '../../schemas/comments.schemas';
 import { Comment, Car, User } from '../../entities';
-import { AppError } from '../../errors/AppError';
 
 const createCommentsServices = async (
   commentData: TCommentRequest,
@@ -26,9 +25,6 @@ const createCommentsServices = async (
     }
   });
 
-  if (!user) {
-    throw new AppError('User not found', 409);
-  }
 
   const car: Car | null = await carRepository.findOne({
     where: {
@@ -36,9 +32,6 @@ const createCommentsServices = async (
     }
   });
 
-  if (!car) {
-    throw new AppError('Car not found', 404);
-  }
 
   const comment: Comment = commentRepository.create({
     ...commentData,
