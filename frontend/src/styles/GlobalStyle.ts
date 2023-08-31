@@ -202,7 +202,7 @@ button {
 .text-style-text-body-1-600 {
 	font-size: var(--font-size-16);
 	font-family: var(--font-family-inter);
-	font-weight: var(--font-weight-700);
+	font-weight: var(--font-weight-600);
 	line-height: 28px;
 }
 

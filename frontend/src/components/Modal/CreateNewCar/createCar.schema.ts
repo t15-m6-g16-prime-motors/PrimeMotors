@@ -29,6 +29,7 @@ const createCarWithPicturesRequest = z.object({
   year: z.number(),
   fuel_type: z.string().or(z.number()),
   good_deal: z.boolean(),
+  published: z.boolean().optional(),
   coverImage: z.string(),
   image01: z.string(),
   image02: z.string(),

@@ -7,6 +7,7 @@ import handleErrors from './errors/handleErrors';
 import { carRoutes, carRoutesFilter } from './routes/cars.routes';
 import { loginRoutes } from './routes/login.routes';
 import { commentRoutes } from './routes/comments.routes';
+import { picturesRoutes } from './routes/pictures.routes';
 
 const app: Application = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use('/comments', commentRoutes);
 app.use('/carsFilter', carRoutesFilter);
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
+app.use('/pictures', picturesRoutes)
 
 app.use(handleErrors);
 

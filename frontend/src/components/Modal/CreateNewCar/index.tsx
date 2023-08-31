@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
-  ButtonDisabled,
+  ButtonBrand,
   ButtonOpacity,
   NegativeButton
 } from '../../../styles/Buttons';
@@ -15,16 +15,23 @@ import {
   createCarSchema
 } from './createCar.schema';
 import { useContext, useEffect, useState } from 'react';
-import { CarContext } from '../../../providers/CarProvider';
 import { ModalContext } from '../../../providers/ModalProvider';
-import { ICarByBrandFromKenzieAPI } from '../../../interfaces/cars.interfaces';
 import { FiTrash2 } from 'react-icons/fi';
+import { useCar } from '../../../hooks';
 
 const CreateNewCar = () => {
-  const [selectedCar, setSelectedCar] = useState(
-    {} as ICarByBrandFromKenzieAPI | undefined
-  );
-  const [newCarFipValue, setNewCarFipValue] = useState<string | number>('');
+  const {
+    handleCreateCar,
+    modelsByBrandsFromApi,
+    allBrandsFromApi,
+    getAllCarsBrandsFromKenzieCars,
+    getModelsCarsByBrandFromKenzieCars,
+    selectedInputCar,
+    objectSelectedInputCar,
+    newCarFipValue,
+    setSelectedInputCar
+  } = useCar();
+
   const [extraImages, setExtraImages] = useState<Array<string>>([
     'image03',
     'image04',
@@ -35,15 +42,6 @@ const CreateNewCar = () => {
   const [existingExtraImages, setExistingExtraImages] = useState<Array<string>>(
     []
   );
-
-  const {
-    handleCreateCar,
-    modelsByBrandsFromApi,
-    allBrandsFromApi,
-    getAllCarsBrandsFromKenzieCars,
-    getModelsCarsByBrandFromKenzieCars,
-    carsByBrandFromApi
-  } = useContext(CarContext);
 
   const { handleCloseModal } = useContext(ModalContext);
 
@@ -61,6 +59,7 @@ const CreateNewCar = () => {
 
   useEffect(() => {
     getAllCarsBrandsFromKenzieCars();
+    setSelectedInputCar(undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -68,7 +67,7 @@ const CreateNewCar = () => {
     setExtraImages(extraImages.sort());
     const firstImage = extraImages.shift()!;
     setExistingExtraImages([...existingExtraImages, firstImage]);
-    append({ [firstImage]: ''}); // includes value to form schema
+    append({ [firstImage]: '' }); // includes value to form schema
   };
 
   const removeAddedImages = (id: string) => {
@@ -110,47 +109,21 @@ const CreateNewCar = () => {
     return <ul>{newInput}</ul>;
   };
 
-  const objectSelectedCar = (model: string) => {
-    const car = carsByBrandFromApi.find((car) => car.name === model);
-    setNewCarFipValue(car!.value);
-
-    if (car?.fuel === 1) {
-      car.fuel = 'Flex';
-    }
-
-    if (car?.fuel === 2) {
-      car.fuel = 'Híbrido';
-    }
-
-    if (car?.fuel === 3) {
-      car.fuel = 'Elétrico';
-    }
-
-    car!.value = car!.value.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    });
-
-    setSelectedCar(car);
-  };
-
   const handlesubmitNewCar = (newCarFormData: ICreateCar) => {
     let good_deal = false;
     if (Number(newCarFipValue) / Number(newCarFormData.price) >= 1.05) {
       good_deal = true;
     }
 
-    console.log(newCarFormData);
-
     const newCarData: ICreateCarComplete = {
       ...newCarFormData,
       good_deal: good_deal,
-      fuel_type: selectedCar!.fuel,
-      year: Number(selectedCar?.year),
+      fuel_type: selectedInputCar!.fuel,
+      year: Number(selectedInputCar?.year),
       kilometrage: Number(newCarFormData?.kilometrage),
       extraImages: [...newCarFormData.extraImages]
     };
-    console.log(newCarData);
+
     handleCreateCar(newCarData);
   };
 
@@ -173,7 +146,7 @@ const CreateNewCar = () => {
         />
         <DefaultSelectInput
           onChange={(event) => {
-            objectSelectedCar(event.target.value.toLocaleLowerCase());
+            objectSelectedInputCar(event.target.value.toLocaleLowerCase());
           }}
           name={'model'}
           array={modelsByBrandsFromApi}
@@ -186,13 +159,13 @@ const CreateNewCar = () => {
           <DefaultFormInput
             label='Ano'
             placeholder='Ano'
-            value={selectedCar?.year || ''}
+            value={selectedInputCar?.year || ''}
             disabled={true}
           />
           <DefaultFormInput
             label='Combustível'
             placeholder='Combustível'
-            value={selectedCar?.fuel || ''}
+            value={selectedInputCar?.fuel || ''}
             disabled={true}
           />
           <DefaultFormInput
@@ -210,7 +183,7 @@ const CreateNewCar = () => {
           <DefaultFormInput
             label='Tabela FIP'
             placeholder='Tabela FIP'
-            value={selectedCar?.value || ''}
+            value={selectedInputCar?.value || ''}
             disabled={true}
           />
           <DefaultFormInput
@@ -268,9 +241,10 @@ const CreateNewCar = () => {
             >
               Cancelar
             </NegativeButton>
-            <ButtonDisabled className='buttons-style-button-size-big'>
+
+            <ButtonBrand className='buttons-style-button-size-big'>
               Salvar
-            </ButtonDisabled>
+            </ButtonBrand>
           </div>
         </div>
       </form>

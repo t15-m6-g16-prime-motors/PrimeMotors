@@ -9,6 +9,15 @@ export const Card = ({ car }: ICardProps) => {
 
   const navigate = useNavigate();
 
+  const getFirstAndLastName = (name: string) => {
+    const namesArray = name.split(' ');
+
+    const firstName = namesArray[0];
+    const lastName = namesArray[namesArray.length - 1];
+
+    return `${firstName} ${lastName}`;
+  };
+
   const handleClick = () => {
     setSelectedCar(car);
     navigate('/listing');
@@ -16,12 +25,17 @@ export const Card = ({ car }: ICardProps) => {
 
   const handleProfileClick = () => {
     setSelectedSeller(car.user);
-    navigate('/seller');
+    navigate('/profile');
   };
 
   return (
     <StyledCardContainer>
+      {car.good_deal && (
+          <p className='card__goodDealTag text-style-text-body-2-500'>$</p>
+        )}
       <div className='imageContainer' onClick={handleClick}>
+        
+
         <img src={car.picture.coverImage} alt='Car image' />
       </div>
       <h3 className='title heading-7-600' onClick={handleClick}>
@@ -32,7 +46,9 @@ export const Card = ({ car }: ICardProps) => {
       </p>
       <div className='profile' onClick={handleProfileClick}>
         <div>{getTwoInitials(car.user.full_name)}</div>
-        <p className='name text-style-text-body-2-500'>{car.user.full_name}</p>
+        <p className='name text-style-text-body-2-500'>
+          {getFirstAndLastName(car.user.full_name)}
+        </p>
       </div>
       <div className='carInfo'>
         <div className='tagsContainer text-style-text-body-2-500'>
