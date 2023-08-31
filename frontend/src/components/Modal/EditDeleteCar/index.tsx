@@ -29,7 +29,8 @@ const EditDeleteCar = () => {
     handleUpdateCar,
     handleDeleteCar,
     newCarFipValue,
-    setNewCarFipValue
+    setNewCarFipValue,
+    handleSetPictureNull
   } = useCar();
 
   useEffect(() => {
@@ -111,7 +112,6 @@ const EditDeleteCar = () => {
     setExtraImages([...extraImages, imageToRemove!]);
     setExtraImages(extraImages.sort());
     remove(indexImageToRemove); // remove value from form schema
-
   };
 
   const verifyExistingExtraImagesCar = () => {
@@ -155,7 +155,10 @@ const EditDeleteCar = () => {
           <button
             className='button__deleteInput'
             type='button'
-            onClick={() => {removeAddedImages(image[0])}}
+            onClick={() => {
+              handleSetPictureNull({ [image[0]]: null });
+              removeAddedImages(image[0]);
+            }}
           >
             <FiTrash2 />
           </button>

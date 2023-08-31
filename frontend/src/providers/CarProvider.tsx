@@ -55,6 +55,7 @@ interface ICarContextValues {
   objectSelectedInputCar: (model: string) => void;
   handleUpdateCar: (newCarData: ICreateCar) => Promise<void>;
   handleDeleteCar: () => Promise<void>;
+  handleSetPictureNull: (imageToNull: { [key: string]: null }) => Promise<void>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -255,8 +256,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
       );
 
       if (newCarResponse.status === 200) {
+        toast.success('Seu anúncio foi atualizado!');
         getCars();
-        // handleShowModal('createNewCarResponse');
       }
     } catch (error) {
       // const requestError = error as AxiosError<IAxiosErrorMessage>;
@@ -274,6 +275,24 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
       if (deleteCarResponse.status === 204) {
         toast.success('Anúncio Deletado');
         getCars();
+      }
+    } catch (error) {
+      // const requestError = error as AxiosError<IAxiosErrorMessage>;
+      console.log(error);
+    }
+  };
+
+  const handleSetPictureNull = async (imageToNull: { [key: string]: null }) => {
+    try {
+      const setPictureNullResponse: AxiosResponse = await api.patch(
+        `/pictures/${carToEdit.picture.id}`,
+        imageToNull,
+        headersAuth
+      );
+
+      if (setPictureNullResponse.status === 200) {
+        findCarToEdit(carToEdit.id);
+        toast.success('Você exclui a imagem');
       }
     } catch (error) {
       // const requestError = error as AxiosError<IAxiosErrorMessage>;
@@ -325,7 +344,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         setSelectedInputCar,
         objectSelectedInputCar,
         handleUpdateCar,
-        handleDeleteCar
+        handleDeleteCar,
+        handleSetPictureNull
       }}
     >
       {children}
