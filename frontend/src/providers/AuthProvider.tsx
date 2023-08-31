@@ -102,6 +102,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const getTwoInitials = (name: string) => {
+    if (!name) {
+      return '';
+    }
     const namesArray = name.split(' ');
     const firstName = namesArray[0];
     const lastName = namesArray[namesArray.length - 1];

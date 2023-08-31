@@ -28,7 +28,6 @@ const CreateNewCar = () => {
     getModelsCarsByBrandFromKenzieCars,
     selectedInputCar,
     objectSelectedInputCar,
-    newCarFipValue,
     setSelectedInputCar
   } = useCar();
 
@@ -110,8 +109,13 @@ const CreateNewCar = () => {
   };
 
   const handlesubmitNewCar = (newCarFormData: ICreateCar) => {
+    const valueWithSpecialCharacters = selectedInputCar!.value;
+    const toStringValue = valueWithSpecialCharacters.toString();
+    const numericString = toStringValue.replace(/[^\d]/g, '');
+    const slicedNumericString = numericString.slice(0, -2);
+
     let good_deal = false;
-    if (Number(newCarFipValue) / Number(newCarFormData.price) >= 1.05) {
+    if (Number(slicedNumericString) / Number(newCarFormData.price) >= 1.05) {
       good_deal = true;
     }
 

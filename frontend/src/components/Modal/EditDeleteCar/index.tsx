@@ -28,15 +28,12 @@ const EditDeleteCar = () => {
     setAllBrandsFromApi,
     handleUpdateCar,
     handleDeleteCar,
-    newCarFipValue,
-    setNewCarFipValue,
     handleSetPictureNull
   } = useCar();
 
   useEffect(() => {
-    objectSelectedInputCar(carToEdit!.model.toLowerCase());
     setAllBrandsFromApi([carToEdit!.brand]);
-    setNewCarFipValue('');
+    objectSelectedInputCar(carToEdit!.model.toLowerCase());
     verifyExistingExtraImagesCar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -165,10 +162,17 @@ const EditDeleteCar = () => {
   };
 
   const handlesubmitNewCar = (newCarFormData: ICreateCar) => {
+
+    const valueWithSpecialCharacters = selectedInputCar!.value;
+    const toStringValue = valueWithSpecialCharacters.toString();
+    const numericString = toStringValue.replace(/[^\d]/g, '');
+    const slicedNumericString = numericString.slice(0, -2);
+
     let good_deal = false;
-    if (Number(newCarFipValue) / Number(newCarFormData.price) >= 1.05) {
+    if (Number(slicedNumericString) / Number(newCarFormData.price) >= 1.05) {
       good_deal = true;
     }
+
 
     const newCarData: ICreateCarComplete = {
       ...newCarFormData,
@@ -180,6 +184,7 @@ const EditDeleteCar = () => {
       extraImages: [...newCarFormData.extraImages],
       published: published_in
     };
+    console.log(newCarData);
 
     handleUpdateCar(newCarData);
   };

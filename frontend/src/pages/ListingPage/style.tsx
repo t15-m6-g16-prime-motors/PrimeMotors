@@ -47,6 +47,14 @@ export const StyledMain = styled.main<StyledMainProps>`
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
+
+    .imageContainer {
+      max-width: 100%;
+
+      img {
+        max-width: 100%;
+      }
+    }
   }
 
   .imageContainer,

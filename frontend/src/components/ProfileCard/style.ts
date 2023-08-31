@@ -38,6 +38,10 @@ export const StyledProfileCardContainer = styled.li`
   .title {
     margin: 1rem 0;
     color: var(--color-grey-1);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .description {
