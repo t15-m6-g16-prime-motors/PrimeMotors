@@ -2,7 +2,7 @@
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-import { useAuth, useCar } from '../../hooks';
+import { useAuth, useCar, useModal } from '../../hooks';
 import { StyledMain } from './style';
 import { ProfileCard } from '../../components/ProfileCard';
 import { EmptyBox } from '../../components/EmptyBox';
@@ -10,10 +10,12 @@ import { Card } from '../../components/Card';
 import { useEffect } from 'react';
 import { ICar } from '../../interfaces';
 import { useNavigate } from 'react-router-dom';
+import GenericModal from '../../components/Modal/ModalGeneric';
 
 export const UserProfilePage = () => {
   const { allCars, selectedSeller } = useCar();
   const { user, getTwoInitials } = useAuth();
+  const { showModal } = useModal();
 
   const navigate = useNavigate();
 
@@ -37,6 +39,8 @@ export const UserProfilePage = () => {
 
   return (
     <>
+      {showModal && <GenericModal type={showModal} />}
+
       <Header />
       <StyledMain>
         <section className='container-profile'>

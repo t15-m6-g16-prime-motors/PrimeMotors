@@ -3,9 +3,11 @@ import { styled } from 'styled-components';
 export const StyledCardContainer = styled.li`
   min-width: 14rem;
   transition: 0.5s;
+  position: relative;
   &:hover {
     scale: 0.98;
   }
+
 
   .imageContainer {
     background-color: var(--color-grey-7);
@@ -16,6 +18,8 @@ export const StyledCardContainer = styled.li`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border-radius: 4px;
+
 
     cursor: pointer;
     transition: 0.1s;
@@ -26,8 +30,9 @@ export const StyledCardContainer = styled.li`
 
   .imageContainer img {
     height: 100%;
+    width: 100%;
     max-width: 100%;
-    object-fit: cover;
+    border-radius: 4px;
   }
 
   .title {
@@ -104,6 +109,22 @@ export const StyledCardContainer = styled.li`
 
   .price {
     color: var(--color-grey-1);
+  }
+
+  .card__goodDealTag {
+    background-color: #349974;
+    color: var(--color-white-fixed);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 20px;
+    right: 0;
+    top: 0;
+    border-radius: 4px;
+    font-weight: var(--font-weight-600);
+    z-index: 1;
   }
 
   @media (min-width: 1100px) {
