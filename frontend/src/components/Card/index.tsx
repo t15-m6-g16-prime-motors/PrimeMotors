@@ -30,7 +30,12 @@ export const Card = ({ car }: ICardProps) => {
 
   return (
     <StyledCardContainer>
+      {car.good_deal && (
+          <p className='card__goodDealTag text-style-text-body-2-500'>$</p>
+        )}
       <div className='imageContainer' onClick={handleClick}>
+        
+
         <img src={car.picture.coverImage} alt='Car image' />
       </div>
       <h3 className='title heading-7-600' onClick={handleClick}>

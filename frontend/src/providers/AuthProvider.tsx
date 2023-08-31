@@ -102,6 +102,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const getTwoInitials = (name: string) => {
+    if (!name) {
+      return '';
+    }
     const namesArray = name.split(' ');
     const firstName = namesArray[0];
     const lastName = namesArray[namesArray.length - 1];
@@ -110,7 +113,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const editUser = async (patchedUserData: IEditUser) => {
-    console.log(patchedUserData);
 
     try {
       const token = localStorage.getItem('@TOKEN') || '{}';
@@ -135,7 +137,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const editAddress = async (patchedAddressData: IEditUserAddress) => {
-    console.log(patchedAddressData);
 
     const addressData = {
       address: patchedAddressData

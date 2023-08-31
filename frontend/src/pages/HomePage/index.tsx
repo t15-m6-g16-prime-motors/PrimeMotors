@@ -186,11 +186,11 @@ export const HomePage = () => {
                   filteredCars.map((car) => <Card key={car.id} car={car} />)
                 )
               ) : allCars.length < 1 ? (
-                <div className='emptyBox'>
-                  <p>Nenhum anúncio foi postado até o momento.</p>
-                </div>
+                <EmptyBox text='Nenhum anúncio foi postado até o momento' />
               ) : (
-                allCars.map((car) => <Card key={car.id} car={car} />)
+                allCars.map(
+                  (car) => car.published && <Card key={car.id} car={car} />
+                )
               )}
             </ul>
             <div className='pagination'>

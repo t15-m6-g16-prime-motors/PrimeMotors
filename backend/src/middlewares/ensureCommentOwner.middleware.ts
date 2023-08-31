@@ -9,20 +9,21 @@ export const ensureCommentOwnerMiddleware = async (
   res: Response,
   next: NextFunction
 ) => {
-  const idUser = Number(res.locals.id);
+  const idUser = Number(res.locals.userId);
   const idComment = Number(req.params.id);
   const repository: Repository<Comment> = AppDataSource.getRepository(Comment);
 
   const comment = await repository
     .createQueryBuilder('comment')
     .where('comment.id = :id', { id: idComment })
-    .select('comment.id')
     .leftJoinAndSelect('comment.user', 'user')
-    .select('user.id')
+    .select(['comment', 'user.id'])
     .getOne();
+  const idUserOwner = comment?.user.id;
 
-  if (comment?.user.id !== idUser) {
-    throw new AppError('You dont`t have permissions', 403);
+  if (idUserOwner !== idUser) {
+    throw new AppError('You dont`t have permissions', 401);
   }
+
   return next();
 };

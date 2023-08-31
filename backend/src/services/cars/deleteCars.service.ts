@@ -2,7 +2,7 @@ import { AppDataSource } from '../../data-source';
 import { Car } from '../../entities';
 import { AppError } from '../../errors/AppError';
 
-const deleteContactsService = async (carId: number): Promise<void> => {
+const deleteCarService = async (carId: number): Promise<void> => {
   const carRepository = AppDataSource.getRepository(Car);
   const car = await carRepository.findOneBy({ id: carId });
 
@@ -13,4 +13,4 @@ const deleteContactsService = async (carId: number): Promise<void> => {
   await carRepository.remove(car);
 };
 
-export { deleteContactsService };
+export default deleteCarService;
