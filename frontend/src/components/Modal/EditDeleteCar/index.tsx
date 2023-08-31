@@ -133,11 +133,7 @@ const EditDeleteCar = () => {
 
     setExtraImages([...newExtraImages]);
     setExistingExtraImages([...newExistingExtraImages]);
-    console.log(newExtraImages);
-    console.log(newExistingExtraImages);
   };
-
-  console.log(existingExtraImages);
 
   const NewInputImg = () => {
     const newInput = existingExtraImages.map((image, index) => {
@@ -168,8 +164,6 @@ const EditDeleteCar = () => {
     return <ul>{newInput}</ul>;
   };
 
-  console.log(extraImages);
-
   const handlesubmitNewCar = (newCarFormData: ICreateCar) => {
     let good_deal = false;
     if (Number(newCarFipValue) / Number(newCarFormData.price) >= 1.05) {
@@ -186,8 +180,6 @@ const EditDeleteCar = () => {
       extraImages: [...newCarFormData.extraImages],
       published: published_in
     };
-
-    console.log(newCarData);
 
     handleUpdateCar(newCarData);
   };

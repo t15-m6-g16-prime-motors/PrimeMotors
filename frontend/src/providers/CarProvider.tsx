@@ -169,8 +169,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const handleCreateCar = async (newCarData: ICreateCar) => {
-    console.log(newCarData);
-
     try {
       const newCarResponse: AxiosResponse = await api.post<ICreateCar>(
         '/cars',
@@ -246,8 +244,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   };
 
   const handleUpdateCar = async (newCarData: ICreateCar) => {
-    console.log(newCarData);
-
     try {
       const newCarResponse: AxiosResponse = await api.patch<ICreateCar>(
         `/cars/${carToEdit.id}`,
