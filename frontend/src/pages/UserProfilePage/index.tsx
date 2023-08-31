@@ -58,7 +58,9 @@ export const UserProfilePage = () => {
                 <h3 className='heading-6-600'>{selectedSeller?.full_name}</h3>
                 <span className='text-style-text-body-2-500'>Anunciante</span>
               </div>
-              <p className='text-style-text-body-1-400'>{user?.description}</p>
+              <p className='text-style-text-body-1-400 description'>
+                {selectedSeller.description}
+              </p>
               {isProfileOwner && (
                 <button className='create-announce-btn text-style-inputs-buttons-button-big-text'>
                   Criar anuncio

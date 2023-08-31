@@ -58,6 +58,11 @@ export const StyledMain = styled.main`
           padding: 0.2rem;
         }
       }
+
+      .description {
+        text-align: justify;
+      }
+
       button.create-announce-btn {
         border: 2px solid var(--color-brand-1);
 
