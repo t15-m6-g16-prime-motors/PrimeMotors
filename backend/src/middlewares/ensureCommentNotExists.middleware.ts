@@ -12,7 +12,7 @@ export const ensureCommentNotExistsMiddleware = async (
   const id: number = Number(req.params.id);
   const repository: Repository<Comment> = AppDataSource.getRepository(Comment);
 
-  const comment = repository
+  const comment = await repository
     .createQueryBuilder('comment')
     .where('comment.id = :id', { id })
     .select('comment.id')

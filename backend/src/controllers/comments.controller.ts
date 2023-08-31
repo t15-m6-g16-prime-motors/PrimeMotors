@@ -39,7 +39,7 @@ const getByIdCommentsController = async (
 
 const updateCommentController = async (req: Request, res: Response) => {
   const id: number = Number(req.params.id);
-  const payload: TCommentUpdateRequest = req.body.data;
+  const payload: TCommentUpdateRequest = req.body;
   const commentUpdated = await updateCommentService(id, payload);
 
   return res.status(201).json(commentUpdated);

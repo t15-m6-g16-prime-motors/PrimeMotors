@@ -8,11 +8,13 @@ export const getByIdCommentsService = async (
   id: number
 ): Promise<TCommentResponse> => {
   const repository: Repository<Comment> = AppDataSource.getRepository(Comment);
-  
+
   const comment = await repository
     .createQueryBuilder('comment')
     .where('comment.id = :id', { id })
     .leftJoinAndSelect('comment.user', 'user')
+    .leftJoinAndSelect('comment.car', 'car')
+    .select(['comment', 'user.id', 'user.full_name', 'car.id'])
     .getOne();
 
   const commentParse: TCommentResponse = commentSchemaResponse.parse(comment);
