@@ -40,8 +40,6 @@ interface ICarContextValues {
     React.SetStateAction<ICarByBrandFromKenzieAPI[]>
   >;
   carsByBrandFromApi: ICarByBrandFromKenzieAPI[];
-  newCarFipValue: string | number;
-  setNewCarFipValue: Dispatch<React.SetStateAction<string | number>>;
   selectedCar: ICar;
   setSelectedCar: Dispatch<React.SetStateAction<ICar>>;
   selectedSeller: ICarUser;
@@ -77,7 +75,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [selectedCar, setSelectedCar] = useState(selectedCarMock);
   const [selectedSeller, setSelectedSeller] = useState(selectedSellerMock);
   const [carToEdit, setCarToEdit] = useState(({} as ICar) || undefined);
-  const [newCarFipValue, setNewCarFipValue] = useState<string | number>('');
   const [selectedInputCar, setSelectedInputCar] = useState(
     {} as ICarByBrandFromKenzieAPI | undefined
   );
@@ -210,7 +207,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
 
   const objectSelectedInputCar = (model: string) => {
     const car = carsByBrandFromApi.find((car) => car.name === model);
-    setNewCarFipValue(car!.value);
 
     if (car?.fuel === 1) {
       car.fuel = 'Flex';
@@ -334,8 +330,6 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         setSelectedSeller,
         findCarToEdit,
         carToEdit,
-        newCarFipValue,
-        setNewCarFipValue,
         selectedInputCar,
         setSelectedInputCar,
         objectSelectedInputCar,
