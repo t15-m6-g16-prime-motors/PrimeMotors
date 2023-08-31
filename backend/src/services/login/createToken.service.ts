@@ -37,5 +37,6 @@ export const createTokenService = async (
       subject: user.id.toString(),
     }
   );
+  
   return token;
 };
