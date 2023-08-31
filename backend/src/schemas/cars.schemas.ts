@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { commentSchema } from './comments.schemas';
 
 const carSchema = z.object({
   id: z.number(),
@@ -65,6 +66,15 @@ const carResponseSchema = carSchema.extend({
   })
 });
 
+const carCompleteSchema = carResponseSchema.extend({
+  user: ownerCarSchema.pick({
+    id: true,
+    full_name: true,
+    description: true
+  }),
+  comment: z.array(commentSchema)
+})
+
 const carUpdateRequestSchema = createCarRequestSchema.partial();
 
 const carsListSchemaResponse = z.array(
@@ -88,4 +98,5 @@ export {
   createCarRequestSchema,
   carResponseSchema,
   carUpdateRequestSchema,
+  carCompleteSchema
 };
