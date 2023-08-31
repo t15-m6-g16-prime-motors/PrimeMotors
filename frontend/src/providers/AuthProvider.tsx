@@ -110,7 +110,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const editUser = async (patchedUserData: IEditUser) => {
-    console.log(patchedUserData);
 
     try {
       const token = localStorage.getItem('@TOKEN') || '{}';
@@ -135,7 +134,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const editAddress = async (patchedAddressData: IEditUserAddress) => {
-    console.log(patchedAddressData);
 
     const addressData = {
       address: patchedAddressData

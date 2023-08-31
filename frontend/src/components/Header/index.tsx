@@ -21,7 +21,14 @@ export const Header = () => {
 
   return (
     <StyledHeader>
-    <button onClick={() => {handleShowModal('createNewCar')}}>Criar Anúncio</button>
+      <button
+        onClick={() => {
+          handleShowModal('createNewCar');
+        }}
+      >
+        Criar Anúncio
+      </button>
+
       <div className='menuContainer'>
         <div className='brandAndButton'>
           <div className='brandContainer' onClick={() => navigate('/')}>
