@@ -10,14 +10,6 @@ const getByIdCarsService = async (idCar: number) => {
 
     relations: {user: true, picture: true, comment: {user: true}}
   })
-    // .createQueryBuilder('car')
-    // .where('car.id = :id', { id: idCar })
-    // .leftJoinAndSelect("car.user", "user")
-    // .leftJoinAndSelect("car.comment", "comment")
-    // .leftJoinAndSelect("car.picture", "picture")
-    // .getOne();
-
-
 
   const schemaCar = carCompleteSchema.parse(car); // o carResponseSchema do parse nao inclui comentários e usuário dono. Quando descomentar as linhas do user e comment, criar um schema adequado e não modificá-lo, pois é usado em outros lugares, pra não ter erro de tipo.
 
