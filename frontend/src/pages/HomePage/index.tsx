@@ -2,13 +2,13 @@ import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { StyledMain } from './style';
-import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import { useCar, useLayout, useModal } from '../../hooks';
 import InputRange from '../../components/InputRange';
 import GenericModal from '../../components/Modal/ModalGeneric';
 import { EmptyBox } from '../../components/EmptyBox';
+import PaginationComponent from '../../components/Pagination';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
@@ -205,7 +205,9 @@ export const HomePage = () => {
                 </button>
               )}
 
-              <div className='pagesAndButton heading-6-500'>
+              <PaginationComponent />
+
+              {/* <div className='pagesAndButton heading-6-500'>
                 <p>
                   1 <span>de 2</span>
                 </p>
@@ -217,7 +219,7 @@ export const HomePage = () => {
                     Seguinte <BiChevronRight />
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
