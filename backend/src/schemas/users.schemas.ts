@@ -32,6 +32,7 @@ const userUpdateSchema = userSchema.pick({
   email: true,
   full_name: true,
   phone_number: true,
+  description: true,
   address: true
 });
 
