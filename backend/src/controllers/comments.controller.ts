@@ -14,8 +14,8 @@ const createCommentController = async (
   res: Response
 ): Promise<Response> => {
   const commentData: TCommentRequest = req.body;
-  const userId: number = res.locals.id;
-  const carId: number = parseInt(req.params.carId);
+  const userId: number = parseInt(res.locals.userId)
+  const carId: number = parseInt(req.params.id);
   const newComment = await createCommentsServices(commentData, userId, carId);
   return res.status(201).json(newComment);
 };

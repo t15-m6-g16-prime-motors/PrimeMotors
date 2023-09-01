@@ -72,7 +72,12 @@ const carCompleteSchema = carResponseSchema.extend({
     full_name: true,
     description: true
   }),
-  comment: z.array(commentSchema)
+  comment: z.array(commentSchema.extend({
+    user: z.object({
+    id: z.number(),
+    full_name: z.string(),
+    })
+  }))
 })
 
 const carUpdateRequestSchema = createCarRequestSchema.partial();

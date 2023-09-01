@@ -19,7 +19,7 @@ import ensureCarIdMiddleware from '../middlewares/ensureCarIdExists.middleware';
 export const commentRoutes = Router();
 
 commentRoutes.post(
-  '/:carId',
+  '/:id',
   ensureAuthMiddleware,
   ensureDataIsValid(commentSchemaRequest),
   ensureCarIdMiddleware,

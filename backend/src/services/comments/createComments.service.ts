@@ -12,8 +12,8 @@ const createCommentsServices = async (
   userId: number,
   carId: number
 ) => {
-  const commentRepository: Repository<Comment> =
-    AppDataSource.getRepository(Comment);
+
+  const commentRepository: Repository<Comment> =AppDataSource.getRepository(Comment);
 
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
@@ -39,6 +39,8 @@ const createCommentsServices = async (
     car: car!
   });
   await commentRepository.save(comment);
+  console.log(carId)
+
 
   const returnComment: TCommentResponse = commentSchemaResponse.parse(comment);
   return returnComment;

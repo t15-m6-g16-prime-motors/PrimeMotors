@@ -197,9 +197,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const sendResetPasswordEmail = async (data: TSendEmail) => {
     try {
-      const response = await api.post('/resetPassword', data);
+      const response = await api.post('/users/resetPassword', data);
       console.log(response.data);
-      toast.success('Email enviado! Consulte sua caixa de entrada.');
+      toast.success('Email enviado!');
     } catch (error) {
       console.log(error);
       toast.warning('Algo deu errado! Reveja seu email e tente novamente.');
