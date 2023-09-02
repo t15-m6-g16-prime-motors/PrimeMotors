@@ -5,37 +5,26 @@ import { useNavigate } from 'react-router-dom';
 
 export const Card = ({ car }: ICardProps) => {
   const { setSelectedCar, setSelectedSeller } = useCar();
-  const { getTwoInitials } = useAuth();
+  const { getTwoInitials, getFirstAndLastName } = useAuth();
 
   const navigate = useNavigate();
 
-  const getFirstAndLastName = (name: string) => {
-    const namesArray = name.split(' ');
-
-    const firstName = namesArray[0];
-    const lastName = namesArray[namesArray.length - 1];
-
-    return `${firstName} ${lastName}`;
-  };
-
   const handleClick = () => {
     setSelectedCar(car);
-    navigate('/listing');
+    navigate(`/listing/${car.id}`);
   };
 
   const handleProfileClick = () => {
     setSelectedSeller(car.user);
-    navigate('/profile');
+    navigate(`/profile/${car.user.id}`);
   };
 
   return (
     <StyledCardContainer>
       {car.good_deal && (
-          <p className='card__goodDealTag text-style-text-body-2-500'>$</p>
-        )}
+        <p className='card__goodDealTag text-style-text-body-2-500'>$</p>
+      )}
       <div className='imageContainer' onClick={handleClick}>
-        
-
         <img src={car.picture.coverImage} alt='Car image' />
       </div>
       <h3 className='title heading-7-600' onClick={handleClick}>

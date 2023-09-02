@@ -9,7 +9,7 @@ export const ProfileCard = ({ car }: ICardProps) => {
 
   const handleClick = () => {
     setSelectedCar(car);
-    navigate('/listing');
+    navigate(`/listing/${car.id}`);
   };
 
   return (

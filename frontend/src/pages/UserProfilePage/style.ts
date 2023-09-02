@@ -58,6 +58,10 @@ export const StyledMain = styled.main`
           padding: 0.2rem;
         }
       }
+
+      .userDescription {
+        word-wrap: break-word;
+      }
       button.create-announce-btn {
         border: 2px solid var(--color-brand-1);
 
@@ -70,6 +74,7 @@ export const StyledMain = styled.main`
 
   .listSection {
     padding: 1rem 1rem;
+    max-width: var(--content-container-limit);
   }
 
   div.pagination {

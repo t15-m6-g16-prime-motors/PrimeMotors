@@ -4,44 +4,60 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useAuth } from '../../hooks';
+import { useAuth, useComment, useModal } from '../../hooks';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { commentSchema } from '../../schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TComment } from '../../interfaces';
+import { TRegisterComment } from '../../interfaces';
 import { Comment } from '../../components/Comment';
 import { useCar } from '../../hooks';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import GenericModal from '../../components/Modal/ModalGeneric';
+import { ListingPagePicture } from '../../components/ListingPagePicture';
 
 export const ListingPage = () => {
-  const { user, getTwoInitials } = useAuth();
-  const { selectedCar, setSelectedSeller } = useCar();
+  const { user, getTwoInitials, getFirstAndLastName } = useAuth();
+  const { selectedCar, setSelectedCar, setSelectedSeller, allCars } = useCar();
+  const { showModal } = useModal();
+  const { comments, registerComment } = useComment();
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const {
     register,
     handleSubmit,
     setValue,
     getValues,
+    reset,
     formState: { errors }
-  } = useForm<TComment>({
+  } = useForm<TRegisterComment>({
     resolver: zodResolver(commentSchema)
   });
 
   useEffect(() => {
-    if (selectedCar.id === 0) {
-      navigate('/');
-    }
+    console.log(selectedCar);
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   }, []);
 
+  useEffect(() => {
+    if (allCars.length > 0) {
+      if (selectedCar.id === 0) {
+        const userCar = allCars.find((car) => (car.id = Number(id)));
+
+        if (userCar) {
+          setSelectedCar(userCar);
+        }
+      }
+    }
+  }, [allCars]);
+
   const goToSellerProfile = () => {
     setSelectedSeller(selectedCar.user);
-    navigate('/profile');
+    navigate(`/profile/${selectedCar.user.id}`);
   };
 
   const assignCommentInputValue = (newValue: string) => {
@@ -52,10 +68,10 @@ export const ListingPage = () => {
     setValue('comment', oldValue + newValue);
   };
 
-  const submitComment: SubmitHandler<TComment> = (data) => {
-    console.log(data);
+  const submitComment: SubmitHandler<TRegisterComment> = (data) => {
     if (user) {
-      console.log('Está logado');
+      registerComment(data, selectedCar.id);
+      reset();
     } else {
       toast.warning('Você deve estar logado para publicar um commentário');
     }
@@ -63,6 +79,7 @@ export const ListingPage = () => {
 
   return (
     <>
+      {showModal && <GenericModal type={showModal} />}
       <Header />
       <StyledMain error={errors?.comment}>
         <div className='blueBox' />
@@ -108,53 +125,40 @@ export const ListingPage = () => {
             <div className='photosContainer'>
               <p className='heading-6-600'>Fotos</p>
               <ul className='grid'>
+                {selectedCar.picture.coverImage && (
+                  <ListingPagePicture
+                    carPhotoUrl={selectedCar.picture.coverImage}
+                  />
+                )}
                 {selectedCar.picture.image01 && (
-                  <li>
-                    <img
-                      src={selectedCar.picture.image01}
-                      alt='foto secundária do carro'
-                    />
-                  </li>
+                  <ListingPagePicture
+                    carPhotoUrl={selectedCar.picture.image01}
+                  />
                 )}
                 {selectedCar.picture.image02 && (
-                  <li>
-                    <img
-                      src={selectedCar.picture.image02}
-                      alt='foto secundária do carro'
-                    />
-                  </li>
+                  <ListingPagePicture
+                    carPhotoUrl={selectedCar.picture.image02}
+                  />
                 )}
                 {selectedCar.picture.image03 && (
-                  <li>
-                    <img
-                      src={selectedCar.picture.image03}
-                      alt='foto secundária do carro'
-                    />
-                  </li>
+                  <ListingPagePicture
+                    carPhotoUrl={selectedCar.picture.image03}
+                  />
                 )}
                 {selectedCar.picture.image04 && (
-                  <li>
-                    <img
-                      src={selectedCar.picture.image04}
-                      alt='foto secundária do carro'
-                    />
-                  </li>
+                  <ListingPagePicture
+                    carPhotoUrl={selectedCar.picture.image04}
+                  />
                 )}
                 {selectedCar.picture.image05 && (
-                  <li>
-                    <img
-                      src={selectedCar.picture.image05}
-                      alt='foto secundária do carro'
-                    />
-                  </li>
+                  <ListingPagePicture
+                    carPhotoUrl={selectedCar.picture.image05}
+                  />
                 )}
                 {selectedCar.picture.image06 && (
-                  <li>
-                    <img
-                      src={selectedCar.picture.image06}
-                      alt='foto secundária do carro'
-                    />
-                  </li>
+                  <ListingPagePicture
+                    carPhotoUrl={selectedCar.picture.image06}
+                  />
                 )}
               </ul>
             </div>
@@ -175,63 +179,75 @@ export const ListingPage = () => {
             <div className='posts'>
               <p className='commentsTitle heading-6-600'>Comentários</p>
               <div className='postsList'>
-                <Comment />
-                <Comment />
-                <Comment />
+                {comments.length > 0 ? (
+                  comments.map((comment) =>
+                    comment.car.id === selectedCar.id ? (
+                      <Comment key={comment.id} comment={comment} />
+                    ) : null
+                  )
+                ) : (
+                  <div className='emptyCommentsList'>
+                    <p>Ainda não existem comentários no anúncio</p>
+                  </div>
+                )}
               </div>
             </div>
-            <div className='commentInput'>
-              <div className='userProfile'>
-                <div className='userInitials'>SL</div>
-                <p className='userName text-style-text-body-2-500'>
-                  Samuel Leão
-                </p>
-              </div>
-              <form onSubmit={handleSubmit(submitComment)}>
-                <textarea
-                  cols={50}
-                  rows={3}
-                  minLength={2}
-                  maxLength={220}
-                  placeholder='Digite seu comentário aqui.'
-                  {...register('comment')}
-                ></textarea>
-                {errors.comment ? (
-                  <p className='inputErrorMessage text-style-text-body-2-400'>
-                    {errors.comment.message}
+            {user && (
+              <div className='commentInput'>
+                <div className='userProfile'>
+                  <div className='userInitials'>
+                    {getTwoInitials(user.full_name)}
+                  </div>
+                  <p className='userName text-style-text-body-2-500'>
+                    {getFirstAndLastName(user.full_name)}
                   </p>
-                ) : (
-                  <p className='inputErrorMessage text-style-text-body-2-400'></p>
-                )}
-                <div className='shortcutAndButton'>
-                  <button type='submit'>Comentar</button>
-                  <div className='shortcutsContainer'>
-                    <div
-                      className='shortcut'
-                      onClick={() => assignCommentInputValue('Gostei muito!')}
-                    >
-                      Gostei muito!
-                    </div>
-                    <div
-                      className='shortcut'
-                      onClick={() => assignCommentInputValue('Incrível!')}
-                    >
-                      Incrível!
-                    </div>
-                    <div
-                      className='shortcut'
-                      onClick={() =>
-                        assignCommentInputValue(
-                          'Recomendarei para meus amigos!'
-                        )
-                      }
-                    >
-                      Recomendarei para meus amigos!
+                </div>
+                <form onSubmit={handleSubmit(submitComment)}>
+                  <textarea
+                    cols={50}
+                    rows={3}
+                    minLength={2}
+                    maxLength={220}
+                    placeholder='Digite seu comentário aqui.'
+                    {...register('comment')}
+                  ></textarea>
+                  {errors.comment ? (
+                    <p className='inputErrorMessage text-style-text-body-2-400'>
+                      {errors.comment.message}
+                    </p>
+                  ) : (
+                    <p className='inputErrorMessage text-style-text-body-2-400'></p>
+                  )}
+                  <div className='shortcutAndButton'>
+                    <button type='submit'>Comentar</button>
+                    <div className='shortcutsContainer'>
+                      <div
+                        className='shortcut'
+                        onClick={() => assignCommentInputValue('Gostei muito!')}
+                      >
+                        Gostei muito!
+                      </div>
+                      <div
+                        className='shortcut'
+                        onClick={() => assignCommentInputValue('Incrível!')}
+                      >
+                        Incrível!
+                      </div>
+                      <div
+                        className='shortcut'
+                        onClick={() =>
+                          assignCommentInputValue(
+                            'Recomendarei para meus amigos!'
+                          )
+                        }
+                      >
+                        Recomendarei para meus amigos!
+                      </div>
                     </div>
                   </div>
-                </div>
-              </form>
-            </div>
+                </form>
+              </div>
+            )}
           </section>
         </div>
       </StyledMain>
