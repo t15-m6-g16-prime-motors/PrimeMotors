@@ -36,7 +36,6 @@ export const ListingPage = () => {
   });
 
   useEffect(() => {
-    console.log(selectedCar);
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

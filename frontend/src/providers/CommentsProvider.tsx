@@ -19,7 +19,7 @@ export const CommentsProvider = ({ children }: ICommentsProviderProps) => {
 
   const getAndSetComments = async () => {
     try {
-      const allComments = await api.get('');
+      const allComments = await api.get('/comments');
       setComments([...allComments.data]);
     } catch (error) {
       console.log(error);
@@ -27,13 +27,15 @@ export const CommentsProvider = ({ children }: ICommentsProviderProps) => {
   };
 
   useEffect(() => {
-    getAndSetComments;
+    getAndSetComments();
   }, []);
 
   const registerComment = async (data: TRegisterComment, carId: number) => {
     try {
       const newComment = await api.post(`/comments/${carId}`, data);
       setComments((previousComments) => [...previousComments, newComment.data]);
+
+      console.log(newComment.data.created_at);
       toast.success('Seu comentário foi registrado');
     } catch (error) {
       console.log(error);
