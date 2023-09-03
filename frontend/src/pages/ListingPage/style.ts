@@ -148,6 +148,7 @@ export const StyledMain = styled.main<StyledMainProps>`
     max-width: 100%;
     li {
       background-color: var(--color-grey-7);
+      cursor: pointer;
     }
     li > img {
       max-width: 100%;
@@ -174,6 +175,9 @@ export const StyledMain = styled.main<StyledMainProps>`
       color: var(--color-grey-2);
       text-align: center;
       padding: 1rem;
+
+      word-wrap: break-word;
+      max-width: 100%;
     }
 
     button {
@@ -340,6 +344,10 @@ export const StyledMain = styled.main<StyledMainProps>`
   @media (min-width: 1024px) {
     .carSection {
       width: 70%;
+    }
+
+    .carInfo {
+      width: 100%;
     }
     .commentsSection {
       width: 70%;

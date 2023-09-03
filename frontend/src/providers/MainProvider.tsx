@@ -1,17 +1,20 @@
 import { IDefaultProviderProps } from '../interfaces';
 import { AuthProvider } from './AuthProvider';
 import { CarProvider } from './CarProvider';
+import { CommentsProvider } from './CommentsProvider';
 import { LayoutProvider } from './LayoutProvider';
 import { ModalProvider } from './ModalProvider';
 
 const MainProvider = ({ children }: IDefaultProviderProps) => {
   return (
     <LayoutProvider>
-      <ModalProvider>
-        <AuthProvider>
-          <CarProvider>{children}</CarProvider>
-        </AuthProvider>
-      </ModalProvider>
+      <AuthProvider>
+        <CarProvider>
+          <CommentsProvider>
+            <ModalProvider>{children}</ModalProvider>
+          </CommentsProvider>
+        </CarProvider>
+      </AuthProvider>
     </LayoutProvider>
   );
 };

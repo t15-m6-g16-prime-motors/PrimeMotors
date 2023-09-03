@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { Footer } from '../../components/Footer';
@@ -9,15 +10,14 @@ import { EmptyBox } from '../../components/EmptyBox';
 import { Card } from '../../components/Card';
 import { useEffect } from 'react';
 import { ICar } from '../../interfaces';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import GenericModal from '../../components/Modal/ModalGeneric';
 
 export const UserProfilePage = () => {
-  const { allCars, selectedSeller } = useCar();
+  const { allCars, selectedSeller, setSelectedSeller } = useCar();
   const { user, getTwoInitials } = useAuth();
-  const { showModal } = useModal();
-
-  const navigate = useNavigate();
+  const { showModal, handleShowModal } = useModal();
+  const { id } = useParams();
 
   const sellersCars: ICar[] = allCars.filter(
     (car) => car.user.id === selectedSeller.id
@@ -26,16 +26,24 @@ export const UserProfilePage = () => {
   const isProfileOwner = user?.email === selectedSeller.email;
 
   useEffect(() => {
-    if (selectedSeller.id === 0) {
-      navigate('/');
-    }
-
     if (user && selectedSeller.full_name === user.full_name)
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
-  }, []);
+  });
+
+  useEffect(() => {
+    if (allCars.length > 0) {
+      if (selectedSeller.id === 0) {
+        const userCar = allCars.find((car) => (car.user.id = Number(id)));
+
+        if (userCar) {
+          setSelectedSeller(userCar.user);
+        }
+      }
+    }
+  }, [allCars]);
 
   return (
     <>
@@ -48,19 +56,28 @@ export const UserProfilePage = () => {
             <div className='info-profile'>
               <div className='initials-letter'>
                 <h2>
-                  {selectedSeller.full_name
-                    ? getTwoInitials(selectedSeller.full_name!)
-                    : null}
+                  {isProfileOwner
+                    ? getTwoInitials(user.full_name!)
+                    : getTwoInitials(selectedSeller.full_name!)}
                 </h2>
               </div>
 
               <div className='container-name-type-user'>
-                <h3 className='heading-6-600'>{selectedSeller?.full_name}</h3>
+                <h3 className='heading-6-600'>
+                  {isProfileOwner ? user?.full_name : selectedSeller.full_name}
+                </h3>
                 <span className='text-style-text-body-2-500'>Anunciante</span>
               </div>
-              <p className='text-style-text-body-1-400'>{user?.description}</p>
+              <p className='userDescription text-style-text-body-1-400'>
+                {isProfileOwner ? user.description : selectedSeller.description}
+              </p>
               {isProfileOwner && (
-                <button className='create-announce-btn text-style-inputs-buttons-button-big-text'>
+                <button
+                  className='create-announce-btn text-style-inputs-buttons-button-big-text'
+                  onClick={() => {
+                    handleShowModal('createNewCar');
+                  }}
+                >
                   Criar anuncio
                 </button>
               )}

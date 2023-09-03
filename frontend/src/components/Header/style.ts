@@ -169,7 +169,7 @@ export const StyledHeader = styled.header`
       gap: 0.2rem;
       background-color: var(--color-grey-10);
       position: absolute;
-      bottom: -9rem;
+      bottom: -11rem;
       right: 0;
       left: 0;
 

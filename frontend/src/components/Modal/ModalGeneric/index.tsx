@@ -10,9 +10,12 @@ import CreateCarModalResponse from '../CreateNewCar/createCarModalResponse';
 import DeleteUserConfirmation from '../DeleteUserConfirmation';
 import EditUserAddress from '../EditUserAddress';
 import EditDeleteCar from '../EditDeleteCar';
+import { CarPhotoModal } from '../CarPhotoModal';
+import { useCar } from '../../../hooks';
 
 const GenericModal = ({ type }: IGenericModalProps) => {
   const { ref } = useContext(ModalContext);
+  const { selectedCarPhotoUrl } = useCar();
   return (
     <ModalContainer ref={ref}>
       <div className='modalBody slideDown'>
@@ -65,11 +68,18 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                 </>
               );
 
-              case 'editCar':
+            case 'editCar':
               return (
                 <>
                   <ModalHeader title={'Editar Anúncio'} />
                   <EditDeleteCar />
+                </>
+              );
+            case 'carPhoto':
+              return (
+                <>
+                  <ModalHeader title={'Imagem do anúncio'} />
+                  <CarPhotoModal photoUrl={selectedCarPhotoUrl} />
                 </>
               );
 
