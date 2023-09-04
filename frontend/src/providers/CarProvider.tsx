@@ -54,6 +54,8 @@ interface ICarContextValues {
   handleUpdateCar: (newCarData: ICreateCar) => Promise<void>;
   handleDeleteCar: () => Promise<void>;
   handleSetPictureNull: (imageToNull: { [key: string]: null }) => Promise<void>;
+  selectedCarPhotoUrl: string;
+  setSelectedCarPhotoUrl: Dispatch<React.SetStateAction<string>>;
   carPerPage: ICar[];
   setCarPerPage: Dispatch<React.SetStateAction<ICar[]>>;
 }
@@ -80,6 +82,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [selectedInputCar, setSelectedInputCar] = useState(
     {} as ICarByBrandFromKenzieAPI | undefined
   );
+  const [selectedCarPhotoUrl, setSelectedCarPhotoUrl] = useState('');
   const [carPerPage, setCarPerPage] = useState([] as ICar[]);
 
   const { handleShowModal } = useModal();
@@ -339,6 +342,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         handleUpdateCar,
         handleDeleteCar,
         handleSetPictureNull,
+        selectedCarPhotoUrl,
+        setSelectedCarPhotoUrl,
         carPerPage,
         setCarPerPage
       }}

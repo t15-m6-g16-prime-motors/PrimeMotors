@@ -11,8 +11,8 @@ export const RoutesMain = () => {
   return (
     <Routes>
       <Route path='/' element={<HomePage />} />
-      <Route path='/profile' element={<UserProfilePage />} />
-      <Route path='/listing' element={<ListingPage />} />
+      <Route path='/profile/:id' element={<UserProfilePage />} />
+      <Route path='/listing/:id' element={<ListingPage />} />
       <Route path='/register' element={<RegisterUserPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/resetPassword' element={<SendEmailPage />} />

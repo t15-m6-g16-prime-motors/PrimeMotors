@@ -26,6 +26,7 @@ interface AuthContextValues {
   deleteUser: () => Promise<void>;
   handleLogout: () => void;
   sendResetPasswordEmail: (data: TSendEmail) => Promise<void>;
+  getFirstAndLastName: (name: string) => string;
 }
 
 export const AuthContext = createContext({} as AuthContextValues);
@@ -112,8 +113,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     return `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`;
   };
 
-  const editUser = async (patchedUserData: IEditUser) => {
+  const getFirstAndLastName = (name: string) => {
+    const namesArray = name.split(' ');
 
+    const firstName = namesArray[0];
+    const lastName = namesArray[namesArray.length - 1];
+
+    return `${firstName} ${lastName}`;
+  };
+
+  const editUser = async (patchedUserData: IEditUser) => {
     try {
       const token = localStorage.getItem('@TOKEN') || '{}';
 
@@ -137,7 +146,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const editAddress = async (patchedAddressData: IEditUserAddress) => {
-
     const addressData = {
       address: patchedAddressData
     };
@@ -219,7 +227,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         editAddress,
         deleteUser,
         handleLogout,
-        sendResetPasswordEmail
+        sendResetPasswordEmail,
+        getFirstAndLastName
       }}
     >
       {children}
