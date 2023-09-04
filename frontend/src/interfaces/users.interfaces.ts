@@ -9,6 +9,7 @@ import {
 export type TRegisterUser = z.infer<typeof registerUserSchema>;
 export type TLoginUser = z.infer<typeof loginUserSchema>;
 export interface IUserLogged {
+  id: number;
   full_name: string;
   cpf: string;
   email: string;

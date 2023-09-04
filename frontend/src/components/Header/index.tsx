@@ -77,7 +77,11 @@ export const Header = () => {
                 >
                   Editar endereço
                 </p>
-                {user.is_seller && <p>Meus Anúncios</p>}
+                {user.is_seller && (
+                  <p onClick={() => navigate(`/profile/${user.id}`)}>
+                    Meus Anúncios
+                  </p>
+                )}
                 <p
                   onClick={() => {
                     handleLogout();
