@@ -61,6 +61,7 @@ export const StyledMain = styled.main`
 
       .userDescription {
         word-wrap: break-word;
+        text-align: justify;
       }
       button.create-announce-btn {
         border: 2px solid var(--color-brand-1);

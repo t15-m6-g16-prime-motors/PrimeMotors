@@ -16,9 +16,10 @@ class Comment {
   @Column({ type: 'text' })
   comment: string;
 
-  @CreateDateColumn({ type: 'date' })
-  created_at: string | Date;
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
 
+  created_at: string | Date;
+  
   @ManyToOne(() => User, (user) => user.comment)
   user: User;
 
