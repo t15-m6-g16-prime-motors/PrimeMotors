@@ -16,6 +16,7 @@ import GenericModal from '../../components/Modal/ModalGeneric';
 import { ListingPagePicture } from '../../components/ListingPagePicture';
 
 export const ListingPage = () => {
+  // const [loading, setLoading] = useState(true);
   const { user, getTwoInitials, getFirstAndLastName } = useAuth();
   const { selectedCar, setSelectedCar, setSelectedSeller, allCars } = useCar();
   const { showModal } = useModal();
@@ -42,13 +43,19 @@ export const ListingPage = () => {
     });
   }, []);
 
+  // useEffect(() => {
+  //   (setLoading(false));
+  // }, [selectedCar]);
+
   useEffect(() => {
     if (allCars.length > 0) {
       if (selectedCar.id === 0) {
-        const userCar = allCars.find((car) => (car.id = Number(id)));
+        const userCar = allCars.find((car) => car.id == Number(id));
 
         if (userCar) {
           setSelectedCar(userCar);
+        } else {
+          navigate('/');
         }
       }
     }
@@ -86,10 +93,14 @@ export const ListingPage = () => {
           <section className='carSection'>
             <div className='carInfo'>
               <div className='imageContainer'>
-                <img
-                  src={selectedCar.picture.coverImage}
-                  alt='Car cover photo'
-                />
+                {selectedCar.picture.coverImage ? (
+                  <img
+                    src={selectedCar.picture.coverImage}
+                    alt='Car cover photo'
+                  />
+                ) : (
+                  <p>Carregando</p>
+                )}
               </div>
               <div className='carData'>
                 <h1 className='heading-6-600'>
