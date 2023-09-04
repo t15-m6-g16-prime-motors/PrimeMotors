@@ -16,7 +16,7 @@ const DefaultTextArea = ({
   return (
     <StyledTextAreaContainer>
       <p className='text-style-inputs-buttons-input-label'>Descrição</p>
-      <textarea defaultValue={contentValue} {...register} />
+      <textarea defaultValue={contentValue} {...register} maxLength={220} />
       {error ? <p className='inputErrorMessage'>{error.message}</p> : <p></p>}
     </StyledTextAreaContainer>
   );

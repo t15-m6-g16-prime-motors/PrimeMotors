@@ -7,9 +7,13 @@ import { Header } from '../../components/Header';
 import { DefaultFormInput } from '../../components/DefaultFormInput';
 import { Footer } from '../../components/Footer';
 import { useParams } from 'react-router-dom';
+import { api } from '../../services/api';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export const ResetPasswordPage = () => {
   const { token } = useParams();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -19,16 +23,22 @@ export const ResetPasswordPage = () => {
     resolver: zodResolver(resetPasswordSchema)
   });
 
-  const submit: SubmitHandler<TResetPassword> = (data) => {
-    console.log(data);
-    console.log('token: ' + token);
+  const submit: SubmitHandler<TResetPassword> = async (data) => {
+    try {
+      await api.patch(`/users/resetPassword/${token}`, data);
+      toast.success('Senha atualizada com sucesso');
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+      toast.warning('Algo deu errado! Tente novamente.');
+    }
   };
 
   return (
     <>
       <Header />
       <StyledMain>
-        <form onSubmit={handleSubmit(() => submit)}>
+        <form onSubmit={handleSubmit(submit)}>
           <h2 className='heading-6-600'>Redefinição de senha</h2>
           <DefaultFormInput
             label='Senha'
