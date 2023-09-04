@@ -31,7 +31,8 @@ export const HomePage = () => {
     setCarMaxKm,
     setCarMaxPrice,
     setCarMinKm,
-    setCarMinPrice
+    setCarMinPrice,
+    carPerPage
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -185,10 +186,10 @@ export const HomePage = () => {
                 ) : (
                   filteredCars.map((car) => <Card key={car.id} car={car} />)
                 )
-              ) : allCars.length < 1 ? (
+              ) : carPerPage.length < 1 ? (
                 <EmptyBox text='Nenhum anúncio foi postado até o momento' />
               ) : (
-                allCars.map(
+                carPerPage.map(
                   (car) => car.published && <Card key={car.id} car={car} />
                 )
               )}

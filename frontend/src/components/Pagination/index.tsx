@@ -4,15 +4,28 @@ import { useEffect, useState } from 'react';
 import StyledPaginationComponent from './style';
 
 const PaginationComponent = () => {
-  const { allCars } = useCar();
+  const { allCars, setCarPerPage } = useCar();
+  console.log(
+    allCars.sort((a, b) => {
+      return a.id - b.id;
+    })
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  console.log(allCars);
+  const perPage: number = 2;
+
+
+  console.log(
+    allCars.slice(perPage * (currentPage - 1), perPage * currentPage)
+  );
 
   useEffect(() => {
-    setTotalPages(Math.ceil(allCars.length / 3));
-  }, [allCars]);
+    setTotalPages(Math.ceil(allCars.length / perPage));
+    setCarPerPage([
+      ...allCars.slice(perPage * (currentPage - 1), perPage * currentPage)
+    ]);
+  }, [allCars, currentPage]);
 
   return (
     <StyledPaginationComponent>
