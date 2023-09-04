@@ -200,11 +200,12 @@ export const StyledMain = styled.main`
     }
 
     .listAndFilter {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 2rem;
-      padding-top: 2rem;
+      gap: 3rem;
+      padding: 3rem 0;
     }
 
     .carsList {

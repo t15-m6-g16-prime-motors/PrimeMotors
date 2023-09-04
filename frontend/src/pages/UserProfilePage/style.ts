@@ -153,7 +153,7 @@ export const StyledMain = styled.main`
     ul.carsList {
       max-width: 1300px;
 
-      margin: 0 auto;
+      margin: 0 auto 9rem;
       display: grid;
       gap: 3%;
       grid-template-columns: repeat(3, 1fr);

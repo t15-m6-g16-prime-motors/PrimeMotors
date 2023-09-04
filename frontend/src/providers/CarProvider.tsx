@@ -58,6 +58,8 @@ interface ICarContextValues {
   setSelectedCarPhotoUrl: Dispatch<React.SetStateAction<string>>;
   carPerPage: ICar[];
   setCarPerPage: Dispatch<React.SetStateAction<ICar[]>>;
+  sellersCars: ICar[];
+  setSellersCars: Dispatch<React.SetStateAction<ICar[]>>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -94,6 +96,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [carsByBrandFromApi, setCarsByBrandFromApi] = useState(
     [] as Array<ICarByBrandFromKenzieAPI>
   );
+
+  const [sellersCars, setSellersCars] = useState([] as ICar[]);
 
   const findValues = (attrName: string): string[] => {
     let values: string[] = [];
@@ -345,7 +349,9 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         selectedCarPhotoUrl,
         setSelectedCarPhotoUrl,
         carPerPage,
-        setCarPerPage
+        setCarPerPage,
+        sellersCars,
+        setSellersCars
       }}
     >
       {children}

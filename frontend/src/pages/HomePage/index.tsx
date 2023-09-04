@@ -7,13 +7,11 @@ import { useState } from 'react';
 import { useCar, useLayout, useModal } from '../../hooks';
 import InputRange from '../../components/InputRange';
 import GenericModal from '../../components/Modal/ModalGeneric';
-import { EmptyBox } from '../../components/EmptyBox';
 import PaginationComponent from '../../components/Pagination';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
   const {
-    allCars,
     carBrands,
     carModels,
     carColors,
@@ -24,7 +22,6 @@ export const HomePage = () => {
     carMinPrice,
     carMaxPrice,
     setfilterCar,
-    filteredCars,
     setFilteredCars,
     isFilterActive,
     setIsFilterActive,
@@ -180,18 +177,8 @@ export const HomePage = () => {
           </div>
           <div className='ListPaginationContainer'>
             <ul className='carsList'>
-              {isFilterActive ? (
-                filteredCars.length < 1 ? (
-                  <EmptyBox text='Nenhum anúncio foi postado até o momento' />
-                ) : (
-                  filteredCars.map((car) => <Card key={car.id} car={car} />)
-                )
-              ) : carPerPage.length < 1 ? (
-                <EmptyBox text='Nenhum anúncio foi postado até o momento' />
-              ) : (
-                carPerPage.map(
-                  (car) => car.published && <Card key={car.id} car={car} />
-                )
+              {carPerPage.map(
+                (car) => car.published && <Card key={car.id} car={car} />
               )}
             </ul>
             <div className='pagination'>
@@ -206,7 +193,7 @@ export const HomePage = () => {
                 </button>
               )}
 
-              <PaginationComponent />
+              <PaginationComponent page='home' />
 
               {/* <div className='pagesAndButton heading-6-500'>
                 <p>
