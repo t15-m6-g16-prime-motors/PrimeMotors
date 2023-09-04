@@ -1,18 +1,19 @@
-import { useAuth, useModal } from '../../../hooks';
-import { ButtonAlert, NegativeButton } from '../../../styles/Buttons';
-import DeleteUserContainer from './style';
+import { useCar, useModal } from '../../../../hooks';
+import { ButtonAlert, NegativeButton } from '../../../../styles/Buttons';
+import DeleteConfirmationContainer from '../style';
 
-const DeleteUserConfirmation = () => {
+const DeleteCarConfirmation = () => {
   const { handleCloseModal } = useModal();
-  const { deleteUser } = useAuth();
+  const { handleDeleteCar } = useCar();
+
   return (
-    <DeleteUserContainer>
+    <DeleteConfirmationContainer>
       <p className='heading-7-500'>
-        Tem certeza que deseja DELETAR seu usuário?
+        Tem certeza que deseja DELETAR seu anúncio?
       </p>
       <p className='text-style-text-body-1-400'>
-        Essa ação não pode ser desfeita. Isso excluirá permanentemente sua conta
-        e removerá seus dados de nossos servidores...
+        Essa ação não pode ser desfeita. Isso excluirá permanentemente seu
+        anúncio e removerá todos os comentários e dados associados...
       </p>
       <p className='text-style-text-body-1-400'>
         Clique em <span>EXCLUIR</span> para confirmar.
@@ -29,15 +30,15 @@ const DeleteUserConfirmation = () => {
         <ButtonAlert
           className='buttons-style-button-size-big'
           onClick={() => {
-            deleteUser();
+            handleDeleteCar();
             handleCloseModal();
           }}
         >
           Excluir
         </ButtonAlert>
       </div>
-    </DeleteUserContainer>
+    </DeleteConfirmationContainer>
   );
 };
 
-export default DeleteUserConfirmation;
+export default DeleteCarConfirmation;
