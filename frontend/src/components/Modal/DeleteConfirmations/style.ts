@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-const DeleteUserContainer = styled.section`
+const DeleteConfirmationContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -20,4 +20,4 @@ const DeleteUserContainer = styled.section`
   }
 `;
 
-export default DeleteUserContainer;
+export default DeleteConfirmationContainer;

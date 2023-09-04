@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import EditDeleteCarContainer from './style';
-import { useCar } from '../../../hooks';
+import { useCar, useModal } from '../../../hooks';
 import DefaultSelectInput from '../../DefaultSelectInput';
 import { useFieldArray, useForm } from 'react-hook-form';
 import {
@@ -30,6 +30,8 @@ const EditDeleteCar = () => {
     handleDeleteCar,
     handleSetPictureNull
   } = useCar();
+
+  const { handleShowModal } = useModal();
 
   useEffect(() => {
     setAllBrandsFromApi([carToEdit!.brand]);
@@ -162,7 +164,6 @@ const EditDeleteCar = () => {
   };
 
   const handlesubmitNewCar = (newCarFormData: ICreateCar) => {
-
     const valueWithSpecialCharacters = selectedInputCar!.value;
     const toStringValue = valueWithSpecialCharacters.toString();
     const numericString = toStringValue.replace(/[^\d]/g, '');
@@ -172,7 +173,6 @@ const EditDeleteCar = () => {
     if (Number(slicedNumericString) / Number(newCarFormData.price) >= 1.05) {
       good_deal = true;
     }
-
 
     const newCarData: ICreateCarComplete = {
       ...newCarFormData,
@@ -345,10 +345,10 @@ const EditDeleteCar = () => {
           <div className='carButtons__deleteSave'>
             <NegativeButton
               type='button'
-              onClick={() => {
-                handleDeleteCar();
-              }}
               className='buttons-style-button-size-big'
+              onClick={() => {
+                handleShowModal('deleteCar');
+              }}
             >
               Excluir Anúncio
             </NegativeButton>
