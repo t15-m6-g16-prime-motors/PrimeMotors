@@ -27,7 +27,6 @@ const EditDeleteCar = () => {
     selectedInputCar,
     setAllBrandsFromApi,
     handleUpdateCar,
-    handleDeleteCar,
     handleSetPictureNull
   } = useCar();
 

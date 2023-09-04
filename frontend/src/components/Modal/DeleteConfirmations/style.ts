@@ -17,6 +17,10 @@ const DeleteConfirmationContainer = styled.section`
     display: flex;
     flex-direction: row;
     align-items: end;
+
+    button {
+      width: 100%;
+    }
   }
 `;
 
