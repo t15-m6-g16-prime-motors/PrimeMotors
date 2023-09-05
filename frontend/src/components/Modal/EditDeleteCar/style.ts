@@ -68,11 +68,11 @@ const EditDeleteCarContainer = styled.section`
       align-items: center;
 
       button:first-child {
-        width: 30%;
+        width: 55%;
       }
 
       button:nth-child(2) {
-        width: 40%;
+        width: 45%;
       }
     }
   }

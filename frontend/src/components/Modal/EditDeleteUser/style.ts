@@ -15,6 +15,24 @@ const EditUserContainer = styled.section`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
+    :nth-child(1),
+    :nth-child(2) {
+      width: 47%;
+    }
+    :nth-child(3) {
+      width: 75%;
+    }
+  }
+
+  @media (min-width: 527px) {
+    .buttons__container {
+      :nth-child(1),
+      :nth-child(2),
+      :nth-child(3) {
+        max-width: 31%;
+      }
+    }
   }
 `;
 
