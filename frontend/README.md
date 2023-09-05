@@ -1,27 +1,30 @@
-# React + TypeScript + Vite
+# PRIME MOTORS (FRONTEND) 🚗
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação Frontend Prime Motors.
 
-Currently, two official plugins are available:
+### TECNOLOGIAS USADAS:
+- React
+- TypeScript
+- Zod
+- Axios
+- Styled Components
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### REQUISITOS para rodar _localmente_:
+- NPM;
+- PRIME MOTORS API configurada e em execução;
 
-## Expanding the ESLint configuration
+1) Clone o repositório e dentro da pasta raíz do projeto execute o seguinte comando pelo terminal/console/cmd:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`npm install`
 
-- Configure the top-level `parserOptions` property like this:
+Esse comando instalará todas as dependências e pacotes necessários para executar o front-end.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+2) Em seguida, após todas as instalações, rode o comando:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+`npm run dev`
+
+A aplicação frontend entrará em execução e será possível interagir pelo endereço no navegador.
+**LOGIN**: http://localhost:5173/login
+
+**NÃO ESQUEÇA: Se a aplicação for rodar localmente - desenvolvimento - é necessário COPIAR A URL GERADA PELO COMANDO 'NPM RUN DEV' no arquivo .ENV na pasta backend no campo VITE_URL DA PRIME MOTORS API, _SEM A BARRA DO FINAL_**
+![Screenshot from 2023-09-05 09-28-16](https://github.com/t15-m6-g16-prime-motors/PrimeMotors/assets/110478861/80181c0f-cdd7-4c82-af1a-e880a4a8d2de)
