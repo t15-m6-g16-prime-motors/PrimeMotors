@@ -57,4 +57,4 @@ This project uses node and postgreSQL. So, it is important to check if you alrea
 | POST   | /comments/:id/                 | Create a comment in a given car ID    | Any user, token is required                |
 | GET    | /comments/:id/                 | Retrive a comment                     | Just comment owner, token is required      |
 | PACTH  | /comments/:id/                 | Update a comment by ID                | Just comment owner, token is required      |
-| DELETE | /comments/:id/                 | Delete a comments by ID               | Just comment owner, token is required      |
+| DELETE | /comments/:id/                 | Delete a comment by ID                | Just comment owner, token is required      |
