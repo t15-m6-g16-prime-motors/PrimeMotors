@@ -11,7 +11,6 @@ export const ListingPagePicture = ({
   const { handleShowModal } = useModal();
 
   const handlePhotoClick = () => {
-    console.log(carPhotoUrl);
     setSelectedCarPhotoUrl(carPhotoUrl);
     handleShowModal('carPhoto');
   };

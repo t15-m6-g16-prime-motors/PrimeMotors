@@ -70,10 +70,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
       setLoading(true);
       await userLogged(id);
+      toast.success('Seja bem vindo!');
 
       navigate('/');
     } catch (error) {
-      console.log(error);
+      toast.error('Email ou senha inválidos!');
     }
   };
 
@@ -97,8 +98,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem('@TOKEN', token);
       setLoading(false);
+      toast.success('Cadastro realizado com sucesso!');
     } catch (error) {
-      console.log(error);
+      toast.error('Algo deu errado. Por favor, tente novamente.');
     }
   };
 
@@ -205,8 +207,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const sendResetPasswordEmail = async (data: TSendEmail) => {
     try {
-      const response = await api.post('/users/resetPassword', data);
-      console.log(response.data);
+      await api.post('/users/resetPassword', data);
       toast.success('Email enviado!');
     } catch (error) {
       console.log(error);

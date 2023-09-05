@@ -36,7 +36,7 @@ export const UserProfilePage = () => {
 
   useEffect(() => {
     setSellersCars(allCars.filter((car) => car.user.id === selectedSeller.id));
-  }, [selectedSeller]);
+  }, [selectedSeller, allCars]);
 
   useEffect(() => {
     if (allCars.length > 0) {

@@ -183,8 +183,6 @@ const EditDeleteCar = () => {
       extraImages: [...newCarFormData.extraImages],
       published: published_in
     };
-    console.log(newCarData);
-
     handleUpdateCar(newCarData);
   };
 

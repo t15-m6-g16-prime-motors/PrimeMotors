@@ -14,7 +14,6 @@ import { useCar } from '../../hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 import GenericModal from '../../components/Modal/ModalGeneric';
 import { ListingPagePicture } from '../../components/ListingPagePicture';
-import { api } from '../../services/api';
 
 export const ListingPage = () => {
   const { user, getTwoInitials, getFirstAndLastName } = useAuth();
@@ -53,7 +52,6 @@ export const ListingPage = () => {
         }
       }
     }
-    console.log(selectedCar)
   }, [allCars]);
 
   const goToSellerProfile = () => {
@@ -80,9 +78,8 @@ export const ListingPage = () => {
 
   const redirectToWhatsapp = async () => {
     try {
-      const response = await api.get(`users/redirect/${selectedCar.user.id}`);
-      const whatsappLink = response.data;
-      console.log(whatsappLink)
+      const phoneNumberDigitsOnly = selectedCar.user.phone_number.replace(/\D/g, '');
+      const whatsappLink = `https://wa.me/${phoneNumberDigitsOnly}`
       window.open(whatsappLink, '_blank');
       
     } catch (error) {
