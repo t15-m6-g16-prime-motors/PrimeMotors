@@ -142,8 +142,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         toast.success('Alteração efetuada!');
       }
     } catch (error) {
-      // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
+      toast.error('Algo deu errado. Revise as informações fornecidas.');
     }
   };
 
@@ -169,8 +169,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         toast.success('Alteração de endereço efetuada!');
       }
     } catch (error) {
-      // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
+      toast.error('Algo deu errado. Revise as informações fornecidas.');
     }
   };
 
@@ -200,8 +200,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         handleLogout();
       }
     } catch (error) {
-      // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
+      toast.error('Ops, algo deu errado...');
     }
   };
 
