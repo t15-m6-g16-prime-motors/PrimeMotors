@@ -2,18 +2,16 @@ import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { StyledMain } from './style';
-import { BiChevronRight, BiChevronLeft } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useState } from 'react';
 import { useCar, useLayout, useModal } from '../../hooks';
 import InputRange from '../../components/InputRange';
 import GenericModal from '../../components/Modal/ModalGeneric';
-import { EmptyBox } from '../../components/EmptyBox';
+import PaginationComponent from '../../components/Pagination';
 
 export const HomePage = () => {
   const { windowWidth } = useLayout();
   const {
-    allCars,
     carBrands,
     carModels,
     carColors,
@@ -24,14 +22,14 @@ export const HomePage = () => {
     carMinPrice,
     carMaxPrice,
     setfilterCar,
-    filteredCars,
     setFilteredCars,
     isFilterActive,
     setIsFilterActive,
     setCarMaxKm,
     setCarMaxPrice,
     setCarMinKm,
-    setCarMinPrice
+    setCarMinPrice,
+    carPerPage
   } = useCar();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -179,18 +177,8 @@ export const HomePage = () => {
           </div>
           <div className='ListPaginationContainer'>
             <ul className='carsList'>
-              {isFilterActive ? (
-                filteredCars.length < 1 ? (
-                  <EmptyBox text='Nenhum anúncio foi postado até o momento' />
-                ) : (
-                  filteredCars.map((car) => <Card key={car.id} car={car} />)
-                )
-              ) : allCars.length < 1 ? (
-                <EmptyBox text='Nenhum anúncio foi postado até o momento' />
-              ) : (
-                allCars.map(
-                  (car) => car.published && <Card key={car.id} car={car} />
-                )
+              {carPerPage.map(
+                (car) => car.published && <Card key={car.id} car={car} />
               )}
             </ul>
             <div className='pagination'>
@@ -205,7 +193,9 @@ export const HomePage = () => {
                 </button>
               )}
 
-              <div className='pagesAndButton heading-6-500'>
+              <PaginationComponent page='home' />
+
+              {/* <div className='pagesAndButton heading-6-500'>
                 <p>
                   1 <span>de 2</span>
                 </p>
@@ -217,7 +207,7 @@ export const HomePage = () => {
                     Seguinte <BiChevronRight />
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

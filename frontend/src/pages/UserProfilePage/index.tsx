@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { useAuth, useCar, useModal } from '../../hooks';
@@ -9,19 +8,21 @@ import { ProfileCard } from '../../components/ProfileCard';
 import { EmptyBox } from '../../components/EmptyBox';
 import { Card } from '../../components/Card';
 import { useEffect } from 'react';
-import { ICar } from '../../interfaces';
 import { useParams } from 'react-router-dom';
 import GenericModal from '../../components/Modal/ModalGeneric';
+import PaginationComponent from '../../components/Pagination';
 
 export const UserProfilePage = () => {
-  const { allCars, selectedSeller, setSelectedSeller } = useCar();
+  const {
+    allCars,
+    selectedSeller,
+    setSelectedSeller,
+    setSellersCars,
+    carPerPage
+  } = useCar();
   const { user, getTwoInitials } = useAuth();
   const { showModal, handleShowModal } = useModal();
   const { id } = useParams();
-
-  const sellersCars: ICar[] = allCars.filter(
-    (car) => car.user.id === selectedSeller.id
-  );
 
   const isProfileOwner = user?.email === selectedSeller.email;
 
@@ -32,6 +33,10 @@ export const UserProfilePage = () => {
         behavior: 'smooth'
       });
   });
+
+  useEffect(() => {
+    setSellersCars(allCars.filter((car) => car.user.id === selectedSeller.id));
+  }, [selectedSeller]);
 
   useEffect(() => {
     if (allCars.length > 0) {
@@ -87,12 +92,12 @@ export const UserProfilePage = () => {
         <section className='listSection'>
           <h1 className='listingsTitle heading-5-600'>Anúncios</h1>
           <ul className='carsList'>
-            {sellersCars.length < 1 ? (
+            {carPerPage.length < 1 ? (
               <div>
                 <EmptyBox text='Nenhum anúncio foi postado até o momento.' />
               </div>
             ) : (
-              sellersCars.map((car) => {
+              carPerPage.map((car) => {
                 if (isProfileOwner) {
                   return <ProfileCard key={car.id} car={car} />;
                 }
@@ -102,21 +107,7 @@ export const UserProfilePage = () => {
               })
             )}
           </ul>
-          <div className='pagination'>
-            <div className='pagesAndButton heading-6-500'>
-              <p>
-                1 <span>de 2</span>
-              </p>
-              <div className='previousNextBtnContainer'>
-                <button className='heading-6-500'>
-                  <BiChevronLeft /> Anterior
-                </button>
-                <button className='heading-6-500'>
-                  Seguinte <BiChevronRight />
-                </button>
-              </div>
-            </div>
-          </div>
+          <PaginationComponent page='userProfile' />
         </section>
       </StyledMain>
       <Footer />

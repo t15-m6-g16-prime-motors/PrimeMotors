@@ -7,11 +7,13 @@ import CreateNewCar from '../CreateNewCar';
 import { RegisterUserSuccess } from '../RegisterUserSuccess';
 import EditDeleteUser from '../EditDeleteUser';
 import CreateCarModalResponse from '../CreateNewCar/createCarModalResponse';
-import DeleteUserConfirmation from '../DeleteUserConfirmation';
+import DeleteUserConfirmation from '../DeleteConfirmations/DeleteUserConfirmation';
 import EditUserAddress from '../EditUserAddress';
 import EditDeleteCar from '../EditDeleteCar';
 import { CarPhotoModal } from '../CarPhotoModal';
 import { useCar } from '../../../hooks';
+import DeleteCarConfirmation from '../DeleteConfirmations/DeleteCarConfirmation';
+import DeleteCommentConfirmation from '../DeleteConfirmations/DeleteCommentConfirmation';
 
 const GenericModal = ({ type }: IGenericModalProps) => {
   const { ref } = useContext(ModalContext);
@@ -75,11 +77,28 @@ const GenericModal = ({ type }: IGenericModalProps) => {
                   <EditDeleteCar />
                 </>
               );
+
+            case 'deleteCar':
+              return (
+                <>
+                  <ModalHeader title={'Deletar Anúncio?'} />
+                  <DeleteCarConfirmation />
+                </>
+              );
+
             case 'carPhoto':
               return (
                 <>
                   <ModalHeader title={'Imagem do anúncio'} />
                   <CarPhotoModal photoUrl={selectedCarPhotoUrl} />
+                </>
+              );
+
+            case 'deleteComment':
+              return (
+                <>
+                  <ModalHeader title={'Deletar Comentário?'} />
+                  <DeleteCommentConfirmation />
                 </>
               );
 

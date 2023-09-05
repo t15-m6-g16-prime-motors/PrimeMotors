@@ -56,6 +56,10 @@ interface ICarContextValues {
   handleSetPictureNull: (imageToNull: { [key: string]: null }) => Promise<void>;
   selectedCarPhotoUrl: string;
   setSelectedCarPhotoUrl: Dispatch<React.SetStateAction<string>>;
+  carPerPage: ICar[];
+  setCarPerPage: Dispatch<React.SetStateAction<ICar[]>>;
+  sellersCars: ICar[];
+  setSellersCars: Dispatch<React.SetStateAction<ICar[]>>;
 }
 
 export const CarContext = createContext({} as ICarContextValues);
@@ -81,6 +85,7 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     {} as ICarByBrandFromKenzieAPI | undefined
   );
   const [selectedCarPhotoUrl, setSelectedCarPhotoUrl] = useState('');
+  const [carPerPage, setCarPerPage] = useState([] as ICar[]);
 
   const { handleShowModal } = useModal();
 
@@ -91,6 +96,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
   const [carsByBrandFromApi, setCarsByBrandFromApi] = useState(
     [] as Array<ICarByBrandFromKenzieAPI>
   );
+
+  const [sellersCars, setSellersCars] = useState([] as ICar[]);
 
   const findValues = (attrName: string): string[] => {
     let values: string[] = [];
@@ -340,7 +347,11 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         handleDeleteCar,
         handleSetPictureNull,
         selectedCarPhotoUrl,
-        setSelectedCarPhotoUrl
+        setSelectedCarPhotoUrl,
+        carPerPage,
+        setCarPerPage,
+        sellersCars,
+        setSellersCars
       }}
     >
       {children}

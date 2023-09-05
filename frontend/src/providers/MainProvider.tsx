@@ -8,13 +8,13 @@ import { ModalProvider } from './ModalProvider';
 const MainProvider = ({ children }: IDefaultProviderProps) => {
   return (
     <LayoutProvider>
-      <AuthProvider>
-        <CarProvider>
-          <CommentsProvider>
-            <ModalProvider>{children}</ModalProvider>
-          </CommentsProvider>
-        </CarProvider>
-      </AuthProvider>
+      <ModalProvider>
+        <AuthProvider>
+          <CarProvider>
+            <CommentsProvider>{children}</CommentsProvider>
+          </CarProvider>
+        </AuthProvider>
+      </ModalProvider>
     </LayoutProvider>
   );
 };
