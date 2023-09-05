@@ -188,8 +188,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         handleShowModal('createNewCarResponse');
       }
     } catch (error) {
-      // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
+      toast.error('Ops, algo deu errado...');
     }
   };
 
@@ -262,8 +262,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         getCars();
       }
     } catch (error) {
-      // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
+      toast.error('Ops, algo deu errado...');
     }
   };
 
@@ -279,8 +279,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         getCars();
       }
     } catch (error) {
-      // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
+      toast.error('Ops, algo deu errado...');
     }
   };
 
@@ -297,8 +297,8 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
         toast.success('Você exclui a imagem');
       }
     } catch (error) {
-      // const requestError = error as AxiosError<IAxiosErrorMessage>;
       console.log(error);
+      toast.error('Algo não saiu como esperado. A foto não foi deletada...');
     }
   };
 
