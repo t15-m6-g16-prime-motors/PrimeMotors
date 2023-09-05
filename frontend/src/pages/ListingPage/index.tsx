@@ -14,6 +14,7 @@ import { useCar } from '../../hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 import GenericModal from '../../components/Modal/ModalGeneric';
 import { ListingPagePicture } from '../../components/ListingPagePicture';
+import { api } from '../../services/api';
 
 export const ListingPage = () => {
   const { user, getTwoInitials, getFirstAndLastName } = useAuth();
@@ -52,6 +53,7 @@ export const ListingPage = () => {
         }
       }
     }
+    console.log(selectedCar)
   }, [allCars]);
 
   const goToSellerProfile = () => {
@@ -75,6 +77,17 @@ export const ListingPage = () => {
       toast.warning('Você deve estar logado para publicar um commentário');
     }
   };
+
+  const redirectToWhatsapp = async () => {
+    try {
+      const response = await api.get(`users/redirect/${selectedCar.user.id}`);
+      const whatsappLink = response.data;
+      console.log(whatsappLink)
+      window.open(whatsappLink, '_blank');
+      
+    } catch (error) {
+      console.log(error);
+    }}
 
   return (
     <>
@@ -110,7 +123,7 @@ export const ListingPage = () => {
                     })}
                   </p>
                 </div>
-                <button>Comprar</button>
+                <button onClick={() => redirectToWhatsapp()}>Comprar</button>
               </div>
               <div className='description'>
                 <h2 className='title heading-6-600'>Descrição</h2>
