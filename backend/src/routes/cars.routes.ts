@@ -4,7 +4,6 @@ import {
   deleteCarController,
   getByIdCarsController,
   listCarsController,
-  listCarsWithFiltersController,
   updateCarController
 } from '../controllers/cars.controller';
 import { ensureAuthMiddleware } from '../middlewares/ensureAuthMiddleware';
@@ -41,7 +40,5 @@ carRoutes.delete(
   ensureCarIdMiddleware,
   deleteCarController
 );
-
-carRoutesFilter.get('', listCarsWithFiltersController);
 
 export { carRoutes, carRoutesFilter };

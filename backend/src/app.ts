@@ -4,7 +4,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import userRoutes from './routes/users.routes';
 import handleErrors from './errors/handleErrors';
-import { carRoutes, carRoutesFilter } from './routes/cars.routes';
+import { carRoutes } from './routes/cars.routes';
 import { loginRoutes } from './routes/login.routes';
 import { commentRoutes } from './routes/comments.routes';
 import { picturesRoutes } from './routes/pictures.routes';
@@ -20,7 +20,6 @@ app.use(
 
 app.use('/cars', carRoutes);
 app.use('/comments', commentRoutes);
-app.use('/carsFilter', carRoutesFilter);
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
 app.use('/pictures', picturesRoutes)

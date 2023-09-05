@@ -1,5 +1,4 @@
 import { Response, Request } from 'express';
-import { listCarsWithFiltersService } from '../services/cars/listCarsQuery.service';
 import {
   TCarResponse,
   TCarUpdateRequest,
@@ -60,18 +59,6 @@ const deleteCarController = async (req: Request, res: Response) => {
   return res.status(204).send();
 };
 
-const listCarsWithFiltersController = async (req: Request, res: Response) => {
-  try {
-    const queryParams = req.query;
-    const cars = await listCarsWithFiltersService(queryParams);
-
-    return res.status(200).json(cars);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: 'An error occurred' });
-  }
-};
-
 const deletePictureController = async (req: Request, res: Response) => {
   const picsId = Number(req.params.picId);
   const picData: TSetToNullCarPictureRequest = req.body;
@@ -85,6 +72,5 @@ export {
   getByIdCarsController,
   updateCarController,
   deleteCarController,
-  listCarsWithFiltersController,
   deletePictureController
 };
