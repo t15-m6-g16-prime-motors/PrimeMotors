@@ -52,7 +52,8 @@ This project uses node and postgreSQL. So, it is important to check if you alrea
 | POST   | /users/                        | User creation creation                | Any user, token is not required            |
 | GET    | /users/                        | List all users                        | Any user, token is required                |
 | GET    | /users/:id/                    | Retrieve one user by ID               | Any user, token is required                |
-| PATCH  | /users/:id/                    | Update user by id                     | Just user owner account, token is required |
+| PATCH  | /users/:id/                    | Update user by id                     | Just user account owner, token is required |
+| DELETE | /users/:id/                    | Delete user account by ID             | Just user account owner, token is required |
 | GET    | /comments/                     | Retrive all comments from a given car | Just user owner account, token is required |
 | POST   | /comments/:id/                 | Create a comment in a given car ID    | Any user, token is required                |
 | GET    | /comments/:id/                 | Retrive a comment                     | Just comment owner, token is required      |
