@@ -54,7 +54,7 @@ export const StyledMain = styled.main`
   .filterContainer {
     width: 100%;
     max-width: 400px;
-    height: 100%;
+    height: max-content;
     margin: 0 auto;
     padding: 1rem;
 
@@ -110,8 +110,13 @@ export const StyledMain = styled.main`
     font-weight: var(--font-weight-500);
 
     margin: 0.5rem 0;
+    margin-left: 10px;
     color: var(--color-grey-3);
     cursor: pointer;
+
+    &:hover {
+      color: var(--color-brand-1);
+    }
   }
 
   /* Cars List */
@@ -119,11 +124,12 @@ export const StyledMain = styled.main`
     display: flex;
     gap: 1rem;
     overflow-x: scroll;
-    padding-bottom: 1.2rem;
+    padding: 0 2rem 1.2rem 2rem;
     height: max-content;
 
     position: relative;
     min-height: 15rem;
+
   }
 
   /* Pagination */
@@ -225,7 +231,7 @@ export const StyledMain = styled.main`
     .filterContainer {
       width: 25%;
       margin: 0;
-      padding: 0 2rem 1rem 0;
+      padding: 0 2rem 1rem 2rem;
 
       background-color: var(--color-white-fixed);
 

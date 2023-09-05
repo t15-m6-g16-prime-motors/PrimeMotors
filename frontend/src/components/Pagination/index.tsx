@@ -6,19 +6,10 @@ import StyledPaginationComponent from './style';
 
 const PaginationComponent = ({ page }: { page: string }) => {
   const { allCars, setCarPerPage, filteredCars, sellersCars } = useCar();
-  console.log(
-    allCars.sort((a, b) => {
-      return a.id - b.id;
-    })
-  );
-
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const perPage: number = 12;
-
-  console.log(
-    allCars.slice(perPage * (currentPage - 1), perPage * currentPage)
-  );
 
   useEffect(() => {
     if (page === 'home') {

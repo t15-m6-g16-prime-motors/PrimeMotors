@@ -136,7 +136,21 @@ export const StyledMain = styled.main`
     overflow-x: scroll;
     padding: 0 2rem 1.2rem 2rem;
     height: max-content;
+
+    li {
+      margin-bottom: 40px;
+      .imageContainer {
+        width: 100%;
+        img {
+          width: 20rem;
+          height: 10rem;
+          object-fit: 100%;
+          border-radius: 4px;
+        }
+      }
+    }
   }
+
   @media (min-width: 768px) {
     div.listAndFilter {
       display: flex;

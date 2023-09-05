@@ -1,6 +1,10 @@
 import { styled } from 'styled-components';
 
-export const StyledCardContainer = styled.li`
+interface CardProps {
+  color: number;
+}
+
+export const StyledCardContainer = styled.li<CardProps>`
   min-width: 14rem;
   transition: 0.5s;
   position: relative;
@@ -11,7 +15,6 @@ export const StyledCardContainer = styled.li`
   .imageContainer {
     background-color: var(--color-grey-7);
     width: 100%;
-    height: 50%;
 
     display: flex;
     justify-content: center;
@@ -27,10 +30,11 @@ export const StyledCardContainer = styled.li`
   }
 
   .imageContainer img {
-    height: 100%;
-    width: 100%;
-    max-width: 100%;
+    width: 20rem;
+    height: 10rem;
+    object-fit: 100%;
     border-radius: 4px;
+    overflow: hidden;
   }
 
   .title {
@@ -79,7 +83,10 @@ export const StyledCardContainer = styled.li`
     padding: 0.4rem;
     border-radius: 50%;
     color: var(--color-white-fixed);
-    background-color: var(--color-random-2);
+    background-color: ${(props) => {
+      const colorCode = props.color;
+      return `var(--color-random-${colorCode})`;
+    }};
     font-size: 0.8rem;
   }
 
