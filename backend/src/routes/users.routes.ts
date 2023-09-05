@@ -11,7 +11,6 @@ import {
   deleteUsersController,
   getByIdUsersController,
   listUsersController,
-  redirectUserWhatsappController,
   resetPasswordController,
   sendResetEmailPasswordController,
   updateUsersController
