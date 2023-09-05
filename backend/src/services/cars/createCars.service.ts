@@ -21,7 +21,6 @@ const createCarsService = async (
   const { coverImage, image01, image02, extraImages, ...carFields } = carData;
 
   const allImages: TCarPictures = Object.assign({}, ...extraImages);
-  console.log(allImages);
 
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
