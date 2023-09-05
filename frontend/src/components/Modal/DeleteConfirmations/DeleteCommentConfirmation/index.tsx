@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { useModal } from '../../../../hooks';
 import { ButtonAlert, NegativeButton } from '../../../../styles/Buttons';
 import DeleteConfirmationContainer from '../style';
+import { CommentsContext } from '../../../../providers/CommentsProvider';
 
 const DeleteCommentConfirmation = () => {
   const { handleCloseModal } = useModal();
+  const { deleteComment } = useContext(CommentsContext);
 
   return (
     <DeleteConfirmationContainer>
@@ -25,7 +28,7 @@ const DeleteCommentConfirmation = () => {
         <ButtonAlert
           className='buttons-style-button-size-big'
           onClick={() => {
-            // Chamar função de deletar comentário AQUI.
+            deleteComment();
             handleCloseModal();
           }}
         >
