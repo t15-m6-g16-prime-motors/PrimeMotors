@@ -38,8 +38,6 @@ export const CommentsProvider = ({ children }: ICommentsProviderProps) => {
     try {
       const newComment = await api.post(`/comments/${carId}`, data);
       setComments((previousComments) => [...previousComments, newComment.data]);
-
-      console.log(newComment.data.created_at);
       toast.success('Seu comentário foi registrado');
     } catch (error) {
       console.log(error);
@@ -47,11 +45,9 @@ export const CommentsProvider = ({ children }: ICommentsProviderProps) => {
   };
   const updateComment = async (data: TEditComment, id: number) => {
     try {
-      console.log(data);
-      const response = await api.patch(`/comments/${id}`, data);
+      await api.patch(`/comments/${id}`, data);
       getAndSetComments();
-      console.log(response);
-      toast.success('Seu comentario atualizado');
+      toast.success('Seu comentario atualizado!');
     } catch (error) {
       console.log(error);
     }
@@ -59,11 +55,10 @@ export const CommentsProvider = ({ children }: ICommentsProviderProps) => {
   const deleteComment = async () => {
     const id: number = commentSelect!.id;
     try {
-      const response = await api.delete(`comments/${id}`);
+      await api.delete(`comments/${id}`);
       getAndSetComments();
-      console.log(response);
     } catch (error) {
-      console.log(error);
+      toast.error('Erro ao excluir o comentário. Por favor, tente novamente.');
     }
   };
 
