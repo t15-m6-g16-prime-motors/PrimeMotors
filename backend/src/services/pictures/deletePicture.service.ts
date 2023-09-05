@@ -13,9 +13,6 @@ const setPictureToNullService = async (
   const pictures: Picture | null = await picturesRepository.findOneBy({
     id: picsId
   });
-
-  console.log(picData);
-
   const pictureToNull = picturesRepository.create({ ...pictures, ...picData });
   picturesRepository.save(pictureToNull);
 

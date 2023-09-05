@@ -48,9 +48,6 @@ const updateCarService = async (carData: TCarUpdateRequest, carId: number) => {
     ...allImages
   });
 
-  console.log(image01)
-
-  console.log(newPicuturesData);
   await pictureRepository.save(newPicuturesData);
 
   const updateCarResponseParse: TCarResponse = {
@@ -59,8 +56,6 @@ const updateCarService = async (carData: TCarUpdateRequest, carId: number) => {
       ...newPicuturesData
     }
   };
-  console.log(updateCarResponseParse);
-
   const returnCar: TCarResponse = carResponseSchema.parse(
     updateCarResponseParse
   );

@@ -26,9 +26,6 @@ const updateUsersService = async (
         }
       }
     });
-
-    console.log(oldAddress, address);
-
     const newAddress: Address = addressRepository.create({
       ...oldAddress,
       ...address

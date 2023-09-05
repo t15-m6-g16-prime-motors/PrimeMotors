@@ -39,8 +39,6 @@ const createCommentsServices = async (
     car: car!
   });
   await commentRepository.save(comment);
-  console.log(carId)
-
 
   const returnComment: TCommentResponse = commentSchemaResponse.parse(comment);
   return returnComment;
