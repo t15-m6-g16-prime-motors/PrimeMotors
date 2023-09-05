@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useRef, useState } from 'react';
-import { useAuth, useComment } from '../../hooks';
+import { useAuth, useComment, useModal } from '../../hooks';
 import { TComment } from '../../interfaces';
 import { StyledCommentContainer } from './style';
 import { BsDot } from 'react-icons/bs';
@@ -19,11 +19,12 @@ export const Comment = ({ comment }: ICommentProps) => {
   const [timeSincePost, setTimeSincePost] = useState('');
   const [showIcons, setShowIcons] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  
+  const { handleShowModal } = useModal();
   const { getTwoInitials, getFirstAndLastName } = useAuth();
   const { comments } = useComment();
   const [editedComment, setEditedComment] = useState(comment.comment);
-  const { updateComment, deleteComment } = useContext(CommentsContext);
+  const { updateComment,  setCommentSelect } =
+    useContext(CommentsContext);
   const { user } = useContext(AuthContext);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const handleMouseEnter = () => {
@@ -41,9 +42,13 @@ export const Comment = ({ comment }: ICommentProps) => {
   } = useForm<TEditComment>({
     resolver: zodResolver(editCommentSchema)
   });
-
+  const openModalDelete = ()=>{
+    setCommentSelect(comment)
+    handleShowModal("deleteComment")
+  }
   const toggleEditing = () => {
     setIsEditing(!isEditing);
+
   };
   useEffect(() => {
     if (isEditing && textareaRef.current) {
@@ -197,9 +202,7 @@ export const Comment = ({ comment }: ICommentProps) => {
           </button>
           <button
             className='btn-delete'
-            onClick={() => {
-              deleteComment(comment.id);
-            }}
+            onClick={openModalDelete}
           >
             <BiTrash />
           </button>
