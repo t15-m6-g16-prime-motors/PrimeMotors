@@ -20,8 +20,15 @@ const EditAddressContainer = styled.section`
     width: 100%;
     gap: 16px;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+
+    :nth-child(1) {
+      max-width: 30%;
+    }
+    :nth-child(2) {
+      width: 50%;
+    }
   }
 `;
 
