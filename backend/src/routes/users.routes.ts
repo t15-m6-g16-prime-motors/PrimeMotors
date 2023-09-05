@@ -59,6 +59,5 @@ userRoutes.delete(
 
 userRoutes.post('/resetPassword', sendResetEmailPasswordController);
 userRoutes.patch('/resetPassword/:token', resetPasswordController);
-userRoutes.get('/redirect/:id', ensureAuthMiddleware, redirectUserWhatsappController)
 
 export default userRoutes;
