@@ -217,10 +217,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const getRandomColor = (userId: number) => {
-    let colorCode = userId % 12;
+    let colorCode = userId % 12
 
     if (colorCode === 0) {
-      colorCode += 1;
+      colorCode += 1
     }
 
     return colorCode;
