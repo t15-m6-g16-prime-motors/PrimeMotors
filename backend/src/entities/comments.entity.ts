@@ -20,10 +20,10 @@ class Comment {
 
   created_at: string | Date;
   
-  @ManyToOne(() => User, (user) => user.comment)
+  @ManyToOne(() => User, (user) => user.comment, {onDelete: 'CASCADE'})
   user: User;
 
-  @ManyToOne(() => Car, (car) => car.comment)
+  @ManyToOne(() => Car, (car) => car.comment, {onDelete: 'CASCADE'})
   car: Car;
 }
 export default Comment;

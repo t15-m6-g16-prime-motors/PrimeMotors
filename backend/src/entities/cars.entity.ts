@@ -49,7 +49,7 @@ class Car {
   @CreateDateColumn({ type: 'date' })
   created_at: string | Date;
 
-  @ManyToOne(() => User, (user) => user.cars)
+  @ManyToOne(() => User, (user) => user.cars, {onDelete: 'CASCADE'})
   user: User;
 
   @OneToMany(() => Comment, (comment) => comment.car)
