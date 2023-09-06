@@ -20,7 +20,7 @@ export const UserProfilePage = () => {
     setSellersCars,
     carPerPage
   } = useCar();
-  const { user, getTwoInitials } = useAuth();
+  const { user, getTwoInitials, getRandomColor } = useAuth();
   const { showModal, handleShowModal } = useModal();
   const { id } = useParams();
 
@@ -41,7 +41,7 @@ export const UserProfilePage = () => {
   useEffect(() => {
     if (allCars.length > 0) {
       if (selectedSeller.id === 0) {
-        const userCar = allCars.find((car) => (car.user.id = Number(id)));
+        const userCar = allCars.find((car) => (car.user.id === Number(id)));
 
         if (userCar) {
           setSelectedSeller(userCar.user);
@@ -50,12 +50,14 @@ export const UserProfilePage = () => {
     }
   }, [allCars]);
 
+  const colorCode = getRandomColor(Number(id));
+
   return (
     <>
       {showModal && <GenericModal type={showModal} />}
 
       <Header />
-      <StyledMain>
+      <StyledMain color={colorCode}>
         <section className='container-profile'>
           <div className='blue-color-box'>
             <div className='info-profile'>

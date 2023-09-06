@@ -1,6 +1,10 @@
 import { styled } from 'styled-components';
 
-export const StyledMain = styled.main`
+interface ProfileProps {
+  color: number;
+}
+
+export const StyledMain = styled.main<ProfileProps>`
   background-color: var(--color-grey-8);
   section.container-profile {
     margin-bottom: 14rem;
@@ -39,7 +43,10 @@ export const StyledMain = styled.main`
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        background-color: blue;
+        background-color: ${(props) => {
+          const colorCode = props.color;
+          return `var(--color-random-${colorCode})`;
+        }};
         h2 {
           font-size: var(--font-size-32);
           color: white;
