@@ -27,6 +27,7 @@ interface AuthContextValues {
   handleLogout: () => void;
   sendResetPasswordEmail: (data: TSendEmail) => Promise<void>;
   getFirstAndLastName: (name: string) => string;
+  getRandomColor: (userId: number) => number
 }
 
 export const AuthContext = createContext({} as AuthContextValues);
@@ -215,6 +216,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  const getRandomColor = (userId: number) => {
+    let colorCode = userId % 12
+
+    if (colorCode === 0) {
+      colorCode += 1
+    }
+
+    return colorCode;
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -229,7 +240,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         deleteUser,
         handleLogout,
         sendResetPasswordEmail,
-        getFirstAndLastName
+        getFirstAndLastName,
+        getRandomColor
       }}
     >
       {children}

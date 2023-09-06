@@ -106,6 +106,9 @@ export const CarProvider = ({ children }: IDefaultProviderProps) => {
     } else {
       values = allCars.map((car) => String(car[attrName]));
     }
+    if (attrName === 'model') {
+      values = values.map((value) => value.split(' ')[0]);
+    }
     const uniqueValues = [...new Set(values)];
     uniqueValues.sort();
 

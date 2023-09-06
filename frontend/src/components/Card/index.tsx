@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Card = ({ car }: ICardProps) => {
   const { setSelectedCar, setSelectedSeller } = useCar();
-  const { getTwoInitials, getFirstAndLastName } = useAuth();
+  const { getTwoInitials, getFirstAndLastName, getRandomColor } = useAuth();
 
   const navigate = useNavigate();
 
@@ -19,8 +19,10 @@ export const Card = ({ car }: ICardProps) => {
     navigate(`/profile/${car.user.id}`);
   };
 
+  const colorRadonCode = getRandomColor(car.user.id);
+
   return (
-    <StyledCardContainer>
+    <StyledCardContainer color={colorRadonCode}>
       {car.good_deal && (
         <p className='card__goodDealTag text-style-text-body-2-500'>$</p>
       )}

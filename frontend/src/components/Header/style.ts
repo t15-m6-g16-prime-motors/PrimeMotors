@@ -1,6 +1,10 @@
 import { styled } from 'styled-components';
 
-export const StyledHeader = styled.header`
+interface HeaderProps {
+  color: number;
+}
+
+export const StyledHeader = styled.header<HeaderProps>`
   padding: 1.5rem 1rem;
   box-shadow: 0px 1px 3px var(--grey-5);
   position: fixed;
@@ -81,7 +85,10 @@ export const StyledHeader = styled.header`
     padding: 0.5rem;
     border-radius: 50%;
     color: var(--color-white-fixed);
-    background-color: var(--color-random-2);
+    background-color: ${(props) => {
+      const colorCode = props.color;
+      return `var(--color-random-${colorCode})`;
+    }};
     font-size: 0.6rem;
     width: max-content;
   }

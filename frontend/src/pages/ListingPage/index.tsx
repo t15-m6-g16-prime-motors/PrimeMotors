@@ -45,8 +45,7 @@ export const ListingPage = () => {
   useEffect(() => {
     if (allCars.length > 0) {
       if (selectedCar.id === 0) {
-        const userCar = allCars.find((car) => (car.id = Number(id)));
-
+        const userCar = allCars.find((car) => (car.id === Number(id)));
         if (userCar) {
           setSelectedCar(userCar);
         }

@@ -8,7 +8,7 @@ import { ProfileCard } from '../../components/ProfileCard';
 import { EmptyBox } from '../../components/EmptyBox';
 import { Card } from '../../components/Card';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import GenericModal from '../../components/Modal/ModalGeneric';
 import PaginationComponent from '../../components/Pagination';
 
@@ -20,9 +20,11 @@ export const UserProfilePage = () => {
     setSellersCars,
     carPerPage
   } = useCar();
-  const { user, getTwoInitials } = useAuth();
+  const { user, getTwoInitials, getRandomColor } = useAuth();
   const { showModal, handleShowModal } = useModal();
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const isProfileOwner = user?.email === selectedSeller.email;
 
@@ -39,23 +41,40 @@ export const UserProfilePage = () => {
   }, [selectedSeller, allCars]);
 
   useEffect(() => {
-    if (allCars.length > 0) {
-      if (selectedSeller.id === 0) {
-        const userCar = allCars.find((car) => (car.user.id = Number(id)));
+    if (allCars.length > 0 && selectedSeller.id === 0) {
+      const userCar = allCars.find((car) => car.user.id === Number(id));
 
-        if (userCar) {
-          setSelectedSeller(userCar.user);
+      if (userCar) {
+        setSelectedSeller(userCar.user);
+      } else {
+        if (user) {
+          const { id, description, email, full_name, is_seller, phone_number } =
+            user!;
+
+          const userWithNoCar = {
+            id,
+            description,
+            email,
+            full_name,
+            is_seller,
+            phone_number
+          };
+          setSelectedSeller(userWithNoCar);
+        } else {
+          navigate('/');
         }
       }
     }
   }, [allCars]);
+
+  const colorCode = getRandomColor(Number(id));
 
   return (
     <>
       {showModal && <GenericModal type={showModal} />}
 
       <Header />
-      <StyledMain>
+      <StyledMain color={colorCode}>
         <section className='container-profile'>
           <div className='blue-color-box'>
             <div className='info-profile'>

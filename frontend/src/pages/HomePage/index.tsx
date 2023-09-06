@@ -194,20 +194,6 @@ export const HomePage = () => {
               )}
 
               <PaginationComponent page='home' />
-
-              {/* <div className='pagesAndButton heading-6-500'>
-                <p>
-                  1 <span>de 2</span>
-                </p>
-                <div className='previousNextBtnContainer'>
-                  <button className='heading-6-500'>
-                    <BiChevronLeft /> Anterior
-                  </button>
-                  <button className='heading-6-500'>
-                    Seguinte <BiChevronRight />
-                  </button>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>

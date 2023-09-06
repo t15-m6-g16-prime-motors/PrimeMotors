@@ -13,14 +13,16 @@ import { ModalContext } from '../../providers/ModalProvider';
 export const Header = () => {
   const [showNavMenu, setShowNavMenu] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const { user, getTwoInitials, handleLogout } = useAuth();
+  const { user, getTwoInitials, handleLogout, getRandomColor } = useAuth();
   const { windowWidth } = useLayout();
   const { handleShowModal } = useContext(ModalContext);
 
   const navigate = useNavigate();
 
+  const colorCode = getRandomColor(user?.id || 1);
+
   return (
-    <StyledHeader>
+    <StyledHeader color={colorCode}>
       <div className='menuContainer'>
         <div className='brandAndButton'>
           <div className='brandContainer' onClick={() => navigate('/')}>
