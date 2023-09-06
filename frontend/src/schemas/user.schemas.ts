@@ -5,7 +5,8 @@ export const registerUserSchema = z
     full_name: z
       .string()
       .nonempty('Nome obrigatório')
-      .regex(/^[A-Za-z ]+$/, 'Apenas letras são permitidas'),
+      .regex(/^[A-Za-z ]+$/, 'Apenas letras são permitidas')
+      .regex(/^\w+\s+\w+$/, 'Nome e sobrenome obrigatórios'),
     email: z.string().nonempty('Email obrigatório').email('Email inválido'),
     cpf: z
       .string()
@@ -65,7 +66,8 @@ export const editUserSchema = z
     full_name: z
       .string()
       .nonempty('Nome obrigatório')
-      .regex(/^[A-Za-z ]+$/, 'Apenas letras são permitidas'),
+      .regex(/^[A-Za-z ]+$/, 'Apenas letras são permitidas')
+      .regex(/^\w+\s+\w+$/, 'Nome e sobrenome obrigatórios'),
     email: z.string().nonempty('Email obrigatório').email('Email inválido'),
     cpf: z
       .string()
