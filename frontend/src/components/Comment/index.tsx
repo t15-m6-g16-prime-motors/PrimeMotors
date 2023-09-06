@@ -60,7 +60,6 @@ export const Comment = ({ comment }: ICommentProps) => {
     }
   }, [isEditing]);
   const handleSaveEditedComment = () => {
-    console.log('Saving edited comment:', editedComment);
     if (editedComment) {
       updateComment({ ...comment, comment: editedComment }, comment.id);
       toggleEditing();
