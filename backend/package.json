@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --rs --cls --ignore-watch node_modules src/server.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -25,9 +27,7 @@
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
     "typeorm": "^0.3.17",
-    "zod": "^3.21.4"
-  },
-  "devDependencies": {
+    "zod": "^3.21.4",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
@@ -39,5 +39,6 @@
     "eslint": "^8.47.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
-  }
+  },
+  "devDependencies": {}
 }
