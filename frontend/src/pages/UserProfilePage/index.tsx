@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import GenericModal from '../../components/Modal/ModalGeneric';
 import PaginationComponent from '../../components/Pagination';
+import { api } from '../../services/api';
+import { IUserLogged } from '../../interfaces/users.interfaces';
 
 export const UserProfilePage = () => {
   const {
@@ -22,7 +24,7 @@ export const UserProfilePage = () => {
   } = useCar();
   const { user, getTwoInitials, getRandomColor } = useAuth();
   const { showModal, handleShowModal } = useModal();
-  const { id } = useParams();
+  const params = useParams();
 
   const navigate = useNavigate();
 
@@ -42,7 +44,7 @@ export const UserProfilePage = () => {
 
   useEffect(() => {
     if (allCars.length > 0 && selectedSeller.id === 0) {
-      const userCar = allCars.find((car) => car.user.id === Number(id));
+      const userCar = allCars.find((car) => car.user.id === Number(params.id));
 
       if (userCar) {
         setSelectedSeller(userCar.user);
@@ -64,10 +66,31 @@ export const UserProfilePage = () => {
           navigate('/');
         }
       }
+    } else {
+      const getUser = async () => {
+        const userInfo = await api.get(`/users/${params.id}`);
+        const userData: IUserLogged = userInfo.data;
+
+        const { id, description, email, full_name, is_seller, phone_number } =
+          userData;
+
+        const userWithNoCar = {
+          id,
+          description,
+          email,
+          full_name,
+          is_seller,
+          phone_number
+        };
+        setSelectedSeller(userWithNoCar);
+
+        setSelectedSeller(userWithNoCar);
+      };
+      getUser();
     }
   }, [allCars]);
 
-  const colorCode = getRandomColor(Number(id));
+  const colorCode = getRandomColor(Number(params.id));
 
   return (
     <>
