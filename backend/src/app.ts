@@ -13,9 +13,7 @@ const app: Application = express();
 app.use(express.json());
 
 app.use(
-  cors({
-    origin: process.env.VITE_URL
-  })
+  cors()
 );
 
 app.use('/cars', carRoutes);
